@@ -1,0 +1,84 @@
+{
+    "common": {
+        "name": "mapwidgets",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "Initial",
+                "de": "Anfänglich",
+                "ru": "Исходный",
+                "pt": "Inicial",
+                "nl": "Voorletter",
+                "fr": "Initial",
+                "it": "Iniziale",
+                "es": "Inicial",
+                "pl": "Wstępny",
+                "uk": "Початковий",
+                "zh-cn": "最初的"
+            }
+        },
+        "title": "ioBroker Map widgets - Map widgets",
+        "titleLang": {
+            "en": "Map Widgets",
+            "de": "Karten -Widgets",
+            "ru": "Карты виджетов",
+            "pt": "Widgets de mapa",
+            "nl": "Kaartwidgets",
+            "fr": "Widgets cartographiques",
+            "it": "Widget della mappa",
+            "es": "Widgets de mapa",
+            "pl": "Widżety map",
+            "uk": "Відродження карт",
+            "zh-cn": "地图小部件"
+        },
+        "desc": {
+            "en": "Map Widgets for ioBroker.vis",
+            "de": "Karten -Widgets für iobroker.vis",
+            "ru": "Карты виджетов для iobroker.vis",
+            "pt": "Widgets de mapa para iobroker.vis",
+            "nl": "Kaartwidgets voor IoBRoker.Vis",
+            "fr": "Widgets cartographiques pour iobroker.vis",
+            "it": "Widget mappa per iobroker.vis",
+            "es": "Widgets de mapa para iobroker.vis",
+            "pl": "Widget map dla iobrent.vis",
+            "uk": "Віджетів карт для iobroker.vis",
+            "zh-cn": "iobroker.vis的地图小部件"
+        },
+        "platform": "Javascript/Node.js",
+        "loglevel": "info",
+        "icon": "mapwidgets.svg",
+        "enabled": true,
+        "mode": "once",
+        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.mapwidgets/main/admin/mapwidgets.svg",
+        "keywords": [
+            "map widgets",
+            "vis"
+        ],
+        "readme": "https://github.com/ioBroker/ioBroker.vis-colorpicker/blob/main/README.md",
+        "authors": [
+            "oweitman <oweitman@gmx.de>"
+        ],
+        "license": "MIT",
+        "dependencies": [
+            "vis"
+        ],
+        "onlyWWW": true,
+        "singleton": true,
+        "type": "visualization-widgets",
+        "noConfig": true,
+        "tier": 3,
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "adminUI": {
+            "config": "none"
+        },
+        "restartAdapters": [
+            "vis",
+            "vis-2"
+        ]
+    },
+    "native": {},
+    "instanceObjects": []
+}

@@ -1,0 +1,303 @@
+{
+    "marker": [
+        {
+            "lat": 50.182,
+            "lng": 8.682,
+            "options": {
+                "title": "Default"
+            },
+            "popup": "<b>Default Marker</b>",
+            "tooltip": "Hover me"
+        },
+        {
+            "lat": 50.176,
+            "lng": 8.69,
+            "options": {
+                "draggable": true,
+                "title": "Draggable"
+            },
+            "popup": "Zieh mich!"
+        },
+        {
+            "lat": 50.17,
+            "lng": 8.7,
+            "options": {
+                "opacity": 0.5,
+                "title": "Halb transparent"
+            },
+            "tooltip": {
+                "text": "0.5 Opacity",
+                "options": {
+                    "permanent": true,
+                    "direction": "right"
+                }
+            }
+        },
+        {
+            "lat": 50.19,
+            "lng": 8.68,
+            "options": {
+                "zIndexOffset": 1000,
+                "title": "Ganz oben"
+            },
+            "popup": "zIndexOffset 1000"
+        },
+        {
+            "lat": 50.185,
+            "lng": 8.67,
+            "options": {
+                "riseOnHover": true,
+                "title": "Rise on hover"
+            },
+            "tooltip": "riseOnHover: true"
+        },
+        {
+            "lat": 50.188,
+            "lng": 8.705,
+            "options": {
+                "keyboard": false,
+                "title": "Kein Keyboard-Fokus"
+            }
+        },
+        {
+            "lat": 50.181,
+            "lng": 8.705,
+            "options": {
+                "autoPanOnFocus": false,
+                "title": "Kein Auto-Pan bei Fokus"
+            }
+        },
+        {
+            "lat": 50.173,
+            "lng": 8.675,
+            "options": {
+                "icon": "greenleaf",
+                "title": "DivIcon rot"
+            },
+            "popup": "Roter Punkt"
+        },
+        {
+            "lat": 50.172,
+            "lng": 8.69,
+            "options": {
+                "icon": "orangeleaf",
+                "title": "Nummer 1"
+            }
+        },
+        {
+            "lat": 50.168,
+            "lng": 8.7,
+            "options": {
+                "icon": "redleaf",
+                "title": "Nummer 2"
+            },
+            "tooltip": {
+                "text": "Nummer 2",
+                "options": {
+                    "direction": "top"
+                }
+            }
+        },
+        {
+            "lat": 50.165,
+            "lng": 8.66,
+            "options": {
+                "draggable": true,
+                "riseOnHover": true,
+                "title": "Drag & Rise"
+            },
+            "popup": "Kombiniert"
+        },
+        {
+            "lat": 50.193,
+            "lng": 8.665,
+            "options": {
+                "pane": "markerPane",
+                "title": "markerPane"
+            },
+            "tooltip": "pane: markerPane"
+        },
+        {
+            "lat": 50.196,
+            "lng": 8.69,
+            "options": {
+                "bubblingMouseEvents": false,
+                "title": "Ohne Bubbling"
+            },
+            "popup": "bubblingMouseEvents: false"
+        },
+        {
+            "lat": 50.19,
+            "lng": 8.71,
+            "options": {
+                "alt": "Alt-Text",
+                "title": "Mit Alt"
+            },
+            "tooltip": "Alt-Text gesetzt"
+        },
+        {
+            "lat": 50.178,
+            "lng": 8.66,
+            "options": {
+                "icon": "greenleaf",
+                "keyboard": false,
+                "autoPanOnFocus": false,
+                "title": "Nummer 3, no focus pan"
+            }
+        },
+        {
+            "lat": 50.174,
+            "lng": 8.71,
+            "options": {
+                "opacity": 0.8,
+                "zIndexOffset": -500,
+                "title": "Niedriger zIndex"
+            }
+        },
+        {
+            "lat": 50.167,
+            "lng": 8.685,
+            "options": {
+                "title": "Nur Tooltip"
+            },
+            "tooltip": {
+                "text": "Permanenter Tooltip",
+                "options": {
+                    "permanent": true,
+                    "offset": [0, -12]
+                }
+            }
+        },
+        {
+            "lat": 50.171,
+            "lng": 8.695,
+            "options": {
+                "icon": "orangeleaf",
+                "draggable": true,
+                "title": "Roter Punkt (draggable)"
+            }
+        },
+        {
+            "lat": 50.183,
+            "lng": 8.705,
+            "options": {
+                "riseOnHover": true,
+                "title": "Hover + Tooltip"
+            },
+            "tooltip": "Ich hebe ab"
+        },
+        {
+            "lat": 50.187,
+            "lng": 8.695,
+            "options": {
+                "title": "Nur Popup"
+            },
+            "popup": "Hallo Popup"
+        }
+    ],
+    "icons": {
+        "greenleaf": {
+            "iconUrl": "/vis.0/leaf-green.png",
+            "iconSize": [25, 41],
+            "iconAnchor": [12, 41],
+            "popupAnchor": [1, -34],
+            "shadowUrl": "/vis.0/leaf-shadow.png",
+            "shadowSize": [41, 41],
+            "shadowAnchor": [12, 41]
+        },
+        "orangeleaf": {
+            "iconUrl": "/vis.0/leaf-orange.png",
+            "iconSize": [32, 48],
+            "iconAnchor": [16, 48],
+            "popupAnchor": [0, -40],
+            "shadowUrl": "/vis.0/leaf-shadow.png",
+            "shadowSize": [50, 50],
+            "shadowAnchor": [16, 48]
+        },
+        "redleaf": {
+            "iconUrl": "/vis.0/leaf-red.png",
+            "iconSize": [30, 30],
+            "iconAnchor": [15, 30],
+            "popupAnchor": [0, -26],
+            "shadowUrl": "/vis.0/leaf-shadow.png",
+            "shadowSize": [36, 36],
+            "shadowAnchor": [15, 30]
+        },
+        "normal": {
+            "iconSize": [38, 95],
+            "iconAnchor": [22, 94],
+            "shadowSize": [68, 95],
+            "shadowAnchor": [22, 94]
+        }
+    },
+    "polyline": [
+        {
+            "latlng": [
+                [50.2, 8.7],
+                [50.2, 8.8],
+                [50.3, 8.75]
+            ],
+            "options": {
+                "color": "green",
+                "weight": 10
+            }
+        },
+        {
+            "latlng": [
+                [50.2, 8.8],
+                [50.2, 8.9],
+                [50.3, 8.85]
+            ],
+            "options": {
+                "color": "blue",
+                "weight": 5
+            }
+        }
+    ],
+    "polygon": [
+        {
+            "latlng": [
+                [50.1, 8.7],
+                [50.1, 8.8],
+                [50.2, 8.75]
+            ],
+            "options": {
+                "color": "green",
+                "weight": 10
+            }
+        },
+        {
+            "latlng": [
+                [50.0, 8.8],
+                [50.0, 8.9],
+                [50.1, 8.85]
+            ],
+            "options": {
+                "color": "blue",
+                "weight": 5
+            }
+        }
+    ],
+    "rectangle": [
+        {
+            "latlng": [
+                [50.3, 8.7],
+                [50.4, 8.8]
+            ],
+            "options": {
+                "color": "yellow",
+                "weight": 10
+            }
+        }
+    ],
+    "circle": [
+        {
+            "latlng": [50.3, 8.6],
+            "options": {
+                "radius": 10000,
+                "weight": 10,
+                "color": "black"
+            }
+        }
+    ]
+}
