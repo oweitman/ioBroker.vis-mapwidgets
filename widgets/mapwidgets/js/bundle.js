@@ -1,1 +1,1 @@
-import './mapwidgets.js';    
+import './mapwidgets.js';

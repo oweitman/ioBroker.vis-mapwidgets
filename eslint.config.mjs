@@ -9,6 +9,7 @@ export default [
         // specify files to exclude from linting here
         ignores: [
             'widgets/mapwidgets/dist/mapwidgets-dist.js',
+            'widgets/mapwidgets/dist/bundle.js',
             '.dev-server/**',
             'backup/**',
             '*.test.js',

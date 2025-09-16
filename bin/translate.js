@@ -233,6 +233,7 @@ async function doTranslate() {
     let i18n = importi18nKeys();
     i18n = extendLanguages(i18n);
     i18n = extendLanguageKeysFromLang(i18n, 'en');
+    //eslint-disable-next-line
     i18n = !notranslate && await updateEmptyKeysWithTranslation(i18n, 'en') || i18n;
     exporti18nKeys(i18n);
     console.log('end translate');
