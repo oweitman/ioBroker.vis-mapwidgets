@@ -371,6 +371,10 @@ Detailed descriptions of the parameters can be found here:
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.0.5 (2025-09-17)
+
+- release
+
 ### 0.0.4 (2025-09-17)
 
 - fix reponame
