@@ -93,8 +93,7 @@ This contains an array of individual marker informations objects.
 ```json
 [
     {
-        "lat": 50.182,
-        "lng": 8.682,
+        "latlng": [50.182, 8.682],
         "options": {
             "title": "Default"
         },
@@ -102,18 +101,19 @@ This contains an array of individual marker informations objects.
         "tooltip": "Hover me"
     },
     {
-        "lat": 50.171,
-        "lng": 8.695,
+        "lat": 50.176,
+        "lng": 8.69,
         "options": {
-            "icon": "orangeleaf",
             "draggable": true,
-            "title": "Roter Punkt (draggable)"
-        }
+            "title": "Draggable"
+        },
+        "popup": "Zieh mich!"
     }
 ]
 ```
 
 Latitude and longitude are mandatory; all other parameters are optional.
+There are 2 alternate notations for lat and lng possible, see example above.
 
 For a custom icon, the unique ID of the icon is specified as a string
 (see the `icons` configuration).
@@ -371,6 +371,7 @@ Detailed descriptions of the parameters can be found here:
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.0.6 (2025-09-17)
 
 - fix more package urls

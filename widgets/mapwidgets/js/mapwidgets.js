@@ -112,7 +112,10 @@ vis.binds['mapwidgets'] = {
         marker(widgetID, config, map) {
             this.visMapwidgets.debug && console.log(`do marker`);
             if (config.marker) {
-                config.marker.forEach(({ lat, lng, options = {}, popup, tooltip }, index) => {
+                config.marker.forEach(({ latlng, lat, lng, options = {}, popup, tooltip }, index) => {
+                    if (Array.isArray(latlng) && latlng.length == 2) {
+                        [lat, lng] = latlng;
+                    }
                     const markerNumber = index + 1;
                     const title = options.title ? `${markerNumber} ${options.title}` : `Marker ${markerNumber}`;
                     options.title = title;

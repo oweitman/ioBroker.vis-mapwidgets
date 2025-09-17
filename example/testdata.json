@@ -1,8 +1,7 @@
 {
     "marker": [
         {
-            "lat": 50.182,
-            "lng": 8.682,
+            "latlng": [50.182, 8.682],
             "options": {
                 "title": "Default"
             },
