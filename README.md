@@ -2,15 +2,15 @@
 
 ![Logo](admin/mapwidgets-small.svg)
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.mapwidgets.svg)](https://www.npmjs.com/package/iobroker.mapwidgets)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.mapwidgets.svg)](https://www.npmjs.com/package/iobroker.mapwidgets)
+[![NPM version](https://img.shields.io/npm/v/ioBroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/ioBroker.vis-mapwidgets)
+[![Downloads](https://img.shields.io/npm/dm/ioBroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/ioBroker.vis-mapwidgets)
 ![Number of Installations](https://iobroker.live/badges/mapwidgets-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/mapwidgets-stable.svg)
-[![nycrc config on GitHub](https://img.shields.io/nycrc/oweitman/iobroker.mapwidgets?preferredThreshold=functions)](https://html-preview.github.io/?url=https://github.com/oweitman/ioBroker.mapwidgets/blob/main/coverage/index.html)
+[![nycrc config on GitHub](https://img.shields.io/nycrc/oweitman/ioBroker.vis-mapwidgets?preferredThreshold=functions)](https://html-preview.github.io/?url=https://github.com/oweitman/ioBroker.vis-mapwidgets/blob/main/coverage/index.html)
 
-[![NPM](https://nodei.co/npm/iobroker.mapwidgets.png?downloads=true)](https://nodei.co/npm/iobroker.mapwidgets/)
+[![NPM](https://nodei.co/npm/ioBroker.vis-mapwidgets.png?downloads=true)](https://nodei.co/npm/ioBroker.vis-mapwidgets/)
 
-**Tests:** ![Test and Release](https://github.com/oweitman/ioBroker.mapwidgets/workflows/Test%20and%20Release/badge.svg)
+**Tests:** ![Test and Release](https://github.com/oweitman/ioBroker.vis-mapwidgets/workflows/Test%20and%20Release/badge.svg)
 
 ## mapwidgets adapter for ioBroker
 

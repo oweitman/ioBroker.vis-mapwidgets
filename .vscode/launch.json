@@ -27,4 +27,4 @@
         }
     ]
 }
-//node --inspect-brk=localhost:9229 .\node_modules\iobroker.mapwidgets\main.js
+//node --inspect-brk=localhost:9229 .\node_modules\ioBroker.vis-mapwidgets\main.js
