@@ -30,12 +30,14 @@ Currently, the following elements are supported:
 For advanced use cases, the map object can be accessed via a dedicated
 variable and manipulated using JavaScript.
 
-This initial version is a minimal implementation. Additional features
-can be added upon request, depending on their relevance and feasibility.
+This initial version is a minimal implementation.
+
+Additional features can be added upon request, depending on their relevance and feasibility.
 
 ## Configuration
 
 The adapter itself does not have any configuration options.
+
 The configuration of the widget is described below.
 
 ## vis and widgets
@@ -79,7 +81,7 @@ in the file examples/testdata.json, which can be directly saved to a data point.
 This data contains sample configurations for all elements, which are
 displayed on a map in the Frankfurt area.
 
-For all configurations, the principle is that only the minimum amount
+For all configurations, the principle is that only the mandatory amount
 of information is required to display an element.
 
 The assignment of the individual attributes is described below:
@@ -116,6 +118,8 @@ Latitude and longitude are mandatory; all other parameters are optional.
 For a custom icon, the unique ID of the icon is specified as a string
 (see the `icons` configuration).
 
+For Tooltip and Popup see [Tooltip](#tooltip) and [Popup](#popup).
+
 Detailed descriptions of the parameters can be found here:
 
 <https://leafletjs.com/reference.html#marker>
@@ -147,11 +151,13 @@ This contains an array of object of individual icon informations.
 }
 ```
 
-`iconURL` are mandatory; all other parameters are optional.
+`iconURL` is mandatory; all other parameters are optional.
 
 The icon's key name (in the example, `greenleaf`) is case-sensitive,
 and must be unique within the set of icons, and is used as a
-reference in markers. Allowed characters: `a–z, 0–9, _, -.`
+reference in markers.
+
+Allowed characters: `a–z, 0–9, _, -.`
 
 Detailed descriptions of the parameters can be found here:
 
@@ -160,8 +166,7 @@ Detailed descriptions of the parameters can be found here:
 ##### Polyline / Polygon / Rectangle / Circle
 
 This contains an array of individual Polyline / Polygon / Rectangle / Circle informations.
-The system is identical for all types.
-Therefore, it will be explained using only one example.
+The schema is identical for all types. Differences are noted below.
 
 **Polyline:**
 
@@ -245,8 +250,10 @@ Therefore, it will be explained using only one example.
 ###### `latlng`
 
 The existence of this parameter is mandatory for all types.
+
 Latitude and longitude are always an array with
-2 elements [latitude, longitude], referred to as coordinates below.
+2 elements [latitude, longitude],
+referred to as coordinates below (top-left coord and bottom-right coord).
 
 Polyline, Polygon, Rectangle is an Array of coordinates.
 Circle is only a single coordinate.
@@ -262,12 +269,97 @@ For the Circle object, the "radius" parameter is mandatory.
 The option of having a separate "radius" parameter at the latlng and
 options levels, as described in the Leaflet documentation, is not available here.
 
+For Tooltip and Popup see [Tooltip](#tooltip) and [Popup](#popup).
+
 Detailed descriptions of the parameters can be found here:
 
 <https://leafletjs.com/reference.html#polyline>
+
 <https://leafletjs.com/reference.html#polygon>
+
 <https://leafletjs.com/reference.html#polygon>
+
 <https://leafletjs.com/reference.html#circle>
+
+##### Tooltip
+
+Tooltip for Marker, Polygon, Rectangle, Circle.
+
+```json
+[
+    {
+        "lat": 50.182,
+        "lng": 8.682,
+        "options": {
+            "title": "Default"
+        },
+        "popup": "<b>Default Marker</b>",
+        "tooltip": "Hover me"
+    },
+    {
+        "lat": 50.171,
+        "lng": 8.695,
+        "options": {
+            "icon": "orangeleaf",
+            "draggable": true,
+            "title": "Orange Punkt (draggable)"
+        },
+        "tooltip": {
+            "text": "Permanenter Tooltip",
+            "options": {
+                "permanent": true,
+                "offset": [0, -12]
+            }
+        }
+    }
+]
+```
+
+A tooltip can be defined either as a simple string or
+as an object with the attributes "text" and "options".
+
+Detailed descriptions of the parameters can be found here:
+
+<https://leafletjs.com/reference.html#tooltip>
+
+##### Popup
+
+Popup for Marker, Polygon, Rectangle, Circle.
+
+```json
+[
+    {
+        "lat": 50.182,
+        "lng": 8.682,
+        "options": {
+            "title": "Default"
+        },
+        "popup": "<b>Default Marker</b>"
+    },
+    {
+        "lat": 50.171,
+        "lng": 8.695,
+        "options": {
+            "icon": "orangeleaf",
+            "draggable": true,
+            "title": "Orange Punkt (draggable)"
+        },
+        "popup": {
+            "text": "Popup mit Offset",
+            "options": {
+                "offset": [0, -12]
+            }
+        }
+    }
+]
+```
+
+A Popup can be defined either as a simple string or
+as an object with the attributes "text" and "options".
+
+Detailed descriptions of the parameters can be found here:
+
+<https://leafletjs.com/reference.html#popup>
 
 ## Todo
 

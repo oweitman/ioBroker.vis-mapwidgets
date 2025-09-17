@@ -72,7 +72,7 @@
             "lng": 8.675,
             "options": {
                 "icon": "greenleaf",
-                "title": "DivIcon rot"
+                "title": "green"
             },
             "popup": "Roter Punkt"
         },
@@ -174,7 +174,7 @@
             "options": {
                 "icon": "orangeleaf",
                 "draggable": true,
-                "title": "Roter Punkt (draggable)"
+                "title": "orange Punkt (draggable)"
             }
         },
         {
@@ -264,7 +264,8 @@
             "options": {
                 "color": "green",
                 "weight": 10
-            }
+            },
+            "tooltip": "Ich bin ein Polygon"
         },
         {
             "latlng": [
@@ -275,6 +276,13 @@
             "options": {
                 "color": "blue",
                 "weight": 5
+            },
+            "tooltip": {
+                "text": "Permanenter Polygon Tooltip",
+                "options": {
+                    "permanent": true,
+                    "offset": [0, -12]
+                }
             }
         }
     ],
@@ -287,6 +295,13 @@
             "options": {
                 "color": "yellow",
                 "weight": 10
+            },
+            "tooltip": {
+                "text": "Permanenter Rectangle Tooltip",
+                "options": {
+                    "permanent": true,
+                    "offset": [0, -12]
+                }
             }
         }
     ],
@@ -297,6 +312,13 @@
                 "radius": 10000,
                 "weight": 10,
                 "color": "black"
+            },
+            "tooltip": {
+                "text": "Permanenter Circle Tooltip",
+                "options": {
+                    "permanent": true,
+                    "offset": [0, -12]
+                }
             }
         }
     ]

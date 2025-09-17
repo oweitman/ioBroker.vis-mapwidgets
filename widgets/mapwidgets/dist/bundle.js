@@ -2820,7 +2820,7 @@
   var import_leaflet2 = __toESM(require_leaflet());
 
   // ../package.json
-  var version = "0.0.2";
+  var version = "0.0.3";
 
   // mapwidgets/js/mapwidgets.js
   var translations = require_translations();
@@ -2882,15 +2882,29 @@
         if (config.icons) {
           let iconRegistry = this.visMapwidgets.data[widgetID].iconRegistry || {};
           for (const [name, cfg] of Object.entries(config.icons)) {
-            iconRegistry[name] = L.icon({
-              iconUrl: cfg.iconUrl,
-              shadowUrl: cfg.shadowUrl ? cfg.shadowUrl : void 0,
-              iconSize: cfg.iconSize,
-              iconAnchor: cfg.iconAnchor,
-              popupAnchor: cfg.popupAnchor,
-              shadowSize: cfg.shadowSize,
-              shadowAnchor: cfg.shadowAnchor
-            });
+            if (cfg.html) {
+              iconRegistry[name] = L.divIcon({
+                iconUrl: cfg.iconUrl,
+                shadowUrl: cfg.shadowUrl ? cfg.shadowUrl : void 0,
+                iconSize: cfg.iconSize,
+                iconAnchor: cfg.iconAnchor,
+                popupAnchor: cfg.popupAnchor,
+                shadowSize: cfg.shadowSize,
+                shadowAnchor: cfg.shadowAnchor,
+                html: cfg.html,
+                bgPos: cfg.bgPos
+              });
+            } else {
+              iconRegistry[name] = L.icon({
+                iconUrl: cfg.iconUrl,
+                shadowUrl: cfg.shadowUrl ? cfg.shadowUrl : void 0,
+                iconSize: cfg.iconSize,
+                iconAnchor: cfg.iconAnchor,
+                popupAnchor: cfg.popupAnchor,
+                shadowSize: cfg.shadowSize,
+                shadowAnchor: cfg.shadowAnchor
+              });
+            }
           }
           this.visMapwidgets.data[widgetID].iconRegistry = iconRegistry;
         }
@@ -2907,7 +2921,11 @@
             }
             const m = L.marker([lat, lng], options).addTo(map);
             if (popup) {
-              m.bindPopup(popup);
+              if (typeof popup === "string") {
+                m.bindPopup(popup);
+              } else if (popup.text) {
+                m.bindPopup(popup.text, popup.options || {});
+              }
             }
             if (tooltip) {
               if (typeof tooltip === "string") {
@@ -2937,12 +2955,26 @@
         if (!config || !Array.isArray(config.polygon)) {
           return;
         }
-        config.polygon.forEach(({ latlng, options = {} }, index) => {
+        config.polygon.forEach(({ latlng, options = {}, popup, tooltip }, index) => {
           if (!Array.isArray(latlng) || !latlng.length) {
             console.warn(`polygon ${index + 1}: latlng expected`);
             return;
           }
-          L.polygon(latlng, options).addTo(map);
+          const p = L.polygon(latlng, options).addTo(map);
+          if (popup) {
+            if (typeof popup === "string") {
+              p.bindPopup(popup);
+            } else if (popup.text) {
+              p.bindPopup(popup.text, popup.options || {});
+            }
+          }
+          if (tooltip) {
+            if (typeof tooltip === "string") {
+              p.bindTooltip(tooltip);
+            } else if (tooltip.text) {
+              p.bindTooltip(tooltip.text, tooltip.options || {});
+            }
+          }
         });
       },
       rectangle(widgetID, config, map) {
@@ -2950,12 +2982,26 @@
         if (!config || !Array.isArray(config.rectangle)) {
           return;
         }
-        config.rectangle.forEach(({ latlng, options = {} }, index) => {
+        config.rectangle.forEach(({ latlng, options = {}, popup, tooltip }, index) => {
           if (!Array.isArray(latlng) || !latlng.length) {
             console.warn(`rectangle ${index + 1}: latlng expected`);
             return;
           }
-          L.rectangle(latlng, options).addTo(map);
+          const r = L.rectangle(latlng, options).addTo(map);
+          if (popup) {
+            if (typeof popup === "string") {
+              r.bindPopup(popup);
+            } else if (popup.text) {
+              r.bindPopup(popup.text, popup.options || {});
+            }
+          }
+          if (tooltip) {
+            if (typeof tooltip === "string") {
+              r.bindTooltip(tooltip);
+            } else if (tooltip.text) {
+              r.bindTooltip(tooltip.text, tooltip.options || {});
+            }
+          }
         });
       },
       circle(widgetID, config, map) {
@@ -2963,12 +3009,26 @@
         if (!config || !Array.isArray(config.rectangle)) {
           return;
         }
-        config.circle.forEach(({ latlng, options = {} }, index) => {
+        config.circle.forEach(({ latlng, options = {}, popup, tooltip }, index) => {
           if (!Array.isArray(latlng) || !latlng.length) {
             console.warn(`circle ${index + 1}: latlng expected`);
             return;
           }
-          L.circle(latlng, options).addTo(map);
+          const c = L.circle(latlng, options).addTo(map);
+          if (popup) {
+            if (typeof popup === "string") {
+              c.bindPopup(popup);
+            } else if (popup.text) {
+              c.bindPopup(popup.text, popup.options || {});
+            }
+          }
+          if (tooltip) {
+            if (typeof tooltip === "string") {
+              c.bindTooltip(tooltip);
+            } else if (tooltip.text) {
+              c.bindTooltip(tooltip.text, tooltip.options || {});
+            }
+          }
         });
       }
     }
