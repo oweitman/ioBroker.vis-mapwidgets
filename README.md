@@ -279,6 +279,10 @@ Detailed descriptions of the parameters can be found here:
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.0.3 (2025-09-17)
+
+- release ?
+
 ### 0.0.2 (2025-09-16)
 
 - first release
