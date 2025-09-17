@@ -50,6 +50,8 @@
     ],
     "scripts": {
         "test": "node node_modules/mocha/bin/mocha --exit",
+        "test:package": "node node_modules/mocha/bin/mocha --exit",
+        "test:integration": "node node_modules/mocha/bin/mocha --exit",
         "check": "tsc --noEmit -p tsconfig.check.json",
         "lint": "eslint .",
         "repochecker": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.mapwidgets --local --noinfo",
