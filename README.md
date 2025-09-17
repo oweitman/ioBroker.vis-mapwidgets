@@ -1,6 +1,6 @@
 # ioBroker.mapwidgets
 
-![Logo](admin/mapwidgets.png)
+![Logo](admin/mapwidgets-small.svg)
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.mapwidgets.svg)](https://www.npmjs.com/package/iobroker.mapwidgets)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.mapwidgets.svg)](https://www.npmjs.com/package/iobroker.mapwidgets)
@@ -279,6 +279,7 @@ Detailed descriptions of the parameters can be found here:
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.0.3 (2025-09-17)
 
 - release ?
