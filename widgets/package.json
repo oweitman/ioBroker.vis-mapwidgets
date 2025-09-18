@@ -18,6 +18,8 @@
         "npm-watch": "^0.13.0"
     },
     "dependencies": {
-        "leaflet": "^1.9.4"
+        "deep-object-diff": "^1.1.9",
+        "leaflet": "^1.9.4",
+        "object-hash": "^3.0.0"
     }
 }

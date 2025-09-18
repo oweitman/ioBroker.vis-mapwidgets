@@ -13,6 +13,9 @@ import '../../node_modules/leaflet/dist/leaflet.css';
 import '../../node_modules/leaflet/dist/leaflet.js';
 import '../css/style.css';
 import { version as pkgVersion } from '../../../package.json';
+import { diff } from 'deep-object-diff';
+var hash = require('object-hash');
+
 var translations = require('../i18n/translations.json');
 $.extend(true, systemDictionary, translations);
 
@@ -47,38 +50,72 @@ vis.binds['mapwidgets'] = {
             let expose = data['mapwidgets_expose'] ? Boolean(data['mapwidgets_expose']) : false;
 
             if (!vis.binds['mapwidgets'].data[widgetID]) {
-                vis.binds['mapwidgets'].data[widgetID] = {};
+                vis.binds['mapwidgets'].data[widgetID] = {
+                    marker: {},
+                    polyline: {},
+                    polygon: {},
+                    rectangle: {},
+                    circle: {},
+                };
             }
-            vis.binds['mapwidgets'].data[widgetID].config = config;
+            let visdata = vis.binds['mapwidgets'].data[widgetID];
+            visdata.config = config;
 
-            let text = '';
-            text += `<div class="mapwidgetsLeaflet"></div>`;
+            function onChange(e, newValue) {
+                console.log('onChange');
+                let visdata = vis.binds['mapwidgets'].data[widgetID];
+                visdata.oldConfig = visdata.config;
+                visdata.config = JSON.parse(newValue);
+                vis.binds['mapwidgets'].leaflet.render(widgetID, view, data, style);
+            }
 
-            $(`#${widgetID}`).html(text);
+            if (data['mapwidgets_oid']) {
+                if (!vis.editMode) {
+                    vis.binds['mapwidgets'].bindStates($div, [data['mapwidgets_oid']], onChange);
+                }
+            }
+
             L.Icon.Default.imagePath = 'widgets/mapwidgets/dist/images/';
-            var map = L.map($(`#${widgetID} .mapwidgetsLeaflet`).get(0)).setView([lat, lon], zoom);
-            if (expose) {
-                window.iobroker = window.iobroker || {};
-                window.iobroker.mapwidgets = window.iobroker.mapwidgets || {};
-                window.iobroker.mapwidgets[widgetID] = window.iobroker.mapwidgets[widgetID] || {};
-                window.iobroker.mapwidgets[widgetID].map = map;
+            if (!visdata.map) {
+                let text = '';
+                text += `<div class="mapwidgetsLeaflet"></div>`;
+                $(`#${widgetID}`).html(text);
+                visdata.map = L.map($(`#${widgetID} .mapwidgetsLeaflet`).get(0)).setView([lat, lon], zoom);
+                if (expose) {
+                    window.iobroker = window.iobroker || {};
+                    window.iobroker.mapwidgets = window.iobroker.mapwidgets || {};
+                    window.iobroker.mapwidgets[widgetID] = window.iobroker.mapwidgets[widgetID] || {};
+                    window.iobroker.mapwidgets[widgetID].map = visdata.map;
+                }
             }
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            }).addTo(map);
-            this.icons(widgetID, config);
-            this.marker(widgetID, config, map);
-            this.polyline(widgetID, config, map);
-            this.polygon(widgetID, config, map);
-            this.rectangle(widgetID, config, map);
-            this.circle(widgetID, config, map);
+            }).addTo(visdata.map);
 
-            //this.render(widgetID);
+            this.render(widgetID, view, data, style);
         },
-        icons(widgetID, config) {
+        render(widgetID /* , view, data, style */) {
+            let visdata = vis.binds['mapwidgets'].data[widgetID];
+            let config = visdata.config;
+            let oldConfig = visdata.oldConfig;
+            let diffConfig = diff(oldConfig, config);
+            let configSet = {
+                config,
+                oldConfig,
+                diffConfig,
+            };
+            this.icons(visdata, widgetID, configSet);
+            this.marker(visdata, widgetID, configSet, visdata.map);
+            this.polyline(visdata, widgetID, configSet, visdata.map);
+            this.polygon(visdata, widgetID, configSet, visdata.map);
+            this.rectangle(visdata, widgetID, configSet, visdata.map);
+            this.circle(visdata, widgetID, configSet, visdata.map);
+        },
+        icons(visdata, widgetID, configSet) {
             this.visMapwidgets.debug && console.log(`do icons`);
+            let config = configSet.config;
             if (config.icons) {
                 let iconRegistry = this.visMapwidgets.data[widgetID].iconRegistry || {};
                 for (const [name, cfg] of Object.entries(config.icons)) {
@@ -109,141 +146,248 @@ vis.binds['mapwidgets'] = {
                 this.visMapwidgets.data[widgetID].iconRegistry = iconRegistry;
             }
         },
-        marker(widgetID, config, map) {
+        marker(visdata, widgetID, configSet, map) {
             this.visMapwidgets.debug && console.log(`do marker`);
-            if (config.marker) {
-                config.marker.forEach(({ latlng, lat, lng, options = {}, popup, tooltip }, index) => {
+            let config = configSet.config;
+            if (!config || !Array.isArray(config.marker)) {
+                return;
+            }
+            const markerKeys = Object.keys(configSet.diffConfig.marker || {});
+            markerKeys.forEach(index => {
+                if (!configSet.config?.marker?.[index]) {
+                    if (configSet.oldConfig?.marker?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.marker[index]);
+                        visdata.marker[hashValue].marker.remove();
+                        delete visdata.marker[hashValue];
+                    }
+                }
+            });
+            config.marker.forEach((item, index) => {
+                let { latlng, lat, lng, options = {}, popup, tooltip } = item;
+                if (configSet.diffConfig.marker?.[index]) {
+                    if (configSet.oldConfig?.marker?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.marker[index]);
+                        visdata.marker[hashValue].marker.remove();
+                        delete visdata.marker[hashValue];
+                    }
                     if (Array.isArray(latlng) && latlng.length == 2) {
                         [lat, lng] = latlng;
                     }
-                    const markerNumber = index + 1;
-                    const title = options.title ? `${markerNumber} ${options.title}` : `Marker ${markerNumber}`;
-                    options.title = title;
-                    if (options.icon) {
-                        options.icon = this.visMapwidgets.data[widgetID].iconRegistry[options.icon] || undefined;
+                    let newOptions = { ...options };
+                    if (newOptions.icon) {
+                        newOptions.icon = this.visMapwidgets.data[widgetID].iconRegistry[newOptions.icon] || undefined;
                     }
-                    const m = L.marker([lat, lng], options).addTo(map);
+                    const marker = L.marker([lat, lng], newOptions).addTo(map);
                     if (popup) {
                         if (typeof popup === 'string') {
-                            m.bindPopup(popup);
+                            marker.bindPopup(popup);
                         } else if (popup.text) {
-                            m.bindPopup(popup.text, popup.options || {});
+                            marker.bindPopup(popup.text, popup.options || {});
                         }
                     }
                     if (tooltip) {
                         if (typeof tooltip === 'string') {
-                            m.bindTooltip(tooltip);
+                            marker.bindTooltip(tooltip);
                         } else if (tooltip.text) {
-                            m.bindTooltip(tooltip.text, tooltip.options || {});
+                            marker.bindTooltip(tooltip.text, tooltip.options || {});
                         }
                     }
-                });
-            }
+                    visdata.marker[hash(item)] = { index, marker };
+                }
+            });
         },
-        polyline(widgetID, config, map) {
+        polyline(visdata, widgetID, configSet, map) {
             this.visMapwidgets.debug && console.log(`do polyline`);
-
+            let config = configSet.config;
             if (!config || !Array.isArray(config.polyline)) {
                 return;
             }
-
-            config.polyline.forEach(({ latlng, options = {} }, index) => {
-                if (!Array.isArray(latlng) || !latlng.length) {
-                    console.warn(`polyline ${index + 1}: latlng expected`);
-                    return;
+            config.polyline.forEach((item, index) => {
+                let { latlng, options = {} } = item;
+                if (configSet.diffConfig.polyline?.[index]) {
+                    if (configSet.oldConfig?.polyline?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.polyline[index]);
+                        visdata.polyline[hashValue].polyline.remove();
+                        delete visdata.polyline[hashValue];
+                    }
+                    if (!Array.isArray(latlng) || !latlng.length) {
+                        console.warn(`polyline ${index + 1}: latlng expected`);
+                        return;
+                    }
+                    const polyline = L.polyline(latlng, options).addTo(map);
+                    visdata.polyline[hash(item)] = { index, polyline };
                 }
-                L.polyline(latlng, options).addTo(map);
+            });
+            const polylineKeys = Object.keys(configSet.diffConfig.polyline || {});
+            polylineKeys.forEach(index => {
+                if (!configSet.config?.polyline?.[index]) {
+                    if (configSet.oldConfig?.polyline?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.polyline[index]);
+                        visdata.polyline[hashValue].polyline.remove();
+                        delete visdata.polyline[hashValue];
+                    }
+                }
             });
         },
-        polygon(widgetID, config, map) {
+        polygon(visdata, widgetID, configSet, map) {
             this.visMapwidgets.debug && console.log(`do polygon`);
-
+            let config = configSet.config;
             if (!config || !Array.isArray(config.polygon)) {
                 return;
             }
-
-            config.polygon.forEach(({ latlng, options = {}, popup, tooltip }, index) => {
-                if (!Array.isArray(latlng) || !latlng.length) {
-                    console.warn(`polygon ${index + 1}: latlng expected`);
-                    return;
-                }
-                const p = L.polygon(latlng, options).addTo(map);
-
-                if (popup) {
-                    if (typeof popup === 'string') {
-                        p.bindPopup(popup);
-                    } else if (popup.text) {
-                        p.bindPopup(popup.text, popup.options || {});
+            config.polygon.forEach((item, index) => {
+                let { latlng, options = {}, popup, tooltip } = item;
+                if (configSet.diffConfig.polygon?.[index]) {
+                    if (configSet.oldConfig?.polygon?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.polygon[index]);
+                        visdata.polygon[hashValue].polygon.remove();
+                        delete visdata.polygon[hashValue];
                     }
+                    if (!Array.isArray(latlng) || !latlng.length) {
+                        console.warn(`polygon ${index + 1}: latlng expected`);
+                        return;
+                    }
+                    const polygon = L.polygon(latlng, options).addTo(map);
+
+                    if (popup) {
+                        if (typeof popup === 'string') {
+                            polygon.bindPopup(popup);
+                        } else if (popup.text) {
+                            polygon.bindPopup(popup.text, popup.options || {});
+                        }
+                    }
+                    if (tooltip) {
+                        if (typeof tooltip === 'string') {
+                            polygon.bindTooltip(tooltip);
+                        } else if (tooltip.text) {
+                            polygon.bindTooltip(tooltip.text, tooltip.options || {});
+                        }
+                    }
+                    visdata.polygon[hash(item)] = { index, polygon };
                 }
-                if (tooltip) {
-                    if (typeof tooltip === 'string') {
-                        p.bindTooltip(tooltip);
-                    } else if (tooltip.text) {
-                        p.bindTooltip(tooltip.text, tooltip.options || {});
+            });
+            const polygonKeys = Object.keys(configSet.diffConfig.polygon || {});
+            polygonKeys.forEach(index => {
+                if (!configSet.config?.polygon?.[index]) {
+                    if (configSet.oldConfig?.polygon?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.polygon[index]);
+                        visdata.polygon[hashValue].polygon.remove();
+                        delete visdata.polygon[hashValue];
                     }
                 }
             });
         },
-        rectangle(widgetID, config, map) {
+        rectangle(visdata, widgetID, configSet, map) {
             this.visMapwidgets.debug && console.log(`do rectangle`);
-
+            let config = configSet.config;
             if (!config || !Array.isArray(config.rectangle)) {
                 return;
             }
-
-            config.rectangle.forEach(({ latlng, options = {}, popup, tooltip }, index) => {
-                if (!Array.isArray(latlng) || !latlng.length) {
-                    console.warn(`rectangle ${index + 1}: latlng expected`);
-                    return;
-                }
-                const r = L.rectangle(latlng, options).addTo(map);
-
-                if (popup) {
-                    if (typeof popup === 'string') {
-                        r.bindPopup(popup);
-                    } else if (popup.text) {
-                        r.bindPopup(popup.text, popup.options || {});
+            config.rectangle.forEach((item, index) => {
+                let { latlng, options = {}, popup, tooltip } = item;
+                if (configSet.diffConfig.rectangle?.[index]) {
+                    if (configSet.oldConfig?.rectangle?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.rectangle[index]);
+                        visdata.rectangle[hashValue].rectangle.remove();
+                        delete visdata.rectangle[hashValue];
                     }
+                    if (!Array.isArray(latlng) || !latlng.length) {
+                        console.warn(`rectangle ${index + 1}: latlng expected`);
+                        return;
+                    }
+                    const rectangle = L.rectangle(latlng, options).addTo(map);
+
+                    if (popup) {
+                        if (typeof popup === 'string') {
+                            rectangle.bindPopup(popup);
+                        } else if (popup.text) {
+                            rectangle.bindPopup(popup.text, popup.options || {});
+                        }
+                    }
+                    if (tooltip) {
+                        if (typeof tooltip === 'string') {
+                            rectangle.bindTooltip(tooltip);
+                        } else if (tooltip.text) {
+                            rectangle.bindTooltip(tooltip.text, tooltip.options || {});
+                        }
+                    }
+                    visdata.rectangle[hash(item)] = { index, rectangle };
                 }
-                if (tooltip) {
-                    if (typeof tooltip === 'string') {
-                        r.bindTooltip(tooltip);
-                    } else if (tooltip.text) {
-                        r.bindTooltip(tooltip.text, tooltip.options || {});
+            });
+            const rectangleKeys = Object.keys(configSet.diffConfig.rectangle || {});
+            rectangleKeys.forEach(index => {
+                if (!configSet.config?.rectangle?.[index]) {
+                    if (configSet.oldConfig?.rectangle?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.rectangle[index]);
+                        visdata.rectangle[hashValue].rectangle.remove();
+                        delete visdata.rectangle[hashValue];
                     }
                 }
             });
         },
-        circle(widgetID, config, map) {
+        circle(visdata, widgetID, configSet, map) {
             this.visMapwidgets.debug && console.log(`do circle`);
-
+            let config = configSet.config;
             if (!config || !Array.isArray(config.rectangle)) {
                 return;
             }
-
-            config.circle.forEach(({ latlng, options = {}, popup, tooltip }, index) => {
-                if (!Array.isArray(latlng) || !latlng.length) {
-                    console.warn(`circle ${index + 1}: latlng expected`);
-                    return;
-                }
-                const c = L.circle(latlng, options).addTo(map);
-                if (popup) {
-                    if (typeof popup === 'string') {
-                        c.bindPopup(popup);
-                    } else if (popup.text) {
-                        c.bindPopup(popup.text, popup.options || {});
+            config.circle.forEach((item, index) => {
+                let { latlng, options = {}, popup, tooltip } = item;
+                if (configSet.diffConfig.circle?.[index]) {
+                    if (configSet.oldConfig?.circle?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.circle[index]);
+                        visdata.circle[hashValue].circle.remove();
+                        delete visdata.circle[hashValue];
                     }
+                    if (!Array.isArray(latlng) || !latlng.length) {
+                        console.warn(`circle ${index + 1}: latlng expected`);
+                        return;
+                    }
+                    const circle = L.circle(latlng, options).addTo(map);
+                    if (popup) {
+                        if (typeof popup === 'string') {
+                            circle.bindPopup(popup);
+                        } else if (popup.text) {
+                            circle.bindPopup(popup.text, popup.options || {});
+                        }
+                    }
+                    if (tooltip) {
+                        if (typeof tooltip === 'string') {
+                            circle.bindTooltip(tooltip);
+                        } else if (tooltip.text) {
+                            circle.bindTooltip(tooltip.text, tooltip.options || {});
+                        }
+                    }
+                    visdata.circle[hash(item)] = { index, circle };
                 }
-                if (tooltip) {
-                    if (typeof tooltip === 'string') {
-                        c.bindTooltip(tooltip);
-                    } else if (tooltip.text) {
-                        c.bindTooltip(tooltip.text, tooltip.options || {});
+            });
+            const circleKeys = Object.keys(configSet.diffConfig.circle || {});
+            circleKeys.forEach(index => {
+                if (!configSet.config?.circle?.[index]) {
+                    if (configSet.oldConfig?.circle?.[index]) {
+                        let hashValue = hash(configSet.oldConfig.circle[index]);
+                        visdata.circle[hashValue].circle.remove();
+                        delete visdata.circle[hashValue];
                     }
                 }
             });
         },
+    },
+    bindStates: function (elem, bound, change_callback) {
+        const $div = $(elem);
+        const boundstates = $div.data('bound');
+        if (boundstates) {
+            for (let i = 0; i < boundstates.bound.length; i++) {
+                vis.states.unbind(boundstates.bound[i], boundstates.bindHandler);
+            }
+        }
+        $div.data('bound', null);
+
+        for (let i = 0; i < bound.length; i++) {
+            bound[i] = `${bound[i]}.val`;
+            vis.states.bind(bound[i], change_callback);
+        }
+        $div.data('bound', { bound, bindHandler: change_callback });
     },
 };
 
