@@ -372,6 +372,10 @@ Detailed descriptions of the parameters can be found here:
     ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- Sync mode has been added. New items can now be added dynamically.
+
 ### 0.0.6 (2025-09-17)
 
 - fix more package urls
