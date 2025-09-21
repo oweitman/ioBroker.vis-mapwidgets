@@ -371,8 +371,7 @@ Detailed descriptions of the parameters can be found here:
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.7 (2025-09-21)
 
 - Sync mode has been added. New items can now be added dynamically.
 

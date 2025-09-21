@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "news": {
+      "0.0.7": {
+        "en": "Sync mode has been added. New items can now be added dynamically.",
+        "de": "Sync-Modus wurde hinzugefügt. Neue Artikel können nun dynamisch hinzugefügt werden.",
+        "ru": "Добавлен режим синхронизации. Теперь можно динамически добавлять новые элементы.",
+        "pt": "O modo de sincronização foi adicionado. Novos itens podem agora ser adicionados dinamicamente.",
+        "nl": "Synchronisatiemodus is toegevoegd. Nieuwe items kunnen nu dynamisch worden toegevoegd.",
+        "fr": "Le mode Sync a été ajouté. De nouveaux éléments peuvent maintenant être ajoutés dynamiquement.",
+        "it": "La modalità Sync è stata aggiunta. Nuovi elementi possono ora essere aggiunti dinamicamente.",
+        "es": "Se ha añadido el modo Sync. Ahora se pueden añadir nuevos elementos dinámicamente.",
+        "pl": "Dodano tryb synchronizacji. Nowe elementy mogą być teraz dodawane dynamicznie.",
+        "uk": "Додано режим синхронізації. Нові елементи можуть бути додані динамічно.",
+        "zh-cn": "已添加同步模式 。 现在可以动态添加新项目."
+      },
       "0.0.6": {
         "en": "fix more package urls",
         "de": "Behebe weitere Paket-URLs",

@@ -2,7 +2,9 @@
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
+  var __defProps = Object.defineProperties;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __getProtoOf = Object.getPrototypeOf;
@@ -20,6 +22,7 @@
       }
     return a;
   };
+  var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
   var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
     get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
   }) : x)(function(x) {
@@ -3676,6 +3679,90 @@
     version,
     data: {},
     debug: true,
+    validators: {
+      latLngPair: (p) => Array.isArray(p) && p.length === 2 && Number.isFinite(p[0]) && Number.isFinite(p[1]),
+      latLngAttributes: (lat, lng) => Number.isFinite(lat) && Number.isFinite(lng),
+      latLngArray: (arr) => Array.isArray(arr) && arr.length > 0 && arr.every((p) => Array.isArray(p) && p.length === 2 && Number.isFinite(p[0]) && Number.isFinite(p[1])),
+      bounds: (b) => Array.isArray(b) && b.length === 2 && b.every((p) => Array.isArray(p) && p.length === 2 && Number.isFinite(p[0]) && Number.isFinite(p[1]))
+    },
+    lHandlers: {
+      marker: {
+        validate: (item) => vis.binds["mapwidgets"].validators.latLngPair(item == null ? void 0 : item.latlng) || vis.binds["mapwidgets"].validators.latLngAttributes(item == null ? void 0 : item.lat, item == null ? void 0 : item.lng),
+        create: (map, item, widgetID) => {
+          let newoptions = __spreadValues({}, item.options);
+          if (newoptions.icon) {
+            vis.binds["mapwidgets"].setIcon(newoptions, widgetID);
+          }
+          let layer = item.lat && item.lng ? L.marker([item.lat, item.lng], newoptions != null ? newoptions : {}).addTo(map) : L.marker(item.latlng, newoptions != null ? newoptions : {}).addTo(map);
+          if (item.popup) {
+            vis.binds["mapwidgets"].setPopup(layer, item);
+          }
+          if (item.tooltip) {
+            vis.binds["mapwidgets"].setTooltip(layer, item);
+          }
+          return layer;
+        },
+        getKey: (item) => hash(item)
+      },
+      polyline: {
+        validate: (item) => vis.binds["mapwidgets"].validators.latLngArray(item == null ? void 0 : item.latlng),
+        create: (map, item) => {
+          var _a;
+          return L.polyline(item.latlng, (_a = item.options) != null ? _a : {}).addTo(map);
+        },
+        getKey: (item) => hash(item)
+      },
+      polygon: {
+        validate: (item) => vis.binds["mapwidgets"].validators.latLngArray(item == null ? void 0 : item.latlng),
+        create: (map, item) => {
+          var _a;
+          let layer = L.polygon(item.latlng, (_a = item.options) != null ? _a : {}).addTo(map);
+          if (item.popup) {
+            vis.binds["mapwidgets"].setPopup(layer, item);
+          }
+          if (item.tooltip) {
+            vis.binds["mapwidgets"].setTooltip(layer, item);
+          }
+          return layer;
+        },
+        getKey: (item) => hash(item)
+      },
+      rectangle: {
+        // rectangle arbeitet mit bounds: [[lat1,lng1],[lat2,lng2]]
+        validate: (item) => vis.binds["mapwidgets"].validators.bounds(item == null ? void 0 : item.latlng),
+        create: (map, item) => {
+          var _a;
+          let layer = L.rectangle(item.latlng, (_a = item.options) != null ? _a : {}).addTo(map);
+          if (item.popup) {
+            vis.binds["mapwidgets"].setPopup(layer, item);
+          }
+          if (item.tooltip) {
+            vis.binds["mapwidgets"].setTooltip(layer, item);
+          }
+          return layer;
+        },
+        getKey: (item) => hash(item)
+      },
+      circle: {
+        // circle benötigt latlng + radius
+        validate: (item) => {
+          var _a;
+          return vis.binds["mapwidgets"].validators.latLngPair(item == null ? void 0 : item.latlng) && Number.isFinite((_a = item == null ? void 0 : item.options) == null ? void 0 : _a.radius);
+        },
+        create: (map, item) => {
+          var _a;
+          let layer = L.circle(item.latlng, __spreadProps(__spreadValues({}, (_a = item.options) != null ? _a : {}), { radius: item.options.radius })).addTo(map);
+          if (item.popup) {
+            vis.binds["mapwidgets"].setPopup(layer, item);
+          }
+          if (item.tooltip) {
+            vis.binds["mapwidgets"].setTooltip(layer, item);
+          }
+          return layer;
+        },
+        getKey: (item) => hash(item)
+      }
+    },
     showVersion: function() {
       if (vis.binds["mapwidgets"].version) {
         console.log(`Version mapwidgets: ${vis.binds["mapwidgets"].version}`);
@@ -3741,6 +3828,7 @@
         });
       },
       render(widgetID) {
+        this.visMapwidgets.debug && console.log("render");
         let visdata = vis.binds["mapwidgets"].data[widgetID];
         let config = visdata.config;
         let oldConfig = visdata.oldConfig;
@@ -3750,12 +3838,83 @@
           oldConfig,
           diffConfig
         };
+        let map = visdata.map;
         this.icons(visdata, widgetID, configSet);
-        this.marker(visdata, widgetID, configSet, visdata.map);
-        this.polyline(visdata, widgetID, configSet, visdata.map);
-        this.polygon(visdata, widgetID, configSet, visdata.map);
-        this.rectangle(visdata, widgetID, configSet, visdata.map);
-        this.circle(visdata, widgetID, configSet, visdata.map);
+        this.applyAllGeometryDiffs.call(this, visdata, widgetID, configSet, map);
+      },
+      applyAllGeometryDiffs(visdata, widgetID, configSet, map) {
+        var _a;
+        const types = ["marker", "polyline", "polygon", "rectangle", "circle"];
+        for (const type of types) {
+          this.visMapwidgets.debug && console.log(`applyAllGeometryDiffs: ${type}`);
+          const diff2 = (_a = configSet == null ? void 0 : configSet.diffConfig) == null ? void 0 : _a[type];
+          if (!diff2) {
+            continue;
+          }
+          const h = this.visMapwidgets.lHandlers[type];
+          this.applyArrayDiff({
+            visdata,
+            type,
+            configSet,
+            widgetID,
+            map,
+            getKey: h.getKey,
+            validate: h.validate,
+            create: h.create,
+            // remove: (layer) => layer.remove(), // default
+            gc: true
+          });
+        }
+      },
+      applyArrayDiff({ visdata, type, configSet, widgetID, map, getKey, validate, create, remove, gc = true }) {
+        var _a, _b, _c, _d, _e;
+        const cfg = (_a = configSet == null ? void 0 : configSet.config) != null ? _a : {};
+        const old = (_b = configSet == null ? void 0 : configSet.oldConfig) != null ? _b : {};
+        const diff2 = (_d = (_c = configSet == null ? void 0 : configSet.diffConfig) == null ? void 0 : _c[type]) != null ? _d : null;
+        if (!diff2) {
+          return;
+        }
+        visdata[type] = visdata[type] || {};
+        const store = visdata[type];
+        const oldArr = Array.isArray(old[type]) ? old[type] : [];
+        const newArr = Array.isArray(cfg[type]) ? cfg[type] : [];
+        const indices = Object.keys(diff2).map((n) => parseInt(n, 10)).sort((a, b) => a - b);
+        const doRemove = (key, layer) => {
+          try {
+            remove ? remove(layer) : layer.remove();
+          } catch (e) {
+          }
+          delete store[key];
+        };
+        for (const i of indices) {
+          const change = diff2[i];
+          const oldItem = oldArr[i];
+          if (oldItem) {
+            const oldKey = getKey(oldItem);
+            const hit = store[oldKey];
+            if (hit == null ? void 0 : hit.layer) {
+              doRemove(oldKey, hit.layer);
+            }
+          }
+          if (change === void 0) {
+            continue;
+          }
+          const item = (_e = newArr[i]) != null ? _e : change;
+          if (validate && !validate(item)) {
+            console.warn(`${type} ${i + 1}: validation failed`);
+            continue;
+          }
+          const layer = create(map, item, widgetID);
+          const key = getKey(item);
+          store[key] = { index: i, layer };
+        }
+        if (gc && Array.isArray(newArr)) {
+          for (const [k, v] of Object.entries(store)) {
+            if (typeof (v == null ? void 0 : v.index) === "number" && v.index >= newArr.length) {
+              doRemove(k, v.layer);
+            }
+          }
+        }
       },
       icons(visdata, widgetID, configSet) {
         this.visMapwidgets.debug && console.log(`do icons`);
@@ -3789,240 +3948,28 @@
           }
           this.visMapwidgets.data[widgetID].iconRegistry = iconRegistry;
         }
-      },
-      marker(visdata, widgetID, configSet, map) {
-        this.visMapwidgets.debug && console.log(`do marker`);
-        let config = configSet.config;
-        if (!config || !Array.isArray(config.marker)) {
-          return;
-        }
-        const markerKeys = Object.keys(configSet.diffConfig.marker || {});
-        markerKeys.forEach((index) => {
-          var _a, _b, _c, _d;
-          if (!((_b = (_a = configSet.config) == null ? void 0 : _a.marker) == null ? void 0 : _b[index])) {
-            if ((_d = (_c = configSet.oldConfig) == null ? void 0 : _c.marker) == null ? void 0 : _d[index]) {
-              let hashValue = hash(configSet.oldConfig.marker[index]);
-              visdata.marker[hashValue].marker.remove();
-              delete visdata.marker[hashValue];
-            }
-          }
-        });
-        config.marker.forEach((item, index) => {
-          var _a, _b, _c;
-          let { latlng, lat, lng, options = {}, popup, tooltip } = item;
-          if ((_a = configSet.diffConfig.marker) == null ? void 0 : _a[index]) {
-            if ((_c = (_b = configSet.oldConfig) == null ? void 0 : _b.marker) == null ? void 0 : _c[index]) {
-              let hashValue = hash(configSet.oldConfig.marker[index]);
-              visdata.marker[hashValue].marker.remove();
-              delete visdata.marker[hashValue];
-            }
-            if (Array.isArray(latlng) && latlng.length == 2) {
-              [lat, lng] = latlng;
-            }
-            let newOptions = __spreadValues({}, options);
-            if (newOptions.icon) {
-              newOptions.icon = this.visMapwidgets.data[widgetID].iconRegistry[newOptions.icon] || void 0;
-            }
-            const marker = L.marker([lat, lng], newOptions).addTo(map);
-            if (popup) {
-              if (typeof popup === "string") {
-                marker.bindPopup(popup);
-              } else if (popup.text) {
-                marker.bindPopup(popup.text, popup.options || {});
-              }
-            }
-            if (tooltip) {
-              if (typeof tooltip === "string") {
-                marker.bindTooltip(tooltip);
-              } else if (tooltip.text) {
-                marker.bindTooltip(tooltip.text, tooltip.options || {});
-              }
-            }
-            visdata.marker[hash(item)] = { index, marker };
-          }
-        });
-      },
-      polyline(visdata, widgetID, configSet, map) {
-        this.visMapwidgets.debug && console.log(`do polyline`);
-        let config = configSet.config;
-        if (!config || !Array.isArray(config.polyline)) {
-          return;
-        }
-        config.polyline.forEach((item, index) => {
-          var _a, _b, _c;
-          let { latlng, options = {} } = item;
-          if ((_a = configSet.diffConfig.polyline) == null ? void 0 : _a[index]) {
-            if ((_c = (_b = configSet.oldConfig) == null ? void 0 : _b.polyline) == null ? void 0 : _c[index]) {
-              let hashValue = hash(configSet.oldConfig.polyline[index]);
-              visdata.polyline[hashValue].polyline.remove();
-              delete visdata.polyline[hashValue];
-            }
-            if (!Array.isArray(latlng) || !latlng.length) {
-              console.warn(`polyline ${index + 1}: latlng expected`);
-              return;
-            }
-            const polyline = L.polyline(latlng, options).addTo(map);
-            visdata.polyline[hash(item)] = { index, polyline };
-          }
-        });
-        const polylineKeys = Object.keys(configSet.diffConfig.polyline || {});
-        polylineKeys.forEach((index) => {
-          var _a, _b, _c, _d;
-          if (!((_b = (_a = configSet.config) == null ? void 0 : _a.polyline) == null ? void 0 : _b[index])) {
-            if ((_d = (_c = configSet.oldConfig) == null ? void 0 : _c.polyline) == null ? void 0 : _d[index]) {
-              let hashValue = hash(configSet.oldConfig.polyline[index]);
-              visdata.polyline[hashValue].polyline.remove();
-              delete visdata.polyline[hashValue];
-            }
-          }
-        });
-      },
-      polygon(visdata, widgetID, configSet, map) {
-        this.visMapwidgets.debug && console.log(`do polygon`);
-        let config = configSet.config;
-        if (!config || !Array.isArray(config.polygon)) {
-          return;
-        }
-        config.polygon.forEach((item, index) => {
-          var _a, _b, _c;
-          let { latlng, options = {}, popup, tooltip } = item;
-          if ((_a = configSet.diffConfig.polygon) == null ? void 0 : _a[index]) {
-            if ((_c = (_b = configSet.oldConfig) == null ? void 0 : _b.polygon) == null ? void 0 : _c[index]) {
-              let hashValue = hash(configSet.oldConfig.polygon[index]);
-              visdata.polygon[hashValue].polygon.remove();
-              delete visdata.polygon[hashValue];
-            }
-            if (!Array.isArray(latlng) || !latlng.length) {
-              console.warn(`polygon ${index + 1}: latlng expected`);
-              return;
-            }
-            const polygon = L.polygon(latlng, options).addTo(map);
-            if (popup) {
-              if (typeof popup === "string") {
-                polygon.bindPopup(popup);
-              } else if (popup.text) {
-                polygon.bindPopup(popup.text, popup.options || {});
-              }
-            }
-            if (tooltip) {
-              if (typeof tooltip === "string") {
-                polygon.bindTooltip(tooltip);
-              } else if (tooltip.text) {
-                polygon.bindTooltip(tooltip.text, tooltip.options || {});
-              }
-            }
-            visdata.polygon[hash(item)] = { index, polygon };
-          }
-        });
-        const polygonKeys = Object.keys(configSet.diffConfig.polygon || {});
-        polygonKeys.forEach((index) => {
-          var _a, _b, _c, _d;
-          if (!((_b = (_a = configSet.config) == null ? void 0 : _a.polygon) == null ? void 0 : _b[index])) {
-            if ((_d = (_c = configSet.oldConfig) == null ? void 0 : _c.polygon) == null ? void 0 : _d[index]) {
-              let hashValue = hash(configSet.oldConfig.polygon[index]);
-              visdata.polygon[hashValue].polygon.remove();
-              delete visdata.polygon[hashValue];
-            }
-          }
-        });
-      },
-      rectangle(visdata, widgetID, configSet, map) {
-        this.visMapwidgets.debug && console.log(`do rectangle`);
-        let config = configSet.config;
-        if (!config || !Array.isArray(config.rectangle)) {
-          return;
-        }
-        config.rectangle.forEach((item, index) => {
-          var _a, _b, _c;
-          let { latlng, options = {}, popup, tooltip } = item;
-          if ((_a = configSet.diffConfig.rectangle) == null ? void 0 : _a[index]) {
-            if ((_c = (_b = configSet.oldConfig) == null ? void 0 : _b.rectangle) == null ? void 0 : _c[index]) {
-              let hashValue = hash(configSet.oldConfig.rectangle[index]);
-              visdata.rectangle[hashValue].rectangle.remove();
-              delete visdata.rectangle[hashValue];
-            }
-            if (!Array.isArray(latlng) || !latlng.length) {
-              console.warn(`rectangle ${index + 1}: latlng expected`);
-              return;
-            }
-            const rectangle = L.rectangle(latlng, options).addTo(map);
-            if (popup) {
-              if (typeof popup === "string") {
-                rectangle.bindPopup(popup);
-              } else if (popup.text) {
-                rectangle.bindPopup(popup.text, popup.options || {});
-              }
-            }
-            if (tooltip) {
-              if (typeof tooltip === "string") {
-                rectangle.bindTooltip(tooltip);
-              } else if (tooltip.text) {
-                rectangle.bindTooltip(tooltip.text, tooltip.options || {});
-              }
-            }
-            visdata.rectangle[hash(item)] = { index, rectangle };
-          }
-        });
-        const rectangleKeys = Object.keys(configSet.diffConfig.rectangle || {});
-        rectangleKeys.forEach((index) => {
-          var _a, _b, _c, _d;
-          if (!((_b = (_a = configSet.config) == null ? void 0 : _a.rectangle) == null ? void 0 : _b[index])) {
-            if ((_d = (_c = configSet.oldConfig) == null ? void 0 : _c.rectangle) == null ? void 0 : _d[index]) {
-              let hashValue = hash(configSet.oldConfig.rectangle[index]);
-              visdata.rectangle[hashValue].rectangle.remove();
-              delete visdata.rectangle[hashValue];
-            }
-          }
-        });
-      },
-      circle(visdata, widgetID, configSet, map) {
-        this.visMapwidgets.debug && console.log(`do circle`);
-        let config = configSet.config;
-        if (!config || !Array.isArray(config.rectangle)) {
-          return;
-        }
-        config.circle.forEach((item, index) => {
-          var _a, _b, _c;
-          let { latlng, options = {}, popup, tooltip } = item;
-          if ((_a = configSet.diffConfig.circle) == null ? void 0 : _a[index]) {
-            if ((_c = (_b = configSet.oldConfig) == null ? void 0 : _b.circle) == null ? void 0 : _c[index]) {
-              let hashValue = hash(configSet.oldConfig.circle[index]);
-              visdata.circle[hashValue].circle.remove();
-              delete visdata.circle[hashValue];
-            }
-            if (!Array.isArray(latlng) || !latlng.length) {
-              console.warn(`circle ${index + 1}: latlng expected`);
-              return;
-            }
-            const circle = L.circle(latlng, options).addTo(map);
-            if (popup) {
-              if (typeof popup === "string") {
-                circle.bindPopup(popup);
-              } else if (popup.text) {
-                circle.bindPopup(popup.text, popup.options || {});
-              }
-            }
-            if (tooltip) {
-              if (typeof tooltip === "string") {
-                circle.bindTooltip(tooltip);
-              } else if (tooltip.text) {
-                circle.bindTooltip(tooltip.text, tooltip.options || {});
-              }
-            }
-            visdata.circle[hash(item)] = { index, circle };
-          }
-        });
-        const circleKeys = Object.keys(configSet.diffConfig.circle || {});
-        circleKeys.forEach((index) => {
-          var _a, _b, _c, _d;
-          if (!((_b = (_a = configSet.config) == null ? void 0 : _a.circle) == null ? void 0 : _b[index])) {
-            if ((_d = (_c = configSet.oldConfig) == null ? void 0 : _c.circle) == null ? void 0 : _d[index]) {
-              let hashValue = hash(configSet.oldConfig.circle[index]);
-              visdata.circle[hashValue].circle.remove();
-              delete visdata.circle[hashValue];
-            }
-          }
-        });
+      }
+    },
+    setTooltip(layer, item) {
+      if (typeof item.tooltip === "string") {
+        layer.bindTooltip(item.tooltip);
+      } else if (item.tooltip.text) {
+        layer.bindTooltip(item.tooltip.text, item.tooltip.options || {});
+      }
+    },
+    setPopup(layer, item) {
+      if (typeof item.popup === "string") {
+        layer.bindPopup(item.popup);
+      } else if (item.popup.text) {
+        layer.bindPopup(item.popup.text, item.popup.options || {});
+      }
+    },
+    setIcon(options, widgetID) {
+      let iconRegistry = vis.binds["mapwidgets"].data[widgetID].iconRegistry || {};
+      if (iconRegistry[options.icon]) {
+        options.icon = iconRegistry[options.icon];
+      } else {
+        delete options.icon;
       }
     },
     bindStates: function(elem, bound, change_callback) {
