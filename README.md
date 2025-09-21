@@ -371,6 +371,15 @@ Detailed descriptions of the parameters can be found here:
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- add polyline/path example to testdata.json. the path is located in Bathey,
+  few kilometers south of Dortmund
+- add polyline/path example to testdata.json. the path is located in
+  Frankfurt/Main. The trail starts in the city center of Frankfurt,
+  heading towards the southeast.
+
 ### 0.0.7 (2025-09-21)
 
 - Sync mode has been added. New items can now be added dynamically.
