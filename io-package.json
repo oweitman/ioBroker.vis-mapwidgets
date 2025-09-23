@@ -1,110 +1,133 @@
 {
-    "common": {
-        "name": "vis-mapwidgets",
-        "version": "0.0.7",
-        "news": {
-            "0.0.7": {
-                "en": "Sync mode has been added. New items can now be added dynamically.",
-                "de": "Sync-Modus wurde hinzugefügt. Neue Artikel können nun dynamisch hinzugefügt werden.",
-                "ru": "Добавлен режим синхронизации. Теперь можно динамически добавлять новые элементы.",
-                "pt": "O modo de sincronização foi adicionado. Novos itens podem agora ser adicionados dinamicamente.",
-                "nl": "Synchronisatiemodus is toegevoegd. Nieuwe items kunnen nu dynamisch worden toegevoegd.",
-                "fr": "Le mode Sync a été ajouté. De nouveaux éléments peuvent maintenant être ajoutés dynamiquement.",
-                "it": "La modalità Sync è stata aggiunta. Nuovi elementi possono ora essere aggiunti dinamicamente.",
-                "es": "Se ha añadido el modo Sync. Ahora se pueden añadir nuevos elementos dinámicamente.",
-                "pl": "Dodano tryb synchronizacji. Nowe elementy mogą być teraz dodawane dynamicznie.",
-                "uk": "Додано режим синхронізації. Нові елементи можуть бути додані динамічно.",
-                "zh-cn": "已添加同步模式 。 现在可以动态添加新项目."
-            },
-            "0.0.6": {
-                "en": "fix more package urls",
-                "de": "Behebe weitere Paket-URLs",
-                "ru": "исправлено больше URL-адресов пакетов",
-                "pt": "corrigir mais URLs de pacotes",
-                "nl": "Meer pakket-URL's gerepareerd",
-                "fr": "correction de davantage d'URL de package",
-                "it": "Correzione di ulteriori URL dei pacchetti",
-                "es": "corregir más URLs de paquetes",
-                "pl": "napraw więcej adresów pakietów",
-                "uk": "виправлено більше посилань на пакети",
-                "zh-cn": "修复更多的套餐URL"
-            },
-            "0.0.5": {
-                "en": "release",
-                "de": "Veröffentlichung",
-                "ru": "релиз",
-                "pt": "lançamento",
-                "nl": "versie",
-                "fr": "version",
-                "it": "rilascio",
-                "es": "lanzamiento",
-                "pl": "wydanie",
-                "uk": "реліз",
-                "zh-cn": "发布"
-            },
-            "0.0.4": {
-                "en": "fix reponame",
-                "de": "Reponame reparieren",
-                "ru": "исправлена название репозитория",
-                "pt": "corrigir nome do repositório",
-                "nl": "reponaam repareren",
-                "fr": "corriger le nom du dépôt",
-                "it": "risolvere il nome del repository",
-                "es": "corregir el nombre del repositorio",
-                "pl": "Napraw nazwę repozytorium",
-                "uk": "виправлення назви репозиторію",
-                "zh-cn": "修复仓库名称"
-            }
-        },
-        "titleLang": {
-            "en": "Map Widgets",
-            "de": "Karten -Widgets",
-            "ru": "Карты виджетов",
-            "pt": "Widgets de mapa",
-            "nl": "Kaartwidgets",
-            "fr": "Widgets cartographiques",
-            "it": "Widget della mappa",
-            "es": "Widgets de mapa",
-            "pl": "Widżety map",
-            "uk": "Відродження карт",
-            "zh-cn": "地图小部件"
-        },
-        "desc": {
-            "en": "Map Widgets for ioBroker.vis",
-            "de": "Karten -Widgets für iobroker.vis",
-            "ru": "Карты виджетов для iobroker.vis",
-            "pt": "Widgets de mapa para iobroker.vis",
-            "nl": "Kaartwidgets voor IoBRoker.Vis",
-            "fr": "Widgets cartographiques pour iobroker.vis",
-            "it": "Widget mappa per iobroker.vis",
-            "es": "Widgets de mapa para iobroker.vis",
-            "pl": "Widget map dla iobrent.vis",
-            "uk": "Віджетів карт для iobroker.vis",
-            "zh-cn": "iobroker.vis的地图小部件"
-        },
-        "platform": "Javascript/Node.js",
-        "loglevel": "info",
-        "icon": "mapwidgets.svg",
-        "enabled": true,
-        "mode": "none",
-        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-mapwidgets/main/admin/mapwidgets.svg",
-        "keywords": ["map widgets", "vis"],
-        "readme": "https://github.com/oweitman/ioBroker.vis-mapwidgets/blob/main/README.md",
-        "authors": ["oweitman <oweitman@gmx.de>"],
-        "dependencies": ["vis"],
-        "onlyWWW": true,
-        "singleton": true,
-        "type": "visualization-widgets",
-        "tier": 3,
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "adminUI": {
-            "config": "none"
-        },
-        "restartAdapters": ["vis", "vis-2"]
+  "common": {
+    "name": "vis-mapwidgets",
+    "version": "0.0.8",
+    "news": {
+      "0.0.8": {
+        "en": "- add polyline/path example to testdata.json. the path is located in Bathey,\n  few kilometers south of Dortmund\n- add polyline/path example to testdata.json. the path is located in\n  Frankfurt/Main. The trail starts in the city center of Frankfurt,\n  heading towards the southeast.\n- add vis1 example to manipulate map from vis script with the expose option\n- fix map creation if parameter changes",
+        "de": "- polyline/path Beispiel zu testdata.json hinzufügen. der Pfad befindet sich in Bathey,\nwenige Kilometer südlich von Dortmund\n- polyline/pfad beispiel zu testdaten hinzufügen. json. der pfad befindet sich in\nFrankfurt am Main. Der Weg beginnt im Stadtzentrum von Frankfurt,\nrichtung südosten.\n- fügen sie vis1 beispiel hinzu, um die karte aus dem vis-skript zu manipulieren, mit der belichtungsoption\n- die kartenerstellung festlegen, wenn parameteränderungen",
+        "ru": "- добавить пример полилина/пути в testdata.json. Путь расположен в Батее,\nв нескольких километрах к югу от Дортмунда\n- добавить пример полилина/пути к тестируемым данным. джейсон. путь находится в\nФранкфурт/Главная. Тропа начинается в центре города Франкфурт,\nнаправляется на юго-восток.\n- добавьте пример vis1 для манипулирования картой из скрипта vis с возможностью разоблачения\n- фиксировать создание карты при изменении параметров",
+        "pt": "- adicionar exemplo de polilinha/caminho ao testdata.json. o caminho está localizado em Bathey,\npoucos quilômetros ao sul de Dortmund\n- adicionar exemplo de polilinha/caminho aos testdata. json. o caminho está localizado em\nFrankfurt/Main. A trilha começa no centro da cidade de Frankfurt,\nem direcção ao sudeste.\n- adicionar exemplo vis1 para manipular o mapa do script vis com a opção expor\n- corrigir a criação do mapa se o parâmetro mudar",
+        "nl": "- voeg polyline/path voorbeeld aan testdata.json. het pad ligt in Bathe,\nenkele kilometers ten zuiden van Dortmund\n- polyline/path voorbeeld toevoegen aan testdata. json. het pad is gelegen in\nFrankfurt/Main. De route begint in het centrum van Frankfurt,\nrichting het zuidoosten.\n- vis1 voorbeeld toevoegen om kaart te manipuleren van vis script met de expo optie\n- map aanmaken als parameter verandert",
+        "fr": "- ajouter un exemple de polyligne/chemin à testdata.json. le sentier est situé à Bathey,\nà quelques kilomètres au sud de Dortmund\n- ajouter un exemple de polyligne/chemin aux données de test. json. le chemin est situé dans\nFrancfort/Main. Le sentier commence dans le centre-ville de Francfort,\ndirection le sud-est.\n- ajouter l'exemple vis1 pour manipuler la carte depuis le script vis avec l'option expose\n- fixer la création de la carte si le paramètre change",
+        "it": "- aggiungere l'esempio di poliline/path a testdata.json. il sentiero si trova a Bathey,\npochi chilometri a sud di Dortmund\n- aggiungere l'esempio di poliline/path a testdata. json. il sentiero si trova in\nFrancoforte sul Meno. Il sentiero inizia nel centro di Francoforte,\nverso sud-est.\n- aggiungere l'esempio vis1 per manipolare la mappa dallo script vis con l'opzione espositiva\n- correggere la creazione della mappa se i parametri cambiano",
+        "es": "- añadir ejemplo de polilínea/pata a testdata.json. el camino se encuentra en Bathey,\npocos kilómetros al sur de Dortmund\n- añadir ejemplo de poliline/path a testdata. json. el camino se encuentra en\nFrankfurt/Main. El sendero comienza en el centro de Frankfurt,\ndirigiéndose hacia el sureste.\n- añadir el ejemplo vis1 para manipular mapa de vis script con la opción de exponer\n- arreglar la creación de mapas si cambia el parámetro",
+        "pl": "- dodać przykład poliline / path do testdata.json. ścieżka znajduje się w Bahe,\nkilka kilometrów na południe od Dortmund\n- dodać przykład poliline / path do testdata. josh. ścieżka znajduje się w\nFrankfurt nad Menem. Szlak zaczyna się w centrum Frankfurtu,\nkieruje się na południowy wschód.\n- dodać vis1 przykład do manipulowania mapą ze skryptu z opcją demaskowania\n- naprawić tworzenie mapy, jeśli parametry ulegną zmianie",
+        "uk": "- додати полілін/пато приклад для testdata.json. Шлях знаходиться в Баня,\nкілька кілометрів на південь від Дортмунд\n- додати полілін / приклад для тестових даних. джсон. шлях знаходиться в\nФранкфурт/Майн. Причіп починається в центрі міста Франкфурт,\nна південному сході.\n- додати приклад vis1 для маніпуляції картою з скрипта vis з опцією\n- виправлено створення карти при зміні параметра",
+        "zh-cn": "- 在testdata.json中添加多线/路径示例。 大道位于巴西,\n在多尔特蒙德以南几公里处\n- 在测试数据中添加多线/路径示例。 强森。 路径位于\n法兰克福/ 美因. 线索从法兰克福市中心开始,\n朝东南方向去了.\n- 添加图例1, 使用曝光选项从脚本操作地图\n- 如果参数改变, 固定地图创建"
+      },
+      "0.0.7": {
+        "en": "Sync mode has been added. New items can now be added dynamically.",
+        "de": "Sync-Modus wurde hinzugefügt. Neue Artikel können nun dynamisch hinzugefügt werden.",
+        "ru": "Добавлен режим синхронизации. Теперь можно динамически добавлять новые элементы.",
+        "pt": "O modo de sincronização foi adicionado. Novos itens podem agora ser adicionados dinamicamente.",
+        "nl": "Synchronisatiemodus is toegevoegd. Nieuwe items kunnen nu dynamisch worden toegevoegd.",
+        "fr": "Le mode Sync a été ajouté. De nouveaux éléments peuvent maintenant être ajoutés dynamiquement.",
+        "it": "La modalità Sync è stata aggiunta. Nuovi elementi possono ora essere aggiunti dinamicamente.",
+        "es": "Se ha añadido el modo Sync. Ahora se pueden añadir nuevos elementos dinámicamente.",
+        "pl": "Dodano tryb synchronizacji. Nowe elementy mogą być teraz dodawane dynamicznie.",
+        "uk": "Додано режим синхронізації. Нові елементи можуть бути додані динамічно.",
+        "zh-cn": "已添加同步模式 。 现在可以动态添加新项目."
+      },
+      "0.0.6": {
+        "en": "fix more package urls",
+        "de": "Behebe weitere Paket-URLs",
+        "ru": "исправлено больше URL-адресов пакетов",
+        "pt": "corrigir mais URLs de pacotes",
+        "nl": "Meer pakket-URL's gerepareerd",
+        "fr": "correction de davantage d'URL de package",
+        "it": "Correzione di ulteriori URL dei pacchetti",
+        "es": "corregir más URLs de paquetes",
+        "pl": "napraw więcej adresów pakietów",
+        "uk": "виправлено більше посилань на пакети",
+        "zh-cn": "修复更多的套餐URL"
+      },
+      "0.0.5": {
+        "en": "release",
+        "de": "Veröffentlichung",
+        "ru": "релиз",
+        "pt": "lançamento",
+        "nl": "versie",
+        "fr": "version",
+        "it": "rilascio",
+        "es": "lanzamiento",
+        "pl": "wydanie",
+        "uk": "реліз",
+        "zh-cn": "发布"
+      },
+      "0.0.4": {
+        "en": "fix reponame",
+        "de": "Reponame reparieren",
+        "ru": "исправлена название репозитория",
+        "pt": "corrigir nome do repositório",
+        "nl": "reponaam repareren",
+        "fr": "corriger le nom du dépôt",
+        "it": "risolvere il nome del repository",
+        "es": "corregir el nombre del repositorio",
+        "pl": "Napraw nazwę repozytorium",
+        "uk": "виправлення назви репозиторію",
+        "zh-cn": "修复仓库名称"
+      }
     },
-    "native": {},
-    "instanceObjects": []
+    "titleLang": {
+      "en": "Map Widgets",
+      "de": "Karten -Widgets",
+      "ru": "Карты виджетов",
+      "pt": "Widgets de mapa",
+      "nl": "Kaartwidgets",
+      "fr": "Widgets cartographiques",
+      "it": "Widget della mappa",
+      "es": "Widgets de mapa",
+      "pl": "Widżety map",
+      "uk": "Відродження карт",
+      "zh-cn": "地图小部件"
+    },
+    "desc": {
+      "en": "Map Widgets for ioBroker.vis",
+      "de": "Karten -Widgets für iobroker.vis",
+      "ru": "Карты виджетов для iobroker.vis",
+      "pt": "Widgets de mapa para iobroker.vis",
+      "nl": "Kaartwidgets voor IoBRoker.Vis",
+      "fr": "Widgets cartographiques pour iobroker.vis",
+      "it": "Widget mappa per iobroker.vis",
+      "es": "Widgets de mapa para iobroker.vis",
+      "pl": "Widget map dla iobrent.vis",
+      "uk": "Віджетів карт для iobroker.vis",
+      "zh-cn": "iobroker.vis的地图小部件"
+    },
+    "platform": "Javascript/Node.js",
+    "loglevel": "info",
+    "icon": "mapwidgets.svg",
+    "enabled": true,
+    "mode": "none",
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-mapwidgets/main/admin/mapwidgets.svg",
+    "keywords": [
+      "map widgets",
+      "vis"
+    ],
+    "readme": "https://github.com/oweitman/ioBroker.vis-mapwidgets/blob/main/README.md",
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "dependencies": [
+      "vis"
+    ],
+    "onlyWWW": true,
+    "singleton": true,
+    "type": "visualization-widgets",
+    "tier": 3,
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "adminUI": {
+      "config": "none"
+    },
+    "restartAdapters": [
+      "vis",
+      "vis-2"
+    ]
+  },
+  "native": {},
+  "instanceObjects": []
 }

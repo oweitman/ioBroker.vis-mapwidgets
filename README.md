@@ -371,8 +371,7 @@ Detailed descriptions of the parameters can be found here:
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.8 (2025-09-23)
 
 - add polyline/path example to testdata.json. the path is located in Bathey,
   few kilometers south of Dortmund
