@@ -1,6 +1,9 @@
 {
     "marker": [
         {
+            "latlng": [0.0, 0.0]
+        },
+        {
             "latlng": [50.182, 8.682],
             "options": {
                 "title": "Default"
@@ -1655,6 +1658,12 @@
                     "offset": [0, -12]
                 }
             }
+        },
+        {
+            "latlng": [
+                [0, 0],
+                [-0.1, 0.1]
+            ]
         }
     ],
     "circle": [
@@ -1662,7 +1671,7 @@
             "latlng": [50.3, 8.6],
             "options": {
                 "radius": 10000,
-                "weight": 10,
+                "weight": 20,
                 "color": "black"
             },
             "tooltip": {
@@ -1671,6 +1680,12 @@
                     "permanent": true,
                     "offset": [0, -12]
                 }
+            }
+        },
+        {
+            "latlng": [-0.05, 0.05],
+            "options": {
+                "radius": 4000
             }
         }
     ]
