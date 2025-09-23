@@ -2,11 +2,11 @@
 
 ![Logo](admin/mapwidgets-small.svg)
 
-[![NPM version](https://img.shields.io/npm/v/ioBroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/ioBroker.vis-mapwidgets)
+[![NPM version](https://img.shields.io/npm/v/iobroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/ioBroker.vis-mapwidgets)
 [![Downloads](https://img.shields.io/npm/dm/ioBroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/ioBroker.vis-mapwidgets)
-![Number of Installations](https://iobroker.live/badges/mapwidgets-installed.svg)
-![Current version in stable repository](https://iobroker.live/badges/mapwidgets-stable.svg)
-[![NPM](https://nodei.co/npm/ioBroker.vis-mapwidgets.png?downloads=true)](https://nodei.co/npm/ioBroker.vis-mapwidgets/)
+![Number of Installations](https://iobroker.live/badges/vis-mapwidgets-installed.svg)
+![Current version in stable repository](https://iobroker.live/badges/vis-mapwidgets-stable.svg)
+[![NPM](https://nodei.co/npm/iobroker.vis-mapwidgets.png?downloads=true)](https://npmjs.com/package/iobroker.vis-mapwidgets)
 
 **Tests:** ![Test and Release](https://github.com/oweitman/ioBroker.vis-mapwidgets/workflows/Test%20and%20Release/badge.svg)
 
@@ -371,6 +371,7 @@ Detailed descriptions of the parameters can be found here:
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.0.9 (2025-09-23)
 
 - add polyline/path example to testdata.json. the path is located in Bathey,
