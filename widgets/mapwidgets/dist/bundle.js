@@ -3633,7 +3633,7 @@
   var import_leaflet2 = __toESM(require_leaflet());
 
   // ../package.json
-  var version = "0.0.6";
+  var version = "0.0.7";
 
   // node_modules/deep-object-diff/mjs/utils.js
   var isDate = (d) => d instanceof Date;
@@ -3808,7 +3808,7 @@
             }
           }
           L.Icon.Default.imagePath = "widgets/mapwidgets/dist/images/";
-          if (!visdata.map) {
+          if (!visdata.map || $(`#${widgetID} .mapwidgetsLeaflet`).length == 0) {
             let text = "";
             text += `<div class="mapwidgetsLeaflet"></div>`;
             $(`#${widgetID}`).html(text);
@@ -3818,6 +3818,8 @@
               window.iobroker.mapwidgets = window.iobroker.mapwidgets || {};
               window.iobroker.mapwidgets[widgetID] = window.iobroker.mapwidgets[widgetID] || {};
               window.iobroker.mapwidgets[widgetID].map = visdata.map;
+              console.log("Now you can find the map object under the following name:");
+              console.log(`window.iobroker.mapwidgets.${widgetID}.map`);
             }
           }
           L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {

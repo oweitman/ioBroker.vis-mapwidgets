@@ -6,8 +6,6 @@
 [![Downloads](https://img.shields.io/npm/dm/ioBroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/ioBroker.vis-mapwidgets)
 ![Number of Installations](https://iobroker.live/badges/mapwidgets-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/mapwidgets-stable.svg)
-[![nycrc config on GitHub](https://img.shields.io/nycrc/oweitman/ioBroker.vis-mapwidgets?preferredThreshold=functions)](https://html-preview.github.io/?url=https://github.com/oweitman/ioBroker.vis-mapwidgets/blob/main/coverage/index.html)
-
 [![NPM](https://nodei.co/npm/ioBroker.vis-mapwidgets.png?downloads=true)](https://nodei.co/npm/ioBroker.vis-mapwidgets/)
 
 **Tests:** ![Test and Release](https://github.com/oweitman/ioBroker.vis-mapwidgets/workflows/Test%20and%20Release/badge.svg)
@@ -80,6 +78,8 @@ For testing purposes, an example dataset is included
 in the file examples/testdata.json, which can be directly saved to a data point.
 This data contains sample configurations for all elements, which are
 displayed on a map in the Frankfurt area.
+
+see also [example\example.md](example/example.md) for more test content.
 
 For all configurations, the principle is that only the mandatory amount
 of information is required to display an element.
@@ -379,6 +379,8 @@ Detailed descriptions of the parameters can be found here:
 - add polyline/path example to testdata.json. the path is located in
   Frankfurt/Main. The trail starts in the city center of Frankfurt,
   heading towards the southeast.
+- add vis1 example to manipulate map from vis script with the expose option
+- fix map creation if parameter changes
 
 ### 0.0.7 (2025-09-21)
 
