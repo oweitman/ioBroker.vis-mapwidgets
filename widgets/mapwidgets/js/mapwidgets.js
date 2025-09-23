@@ -165,7 +165,7 @@ vis.binds['mapwidgets'] = {
             }
 
             L.Icon.Default.imagePath = 'widgets/mapwidgets/dist/images/';
-            if (!visdata.map) {
+            if (!visdata.map || $(`#${widgetID} .mapwidgetsLeaflet`).length == 0) {
                 let text = '';
                 text += `<div class="mapwidgetsLeaflet"></div>`;
                 $(`#${widgetID}`).html(text);
@@ -175,6 +175,8 @@ vis.binds['mapwidgets'] = {
                     window.iobroker.mapwidgets = window.iobroker.mapwidgets || {};
                     window.iobroker.mapwidgets[widgetID] = window.iobroker.mapwidgets[widgetID] || {};
                     window.iobroker.mapwidgets[widgetID].map = visdata.map;
+                    console.log('Now you can find the map object under the following name:');
+                    console.log(`window.iobroker.mapwidgets.${widgetID}.map`);
                 }
             }
 
