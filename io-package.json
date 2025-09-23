@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "news": {
-      "0.0.8": {
+      "0.0.9": {
         "en": "- add polyline/path example to testdata.json. the path is located in Bathey,\n  few kilometers south of Dortmund\n- add polyline/path example to testdata.json. the path is located in\n  Frankfurt/Main. The trail starts in the city center of Frankfurt,\n  heading towards the southeast.\n- add vis1 example to manipulate map from vis script with the expose option\n- fix map creation if parameter changes",
         "de": "- polyline/path Beispiel zu testdata.json hinzufügen. der Pfad befindet sich in Bathey,\nwenige Kilometer südlich von Dortmund\n- polyline/pfad beispiel zu testdaten hinzufügen. json. der pfad befindet sich in\nFrankfurt am Main. Der Weg beginnt im Stadtzentrum von Frankfurt,\nrichtung südosten.\n- fügen sie vis1 beispiel hinzu, um die karte aus dem vis-skript zu manipulieren, mit der belichtungsoption\n- die kartenerstellung festlegen, wenn parameteränderungen",
         "ru": "- добавить пример полилина/пути в testdata.json. Путь расположен в Батее,\nв нескольких километрах к югу от Дортмунда\n- добавить пример полилина/пути к тестируемым данным. джейсон. путь находится в\nФранкфурт/Главная. Тропа начинается в центре города Франкфурт,\nнаправляется на юго-восток.\n- добавьте пример vis1 для манипулирования картой из скрипта vis с возможностью разоблачения\n- фиксировать создание карты при изменении параметров",

@@ -10,6 +10,7 @@ export default [
         ignores: [
             'widgets/mapwidgets/dist/mapwidgets-dist.js',
             'widgets/mapwidgets/dist/bundle.js',
+            'example/**',
             '.dev-server/**',
             'backup/**',
             '*.test.js',
