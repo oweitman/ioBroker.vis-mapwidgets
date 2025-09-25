@@ -7,7 +7,7 @@
 
 // const { config } = require("chai");
 
-/* global $, vis, systemDictionary,L,window */
+/* global $, vis, systemDictionary,L,window,document */
 
 import '../../node_modules/leaflet/dist/leaflet.css';
 import '../../node_modules/leaflet/dist/leaflet.js';
@@ -361,6 +361,116 @@ vis.binds['mapwidgets'] = {
         }
         $div.data('bound', { bound, bindHandler: change_callback });
     },
+    loadScript: function (src, { attrs = {}, timeout = 15000 } = {}) {
+        return new Promise((resolve, reject) => {
+            // Duplikate vermeiden
+            if ([...document.scripts].some(s => s.src === src)) {
+                resolve('already-loaded');
+                return;
+            }
+            const s = document.createElement('script');
+            s.src = src;
+            // optional: als ES-Modul laden
+            if (attrs.type === 'module') {
+                s.type = 'module';
+            }
+            // optional: SRI/CORS
+            if (attrs.integrity) {
+                s.integrity = attrs.integrity;
+            }
+            if (attrs.crossOrigin) {
+                s.crossOrigin = attrs.crossOrigin;
+            }
+
+            const timer = setTimeout(() => {
+                s.remove();
+                reject(new Error(`Script load timeout: ${src}`));
+            }, timeout);
+
+            s.onload = () => {
+                clearTimeout(timer);
+                resolve();
+            };
+            s.onerror = () => {
+                clearTimeout(timer);
+                reject(new Error(`Script failed: ${src}`));
+            };
+
+            document.head.appendChild(s); // dynamisch geladene Skripte sind effektiv async
+        });
+    },
+    loadCSS: function (href, { attrs = {}, timeout = 15000 } = {}) {
+        return new Promise((resolve, reject) => {
+            // Duplikate vermeiden
+            if ([...document.querySelectorAll('link[rel="stylesheet"]')].some(l => l.href === href)) {
+                resolve('already-loaded');
+                return;
+            }
+            const l = document.createElement('link');
+            l.rel = 'stylesheet';
+            l.href = href;
+            // optional: SRI/CORS (bei CSS seltener genutzt, aber möglich)
+            if (attrs.integrity) {
+                l.integrity = attrs.integrity;
+            }
+            if (attrs.crossOrigin) {
+                l.crossOrigin = attrs.crossOrigin;
+            }
+            if (attrs.media) {
+                l.media = attrs.media;
+            } // z.B. 'print' oder '(min-width: 768px)'
+            const timer = setTimeout(() => {
+                l.remove();
+                reject(new Error(`CSS load timeout: ${href}`));
+            }, timeout);
+
+            l.onload = () => {
+                clearTimeout(timer);
+                resolve();
+            };
+            l.onerror = () => {
+                clearTimeout(timer);
+                reject(new Error(`CSS failed: ${href}`));
+            };
+            document.head.appendChild(l);
+        });
+    },
+    waitForGlobal: function (path, interval = 100, timeout = 0) {
+        return new Promise((resolve, reject) => {
+            const parts = path.split('.');
+            const start = Date.now();
+            const check = () => {
+                let obj = window;
+                for (const p of parts) {
+                    if (obj && p in obj) {
+                        obj = obj[p];
+                    } else {
+                        obj = undefined;
+                        break;
+                    }
+                }
+                if (obj !== undefined) {
+                    resolve(obj);
+                    return;
+                }
+                if (timeout > 0 && Date.now() - start > timeout) {
+                    reject(new Error(`Timeout: ${path} not found after ${timeout}ms`));
+                    return;
+                }
+                setTimeout(check, interval);
+            };
+            check();
+        });
+    },
+    provideFunctions: function () {
+        this.visMapwidgets = vis.binds['mapwidgets'];
+        window.iobroker = window.iobroker || {};
+        window.iobroker.mapwidgets = window.iobroker.mapwidgets || {};
+        window.iobroker.mapwidgets.loadScript = this.visMapwidgets.loadScript;
+        window.iobroker.mapwidgets.loadCSS = this.visMapwidgets.loadCSS;
+        window.iobroker.mapwidgets.waitForGlobal = this.visMapwidgets.waitForGlobal;
+    },
 };
 
 vis.binds['mapwidgets'].showVersion();
+vis.binds['mapwidgets'].provideFunctions();

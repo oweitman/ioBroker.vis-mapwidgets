@@ -361,6 +361,114 @@ Detailed descriptions of the parameters can be found here:
 
 <https://leafletjs.com/reference.html#popup>
 
+### Utility Functions Documentation
+
+The following functions are available under `window.iobroker.mapwidgets`. For example:
+
+```js
+window.iobroker.mapwidgets.waitForGlobal(...)
+window.iobroker.mapwidgets.loadScript(...)
+window.iobroker.mapwidgets.loadCSS(...)
+```
+
+`loadScript` and `loadCSS` can be used to dynamically load JavaScript files and
+CSS stylesheets, which may be necessary for using the map widgets.
+
+`waitForGlobal` can be used to wait for a global variable under `window.`.
+This is necessary because the map variable is only available after
+the map widget has been initialized by vis.js.
+
+#### `loadScript(src, { attrs = {}, timeout = 15000 } = {})`
+
+Dynamically loads an external JavaScript file into the current document.
+
+##### Parameters loadScript
+
+- **src** (`string`)  
+  The URL of the JavaScript file to load.
+- **attrs** (`object`, optional)  
+  Additional attributes for the `<script>` element. Supported keys:
+    - `type`: e.g. `"module"` to load as ES module.
+    - `integrity`: Subresource Integrity (SRI) hash.
+    - `crossOrigin`: Cross-origin setting (`"anonymous"` or `"use-credentials"`).
+- **timeout** (`number`, optional, default: `15000`)  
+  Maximum time in milliseconds before the load attempt fails.
+
+##### Returns loadScript
+
+- **Promise**  
+  Resolves when the script is successfully loaded, rejects on error or timeout.  
+  If the script is already present in the document, resolves with `"already-loaded"`.
+
+##### Example loadScript
+
+```js
+loadScript('https://cdn.example.com/lib.min.js')
+    .then(() => {
+        console.log('Script loaded!');
+    })
+    .catch(console.error);
+```
+
+#### `loadCSS(href, { attrs = {}, timeout = 15000 } = {})`
+
+Dynamically loads an external CSS stylesheet into the current document.
+
+##### Parameters loadCSS
+
+- **href** (`string`)  
+  The URL of the CSS file to load.
+- **attrs** (`object`, optional)  
+  Additional attributes for the `<link>` element. Supported keys:
+    - `integrity`: Subresource Integrity (SRI) hash.
+    - `crossOrigin`: Cross-origin setting.
+    - `media`: Media query for conditional loading (e.g. `"print"`, `"(min-width: 768px)"`).
+- **timeout** (`number`, optional, default: `15000`)  
+  Maximum time in milliseconds before the load attempt fails.
+
+##### Returns loadCSS
+
+- **Promise**  
+  Resolves when the stylesheet is successfully loaded, rejects on error or timeout.  
+  If the stylesheet is already present in the document, resolves with `"already-loaded"`.
+
+##### Example loadCSS
+
+```js
+loadCSS('https://cdn.example.com/theme.css').catch(console.error);
+```
+
+#### `waitForGlobal(path, interval = 100, timeout = 0)`
+
+Waits for a global variable (or a nested property of `window`) to become available.
+
+##### Parameters waitForGlobal
+
+- **path** (`string`)  
+  Dot-separated path to the global variable (e.g. `"jQuery"`, `"MyLib.utils.helper"`).
+- **interval** (`number`, optional, default: `100`)  
+  Interval in milliseconds to check for the variable.
+- **timeout** (`number`, optional, default: `0`)  
+  Maximum wait time in milliseconds. `0` means wait indefinitely.
+
+##### Returns waitForGlobal
+
+- **Promise**  
+  Resolves with the found object once available.  
+  Rejects if the timeout is reached before the object is found.
+
+##### Example waitForGlobal
+
+```html
+<script>
+    waitForGlobal('iobroker.mapwidgets.w00001.map', 200, 5000)
+        .then(map => {
+            // map is now available
+        })
+        .catch(err => console.error(err.message));
+</script>
+```
+
 ## Todo
 
 - to be defined
@@ -371,6 +479,10 @@ Detailed descriptions of the parameters can be found here:
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- add utility functions an documentation
 
 ### 0.0.9 (2025-09-23)
 
