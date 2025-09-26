@@ -3633,7 +3633,7 @@
   var import_leaflet2 = __toESM(require_leaflet());
 
   // ../package.json
-  var version = "0.0.9";
+  var version = "0.0.10";
 
   // node_modules/deep-object-diff/mjs/utils.js
   var isDate = (d) => d instanceof Date;
@@ -3688,12 +3688,20 @@
     lHandlers: {
       marker: {
         validate: (item) => vis.binds["mapwidgets"].validators.latLngPair(item == null ? void 0 : item.latlng) || vis.binds["mapwidgets"].validators.latLngAttributes(item == null ? void 0 : item.lat, item == null ? void 0 : item.lng),
-        create: (map, item, widgetID) => {
+        create: (map, fg, item, widgetID) => {
+          var _a;
           let newoptions = __spreadValues({}, item.options);
           if (newoptions.icon) {
             vis.binds["mapwidgets"].setIcon(newoptions, widgetID);
           }
-          let layer = item.lat && item.lng ? L.marker([item.lat, item.lng], newoptions != null ? newoptions : {}).addTo(map) : L.marker(item.latlng, newoptions != null ? newoptions : {}).addTo(map);
+          let mapOrLayer;
+          if ((_a = item.iobOptions) == null ? void 0 : _a.fitBounds) {
+            vis.binds["mapwidgets"].data[widgetID].fitBounds = true;
+            mapOrLayer = fg;
+          } else {
+            mapOrLayer = map;
+          }
+          let layer = item.lat && item.lng ? L.marker([item.lat, item.lng], newoptions != null ? newoptions : {}).addTo(mapOrLayer) : L.marker(item.latlng, newoptions != null ? newoptions : {}).addTo(mapOrLayer);
           if (item.popup) {
             vis.binds["mapwidgets"].setPopup(layer, item);
           }
@@ -3706,17 +3714,32 @@
       },
       polyline: {
         validate: (item) => vis.binds["mapwidgets"].validators.latLngArray(item == null ? void 0 : item.latlng),
-        create: (map, item) => {
-          var _a;
-          return L.polyline(item.latlng, (_a = item.options) != null ? _a : {}).addTo(map);
+        create: (map, fg, item, widgetID) => {
+          var _a, _b;
+          let mapOrLayer;
+          if ((_a = item.iobOptions) == null ? void 0 : _a.fitBounds) {
+            vis.binds["mapwidgets"].data[widgetID].fitBounds = true;
+            mapOrLayer = fg;
+          } else {
+            mapOrLayer = map;
+          }
+          let layer = L.polyline(item.latlng, (_b = item.options) != null ? _b : {}).addTo(mapOrLayer);
+          return layer;
         },
         getKey: (item) => hash(item)
       },
       polygon: {
         validate: (item) => vis.binds["mapwidgets"].validators.latLngArray(item == null ? void 0 : item.latlng),
-        create: (map, item) => {
-          var _a;
-          let layer = L.polygon(item.latlng, (_a = item.options) != null ? _a : {}).addTo(map);
+        create: (map, fg, item, widgetID) => {
+          var _a, _b;
+          let mapOrLayer;
+          if ((_a = item.iobOptions) == null ? void 0 : _a.fitBounds) {
+            vis.binds["mapwidgets"].data[widgetID].fitBounds = true;
+            mapOrLayer = fg;
+          } else {
+            mapOrLayer = map;
+          }
+          let layer = L.polygon(item.latlng, (_b = item.options) != null ? _b : {}).addTo(mapOrLayer);
           if (item.popup) {
             vis.binds["mapwidgets"].setPopup(layer, item);
           }
@@ -3730,9 +3753,16 @@
       rectangle: {
         // rectangle arbeitet mit bounds: [[lat1,lng1],[lat2,lng2]]
         validate: (item) => vis.binds["mapwidgets"].validators.bounds(item == null ? void 0 : item.latlng),
-        create: (map, item) => {
-          var _a;
-          let layer = L.rectangle(item.latlng, (_a = item.options) != null ? _a : {}).addTo(map);
+        create: (map, fg, item, widgetID) => {
+          var _a, _b;
+          let mapOrLayer;
+          if ((_a = item.iobOptions) == null ? void 0 : _a.fitBounds) {
+            vis.binds["mapwidgets"].data[widgetID].fitBounds = true;
+            mapOrLayer = fg;
+          } else {
+            mapOrLayer = map;
+          }
+          let layer = L.rectangle(item.latlng, (_b = item.options) != null ? _b : {}).addTo(mapOrLayer);
           if (item.popup) {
             vis.binds["mapwidgets"].setPopup(layer, item);
           }
@@ -3749,9 +3779,18 @@
           var _a;
           return vis.binds["mapwidgets"].validators.latLngPair(item == null ? void 0 : item.latlng) && Number.isFinite((_a = item == null ? void 0 : item.options) == null ? void 0 : _a.radius);
         },
-        create: (map, item) => {
-          var _a;
-          let layer = L.circle(item.latlng, __spreadProps(__spreadValues({}, (_a = item.options) != null ? _a : {}), { radius: item.options.radius })).addTo(map);
+        create: (map, fg, item, widgetID) => {
+          var _a, _b;
+          let mapOrLayer;
+          if ((_a = item.iobOptions) == null ? void 0 : _a.fitBounds) {
+            vis.binds["mapwidgets"].data[widgetID].fitBounds = true;
+            mapOrLayer = fg;
+          } else {
+            mapOrLayer = map;
+          }
+          let layer = L.circle(item.latlng, __spreadProps(__spreadValues({}, (_b = item.options) != null ? _b : {}), { radius: item.options.radius })).addTo(
+            mapOrLayer
+          );
           if (item.popup) {
             vis.binds["mapwidgets"].setPopup(layer, item);
           }
@@ -3790,7 +3829,8 @@
               polyline: {},
               polygon: {},
               rectangle: {},
-              circle: {}
+              circle: {},
+              fitBounds: false
             };
           }
           let visdata = vis.binds["mapwidgets"].data[widgetID];
@@ -3813,6 +3853,7 @@
             text += `<div class="mapwidgetsLeaflet"></div>`;
             $(`#${widgetID}`).html(text);
             visdata.map = L.map($(`#${widgetID} .mapwidgetsLeaflet`).get(0)).setView([lat, lon], zoom);
+            visdata.featureGroup = L.featureGroup().addTo(visdata.map);
             if (expose) {
               window.iobroker = window.iobroker || {};
               window.iobroker.mapwidgets = window.iobroker.mapwidgets || {};
@@ -3841,10 +3882,14 @@
           diffConfig
         };
         let map = visdata.map;
+        let fg = visdata.featureGroup;
         this.icons(visdata, widgetID, configSet);
-        this.applyAllGeometryDiffs.call(this, visdata, widgetID, configSet, map);
+        this.applyAllGeometryDiffs.call(this, visdata, widgetID, configSet, map, fg);
+        if (vis.binds["mapwidgets"].data[widgetID].fitBounds) {
+          visdata.map.fitBounds(visdata.featureGroup.getBounds());
+        }
       },
-      applyAllGeometryDiffs(visdata, widgetID, configSet, map) {
+      applyAllGeometryDiffs(visdata, widgetID, configSet, map, fg) {
         var _a;
         const types = ["marker", "polyline", "polygon", "rectangle", "circle"];
         for (const type of types) {
@@ -3860,6 +3905,7 @@
             configSet,
             widgetID,
             map,
+            fg,
             getKey: h.getKey,
             validate: h.validate,
             create: h.create,
@@ -3868,7 +3914,7 @@
           });
         }
       },
-      applyArrayDiff({ visdata, type, configSet, widgetID, map, getKey, validate, create, remove, gc = true }) {
+      applyArrayDiff({ visdata, type, configSet, widgetID, map, fg, getKey, validate, create, remove, gc = true }) {
         var _a, _b, _c, _d, _e;
         const cfg = (_a = configSet == null ? void 0 : configSet.config) != null ? _a : {};
         const old = (_b = configSet == null ? void 0 : configSet.oldConfig) != null ? _b : {};
@@ -3906,7 +3952,7 @@
             console.warn(`${type} ${i + 1}: validation failed`);
             continue;
           }
-          const layer = create(map, item, widgetID);
+          const layer = create(map, fg, item, widgetID);
           const key = getKey(item);
           store[key] = { index: i, layer };
         }

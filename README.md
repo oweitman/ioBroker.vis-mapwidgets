@@ -361,6 +361,81 @@ Detailed descriptions of the parameters can be found here:
 
 <https://leafletjs.com/reference.html#popup>
 
+##### special iobroker options
+
+Special options that are only supported by the Leaflet version in ioBroker are
+implemented using the additional options object "iobOptions".
+This object is not valid for all object types. Which options are valid
+for which object type is described in the respective section.
+
+###### fitBounds
+
+This applies to the following object types: marker, polygon,
+polyline, rectangle, circle.
+
+The system collects all points of the objects, determines a minimum/maximum
+bounding box around them, calculates the appropriate zoom level and centers
+and zooms the view so that all selected objects are visible.
+
+**Example fitBounds with 3 Markers:**
+
+```json
+{
+    "marker": [
+        {
+            "latlng": [50.2, 8.7],
+            "iobOptions": {
+                "fitBounds": true
+            }
+        },
+        {
+            "latlng": [50.2, 8.6],
+            "options": {
+                "title": "Default"
+            },
+            "tooltip": {
+                "text": "Default",
+                "options": {
+                    "permanent": true,
+                    "direction": "top"
+                }
+            },
+            "iobOptions": {
+                "fitBounds": true
+            }
+        },
+        {
+            "latlng": [50.2, 8.8],
+            "options": {
+                "title": "Mit Custom Icon",
+                "icon": "redleaf"
+            },
+            "tooltip": {
+                "text": "Mit Custom Icon",
+                "options": {
+                    "permanent": true,
+                    "direction": "bottom"
+                }
+            },
+            "iobOptions": {
+                "fitBounds": true
+            }
+        }
+    ],
+    "icons": {
+        "redleaf": {
+            "iconUrl": "/vis.0/leaf-red.png",
+            "iconSize": [25, 41],
+            "shadowUrl": "/vis.0/leaf-shadow.png",
+            "shadowSize": [25, 41],
+            "iconAnchor": [14, 39],
+            "shadowAnchor": [3, 39],
+            "popupAnchor": [50, 50]
+        }
+    }
+}
+```
+
 ### Utility Functions Documentation
 
 The following functions are available under `window.iobroker.mapwidgets`. For example:
@@ -397,7 +472,7 @@ Dynamically loads an external JavaScript file into the current document.
 ##### Returns loadScript
 
 - **Promise**  
-  Resolves when the script is successfully loaded, rejects on error or timeout.  
+  Resolves when the script is successfully loaded, rejects on error or timeout.
   If the script is already present in the document, resolves with `"already-loaded"`.
 
 ##### Example loadScript
@@ -422,14 +497,15 @@ Dynamically loads an external CSS stylesheet into the current document.
   Additional attributes for the `<link>` element. Supported keys:
     - `integrity`: Subresource Integrity (SRI) hash.
     - `crossOrigin`: Cross-origin setting.
-    - `media`: Media query for conditional loading (e.g. `"print"`, `"(min-width: 768px)"`).
+    - `media`: Media query for conditional loading
+      (e.g. `"print"`, `"(min-width: 768px)"`).
 - **timeout** (`number`, optional, default: `15000`)  
   Maximum time in milliseconds before the load attempt fails.
 
 ##### Returns loadCSS
 
 - **Promise**  
-  Resolves when the stylesheet is successfully loaded, rejects on error or timeout.  
+  Resolves when the stylesheet is successfully loaded, rejects on error or timeout.
   If the stylesheet is already present in the document, resolves with `"already-loaded"`.
 
 ##### Example loadCSS
@@ -479,6 +555,10 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.0.11 (2025-09-26)
+
+- add fitBound option
+
 ### 0.0.10 (2025-09-26)
 
 - add utility functions an documentation

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "news": {
+      "0.0.11": {
+        "en": "add fitBound option",
+        "de": "fitBound Option hinzufügen",
+        "ru": "добавить опцию fitBound",
+        "pt": "adicionar a opção fitBound",
+        "nl": "fitBound-optie toevoegen",
+        "fr": "ajouter l'option fitBound",
+        "it": "aggiungere l'opzione fitBound",
+        "es": "añadir fitBound opción",
+        "pl": "dodaj opcję fitBound",
+        "uk": "add fitЗлягання варіант",
+        "zh-cn": "添加适切选项"
+      },
       "0.0.10": {
         "en": "add utility functions an documentation\nadd more examples and rework example documentation",
         "de": "hinzufügen von dienstfunktionen\nweitere beispiele und rework beispieldokumentation hinzufügen",

@@ -41,15 +41,22 @@ vis.binds['mapwidgets'] = {
             validate: item =>
                 vis.binds['mapwidgets'].validators.latLngPair(item?.latlng) ||
                 vis.binds['mapwidgets'].validators.latLngAttributes(item?.lat, item?.lng),
-            create: (map, item, widgetID) => {
+            create: (map, fg, item, widgetID) => {
                 let newoptions = { ...item.options };
                 if (newoptions.icon) {
                     vis.binds['mapwidgets'].setIcon(newoptions, widgetID);
                 }
+                let mapOrLayer;
+                if (item.iobOptions?.fitBounds) {
+                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
+                    mapOrLayer = fg;
+                } else {
+                    mapOrLayer = map;
+                }
                 let layer =
                     item.lat && item.lng
-                        ? L.marker([item.lat, item.lng], newoptions ?? {}).addTo(map)
-                        : L.marker(item.latlng, newoptions ?? {}).addTo(map);
+                        ? L.marker([item.lat, item.lng], newoptions ?? {}).addTo(mapOrLayer)
+                        : L.marker(item.latlng, newoptions ?? {}).addTo(mapOrLayer);
                 if (item.popup) {
                     vis.binds['mapwidgets'].setPopup(layer, item);
                 }
@@ -62,15 +69,30 @@ vis.binds['mapwidgets'] = {
         },
         polyline: {
             validate: item => vis.binds['mapwidgets'].validators.latLngArray(item?.latlng),
-            create: (map, item) => {
-                return L.polyline(item.latlng, item.options ?? {}).addTo(map);
+            create: (map, fg, item, widgetID) => {
+                let mapOrLayer;
+                if (item.iobOptions?.fitBounds) {
+                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
+                    mapOrLayer = fg;
+                } else {
+                    mapOrLayer = map;
+                }
+                let layer = L.polyline(item.latlng, item.options ?? {}).addTo(mapOrLayer);
+                return layer;
             },
             getKey: item => hash(item),
         },
         polygon: {
             validate: item => vis.binds['mapwidgets'].validators.latLngArray(item?.latlng),
-            create: (map, item) => {
-                let layer = L.polygon(item.latlng, item.options ?? {}).addTo(map);
+            create: (map, fg, item, widgetID) => {
+                let mapOrLayer;
+                if (item.iobOptions?.fitBounds) {
+                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
+                    mapOrLayer = fg;
+                } else {
+                    mapOrLayer = map;
+                }
+                let layer = L.polygon(item.latlng, item.options ?? {}).addTo(mapOrLayer);
                 if (item.popup) {
                     vis.binds['mapwidgets'].setPopup(layer, item);
                 }
@@ -84,8 +106,15 @@ vis.binds['mapwidgets'] = {
         rectangle: {
             // rectangle arbeitet mit bounds: [[lat1,lng1],[lat2,lng2]]
             validate: item => vis.binds['mapwidgets'].validators.bounds(item?.latlng),
-            create: (map, item) => {
-                let layer = L.rectangle(item.latlng, item.options ?? {}).addTo(map);
+            create: (map, fg, item, widgetID) => {
+                let mapOrLayer;
+                if (item.iobOptions?.fitBounds) {
+                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
+                    mapOrLayer = fg;
+                } else {
+                    mapOrLayer = map;
+                }
+                let layer = L.rectangle(item.latlng, item.options ?? {}).addTo(mapOrLayer);
                 if (item.popup) {
                     vis.binds['mapwidgets'].setPopup(layer, item);
                 }
@@ -100,8 +129,17 @@ vis.binds['mapwidgets'] = {
             // circle benötigt latlng + radius
             validate: item =>
                 vis.binds['mapwidgets'].validators.latLngPair(item?.latlng) && Number.isFinite(item?.options?.radius),
-            create: (map, item) => {
-                let layer = L.circle(item.latlng, { ...(item.options ?? {}), radius: item.options.radius }).addTo(map);
+            create: (map, fg, item, widgetID) => {
+                let mapOrLayer;
+                if (item.iobOptions?.fitBounds) {
+                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
+                    mapOrLayer = fg;
+                } else {
+                    mapOrLayer = map;
+                }
+                let layer = L.circle(item.latlng, { ...(item.options ?? {}), radius: item.options.radius }).addTo(
+                    mapOrLayer,
+                );
                 if (item.popup) {
                     vis.binds['mapwidgets'].setPopup(layer, item);
                 }
@@ -145,6 +183,7 @@ vis.binds['mapwidgets'] = {
                     polygon: {},
                     rectangle: {},
                     circle: {},
+                    fitBounds: false,
                 };
             }
             let visdata = vis.binds['mapwidgets'].data[widgetID];
@@ -170,6 +209,7 @@ vis.binds['mapwidgets'] = {
                 text += `<div class="mapwidgetsLeaflet"></div>`;
                 $(`#${widgetID}`).html(text);
                 visdata.map = L.map($(`#${widgetID} .mapwidgetsLeaflet`).get(0)).setView([lat, lon], zoom);
+                visdata.featureGroup = L.featureGroup().addTo(visdata.map);
                 if (expose) {
                     window.iobroker = window.iobroker || {};
                     window.iobroker.mapwidgets = window.iobroker.mapwidgets || {};
@@ -200,10 +240,14 @@ vis.binds['mapwidgets'] = {
                 diffConfig,
             };
             let map = visdata.map;
+            let fg = visdata.featureGroup;
             this.icons(visdata, widgetID, configSet);
-            this.applyAllGeometryDiffs.call(this, visdata, widgetID, configSet, map);
+            this.applyAllGeometryDiffs.call(this, visdata, widgetID, configSet, map, fg);
+            if (vis.binds['mapwidgets'].data[widgetID].fitBounds) {
+                visdata.map.fitBounds(visdata.featureGroup.getBounds());
+            }
         },
-        applyAllGeometryDiffs(visdata, widgetID, configSet, map) {
+        applyAllGeometryDiffs(visdata, widgetID, configSet, map, fg) {
             const types = ['marker', 'polyline', 'polygon', 'rectangle', 'circle'];
             for (const type of types) {
                 this.visMapwidgets.debug && console.log(`applyAllGeometryDiffs: ${type}`);
@@ -218,6 +262,7 @@ vis.binds['mapwidgets'] = {
                     configSet,
                     widgetID,
                     map,
+                    fg,
                     getKey: h.getKey,
                     validate: h.validate,
                     create: h.create,
@@ -226,7 +271,7 @@ vis.binds['mapwidgets'] = {
                 });
             }
         },
-        applyArrayDiff({ visdata, type, configSet, widgetID, map, getKey, validate, create, remove, gc = true }) {
+        applyArrayDiff({ visdata, type, configSet, widgetID, map, fg, getKey, validate, create, remove, gc = true }) {
             const cfg = configSet?.config ?? {};
             const old = configSet?.oldConfig ?? {};
             const diff = configSet?.diffConfig?.[type] ?? null;
@@ -275,7 +320,7 @@ vis.binds['mapwidgets'] = {
                     console.warn(`${type} ${i + 1}: validation failed`);
                     continue;
                 }
-                const layer = create(map, item, widgetID);
+                const layer = create(map, fg, item, widgetID);
                 const key = getKey(item);
                 store[key] = { index: i, layer };
             }

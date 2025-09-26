@@ -65,3 +65,18 @@ To test:
 - Import project zip-file into vis and open it.
 
 ![Example3MarkersJSON](./ExampleCompleteTest/ExampleCompleteTest.png)
+
+## Directory ExampleFitBoundsJSON
+
+This example demonstrates the functionality of the "fitBounds" option using a path.
+In the example project, the map center and zoom level are explicitly set to 0.
+However, this behavior is overridden by the "fitBounds" option,
+which centers the map on the path and calculates the optimal zoom level.
+
+To test:
+
+- Create datapoint of type string in userdata.0.fitBounds
+- copy contents of file datapoint-userdata.0.fitBounds.json to the datapoint
+- Import project zip-file into vis and open it.
+
+![Example3MarkersJSON](./ExampleFitBoundsJSON/ExamplefitBounds.png)
