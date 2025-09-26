@@ -28,7 +28,7 @@ Currently, the following elements are supported:
 For advanced use cases, the map object can be accessed via a dedicated
 variable and manipulated using JavaScript.
 
-This initial version is a minimal implementation.
+For use cases see the [examples](./example/example.md)
 
 Additional features can be added upon request, depending on their relevance and feasibility.
 

@@ -1,33 +1,61 @@
-# Example data for mapwidgets
+# Examples for mapwidgets
 
-## File testdata.json
+## Directory Example3MarkersJSON
 
-This file contains some test data for the mapwidgets widget.
+The datapoint contains 3 Markers in different configurations.
 
-## File vis0scripttab.js
+To test:
 
-Add the contents of this file to the script tab.
-This script contains the basic code for an additional button on the map.
-Its usage and detailed configuration are handled within the HTML widget code.
+- Create datapoint of type string in userdata.0.3Marker
+- copy contents of file datapoint-userdata.0.3Marker.json to the datapoint
+- Import project zip-file into vis and open it.
 
-### L.Control.Button
+![Example3MarkersJSON](./Example3MarkersJSON/Example3MarkersJSON.png)
 
-Base class for a button control that can be added to a map.
+## Directory ExamplePathJSON
 
-### waitForGlobal
+The datapoint contains a path in Frankfurt/Main
 
-Wait for a global variable to be available
+To test:
 
-## File importwidgethtml.json
+- Create datapoint of type string in userdata.0.path
+- copy contents of file datapoint-userdata.0.path.json to the datapoint
+- Import project zip-file into vis and open it.
 
-The contents of this file you can import into vis editor.
-please check the following line and adjust the widgetIDs 'w00001' to your needs.
-If you are unsure, check the web console; if you check the "expose" option,
-the variable name will be displayed in the console.
+![Example3MarkersJSON](./ExamplePathJSON/ExamplePathJSON.png)
 
-```json
-waitForGlobal("iobroker.mapwidgets.w00001.map", 200, 5000)
-```
+## Directory ExamplePolygonJSON
 
-Th script waits for thr map to be available,
-create the button and add it to the map.
+The datapoint contains different type of rectangles, circle and polygons
+
+To test:
+
+- Create datapoint of type string in userdata.0.polygon
+- copy contents of file datapoint-userdata.0.polygon.json to the datapoint
+- Import project zip-file into vis and open it.
+
+![Example3MarkersJSON](./ExamplePolygonJSON/ExamplePolygonJSON.png)
+
+## Directory ExampleButtonFlytoScript
+
+The Example contains a script to modify map controls with 2 buttons
+to fly between Frankfurt and New York.
+It also contains a usage example for the function waitFotGlobal and custom map controls.
+
+To test:
+
+- Import project zip-file into vis and open it.
+
+![Example3MarkersJSON](./ExampleButtonFlytoScript/ExampleButtonFlytoScript.png)
+
+## Directory ExampleCompleteTest
+
+The Example contains all of the tests alltogether
+
+To test:
+
+- Create datapoint of type string in userdata.0.leaflet
+- copy contents of file datapoint-userdata.0.leaflet.json to the datapoint
+- Import project zip-file into vis and open it.
+
+![Example3MarkersJSON](./ExampleCompleteTest/ExampleCompleteTest.png)
