@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "news": {
+      "0.0.10": {
+        "en": "add utility functions an documentation\nadd more examples and rework example documentation",
+        "de": "hinzufügen von dienstfunktionen\nweitere beispiele und rework beispieldokumentation hinzufügen",
+        "ru": "добавить полезные функции в документацию\nдобавить больше примеров и переработать примерную документацию",
+        "pt": "adicionar funções de utilitário uma documentação\nadicionar mais exemplos e refazer a documentação do exemplo",
+        "nl": "utility functies toevoegen aan een documentatie\nvoeg meer voorbeelden toe en rework voorbeeld documentatie",
+        "fr": "ajouter des fonctions d'utilité une documentation\najouter plus d'exemples et retravailler la documentation exemple",
+        "it": "aggiungere funzioni di utilità una documentazione\naggiungere più esempi e rielaborare documentazione di esempio",
+        "es": "añadir funciones de utilidad una documentación\nañadir más ejemplos y rework ejemplo documentación",
+        "pl": "dodawanie funkcji użyteczności dokumentacji\ndodaj więcej przykładów i przerób przykładową dokumentację",
+        "uk": "додати утиліту функції документації\nдодати більше прикладів і документації",
+        "zh-cn": "添加工具函数一个文档\n添加更多示例和重做示例文档"
+      },
       "0.0.9": {
         "en": "- add polyline/path example to testdata.json. the path is located in Bathey,\n  few kilometers south of Dortmund\n- add polyline/path example to testdata.json. the path is located in\n  Frankfurt/Main. The trail starts in the city center of Frankfurt,\n  heading towards the southeast.\n- add vis1 example to manipulate map from vis script with the expose option\n- fix map creation if parameter changes",
         "de": "- polyline/path Beispiel zu testdata.json hinzufügen. der Pfad befindet sich in Bathey,\nwenige Kilometer südlich von Dortmund\n- polyline/pfad beispiel zu testdaten hinzufügen. json. der pfad befindet sich in\nFrankfurt am Main. Der Weg beginnt im Stadtzentrum von Frankfurt,\nrichtung südosten.\n- fügen sie vis1 beispiel hinzu, um die karte aus dem vis-skript zu manipulieren, mit der belichtungsoption\n- die kartenerstellung festlegen, wenn parameteränderungen",

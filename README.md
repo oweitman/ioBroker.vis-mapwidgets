@@ -479,10 +479,10 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.10 (2025-09-26)
 
 - add utility functions an documentation
+- add more examples and rework example documentation
 
 ### 0.0.9 (2025-09-23)
 

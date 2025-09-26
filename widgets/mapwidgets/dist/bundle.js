@@ -3988,9 +3988,110 @@
         vis.states.bind(bound[i], change_callback);
       }
       $div.data("bound", { bound, bindHandler: change_callback });
+    },
+    loadScript: function(src, { attrs = {}, timeout = 15e3 } = {}) {
+      return new Promise((resolve, reject) => {
+        if ([...document.scripts].some((s2) => s2.src === src)) {
+          resolve("already-loaded");
+          return;
+        }
+        const s = document.createElement("script");
+        s.src = src;
+        if (attrs.type === "module") {
+          s.type = "module";
+        }
+        if (attrs.integrity) {
+          s.integrity = attrs.integrity;
+        }
+        if (attrs.crossOrigin) {
+          s.crossOrigin = attrs.crossOrigin;
+        }
+        const timer = setTimeout(() => {
+          s.remove();
+          reject(new Error(`Script load timeout: ${src}`));
+        }, timeout);
+        s.onload = () => {
+          clearTimeout(timer);
+          resolve();
+        };
+        s.onerror = () => {
+          clearTimeout(timer);
+          reject(new Error(`Script failed: ${src}`));
+        };
+        document.head.appendChild(s);
+      });
+    },
+    loadCSS: function(href, { attrs = {}, timeout = 15e3 } = {}) {
+      return new Promise((resolve, reject) => {
+        if ([...document.querySelectorAll('link[rel="stylesheet"]')].some((l2) => l2.href === href)) {
+          resolve("already-loaded");
+          return;
+        }
+        const l = document.createElement("link");
+        l.rel = "stylesheet";
+        l.href = href;
+        if (attrs.integrity) {
+          l.integrity = attrs.integrity;
+        }
+        if (attrs.crossOrigin) {
+          l.crossOrigin = attrs.crossOrigin;
+        }
+        if (attrs.media) {
+          l.media = attrs.media;
+        }
+        const timer = setTimeout(() => {
+          l.remove();
+          reject(new Error(`CSS load timeout: ${href}`));
+        }, timeout);
+        l.onload = () => {
+          clearTimeout(timer);
+          resolve();
+        };
+        l.onerror = () => {
+          clearTimeout(timer);
+          reject(new Error(`CSS failed: ${href}`));
+        };
+        document.head.appendChild(l);
+      });
+    },
+    waitForGlobal: function(path, interval = 100, timeout = 0) {
+      return new Promise((resolve, reject) => {
+        const parts = path.split(".");
+        const start = Date.now();
+        const check = () => {
+          let obj = window;
+          for (const p of parts) {
+            if (obj && p in obj) {
+              obj = obj[p];
+            } else {
+              obj = void 0;
+              break;
+            }
+          }
+          if (obj !== void 0) {
+            resolve(obj);
+            return;
+          }
+          if (timeout > 0 && Date.now() - start > timeout) {
+            reject(new Error(`Timeout: ${path} not found after ${timeout}ms`));
+            return;
+          }
+          setTimeout(check, interval);
+        };
+        check();
+      });
+    },
+    provideFunctions: function() {
+      this.visMapwidgets = vis.binds["mapwidgets"];
+      window.iobroker = window.iobroker || {};
+      window.iobroker.mapwidgets = window.iobroker.mapwidgets || {};
+      window.iobroker.mapwidgets.loadScript = this.visMapwidgets.loadScript;
+      window.iobroker.mapwidgets.loadCSS = this.visMapwidgets.loadCSS;
+      window.iobroker.mapwidgets.waitForGlobal = this.visMapwidgets.waitForGlobal;
     }
   };
   vis.binds["mapwidgets"].showVersion();
+  vis.binds["mapwidgets"].provideFunctions();
 })();
 /*! Bundled license information:
 
