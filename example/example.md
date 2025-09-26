@@ -1,5 +1,11 @@
 # Examples for mapwidgets
 
+Preperation for test.
+
+Please import the images in the test-images directory to /vis.0/
+
+![test-images in vis](./test-images/test-images.png)
+
 ## Directory Example3MarkersJSON
 
 The datapoint contains 3 Markers in different configurations.
