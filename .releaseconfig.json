@@ -3,5 +3,8 @@
     "versionFiles": [
         ["widgets/*.html", "(?<=<!--[\\s\\S]*?version:\\s*\")[0-9]+(?:\\.[0-9]+)*(?=\"[\\s\\S]*?-->)"],
         ["widgets/package.json", "(?<=\"version\":\\s*\")[0-9]+(?:\\.[0-9]+)*(?=\")"]
-    ]
+    ],
+    "exec": {
+        "after_edit": ["cd widgets", "npm run build"]
+    }
 }
