@@ -1,3 +1,7 @@
 {
-    "plugins": ["iobroker", "license", "manual-review"]
+    "plugins": ["iobroker", "version", "license", "manual-review"],
+    "versionFiles": [
+        ["widgets/*.html", "<!--[\\s\\S]*?version:\\s*\"(\\d+(?:\\.\\d+)*)\"[\\s\\S]*?-->"],
+        ["widgets/package.json", "version\":\\s\"(.*)\","]
+    ]
 }
