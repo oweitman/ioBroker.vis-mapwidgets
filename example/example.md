@@ -28,7 +28,7 @@ To test:
 - copy contents of file datapoint-userdata.0.path.json to the datapoint
 - Import project zip-file into vis and open it.
 
-![Example3MarkersJSON](./ExamplePathJSON/ExamplePathJSON.png)
+![ExamplePathJSON](./ExamplePathJSON/ExamplePathJSON.png)
 
 ## Directory ExamplePolygonJSON
 
@@ -40,7 +40,7 @@ To test:
 - copy contents of file datapoint-userdata.0.polygon.json to the datapoint
 - Import project zip-file into vis and open it.
 
-![Example3MarkersJSON](./ExamplePolygonJSON/ExamplePolygonJSON.png)
+![ExamplePolygonJSON](./ExamplePolygonJSON/ExamplePolygonJSON.png)
 
 ## Directory ExampleButtonFlytoScript
 
@@ -52,7 +52,7 @@ To test:
 
 - Import project zip-file into vis and open it.
 
-![Example3MarkersJSON](./ExampleButtonFlytoScript/ExampleButtonFlytoScript.png)
+![ExampleButtonFlytoScript](./ExampleButtonFlytoScript/ExampleButtonFlytoScript.png)
 
 ## Directory ExampleCompleteTest
 
@@ -64,7 +64,7 @@ To test:
 - copy contents of file datapoint-userdata.0.leaflet.json to the datapoint
 - Import project zip-file into vis and open it.
 
-![Example3MarkersJSON](./ExampleCompleteTest/ExampleCompleteTest.png)
+![ExampleCompleteTest](./ExampleCompleteTest/ExampleCompleteTest.png)
 
 ## Directory ExampleFitBoundsJSON
 
@@ -79,4 +79,45 @@ To test:
 - copy contents of file datapoint-userdata.0.fitBounds.json to the datapoint
 - Import project zip-file into vis and open it.
 
-![Example3MarkersJSON](./ExampleFitBoundsJSON/ExamplefitBounds.png)
+![ExampleFitBoundsJSON](./ExampleFitBoundsJSON/ExamplefitBounds.png)
+
+## Directory ExamplePluginGeocoderScript
+
+This example demonstrates the use of Leaflet plugins,
+as well as the `loadCSS` and `loadScript` functions.
+Specifically, it shows how to integrate the
+[Leaflet Geocoder plugin](https://github.com/perliedman/leaflet-control-geocoder).
+This example does not use a data point; however,
+the "Expose" checkbox must be checked in the map settings.
+
+To test:
+
+- Import project zip-file into vis and open it.
+
+After importing, you will find the following details in the script tab.
+
+```javascript
+// A separate function is required for using the 'await' keyword. Alternatively, the Promise/then notation must be used.
+async function load() {
+    // Use try/catch to handle errors in await functions
+    try {
+        // Load the CSS stylesheet as described in the plugin documentation
+        await window.iobroker.mapwidgets.loadCSS(
+            'https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css',
+        );
+        // Load the javascript as described in the plugin documentation
+        await window.iobroker.mapwidgets.loadScript(
+            'https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js',
+        );
+        // Wait for the map object to be created by the widget. The "Expose" option must be checked in the widget settings.
+        let map = await window.iobroker.mapwidgets.waitForGlobal('iobroker.mapwidgets.w00001.map', 200, 5000);
+        // // Once the map object is available, the geocoder control can be added to the map.
+        new L.Control.Geocoder().addTo(map);
+    } catch (e) {
+        console.log(e.message);
+    }
+}
+load();
+```
+
+![ExamplePluginGeocoderScript](./ExamplePluginGeocoderScript/ExamplePluginGeocoderScript.png)

@@ -3633,7 +3633,7 @@
   var import_leaflet2 = __toESM(require_leaflet());
 
   // ../package.json
-  var version = "0.0.10";
+  var version = "0.0.12";
 
   // node_modules/deep-object-diff/mjs/utils.js
   var isDate = (d) => d instanceof Date;

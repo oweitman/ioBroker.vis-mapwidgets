@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "news": {
+      "0.0.12": {
+        "en": "- Another example of using the Geocoder plugin has been added,\n  demonstrating the use of the loadCSS and loadScript functions.\n- fix some picture alt names\n- fix some project filenames\n- improve version number output in the widget",
+        "de": "- Ein weiteres Beispiel für die Verwendung des Geocoder Plugins wurde hinzugefügt,\ndie Verwendung der LoadCSS- und LoadScript-Funktionen demonstrieren.\n- einige bild-al-namen reparieren\n- einige projektdateinamen beheben\n- die ausgabe der versionsnummer im widget verbessern",
+        "ru": "- добавлен еще один пример использования плагина Geocoder,\nдемонстрация использования функций loadCSS и loadScript.\n- починить картинку альтернативные имена\n- исправить некоторые имена файлов проекта\n- улучшить выход номера версии в виджете",
+        "pt": "- Outro exemplo de utilização do plugin Geocoder foi adicionado,\ndemonstração da utilização das funções loadCSS e loadScript.\n- consertar alguns nomes de imagens\n- corrigir alguns nomes de arquivos do projeto\n- melhorar a saída de número de versão no widget",
+        "nl": "- Een ander voorbeeld van het gebruik van de Geocoder plugin is toegevoegd,\nhet aantonen van het gebruik van de loadCSS- en loadScript-functies.\n- maak wat foto alt namen\n- sommige project bestandsnamen repareren\n- het verbeteren van versienummer output in de widget",
+        "fr": "- Un autre exemple d'utilisation du plugin Geocoder a été ajouté,\ndémontrer l'utilisation des fonctions loadCSS et loadScript.\n- fixer quelques noms de photos\n- correction de certains noms de fichiers de projets\n- améliorer la sortie du numéro de version dans le widget",
+        "it": "- È stato aggiunto un altro esempio di utilizzo del plugin Geocoder,\ndimostrare l'uso delle funzioni loadCSS e loadScript.\n- sistemare dei nomi delle foto\n- fissare alcuni nomi di file di progetto\n- migliorare l'output del numero di versione nel widget",
+        "es": "- Otro ejemplo de uso del plugin Geocoder se ha añadido,\ndemostrando el uso de las funciones loadCSS y loadScript.\n- arreglar algunos nombres de alt\n- arreglar algunos nombres de archivo del proyecto\n- mejorar la salida del número de versión en el widget",
+        "pl": "- Dodano kolejny przykład użycia wtyczki Geocoder,\ndemonstrujące wykorzystanie funkcji loadCSS i loadScript.\n- naprawić kilka zdjęć alt nazwy\n- naprawić nazwy plików projektu\n- poprawiają wyjście numeru wersji w widgecie",
+        "uk": "- Додано ще один приклад використання плагіна Geocoder,\nдемонстрація використання функцій LoadCS та LoadScript.\n- зафіксувати деякі імена альт\n- виправлення деяких назв проекту\n- поліпшити вихід номеру версії в віджеті",
+        "zh-cn": "- 增加了另一个使用Geocoder插件的例子,\n显示加载CSS和加载脚本函数的使用.\n- 修复一些图片替代名称\n- 修正一些工程文件名\n- 改进部件中的版本编号输出"
+      },
       "0.0.11": {
         "en": "add fitBound option",
         "de": "fitBound Option hinzufügen",
@@ -80,19 +93,6 @@
         "pl": "wydanie",
         "uk": "реліз",
         "zh-cn": "发布"
-      },
-      "0.0.4": {
-        "en": "fix reponame",
-        "de": "Reponame reparieren",
-        "ru": "исправлена название репозитория",
-        "pt": "corrigir nome do repositório",
-        "nl": "reponaam repareren",
-        "fr": "corriger le nom du dépôt",
-        "it": "risolvere il nome del repository",
-        "es": "corregir el nombre del repositorio",
-        "pl": "Napraw nazwę repozytorium",
-        "uk": "виправлення назви репозиторію",
-        "zh-cn": "修复仓库名称"
       }
     },
     "titleLang": {

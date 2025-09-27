@@ -555,6 +555,13 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.0.12 (2025-09-27)
+
+- Another example of using the Geocoder plugin has been added,
+  demonstrating the use of the loadCSS and loadScript functions.
+- fix some picture alt names
+- fix some project filenames
+- improve version number output in the widget
 
 ### 0.0.11 (2025-09-26)
 
