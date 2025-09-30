@@ -50,13 +50,18 @@ Display of various elements on a map.
 
 #### Widget configuration
 
-| Name                | Description                                                             |
-| ------------------- | ----------------------------------------------------------------------- |
-| `mapwidgets_oid`    | Data point containing the element configuration                         |
-| `mapwidgets_lat`    | Latitude of the map center                                              |
-| `mapwidgets_lon`    | Longitude of the map center                                             |
-| `mapwidgets_zoom`   | Initial zoom level                                                      |
-| `mapwidgets_expose` | Expose the map object under `window.iobroker.mapwidgets.<widgetID>.map` |
+| Name                             | Description                                                             |
+| -------------------------------- | ----------------------------------------------------------------------- |
+| `mapwidgets_oid`                 | Data point containing the element configuration                         |
+| `mapwidgets_lat`                 | Latitude of the map center                                              |
+| `mapwidgets_lon`                 | Longitude of the map center                                             |
+| `mapwidgets_zoom`                | Initial zoom level                                                      |
+| `mapwidgets_expose`              | Expose the map object under `window.iobroker.mapwidgets.<widgetID>.map` |
+| `mapwidgets_daynightenabled`     | Enable day/night mode                                                   |
+| `mapwidgets_daynightcolor`       | Frame color for the day/night zone                                      |
+| `mapwidgets_daynightopacity`     | Opacity for the day/night zone                                          |
+| `mapwidgets_daynightfillcolor`   | Fill color for the day/night zone                                       |
+| `mapwidgets_daynightfillopacity` | Fill Opacity for the day/night zone                                     |
 
 #### Map Configuration
 
@@ -555,6 +560,11 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### 0.0.13 (2025-09-30)
+
+- add day/Night terminator
+
 ### 0.0.12 (2025-09-27)
 
 - Another example of using the Geocoder plugin has been added,
