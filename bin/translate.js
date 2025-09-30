@@ -122,6 +122,10 @@ async function updateEmptyKeysWithTranslation(i18n, lang) {
     for (const key in i18n[lang]) {
         if (isKeyEmptyInAnyLanguage(i18n, key)) {
             const translatedKey = await fetchTranslations(i18n[lang][key]);
+            if (translatedKey.message) {
+                console.log(`Error: ${translatedKey.message} for ${key} (${i18n[lang][key]})`);
+                continue;
+            }
             // @ts-expect-error unknown type
             for (const k in translatedKey) {
                 if (i18n[k][key] === '') {
