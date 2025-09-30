@@ -104,6 +104,7 @@
 <script id="tplMapWidgetLeaflet" type="text/ejs" class="vis-tpl"
     data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/mapwidgets/dist/images/mapwidgets.svg"></img>'
     data-vis-attrs="mapwidgets_oid/id;mapwidgets_lat;mapwidgets_lon;mapwidgets_zoom/number,0;mapwidgets_expose/checkbox[false];"
+    data-vis-attrs0="group.mapwidgets_daynight;mapwidgets_daynightenabled/checkbox[false];mapwidgets_daynightcolor[#000000]/color;mapwidgets_daynightopacity[0.1];mapwidgets_daynightfillcolor[#000000]/color;mapwidgets_daynightfillopacity[0.3];"
     data-vis-set="mapwidgets" data-vis-type="val" data-vis-beta="false" data-vis-update-style="true"
     data-vis-name="Mapwidgets Leaflet">
     <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:hidden; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%

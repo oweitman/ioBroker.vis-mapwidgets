@@ -4,5 +4,11 @@
     "mapwidgets_lon": "Map lon",
     "mapwidgets_zoom": "Map Zoom",
     "mapwidgets_expose": "Map Expose",
+    "group_mapwidgets_daynight": "Map Day/Night",
+    "mapwidgets_daynightenabled": "Day/Night Enabled",
+    "mapwidgets_daynightcolor": "Day/Night Color",
+    "mapwidgets_daynightopacity": "Day/Night Opacity",
+    "mapwidgets_daynightfillcolor": "Day/Night Fill Color",
+    "mapwidgets_daynightfillopacity": "Day/Night Fill Opacity",
     "yyy": "yyy"
 }

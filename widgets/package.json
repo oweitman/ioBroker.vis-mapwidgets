@@ -1,7 +1,7 @@
 {
     "name": "mapwidgets-vis1-widget",
     "version": "0.0.12",
-    "main": "mapwidgets/js/mapwidgets-dist.js",
+    "main": "mapwidgets/dist/bundle.js",
     "watch": {
         "build": "mapwidgets/**/js/*.js"
     },

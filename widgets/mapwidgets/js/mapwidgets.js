@@ -9,8 +9,9 @@
 
 /* global $, vis, systemDictionary,L,window,document */
 
-import '../../node_modules/leaflet/dist/leaflet.css';
-import '../../node_modules/leaflet/dist/leaflet.js';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.js';
+import '../js/L.Terminator';
 import '../css/style.css';
 import { version as pkgVersion } from '../../../package.json';
 import { diff } from 'deep-object-diff';
@@ -175,6 +176,15 @@ vis.binds['mapwidgets'] = {
             let lon = data['mapwidgets_lon'] ? parseFloat(data['mapwidgets_lon']) : 8.68417;
             let zoom = data['mapwidgets_zoom'] ? parseFloat(data['mapwidgets_zoom']) : 13;
             let expose = data['mapwidgets_expose'] ? Boolean(data['mapwidgets_expose']) : false;
+            let daynight = data['mapwidgets_daynightenabled'] ? Boolean(data['mapwidgets_daynightenabled']) : false;
+            let daynightColor = data['mapwidgets_daynightcolor'] ? String(data['mapwidgets_daynightcolor']) : '#000000';
+            let daynightOpacity = data['mapwidgets_daynightopacity'] ? Number(data['mapwidgets_daynightopacity']) : 0.1;
+            let daynightFillColor = data['mapwidgets_daynightfillcolor']
+                ? String(data['mapwidgets_daynightfillcolor'])
+                : '#000000';
+            let daynightFillOpacity = data['mapwidgets_daynightfillopacity']
+                ? Number(data['mapwidgets_daynightfillopacity'])
+                : 0.3;
 
             if (!vis.binds['mapwidgets'].data[widgetID]) {
                 vis.binds['mapwidgets'].data[widgetID] = {
@@ -224,7 +234,24 @@ vis.binds['mapwidgets'] = {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             }).addTo(visdata.map);
-
+            if (daynight) {
+                let options = {
+                    color: daynightColor,
+                    opacity: daynightOpacity,
+                    fillColor: daynightFillColor,
+                    fillOpacity: daynightFillOpacity,
+                };
+                let terminator = L.terminator(options).addTo(visdata.map);
+                function terminatorLoop() {
+                    setTimeout(function () {
+                        terminator.setTime();
+                        terminatorLoop();
+                    }, 60000);
+                }
+                if (!vis.editMode) {
+                    terminatorLoop();
+                }
+            }
             this.render(widgetID, view, data, style);
         },
         render(widgetID /* , view, data, style */) {
