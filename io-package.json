@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "news": {
+      "0.0.13": {
+        "en": "add day/Night terminator",
+        "de": "tag/Nacht Terminator hinzufügen",
+        "ru": "обсуждение Day/Night Terminator",
+        "pt": "adicionar dia/terminador noturno",
+        "nl": "dag/nachtterminator toevoegen",
+        "fr": "ajouter le terminateur jour/nuit",
+        "it": "aggiungere giorno/Night terminator",
+        "es": "añadir día/noche final",
+        "pl": "dodaj terminator dnia / nocy",
+        "uk": "додати день/Нічний термінатор",
+        "zh-cn": "添加日/ 夜间定义符"
+      },
       "0.0.12": {
         "en": "- Another example of using the Geocoder plugin has been added,\n  demonstrating the use of the loadCSS and loadScript functions.\n- fix some picture alt names\n- fix some project filenames\n- improve version number output in the widget",
         "de": "- Ein weiteres Beispiel für die Verwendung des Geocoder Plugins wurde hinzugefügt,\ndie Verwendung der LoadCSS- und LoadScript-Funktionen demonstrieren.\n- einige bild-al-namen reparieren\n- einige projektdateinamen beheben\n- die ausgabe der versionsnummer im widget verbessern",
@@ -80,19 +93,6 @@
         "pl": "napraw więcej adresów pakietów",
         "uk": "виправлено більше посилань на пакети",
         "zh-cn": "修复更多的套餐URL"
-      },
-      "0.0.5": {
-        "en": "release",
-        "de": "Veröffentlichung",
-        "ru": "релиз",
-        "pt": "lançamento",
-        "nl": "versie",
-        "fr": "version",
-        "it": "rilascio",
-        "es": "lanzamiento",
-        "pl": "wydanie",
-        "uk": "реліз",
-        "zh-cn": "发布"
       }
     },
     "titleLang": {

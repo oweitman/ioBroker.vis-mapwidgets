@@ -560,7 +560,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
 ### 0.0.13 (2025-09-30)
 
 - add day/Night terminator
