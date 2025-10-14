@@ -31,8 +31,8 @@
         "@iobroker/eslint-config": "^2.2.0",
         "@iobroker/testing": "^5.1.1",
         "@tsconfig/node20": "^20.1.6",
-        "@types/node": "^24.5.2",
-        "typescript": "~5.9.2"
+        "@types/node": "^24.7.2",
+        "typescript": "~5.9.3"
     },
     "files": [
         "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|eslint.config.mjs|prettier.config.mjs).{json,json5}",
@@ -56,7 +56,7 @@
         "translate-widgets": "node ./bin/translate.js --source widgets/mapwidgets/i18n/en.json --format single",
         "translate-widgets-notranslate": "node ./bin/translate.js --source widgets/mapwidgets/i18n/en.json --format single --notranslate",
         "build": "cd widgets/mapwidgets && npm run build && cd ../..",
-        "npm": "npm i",
+        "npm": "npm i && cd widgets && npm i",
         "release": "release-script --all",
         "upload": "NPM_PACK=$(npm pack) && iob url \"$(pwd)/$NPM_PACK\" --debug && rm \"$NPM_PACK\""
     },
