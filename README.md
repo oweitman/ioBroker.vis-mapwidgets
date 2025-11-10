@@ -2,8 +2,8 @@
 
 ![Logo](admin/mapwidgets-small.svg)
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/ioBroker.vis-mapwidgets)
-[![Downloads](https://img.shields.io/npm/dm/ioBroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/ioBroker.vis-mapwidgets)
+[![NPM version](https://img.shields.io/npm/v/iobroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/iobroker.vis-mapwidgets)
+[![Downloads](https://img.shields.io/npm/dm/ioBroker.vis-mapwidgets.svg)](https://www.npmjs.com/package/iobroker.vis-mapwidgets)
 ![Number of Installations](https://iobroker.live/badges/vis-mapwidgets-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/vis-mapwidgets-stable.svg)
 [![NPM](https://nodei.co/npm/iobroker.vis-mapwidgets.png?downloads=true)](https://npmjs.com/package/iobroker.vis-mapwidgets)
@@ -560,6 +560,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.0.13 (2025-09-30)
 
 - add day/Night terminator
