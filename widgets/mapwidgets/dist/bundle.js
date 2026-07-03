@@ -13228,16 +13228,16 @@
         },
         mapwidgets_lon: {
           en: "Map lon",
-          de: "Karte einsam",
-          ru: "\u041A\u0430\u0440\u0442\u0430 \u041B\u043E\u043D",
-          pt: "Mapa solit\xE1rio",
-          nl: "Kaart een",
-          fr: "Carte lon",
-          it: "Mappa lon",
-          es: "Mapa lon",
-          pl: "Mapa lon",
-          uk: "Map lon",
-          "zh-cn": "Map lon"
+          de: "Karte lng",
+          ru: "\u0414\u043E\u043B\u0433\u043E\u0442\u0430 \u043A\u0430\u0440\u0442\u044B",
+          pt: "Longitude do mapa",
+          nl: "Kaart lengtegraad",
+          fr: "Longitude de la carte",
+          it: "Longitudine della mappa",
+          es: "Longitud del mapa",
+          pl: "D\u0142ugo\u015B\u0107 geograficzna mapy",
+          uk: "\u0414\u043E\u0432\u0433\u043E\u0442\u0430 \u043A\u0430\u0440\u0442\u0438",
+          "zh-cn": "\u5730\u56FE\u7ECF\u5EA6"
         },
         mapwidgets_zoom: {
           en: "Map Zoom",

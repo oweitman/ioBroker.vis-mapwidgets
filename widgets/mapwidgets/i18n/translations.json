@@ -27,16 +27,16 @@
     },
     "mapwidgets_lon": {
         "en": "Map lon",
-        "de": "Karte einsam",
-        "ru": "Карта Лон",
-        "pt": "Mapa solitário",
-        "nl": "Kaart een",
-        "fr": "Carte lon",
-        "it": "Mappa lon",
-        "es": "Mapa lon",
-        "pl": "Mapa lon",
-        "uk": "Map lon",
-        "zh-cn": "Map lon"
+        "de": "Karte lng",
+        "ru": "Долгота карты",
+        "pt": "Longitude do mapa",
+        "nl": "Kaart lengtegraad",
+        "fr": "Longitude de la carte",
+        "it": "Longitudine della mappa",
+        "es": "Longitud del mapa",
+        "pl": "Długość geograficzna mapy",
+        "uk": "Довгота карти",
+        "zh-cn": "地图经度"
     },
     "mapwidgets_zoom": {
         "en": "Map Zoom",

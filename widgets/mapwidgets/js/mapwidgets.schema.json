@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/ioBroker.mapwidgets.schema.json",
+  "title": "ioBroker.vis-mapwidgets map configuration",
+  "description": "Validates the JSON data structure described for ioBroker.vis-mapwidgets map elements. Leaflet option objects are intentionally permissive.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "marker": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/marker" }
+    },
+    "icons": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[A-Za-z0-9_.-]+$": { "$ref": "#/$defs/icon" }
+      }
+    },
+    "polyline": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/polyline" }
+    },
+    "polygon": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/polygon" }
+    },
+    "rectangle": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/rectangle" }
+    },
+    "circle": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/circle" }
+    }
+  },
+  "$defs": {
+    "latitude": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "coordinate": {
+      "type": "array",
+      "prefixItems": [
+        { "$ref": "#/$defs/latitude" },
+        { "$ref": "#/$defs/longitude" }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "point": {
+      "type": "array",
+      "prefixItems": [
+        { "type": "number" },
+        { "type": "number" }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "iobOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fitBounds": { "type": "boolean" }
+      }
+    },
+    "leafletOptions": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "textBinding": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text"],
+          "properties": {
+            "text": { "type": "string" },
+            "options": { "$ref": "#/$defs/leafletOptions" }
+          }
+        }
+      ]
+    },
+    "marker": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "latlng": { "$ref": "#/$defs/coordinate" },
+        "lat": { "$ref": "#/$defs/latitude" },
+        "lng": { "$ref": "#/$defs/longitude" },
+        "options": { "$ref": "#/$defs/leafletOptions" },
+        "popup": { "$ref": "#/$defs/textBinding" },
+        "tooltip": { "$ref": "#/$defs/textBinding" },
+        "iobOptions": { "$ref": "#/$defs/iobOptions" }
+      },
+      "oneOf": [
+        { "required": ["latlng"], "not": { "anyOf": [{ "required": ["lat"] }, { "required": ["lng"] }] } },
+        { "required": ["lat", "lng"], "not": { "required": ["latlng"] } }
+      ]
+    },
+    "icon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["iconUrl"],
+      "properties": {
+        "iconUrl": { "type": "string", "minLength": 1 },
+        "iconRetinaUrl": { "type": "string" },
+        "iconSize": { "$ref": "#/$defs/point" },
+        "iconAnchor": { "$ref": "#/$defs/point" },
+        "popupAnchor": { "$ref": "#/$defs/point" },
+        "tooltipAnchor": { "$ref": "#/$defs/point" },
+        "shadowUrl": { "type": "string" },
+        "shadowRetinaUrl": { "type": "string" },
+        "shadowSize": { "$ref": "#/$defs/point" },
+        "shadowAnchor": { "$ref": "#/$defs/point" },
+        "className": { "type": "string" }
+      }
+    },
+    "pathBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "options": { "$ref": "#/$defs/leafletOptions" },
+        "popup": { "$ref": "#/$defs/textBinding" },
+        "tooltip": { "$ref": "#/$defs/textBinding" },
+        "iobOptions": { "$ref": "#/$defs/iobOptions" }
+      }
+    },
+    "polyline": {
+      "allOf": [
+        { "$ref": "#/$defs/pathBase" },
+        {
+          "type": "object",
+          "required": ["latlng"],
+          "properties": {
+            "latlng": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/coordinate" },
+              "minItems": 2
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "polygon": {
+      "allOf": [
+        { "$ref": "#/$defs/pathBase" },
+        {
+          "type": "object",
+          "required": ["latlng"],
+          "properties": {
+            "latlng": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/coordinate" },
+              "minItems": 3
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "rectangle": {
+      "allOf": [
+        { "$ref": "#/$defs/pathBase" },
+        {
+          "type": "object",
+          "required": ["latlng"],
+          "properties": {
+            "latlng": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/coordinate" },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "circle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["latlng", "options"],
+      "properties": {
+        "latlng": { "$ref": "#/$defs/coordinate" },
+        "options": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["radius"],
+          "properties": {
+            "radius": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "popup": { "$ref": "#/$defs/textBinding" },
+        "tooltip": { "$ref": "#/$defs/textBinding" },
+        "iobOptions": { "$ref": "#/$defs/iobOptions" }
+      }
+    }
+  }
+}

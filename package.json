@@ -2,6 +2,7 @@
     "name": "iobroker.vis-mapwidgets",
     "version": "0.0.13",
     "description": "mapwidgets",
+    "main": "",
     "author": {
         "name": "oweitman",
         "email": "oweitman@gmx.de"

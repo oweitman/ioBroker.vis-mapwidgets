@@ -561,6 +561,12 @@ Waits for a global variable (or a nested property of `window`) to become availab
     ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- fix translation map lng
+- add main in package.json for dev-server
+- add untestet json schema for further implementation
+
 ### 0.0.13 (2025-09-30)
 
 - add day/Night terminator

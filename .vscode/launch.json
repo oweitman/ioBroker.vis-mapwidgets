@@ -24,7 +24,17 @@
             "url": "http://localhost:8082/vis-2/?main#default",
             "trace": true,
             "skipFiles": ["socket.io.js"]
-        }
+        },
+                {
+            "name": "dev-server",
+            "program": "../dev-server/dist/index.js",
+            "args": ["watch", "--noInstall"],
+            "request": "launch",
+            "stopOnEntry": true,
+            "runtimeExecutable": "c:/Users/oweit/AppData/Roaming/fnm/aliases/default/node.exe",
+            "skipFiles": ["<node_internals>/**"],
+            "type": "node"
+                }
     ]
 }
 //node --inspect-brk=localhost:9229 .\node_modules\ioBroker.vis-mapwidgets\main.js
