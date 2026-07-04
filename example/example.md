@@ -121,3 +121,56 @@ load();
 ```
 
 ![ExamplePluginGeocoderScript](./ExamplePluginGeocoderScript/ExamplePluginGeocoderScript.png)
+
+## Directory ExamplePathHistory
+
+This example demonstrates how to display a path history.
+Using a selection field implemented with the `jsonTemplate` widget
+(from the adapter of the same name), you can select a specific path from
+an extended JSON data structure and display it in the Leaflet map widget.
+
+The extended data structure is organized as follows:
+
+```json
+{
+    "2026-07-03T12:00:00.000Z": {
+        "map": {}
+    },
+    "2026-07-04T12:00:00.000Z": {
+        "map": {}
+    },
+    "2026-07-05T12:00:00.000Z": {
+        "map": {}
+    }
+}
+```
+
+Any value accepted by the `new Date()` constructor (with a single parameter)
+can be used. As an example, a JavaScript timestamp or an ISO-formatted date string.
+ISO format is recommended for better readability:
+<https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Date/Date>
+
+The actual map data, as described in the adapter documentation,
+is contained within the respective `map` attribute.
+
+All paths should have the `fitbounds=true` option set so that the map
+automatically selects the correct view area and zoom level (see example data).
+
+A complete JSON example can be found in this file:
+[ExamplePathHistoryJSON](./ExamplePathHistory/datapoint.userdata.0.pathhistory.json)
+
+The `jsonTemplate` widget was used for the selection field:
+<https://github.com/oweitman/ioBroker.vis-jsontemplate>
+
+Select the data point containing the prepared data structure.
+Use the following template:
+
+[jsonTemplate](./ExamplePathHistory/jsonTemplate.txt)
+
+Within this template at the beginning,
+a local data point named `local_map` can optionally
+be customized; however, for this example, it should remain unchanged.
+
+Finally, simply place the Mapwidgets Leaflet widget and set `local_map` as its data point.
+
+![ExamplePathHistory](./ExamplePathHistory/ExamplePathHistory.png)

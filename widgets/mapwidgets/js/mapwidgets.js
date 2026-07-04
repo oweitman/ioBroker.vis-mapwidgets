@@ -271,7 +271,9 @@ vis.binds['mapwidgets'] = {
             this.icons(visdata, widgetID, configSet);
             this.applyAllGeometryDiffs.call(this, visdata, widgetID, configSet, map, fg);
             if (vis.binds['mapwidgets'].data[widgetID].fitBounds) {
-                visdata.map.fitBounds(visdata.featureGroup.getBounds());
+                try {
+                    visdata.map.fitBounds(visdata.featureGroup.getBounds()); 
+                } catch (e) {}
             }
         },
         applyAllGeometryDiffs(visdata, widgetID, configSet, map, fg) {

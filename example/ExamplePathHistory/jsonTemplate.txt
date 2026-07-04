@@ -1,0 +1,121 @@
+<% 
+let localmapdatapoint="local_map";
+let selected="";
+let options = Object.keys(data).map(el=>{
+    return {
+        value: el,
+        label:new Date(el).toLocaleString(undefined, {
+            dateStyle: "short",
+            timeStyle: "short"
+        })
+    }
+})
+window.jsontemplate=[]
+window.jsontemplate[widgetid]={};
+window.jsontemplate[widgetid].data=data;
+window.jsontemplate[widgetid].localmapdatapoint=localmapdatapoint;
+%>
+<style>
+.mui-select-wrapper {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 220px;
+    margin: 16px 0;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+.mui-select-label {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    background: #fff;
+    padding: 0 4px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.mui-select {
+    height: 56px;
+    padding: 16px 40px 16px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.87);
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.mui-select-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 16px;
+    top: 34px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.54);
+}
+
+.mui-select:hover {
+    border-color: rgba(0, 0, 0, 0.87);
+}
+
+.mui-select:focus {
+    border: 2px solid #1976d2;
+    padding: 15px 39px 15px 13px;
+}
+
+.mui-select:focus + .mui-select-label,
+.mui-select-wrapper:focus-within .mui-select-label {
+    color: #1976d2;
+}
+
+.mui-select:disabled {
+    color: rgba(0, 0, 0, 0.38);
+    border-color: rgba(0, 0, 0, 0.12);
+    background-color: #f5f5f5;
+    cursor: default;
+}
+</style>
+<div class="mui-select-wrapper">
+
+    <select
+        id="select_<%= widgetid  %>"
+        class="mui-select"
+        data-widgetid="<%= widgetid  %>"
+    >
+        <% options.forEach(function(option) { %>
+            <option
+                value="<%= option.value %>"
+                <%= option.value === selected ? 'selected' : '' %>
+            >
+                <%= option.label %>
+            </option>
+        <% }); %>
+    </select>
+</div>
+<script>
+(() => {
+    const select = document.getElementById("select_<%= widgetid %>");
+    const widgetid = select.dataset.widgetid;
+    const data = window.jsontemplate[widgetid];
+    const key = Object.keys(data.data)[0];
+    onSelectionChanged(widgetid,key);
+    select.addEventListener("change", (event) => {
+        const value = event.target.value;
+        const widgetid = event.target.dataset.widgetid;
+
+        onSelectionChanged(widgetid,value);
+    });
+
+    function onSelectionChanged(widgetid,value) {
+        vis.setValue(window.jsontemplate[widgetid].localmapdatapoint,JSON.stringify(window.jsontemplate[widgetid].data[value].map))
+    }
+})();
+</script>
