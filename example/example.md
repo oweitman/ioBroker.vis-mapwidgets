@@ -124,10 +124,12 @@ load();
 
 ## Directory ExamplePathHistory
 
-This example demonstrates how to display a path history.
-Using a selection field implemented with the `jsonTemplate` widget
-(from the adapter of the same name), you can select a specific path from
-an extended JSON data structure and display it in the Leaflet map widget.
+This example demonstrates how to display a path from a history.
+Using a selection field implemented with
+the `jsonTemplate` widget (from the adapter of the same name),
+
+you can select a path for a specific date from an extended JSON data structure
+and display it in the Leaflet map widget.
 
 The extended data structure is organized as follows:
 
