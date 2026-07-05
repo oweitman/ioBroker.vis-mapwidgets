@@ -56,7 +56,6 @@
         "translate": "translate-adapter",
         "translate-widgets": "node ./bin/translate.js --source widgets/mapwidgets/myi18n/en.json --format single",
         "translate-widgets-notranslate": "node ./bin/translate.js --source widgets/mapwidgets/myi18n/en.json --format single --notranslate",
-        "build": "cd widgets/mapwidgets && npm run build && cd ../..",
         "npm": "npm i && cd widgets && npm i",
         "release": "release-script --all",
         "upload": "NPM_PACK=$(npm pack) && iob url \"$(pwd)/$NPM_PACK\" --debug && rm \"$NPM_PACK\""

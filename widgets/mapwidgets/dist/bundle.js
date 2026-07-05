@@ -21361,9 +21361,7 @@
     return String(a.keyword || "").localeCompare(String(b.keyword || ""));
   }
   function filterFollowUpOneOfErrors(errors) {
-    const oneOfPaths = new Set(
-      errors.filter((err) => err.keyword === "oneOf").map((err) => err.instancePath || "")
-    );
+    const oneOfPaths = new Set(errors.filter((err) => err.keyword === "oneOf").map((err) => err.instancePath || ""));
     return errors.filter((err) => {
       if (err.keyword === "oneOf") {
         return true;
@@ -21402,10 +21400,7 @@
     switch (err.keyword) {
       case "required": {
         const missing = (_b = (_a = err.params) == null ? void 0 : _a.missingProperty) != null ? _b : "<unknown>";
-        return [
-          _("Error at %s:", path),
-          _('Required property "%s" is missing.', missing)
-        ].join("\n");
+        return [_("Error at %s:", path), _('Required property "%s" is missing.', missing)].join("\n");
       }
       case "type": {
         return [
@@ -21535,17 +21530,11 @@
       }
       case "additionalProperties": {
         const prop = (_n = (_m = err.params) == null ? void 0 : _m.additionalProperty) != null ? _n : "<unknown>";
-        return [
-          _("Error at %s:", path),
-          _('Unexpected property "%s".', prop)
-        ].join("\n");
+        return [_("Error at %s:", path), _('Unexpected property "%s".', prop)].join("\n");
       }
       case "unevaluatedProperties": {
         const prop = (_p = (_o = err.params) == null ? void 0 : _o.unevaluatedProperty) != null ? _p : "<unknown>";
-        return [
-          _("Error at %s:", path),
-          _('Unexpected property "%s".', prop)
-        ].join("\n");
+        return [_("Error at %s:", path), _('Unexpected property "%s".', prop)].join("\n");
       }
       default: {
         return [
@@ -22098,7 +22087,7 @@
     showSchemaErrorDialog(widgetID) {
       const visdata = vis.binds["mapwidgets"].data[widgetID];
       const html = visdata.schemaErrorsHtml || "Keine Schemafehler vorhanden.";
-      const $widget = $("#" + widgetID);
+      const $widget = $(`#${widgetID}`);
       const width = Math.round($widget.width() * 0.9);
       const height = Math.round($widget.height() * 0.9);
       $("<div></div>").addClass("mapwidgets-schema-error-dialog-content").html(html).dialog({
