@@ -15,9 +15,15 @@ import '../js/L.Terminator';
 import '../css/style.css';
 import { version as pkgVersion } from '../../../package.json';
 import { diff } from 'deep-object-diff';
+import Ajv2020 from "ajv/dist/2020.js";
+import { formatAjvErrors } from "./formatAjvErrors.js";
+
 var hash = require('object-hash');
 
-var translations = require('../i18n/translations.json');
+const schema = require('./mapwidgets.schema.json'); 
+
+
+var translations = require('../myi18n/translations.json');
 $.extend(true, systemDictionary, translations);
 
 // this code can be placed directly in mapwidgets.html
@@ -171,7 +177,7 @@ vis.binds['mapwidgets'] = {
 
             // mapwidgets_oid/id;mapwidgets_lat/number,-90,90;mapwidgets_lon/number,-180,180;mapwidgets_zoom/number,0;
             //frankfurt 50.11552 8.68417
-            let config = data['mapwidgets_oid'] ? JSON.parse(vis.states.attr(`${data['mapwidgets_oid']}.val`)) : [];
+            let config = data['mapwidgets_oid'] ? JSON.parse(vis.states.attr(`${data['mapwidgets_oid']}.val`)||"{}") : {};
             let lat = data['mapwidgets_lat'] ? parseFloat(data['mapwidgets_lat']) : 50.11552;
             let lon = data['mapwidgets_lon'] ? parseFloat(data['mapwidgets_lon']) : 8.68417;
             let zoom = data['mapwidgets_zoom'] ? parseFloat(data['mapwidgets_zoom']) : 13;
@@ -186,6 +192,9 @@ vis.binds['mapwidgets'] = {
                 ? Number(data['mapwidgets_daynightfillopacity'])
                 : 0.3;
 
+            vis.binds['mapwidgets'].data[widgetID] =
+                vis.binds['mapwidgets'].data[widgetID] || {};
+
             if (!vis.binds['mapwidgets'].data[widgetID]) {
                 vis.binds['mapwidgets'].data[widgetID] = {
                     marker: {},
@@ -196,7 +205,7 @@ vis.binds['mapwidgets'] = {
                     fitBounds: false,
                 };
             }
-            let visdata = vis.binds['mapwidgets'].data[widgetID];
+            let visdata = vis.binds['mapwidgets'].data[widgetID]; 
             visdata.config = config;
 
             function onChange(e, newValue) {
@@ -259,6 +268,20 @@ vis.binds['mapwidgets'] = {
 
             let visdata = vis.binds['mapwidgets'].data[widgetID];
             let config = visdata.config;
+
+            if (vis.editMode) {
+                const ajv = new Ajv2020({
+                    allErrors: true,
+                    strict: false
+                });
+                const validate = ajv.compile(schema);
+                const valid = validate(config);
+                const schemaErrorsHtml = valid
+                    ? ''
+                    : formatAjvErrors(validate.errors, schema, config).replaceAll('\n', '<br>');
+                vis.binds['mapwidgets'].data[widgetID].schemaErrorsHtml = schemaErrorsHtml;
+            }
+            this.schemaErrorControl(widgetID);
             let oldConfig = visdata.oldConfig;
             let diffConfig = diff(oldConfig, config);
             let configSet = {
@@ -275,6 +298,48 @@ vis.binds['mapwidgets'] = {
                     visdata.map.fitBounds(visdata.featureGroup.getBounds()); 
                 } catch (e) {}
             }
+        },
+        schemaErrorControl(widgetID) {
+            const visdata = vis.binds['mapwidgets'].data[widgetID];
+            const map = visdata.map;
+            const hasErrors = Boolean(visdata.schemaErrorsHtml);
+
+            if (visdata.schemaErrorControl) {
+                map.removeControl(visdata.schemaErrorControl);
+                visdata.schemaErrorControl = null;
+            }
+
+            if (!hasErrors) {
+                return;
+            }
+
+            const SchemaErrorControl = L.Control.extend({
+                options: {
+                    position: 'bottomright'
+                },
+
+                onAdd: function () {
+                    const div = L.DomUtil.create('div', 'mapwidgets-schema-error-control');
+
+                    div.innerHTML = `
+                        <button class="mapwidgets-schema-error-btn" title="Schemafehler anzeigen">
+                            ⚠
+                        </button>
+                    `;
+
+                    L.DomEvent.disableClickPropagation(div);
+                    L.DomEvent.disableScrollPropagation(div);
+
+                    div.querySelector('button').addEventListener('click', () => {
+                        vis.binds['mapwidgets'].showSchemaErrorDialog(widgetID);
+                    });
+
+                    return div;
+                }
+            });
+
+            visdata.schemaErrorControl = new SchemaErrorControl();
+            map.addControl(visdata.schemaErrorControl);
         },
         applyAllGeometryDiffs(visdata, widgetID, configSet, map, fg) {
             const types = ['marker', 'polyline', 'polygon', 'rectangle', 'circle'];
@@ -410,6 +475,38 @@ vis.binds['mapwidgets'] = {
         } else if (item.popup.text) {
             layer.bindPopup(item.popup.text, item.popup.options || {});
         }
+    },
+    showSchemaErrorDialog(widgetID) {
+        const visdata = vis.binds['mapwidgets'].data[widgetID];
+        const html = visdata.schemaErrorsHtml || 'Keine Schemafehler vorhanden.';
+        const $widget = $('#' + widgetID);
+
+        const width = Math.round($widget.width() * 0.9);
+        const height = Math.round($widget.height() * 0.9);
+
+        $('<div></div>')
+            .addClass('mapwidgets-schema-error-dialog-content')
+            .html(html)
+            .dialog({
+                title: 'Schemafehler',
+                modal: true,
+                dialogClass: 'mapwidgets-schema-error-dialog',
+                width,
+                height,
+                position: {
+                    my: "center",
+                    at: "center",
+                    of: $widget
+                },
+                open: function () {
+                    $('.ui-widget-overlay').last()
+                        .addClass('mapwidgets-schema-error-overlay');
+                },
+
+                close: function () {
+                    $(this).dialog('destroy').remove();
+                }
+            });  
     },
     setIcon(options, widgetID) {
         let iconRegistry = vis.binds['mapwidgets'].data[widgetID].iconRegistry || {};

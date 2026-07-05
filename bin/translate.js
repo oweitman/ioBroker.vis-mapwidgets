@@ -1,5 +1,5 @@
 const fs = require('node:fs');
-const path = require('path');
+const path = require('node:path');
 
 const langTemplate = {
     en: {},
@@ -16,7 +16,6 @@ const langTemplate = {
 };
 let i18npath = '../src/i18n';
 let format = 'multi';
-let notranslate = false;
 function importi18nKeys() {
     // importiere alle json dateien, die in einem bestimmten verzeichnis liegen
     const i18n = {};
@@ -38,11 +37,15 @@ function importi18nKeys() {
     return i18n;
 }
 function exporti18nKeysMultiFile(i18n) {
-    const dir = path.resolve(__dirname, i18npath);
+    const dir = path.resolve(__dirname, '../', i18npath);
     for (const lang in i18n) {
         const json = JSON.stringify(i18n[lang], null, 4);
-        const filePath = `${dir}/${lang}.json`;
-        fs.writeFileSync(filePath, json);
+        const filePath = `${dir}\\${lang}.json`;
+        try {
+            fs.writeFileSync(filePath, json);
+        } catch (error) {
+            console.error(`Error writing file ${filePath}:`, error);
+        }
     }
 }
 function exporti18nKeysSingleFile(i18n) {
@@ -108,13 +111,27 @@ function isKeyEmptyInAnyLanguage(i18n, key) {
 }
 async function fetchTranslations(word) {
     console.log(`translate ${word}`);
-    const response = await fetch('https://oz7q7o4tl3.execute-api.eu-west-1.amazonaws.com/', {
-        headers: {
-            Referer: 'https://translator-ui.iobroker.in/',
-        },
-        body: JSON.stringify({ text: word, service: 'deepl', together: false }),
-        method: 'POST',
+
+    const response = await fetch("https://translator.iobroker.in/", {
+    "headers": {
+        "accept": "*/*",
+        "accept-language": "de,en-US;q=0.9,en;q=0.8,de-DE;q=0.7",
+        "cache-control": "no-cache",
+        "content-type": "application/json",
+        "pragma": "no-cache",
+        "priority": "u=1, i",
+        "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-site",
+        "Referer": "https://translator-ui.iobroker.in/"
+    },
+            body: JSON.stringify({ text: word, service: 'deepl', together: false }),
+    "method": "POST"
     });
+
     const data = await response.json();
     return data;
 }
@@ -122,17 +139,26 @@ async function updateEmptyKeysWithTranslation(i18n, lang) {
     for (const key in i18n[lang]) {
         if (isKeyEmptyInAnyLanguage(i18n, key)) {
             const translatedKey = await fetchTranslations(i18n[lang][key]);
-            if (translatedKey.message) {
-                console.log(`Error: ${translatedKey.message} for ${key} (${i18n[lang][key]})`);
-                continue;
+            if (translatedKey == 'Service Unavailable') {
+                exporti18nKeys(i18n);
+                console.log('Error with translator service');
+                return i18n;
             }
-            // @ts-expect-error unknown type
-            for (const k in translatedKey) {
-                if (i18n[k][key] === '') {
-                    // @ts-expect-error unknown type
-                    i18n[k][key] = translatedKey[k];
+            if (format == 'multi') {
+                for (const k in translatedKey) {
+                    if (i18n[k][key] === '') {
+                        i18n[k][key] = translatedKey[k];
+                    }
                 }
             }
+            if (format == 'single') {
+                for (const lang in i18n) {
+                    if (i18n[lang][key] === '') {
+                        i18n[lang][key] = translatedKey[i18n['en'][key]][lang];
+                    }
+                }
+            }
+            exporti18nKeys(i18n);
         }
     }
     return i18n;
@@ -237,8 +263,7 @@ async function doTranslate() {
     let i18n = importi18nKeys();
     i18n = extendLanguages(i18n);
     i18n = extendLanguageKeysFromLang(i18n, 'en');
-    //eslint-disable-next-line
-    i18n = !notranslate && await updateEmptyKeysWithTranslation(i18n, 'en') || i18n;
+    i18n = await updateEmptyKeysWithTranslation(i18n, 'en');
     exporti18nKeys(i18n);
     console.log('end translate');
 }
@@ -253,11 +278,6 @@ async function main() {
     pos = args.indexOf('--format');
     if (pos >= 0) {
         format = args[pos + 1];
-        args.splice(pos, 2);
-    }
-    pos = args.indexOf('--notranslate');
-    if (pos >= 0) {
-        notranslate = true;
         args.splice(pos, 2);
     }
 
@@ -279,7 +299,7 @@ async function main() {
     }
     if (args[0] === 'cleanKeys') {
         args.shift();
-        doCleanKeys();
+        doCleanKeys(args);
     }
 }
 

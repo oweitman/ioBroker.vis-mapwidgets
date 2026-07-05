@@ -24,7 +24,7 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "@alcalzone/release-script": "^5.2.0",
+        "@alcalzone/release-script": "^5.2.1",
         "@alcalzone/release-script-plugin-iobroker": "^5.2.0",
         "@alcalzone/release-script-plugin-license": "^5.2.0",
         "@alcalzone/release-script-plugin-manual-review": "^5.2.0",
@@ -33,7 +33,7 @@
         "@iobroker/testing": "^5.2.2",
         "@tsconfig/node20": "^20.1.9",
         "@types/node": "^25.6.0",
-        "typescript": "~5.9.3"
+        "typescript": "~6.0.3"
     },
     "files": [
         "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|eslint.config.mjs|prettier.config.mjs).{json,json5}",
@@ -52,10 +52,10 @@
         "test:integration": "node node_modules/mocha/bin/mocha --exit",
         "check": "tsc --noEmit -p tsconfig.check.json",
         "lint": "eslint . --debug",
-        "repochecker": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.vis-mapwidgets --local --noinfo",
+        "repochecker": "npx @iobroker/repochecker https://github.com/oweitman/ioBroker.vis-mapwidgets --local --noinfo",
         "translate": "translate-adapter",
-        "translate-widgets": "node ./bin/translate.js --source widgets/mapwidgets/i18n/en.json --format single",
-        "translate-widgets-notranslate": "node ./bin/translate.js --source widgets/mapwidgets/i18n/en.json --format single --notranslate",
+        "translate-widgets": "node ./bin/translate.js --source widgets/mapwidgets/myi18n/en.json --format single",
+        "translate-widgets-notranslate": "node ./bin/translate.js --source widgets/mapwidgets/myi18n/en.json --format single --notranslate",
         "build": "cd widgets/mapwidgets && npm run build && cd ../..",
         "npm": "npm i && cd widgets && npm i",
         "release": "release-script --all",

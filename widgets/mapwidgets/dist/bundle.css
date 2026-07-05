@@ -618,4 +618,30 @@ svg.leaflet-image-layer.leaflet-interactive path {
   background-image: url("./images/layers.png");
   background-image: url("./images/mapwidgets.svg");
 }
+.mapwidgets-schema-error-btn {
+  width: 34px;
+  height: 34px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  background: #d32f2f;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+}
+.mapwidgets-schema-error-btn:hover {
+  background: #b71c1c;
+}
+.mapwidgets-schema-error-dialog {
+  max-height: 65vh;
+  overflow: auto;
+  z-index: 20000 !important;
+}
+.mapwidgets-schema-error-dialog pre {
+  white-space: pre-wrap;
+}
+.mapwidgets-schema-error-overlay {
+  z-index: 19999 !important;
+}
 /*# sourceMappingURL=bundle.css.map */

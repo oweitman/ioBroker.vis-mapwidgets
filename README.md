@@ -89,6 +89,18 @@ see also [example\example.md](example/example.md) for more test content.
 For all configurations, the principle is that only the mandatory amount
 of information is required to display an element.
 
+Map data is validated in edit mode. Any errors can be accessed and reviewed via
+the button with the red exclamation mark.
+This button is visible only if errors exist.
+
+Button
+
+![Exclamationmark button](./example/Exclamationmark.png)
+
+Dialog
+
+![ErrorDialog](./example/ErrorDialog.png)
+
 The assignment of the individual attributes is described below:
 
 ##### Marker
@@ -565,7 +577,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
 
 - fix translation map lng
 - add main in package.json for dev-server
-- add untestet json schema for further implementation
+- add schema validation for mapdata in edit mode
 - improve error handling for fitbounds
 - add example for path history
 
