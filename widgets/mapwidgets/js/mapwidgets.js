@@ -15,13 +15,12 @@ import '../js/L.Terminator';
 import '../css/style.css';
 import { version as pkgVersion } from '../../../package.json';
 import { diff } from 'deep-object-diff';
-import Ajv2020 from "ajv/dist/2020.js";
-import { formatAjvErrors } from "./formatAjvErrors.js";
+import Ajv2020 from 'ajv/dist/2020.js';
+import { formatAjvErrors } from './formatAjvErrors.js';
 
 var hash = require('object-hash');
 
-const schema = require('./mapwidgets.schema.json'); 
-
+const schema = require('./mapwidgets.schema.json');
 
 var translations = require('../myi18n/translations.json');
 $.extend(true, systemDictionary, translations);
@@ -177,7 +176,9 @@ vis.binds['mapwidgets'] = {
 
             // mapwidgets_oid/id;mapwidgets_lat/number,-90,90;mapwidgets_lon/number,-180,180;mapwidgets_zoom/number,0;
             //frankfurt 50.11552 8.68417
-            let config = data['mapwidgets_oid'] ? JSON.parse(vis.states.attr(`${data['mapwidgets_oid']}.val`)||"{}") : {};
+            let config = data['mapwidgets_oid']
+                ? JSON.parse(vis.states.attr(`${data['mapwidgets_oid']}.val`) || '{}')
+                : {};
             let lat = data['mapwidgets_lat'] ? parseFloat(data['mapwidgets_lat']) : 50.11552;
             let lon = data['mapwidgets_lon'] ? parseFloat(data['mapwidgets_lon']) : 8.68417;
             let zoom = data['mapwidgets_zoom'] ? parseFloat(data['mapwidgets_zoom']) : 13;
@@ -192,8 +193,7 @@ vis.binds['mapwidgets'] = {
                 ? Number(data['mapwidgets_daynightfillopacity'])
                 : 0.3;
 
-            vis.binds['mapwidgets'].data[widgetID] =
-                vis.binds['mapwidgets'].data[widgetID] || {};
+            vis.binds['mapwidgets'].data[widgetID] = vis.binds['mapwidgets'].data[widgetID] || {};
 
             if (!vis.binds['mapwidgets'].data[widgetID]) {
                 vis.binds['mapwidgets'].data[widgetID] = {
@@ -205,7 +205,7 @@ vis.binds['mapwidgets'] = {
                     fitBounds: false,
                 };
             }
-            let visdata = vis.binds['mapwidgets'].data[widgetID]; 
+            let visdata = vis.binds['mapwidgets'].data[widgetID];
             visdata.config = config;
 
             function onChange(e, newValue) {
@@ -272,7 +272,7 @@ vis.binds['mapwidgets'] = {
             if (vis.editMode) {
                 const ajv = new Ajv2020({
                     allErrors: true,
-                    strict: false
+                    strict: false,
                 });
                 const validate = ajv.compile(schema);
                 const valid = validate(config);
@@ -295,8 +295,10 @@ vis.binds['mapwidgets'] = {
             this.applyAllGeometryDiffs.call(this, visdata, widgetID, configSet, map, fg);
             if (vis.binds['mapwidgets'].data[widgetID].fitBounds) {
                 try {
-                    visdata.map.fitBounds(visdata.featureGroup.getBounds()); 
-                } catch (e) {}
+                    visdata.map.fitBounds(visdata.featureGroup.getBounds());
+                } catch {
+                    /* empty */
+                }
             }
         },
         schemaErrorControl(widgetID) {
@@ -315,7 +317,7 @@ vis.binds['mapwidgets'] = {
 
             const SchemaErrorControl = L.Control.extend({
                 options: {
-                    position: 'bottomright'
+                    position: 'bottomright',
                 },
 
                 onAdd: function () {
@@ -335,7 +337,7 @@ vis.binds['mapwidgets'] = {
                     });
 
                     return div;
-                }
+                },
             });
 
             visdata.schemaErrorControl = new SchemaErrorControl();
@@ -479,7 +481,7 @@ vis.binds['mapwidgets'] = {
     showSchemaErrorDialog(widgetID) {
         const visdata = vis.binds['mapwidgets'].data[widgetID];
         const html = visdata.schemaErrorsHtml || 'Keine Schemafehler vorhanden.';
-        const $widget = $('#' + widgetID);
+        const $widget = $(`#${widgetID}`);
 
         const width = Math.round($widget.width() * 0.9);
         const height = Math.round($widget.height() * 0.9);
@@ -494,19 +496,18 @@ vis.binds['mapwidgets'] = {
                 width,
                 height,
                 position: {
-                    my: "center",
-                    at: "center",
-                    of: $widget
+                    my: 'center',
+                    at: 'center',
+                    of: $widget,
                 },
                 open: function () {
-                    $('.ui-widget-overlay').last()
-                        .addClass('mapwidgets-schema-error-overlay');
+                    $('.ui-widget-overlay').last().addClass('mapwidgets-schema-error-overlay');
                 },
 
                 close: function () {
                     $(this).dialog('destroy').remove();
-                }
-            });  
+                },
+            });
     },
     setIcon(options, widgetID) {
         let iconRegistry = vis.binds['mapwidgets'].data[widgetID].iconRegistry || {};

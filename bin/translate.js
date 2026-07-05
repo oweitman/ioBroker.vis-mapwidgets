@@ -40,7 +40,7 @@ function exporti18nKeysMultiFile(i18n) {
     const dir = path.resolve(__dirname, '../', i18npath);
     for (const lang in i18n) {
         const json = JSON.stringify(i18n[lang], null, 4);
-        const filePath = `${dir}\\${lang}.json`;
+        const filePath = path.join(dir, `${lang}.json`);
         try {
             fs.writeFileSync(filePath, json);
         } catch (error) {
@@ -112,24 +112,24 @@ function isKeyEmptyInAnyLanguage(i18n, key) {
 async function fetchTranslations(word) {
     console.log(`translate ${word}`);
 
-    const response = await fetch("https://translator.iobroker.in/", {
-    "headers": {
-        "accept": "*/*",
-        "accept-language": "de,en-US;q=0.9,en;q=0.8,de-DE;q=0.7",
-        "cache-control": "no-cache",
-        "content-type": "application/json",
-        "pragma": "no-cache",
-        "priority": "u=1, i",
-        "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
-        "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua-platform": "\"Windows\"",
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "cors",
-        "sec-fetch-site": "same-site",
-        "Referer": "https://translator-ui.iobroker.in/"
-    },
-            body: JSON.stringify({ text: word, service: 'deepl', together: false }),
-    "method": "POST"
+    const response = await fetch('https://translator.iobroker.in/', {
+        headers: {
+            accept: '*/*',
+            'accept-language': 'de,en-US;q=0.9,en;q=0.8,de-DE;q=0.7',
+            'cache-control': 'no-cache',
+            'content-type': 'application/json',
+            pragma: 'no-cache',
+            priority: 'u=1, i',
+            'sec-ch-ua': '"Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-site',
+            Referer: 'https://translator-ui.iobroker.in/',
+        },
+        body: JSON.stringify({ text: word, service: 'deepl', together: false }),
+        method: 'POST',
     });
 
     const data = await response.json();
@@ -299,7 +299,7 @@ async function main() {
     }
     if (args[0] === 'cleanKeys') {
         args.shift();
-        doCleanKeys(args);
+        doCleanKeys();
     }
 }
 

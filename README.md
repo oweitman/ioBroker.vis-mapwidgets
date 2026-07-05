@@ -580,6 +580,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
 - add schema validation for mapdata in edit mode
 - improve error handling for fitbounds
 - add example for path history
+- fix lint errors
 
 ### 0.0.13 (2025-09-30)
 

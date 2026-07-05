@@ -26,6 +26,8 @@
         // "noUnusedParameters": true,
 
         "target": "es2022",
+        "types": ["node"],
+        "lib": ["ES2022", "DOM"],
         "sourceMap": true
     },
     // "include": ["lib/**/*.js", "lib/**/*.d.ts", "main.js"],
