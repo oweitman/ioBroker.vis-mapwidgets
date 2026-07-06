@@ -572,8 +572,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.1.0 (2026-07-06)
 
 - fix translation map lng
 - add main in package.json for dev-server
@@ -603,45 +602,11 @@ Waits for a global variable (or a nested property of `window`) to become availab
 - add utility functions an documentation
 - add more examples and rework example documentation
 
-### 0.0.9 (2025-09-23)
-
-- add polyline/path example to testdata.json. the path is located in Bathey,
-  few kilometers south of Dortmund
-- add polyline/path example to testdata.json. the path is located in
-  Frankfurt/Main. The trail starts in the city center of Frankfurt,
-  heading towards the southeast.
-- add vis1 example to manipulate map from vis script with the expose option
-- fix map creation if parameter changes
-
-### 0.0.7 (2025-09-21)
-
-- Sync mode has been added. New items can now be added dynamically.
-
-### 0.0.6 (2025-09-17)
-
-- fix more package urls
-
-### 0.0.5 (2025-09-17)
-
-- release
-
-### 0.0.4 (2025-09-17)
-
-- fix reponame
-
-### 0.0.3 (2025-09-17)
-
-- release ?
-
-### 0.0.2 (2025-09-16)
-
-- first release
-
 ## License
 
 MIT License
 
-Copyright (c) 2025 oweitman <oweitman@gmx.de>
+Copyright (c) 2026 oweitman <oweitman@gmx.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

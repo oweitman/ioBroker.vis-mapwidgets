@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.0.13",
+    "version": "0.1.0",
     "news": {
+      "0.1.0": {
+        "en": "fix translation map lng\nadd main in package.json for dev-server\nadd schema validation for mapdata in edit mode\nimprove error handling for fitbounds\nadd example for path history\nfix lint errors",
+        "de": "Übersetzungskarte korrigieren (lang)\nFüge „main“ in der package.json für den Entwicklungsserver hinzu.\nSchemavalidierung für Mapdata im Bearbeitungsmodus hinzufügen\nFehlerbehandlung für fitbounds verbessern\nBeispiel für Pfadverlauf hinzufügen\nLint-Fehler beheben",
+        "ru": "исправление перевода карты lng\nДобавьте параметр main в файл package.json для dev-сервера.\nДобавить проверку схемы для данных карты в режиме редактирования.\nулучшить обработку ошибок для функции fitbounds\nдобавить пример истории перемещений\nИсправление ошибок линтинга",
+        "pt": "corrigir mapa de tradução ng\nAdicione o arquivo `package.json` para o servidor de desenvolvimento.\nAdicionar validação de esquema para dados de mapeamento no modo de edição\nMelhorar o tratamento de erros para o fitbounds\nAdicionar exemplo para o histórico de caminhos\ncorrigir erros de lint",
+        "nl": "fix translation map lng\nVoeg 'main' toe aan package.json voor de ontwikkelserver.\nVoeg schemavalidatie toe voor mapdata in de bewerkingsmodus.\nVerbeter de foutafhandeling voor fitbounds.\nVoeg een voorbeeld toe voor de padgeschiedenis.\nlint-fouten corrigeren",
+        "fr": "corriger la carte de traduction lng\najouter main dans package.json pour le serveur de développement\nAjouter la validation du schéma pour les données cartographiques en mode édition\naméliorer la gestion des erreurs pour fitbounds\najouter un exemple pour l'historique du chemin\ncorriger les erreurs de lint",
+        "it": "correzione della mappa di traduzione lng\naggiungi main in package.json per dev-server\naggiungi la convalida dello schema per i dati della mappa in modalità di modifica\nmigliorare la gestione degli errori per fitbounds\naggiungi esempio per la cronologia del percorso\ncorreggere gli errori di lint",
+        "es": "corregir el mapa de traducción lng\nagregar main en package.json para dev-server\nagregar validación de esquema para mapdata en modo de edición\nmejorar el manejo de errores para fitbounds\nagregar ejemplo para el historial de ruta\ncorregir errores de lint",
+        "pl": "napraw mapę tłumaczenia lng\ndodaj main w package.json dla serwera deweloperskiego\ndodaj walidację schematu dla mapdata w trybie edycji\npoprawić obsługę błędów dla fitbounds\ndodaj przykład historii ścieżki\nnapraw błędy lint",
+        "uk": "виправити карту перекладу (мовний рядок)\nдодати main у package.json для dev-сервера\nдодати перевірку схеми для даних карти в режимі редагування\nпокращено обробку помилок для fitbounds\nдодати приклад історії шляхів\nвиправити помилки lint",
+        "zh-cn": "修复翻译地图 lng\n在开发服务器的 package.json 文件中添加 main 函数\n在编辑模式下为地图数据添加架构验证\n改进 fitbounds 的错误处理\n添加路径历史记录示例\n修复 lint 错误"
+      },
       "0.0.13": {
         "en": "add day/Night terminator",
         "de": "tag/Nacht Terminator hinzufügen",
@@ -80,19 +93,6 @@
         "pl": "Dodano tryb synchronizacji. Nowe elementy mogą być teraz dodawane dynamicznie.",
         "uk": "Додано режим синхронізації. Нові елементи можуть бути додані динамічно.",
         "zh-cn": "已添加同步模式 。 现在可以动态添加新项目."
-      },
-      "0.0.6": {
-        "en": "fix more package urls",
-        "de": "Behebe weitere Paket-URLs",
-        "ru": "исправлено больше URL-адресов пакетов",
-        "pt": "corrigir mais URLs de pacotes",
-        "nl": "Meer pakket-URL's gerepareerd",
-        "fr": "correction de davantage d'URL de package",
-        "it": "Correzione di ulteriori URL dei pacchetti",
-        "es": "corregir más URLs de paquetes",
-        "pl": "napraw więcej adresów pakietów",
-        "uk": "виправлено більше посилань на пакети",
-        "zh-cn": "修复更多的套餐URL"
       }
     },
     "titleLang": {
