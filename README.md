@@ -93,6 +93,8 @@ Map data is validated in edit mode. Any errors can be accessed and reviewed via
 the button with the red exclamation mark.
 This button is visible only if errors exist.
 
+In vis, the dialog can be opened normally with a click. In vis-2, use 2 x SHIFT+click.
+
 Button
 
 ![Exclamationmark button](./example/Exclamationmark.png)
@@ -572,6 +574,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.1.0 (2026-07-06)
 
 - fix translation map lng
