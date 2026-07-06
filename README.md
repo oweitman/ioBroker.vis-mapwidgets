@@ -82,12 +82,8 @@ all of which can be configured independently:
 }
 ```
 
-For testing purposes, an example dataset is included
-in the file examples/testdata.json, which can be directly saved to a data point.
-This data contains sample configurations for all elements, which are
-displayed on a map in the Frankfurt area.
-
-see also [example\example.md](example/example.md) for more test content.
+For testing purposes see also [example\example.md](example/example.md)
+for more test content.
 
 For all configurations, the principle is that only the mandatory amount
 of information is required to display an element.
