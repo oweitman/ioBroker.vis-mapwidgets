@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "news": {
+      "0.1.1": {
+        "en": "fix schema error dialog in vis-2",
+        "de": "Schemafehlerdialog in vis-2 beheben",
+        "ru": "Исправление диалогового окна ошибки схемы в vis-2",
+        "pt": "Corrigir diálogo de erro de esquema no vis-2",
+        "nl": "Foutmelding over schemafout in vis-2 corrigeren",
+        "fr": "Correction de la boîte de dialogue d'erreur de schéma dans vis-2",
+        "it": "correggere la finestra di dialogo degli errori di schema in vis-2",
+        "es": "Corregir el cuadro de diálogo de error de esquema en vis-2",
+        "pl": "napraw okno dialogowe błędu schematu w vis-2",
+        "uk": "виправити діалогове вікно помилки схеми у vis-2",
+        "zh-cn": "修复 vis-2 中的架构错误对话框"
+      },
       "0.1.0": {
         "en": "fix translation map lng\nadd main in package.json for dev-server\nadd schema validation for mapdata in edit mode\nimprove error handling for fitbounds\nadd example for path history\nfix lint errors",
         "de": "Übersetzungskarte korrigieren (lang)\nFüge „main“ in der package.json für den Entwicklungsserver hinzu.\nSchemavalidierung für Mapdata im Bearbeitungsmodus hinzufügen\nFehlerbehandlung für fitbounds verbessern\nBeispiel für Pfadverlauf hinzufügen\nLint-Fehler beheben",
@@ -80,19 +93,6 @@
         "pl": "- dodać przykład poliline / path do testdata.json. ścieżka znajduje się w Bahe,\nkilka kilometrów na południe od Dortmund\n- dodać przykład poliline / path do testdata. josh. ścieżka znajduje się w\nFrankfurt nad Menem. Szlak zaczyna się w centrum Frankfurtu,\nkieruje się na południowy wschód.\n- dodać vis1 przykład do manipulowania mapą ze skryptu z opcją demaskowania\n- naprawić tworzenie mapy, jeśli parametry ulegną zmianie",
         "uk": "- додати полілін/пато приклад для testdata.json. Шлях знаходиться в Баня,\nкілька кілометрів на південь від Дортмунд\n- додати полілін / приклад для тестових даних. джсон. шлях знаходиться в\nФранкфурт/Майн. Причіп починається в центрі міста Франкфурт,\nна південному сході.\n- додати приклад vis1 для маніпуляції картою з скрипта vis з опцією\n- виправлено створення карти при зміні параметра",
         "zh-cn": "- 在testdata.json中添加多线/路径示例。 大道位于巴西,\n在多尔特蒙德以南几公里处\n- 在测试数据中添加多线/路径示例。 强森。 路径位于\n法兰克福/ 美因. 线索从法兰克福市中心开始,\n朝东南方向去了.\n- 添加图例1, 使用曝光选项从脚本操作地图\n- 如果参数改变, 固定地图创建"
-      },
-      "0.0.7": {
-        "en": "Sync mode has been added. New items can now be added dynamically.",
-        "de": "Sync-Modus wurde hinzugefügt. Neue Artikel können nun dynamisch hinzugefügt werden.",
-        "ru": "Добавлен режим синхронизации. Теперь можно динамически добавлять новые элементы.",
-        "pt": "O modo de sincronização foi adicionado. Novos itens podem agora ser adicionados dinamicamente.",
-        "nl": "Synchronisatiemodus is toegevoegd. Nieuwe items kunnen nu dynamisch worden toegevoegd.",
-        "fr": "Le mode Sync a été ajouté. De nouveaux éléments peuvent maintenant être ajoutés dynamiquement.",
-        "it": "La modalità Sync è stata aggiunta. Nuovi elementi possono ora essere aggiunti dinamicamente.",
-        "es": "Se ha añadido el modo Sync. Ahora se pueden añadir nuevos elementos dinámicamente.",
-        "pl": "Dodano tryb synchronizacji. Nowe elementy mogą być teraz dodawane dynamicznie.",
-        "uk": "Додано режим синхронізації. Нові елементи можуть бути додані динамічно.",
-        "zh-cn": "已添加同步模式 。 现在可以动态添加新项目."
       }
     },
     "titleLang": {

@@ -574,6 +574,9 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.1.1 (2026-07-06)
+
+- fix schema error dialog in vis-2
 
 ### 0.1.0 (2026-07-06)
 
@@ -599,11 +602,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 ### 0.0.11 (2025-09-26)
 
 - add fitBound option
-
-### 0.0.10 (2025-09-26)
-
-- add utility functions an documentation
-- add more examples and rework example documentation
 
 ## License
 
