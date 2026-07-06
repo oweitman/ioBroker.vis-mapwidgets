@@ -16,6 +16,9 @@ With this adapter, you can display various elements on a map using the
 Leaflet widget.
 These elements can be configured using a JSON data structure.
 
+![Complete Test picture](./example/ExampleCompleteTest/ExampleCompleteTest.png)
+**Example from the complete Test Example**
+
 Currently, the following elements are supported:
 
 - Markers (custom icons can be referenced by ID)
@@ -574,6 +577,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.1.1 (2026-07-06)
 
 - fix schema error dialog in vis-2
