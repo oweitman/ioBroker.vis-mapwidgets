@@ -226,6 +226,7 @@
             "shadowAnchor": [15, 30]
         },
         "normal": {
+            "iconUrl": "/vis.0/leaf-green.png",
             "iconSize": [38, 95],
             "iconAnchor": [22, 94],
             "shadowSize": [68, 95],
