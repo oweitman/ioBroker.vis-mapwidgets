@@ -51,10 +51,18 @@ describe('mapwidgets map configuration schema', () => {
 
     it('accepts the minimal configurations documented in README.md', () => {
         const data = {
-            marker: [{ latlng: [50.182, 8.682] }, { lat: 50.176, lng: 8.69 }],
+            marker: [{ latlng: [50.182, 8.682] }, { lat: 50.176, lng: 8.69 }, { lat: 0, lng: 0 }],
             icons: {
                 greenleaf: {
                     iconUrl: '/vis.0/leaf-green.png',
+                },
+                labelIcon: {
+                    iconUrl: '/vis.0/leaf-green.png',
+                    html: '<span>Label</span>',
+                    bgPos: [0, 0],
+                },
+                divIcon: {
+                    html: '',
                 },
             },
             polyline: [
@@ -105,7 +113,7 @@ describe('mapwidgets map configuration schema', () => {
             {
                 name: 'icon without iconUrl',
                 data: { icons: { missingUrl: { iconSize: [25, 41] } } },
-                keywords: ['required'],
+                keywords: ['anyOf'],
             },
             {
                 name: 'polyline with only one coordinate',

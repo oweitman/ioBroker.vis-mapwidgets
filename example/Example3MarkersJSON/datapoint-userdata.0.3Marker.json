@@ -1,12 +1,18 @@
 {
     "marker": [
         {
-            "latlng": [50.2, 8.7]
+            "latlng": [50.2, 8.7],
+            "iobOptions": {
+                "fitBounds": true
+            }
         },
         {
             "latlng": [50.2, 8.6],
             "options": {
                 "title": "Default"
+            },
+            "iobOptions": {
+                "fitBounds": true
             },
             "tooltip": {
                 "text": "Default",
@@ -21,6 +27,9 @@
             "options": {
                 "title": "Mit Custom Icon",
                 "icon": "redleaf"
+            },
+            "iobOptions": {
+                "fitBounds": true
             },
             "tooltip": {
                 "text": "Mit Custom Icon",

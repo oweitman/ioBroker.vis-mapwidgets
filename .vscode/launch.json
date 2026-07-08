@@ -4,6 +4,14 @@
         {
             "type": "chrome",
             "request": "launch",
+            "name": "vis edit",
+            "url": "http://127.0.0.1:8082/vis/edit.html?main#test",
+            "trace": true,
+            "skipFiles": ["socket.io.js"]
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
             "name": "vis runtime",
             "url": "http://127.0.0.1:8082/vis/index.html#main",
             "trace": true,
@@ -25,7 +33,7 @@
             "trace": true,
             "skipFiles": ["socket.io.js"]
         },
-                {
+        {
             "name": "dev-server",
             "program": "../dev-server/dist/index.js",
             "args": ["watch", "--noInstall"],
@@ -34,7 +42,7 @@
             "runtimeExecutable": "c:/Users/oweit/AppData/Roaming/fnm/aliases/default/node.exe",
             "skipFiles": ["<node_internals>/**"],
             "type": "node"
-                }
+        }
     ]
 }
 //node --inspect-brk=localhost:9229 .\node_modules\ioBroker.vis-mapwidgets\main.js

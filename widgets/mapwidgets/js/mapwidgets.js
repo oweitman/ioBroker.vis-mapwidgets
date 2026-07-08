@@ -7,7 +7,7 @@
 
 // const { config } = require("chai");
 
-/* global $, vis, systemDictionary,L,window,document */
+/* global $, vis, systemDictionary,L,window,document,_ */
 
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
@@ -30,6 +30,48 @@ vis.binds['mapwidgets'] = {
     version: pkgVersion,
     data: {},
     debug: true,
+    parseMapConfig: function (rawValue) {
+        try {
+            const config = JSON.parse(rawValue || '{}');
+            if (config === null || typeof config !== 'object' || Array.isArray(config)) {
+                const text =
+                    typeof _ === 'function'
+                        ? _('Invalid JSON configuration: %s', 'root value must be an object')
+                        : 'Invalid JSON configuration: root value must be an object';
+
+                return {
+                    config: {},
+                    errorText: text,
+                    valid: false,
+                };
+            }
+
+            return {
+                config,
+                errorText: '',
+                valid: true,
+            };
+        } catch (error) {
+            const message = error?.message || String(error);
+            const text =
+                typeof _ === 'function'
+                    ? _('Invalid JSON configuration: %s', message)
+                    : `Invalid JSON configuration: ${message}`;
+
+            return {
+                config: {},
+                errorText: text,
+                valid: false,
+            };
+        }
+    },
+    hasFitBounds: function (config) {
+        const types = ['marker', 'polyline', 'polygon', 'rectangle', 'circle'];
+
+        return types.some(
+            type => Array.isArray(config?.[type]) && config[type].some(item => item?.iobOptions?.fitBounds === true),
+        );
+    },
     validators: {
         latLngPair: p => Array.isArray(p) && p.length === 2 && Number.isFinite(p[0]) && Number.isFinite(p[1]),
         latLngAttributes: (lat, lng) => Number.isFinite(lat) && Number.isFinite(lng),
@@ -52,15 +94,9 @@ vis.binds['mapwidgets'] = {
                 if (newoptions.icon) {
                     vis.binds['mapwidgets'].setIcon(newoptions, widgetID);
                 }
-                let mapOrLayer;
-                if (item.iobOptions?.fitBounds) {
-                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
-                    mapOrLayer = fg;
-                } else {
-                    mapOrLayer = map;
-                }
+                let mapOrLayer = item.iobOptions?.fitBounds ? fg : map;
                 let layer =
-                    item.lat && item.lng
+                    Number.isFinite(item.lat) && Number.isFinite(item.lng)
                         ? L.marker([item.lat, item.lng], newoptions ?? {}).addTo(mapOrLayer)
                         : L.marker(item.latlng, newoptions ?? {}).addTo(mapOrLayer);
                 if (item.popup) {
@@ -75,14 +111,8 @@ vis.binds['mapwidgets'] = {
         },
         polyline: {
             validate: item => vis.binds['mapwidgets'].validators.latLngArray(item?.latlng),
-            create: (map, fg, item, widgetID) => {
-                let mapOrLayer;
-                if (item.iobOptions?.fitBounds) {
-                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
-                    mapOrLayer = fg;
-                } else {
-                    mapOrLayer = map;
-                }
+            create: (map, fg, item, _widgetID) => {
+                let mapOrLayer = item.iobOptions?.fitBounds ? fg : map;
                 let layer = L.polyline(item.latlng, item.options ?? {}).addTo(mapOrLayer);
                 return layer;
             },
@@ -90,14 +120,8 @@ vis.binds['mapwidgets'] = {
         },
         polygon: {
             validate: item => vis.binds['mapwidgets'].validators.latLngArray(item?.latlng),
-            create: (map, fg, item, widgetID) => {
-                let mapOrLayer;
-                if (item.iobOptions?.fitBounds) {
-                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
-                    mapOrLayer = fg;
-                } else {
-                    mapOrLayer = map;
-                }
+            create: (map, fg, item, _widgetID) => {
+                let mapOrLayer = item.iobOptions?.fitBounds ? fg : map;
                 let layer = L.polygon(item.latlng, item.options ?? {}).addTo(mapOrLayer);
                 if (item.popup) {
                     vis.binds['mapwidgets'].setPopup(layer, item);
@@ -112,14 +136,8 @@ vis.binds['mapwidgets'] = {
         rectangle: {
             // rectangle arbeitet mit bounds: [[lat1,lng1],[lat2,lng2]]
             validate: item => vis.binds['mapwidgets'].validators.bounds(item?.latlng),
-            create: (map, fg, item, widgetID) => {
-                let mapOrLayer;
-                if (item.iobOptions?.fitBounds) {
-                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
-                    mapOrLayer = fg;
-                } else {
-                    mapOrLayer = map;
-                }
+            create: (map, fg, item, _widgetID) => {
+                let mapOrLayer = item.iobOptions?.fitBounds ? fg : map;
                 let layer = L.rectangle(item.latlng, item.options ?? {}).addTo(mapOrLayer);
                 if (item.popup) {
                     vis.binds['mapwidgets'].setPopup(layer, item);
@@ -135,14 +153,8 @@ vis.binds['mapwidgets'] = {
             // circle benötigt latlng + radius
             validate: item =>
                 vis.binds['mapwidgets'].validators.latLngPair(item?.latlng) && Number.isFinite(item?.options?.radius),
-            create: (map, fg, item, widgetID) => {
-                let mapOrLayer;
-                if (item.iobOptions?.fitBounds) {
-                    vis.binds['mapwidgets'].data[widgetID].fitBounds = true;
-                    mapOrLayer = fg;
-                } else {
-                    mapOrLayer = map;
-                }
+            create: (map, fg, item, _widgetID) => {
+                let mapOrLayer = item.iobOptions?.fitBounds ? fg : map;
                 let layer = L.circle(item.latlng, { ...(item.options ?? {}), radius: item.options.radius }).addTo(
                     mapOrLayer,
                 );
@@ -176,9 +188,10 @@ vis.binds['mapwidgets'] = {
 
             // mapwidgets_oid/id;mapwidgets_lat/number,-90,90;mapwidgets_lon/number,-180,180;mapwidgets_zoom/number,0;
             //frankfurt 50.11552 8.68417
-            let config = data['mapwidgets_oid']
-                ? JSON.parse(vis.states.attr(`${data['mapwidgets_oid']}.val`) || '{}')
-                : {};
+            const parsedConfig = data['mapwidgets_oid']
+                ? this.visMapwidgets.parseMapConfig(vis.states.attr(`${data['mapwidgets_oid']}.val`) || '{}')
+                : { config: {}, errorText: '', valid: true };
+            let config = parsedConfig.config;
             let lat = data['mapwidgets_lat'] ? parseFloat(data['mapwidgets_lat']) : 50.11552;
             let lon = data['mapwidgets_lon'] ? parseFloat(data['mapwidgets_lon']) : 8.68417;
             let zoom = data['mapwidgets_zoom'] ? parseFloat(data['mapwidgets_zoom']) : 13;
@@ -193,27 +206,33 @@ vis.binds['mapwidgets'] = {
                 ? Number(data['mapwidgets_daynightfillopacity'])
                 : 0.3;
 
-            vis.binds['mapwidgets'].data[widgetID] = vis.binds['mapwidgets'].data[widgetID] || {};
-
-            if (!vis.binds['mapwidgets'].data[widgetID]) {
-                vis.binds['mapwidgets'].data[widgetID] = {
-                    marker: {},
-                    polyline: {},
-                    polygon: {},
-                    rectangle: {},
-                    circle: {},
-                    fitBounds: false,
-                };
-            }
+            vis.binds['mapwidgets'].data[widgetID] = vis.binds['mapwidgets'].data[widgetID] || {
+                marker: {},
+                polyline: {},
+                polygon: {},
+                rectangle: {},
+                circle: {},
+                fitBounds: false,
+            };
             let visdata = vis.binds['mapwidgets'].data[widgetID];
             visdata.config = config;
+            visdata.configParseErrorText = parsedConfig.errorText;
 
             function onChange(e, newValue) {
                 console.log('onChange');
                 let visdata = vis.binds['mapwidgets'].data[widgetID];
-                visdata.oldConfig = visdata.config;
-                visdata.config = JSON.parse(newValue);
-                vis.binds['mapwidgets'].leaflet.render(widgetID, view, data, style);
+                const parsed = vis.binds['mapwidgets'].parseMapConfig(newValue);
+                visdata.configParseErrorText = parsed.errorText;
+
+                if (parsed.valid) {
+                    visdata.oldConfig = visdata.config;
+                    visdata.config = parsed.config;
+                    vis.binds['mapwidgets'].leaflet.render(widgetID, view, data, style);
+                } else if (vis.editMode) {
+                    vis.binds['mapwidgets'].leaflet.render(widgetID, view, data, style);
+                } else {
+                    console.warn(parsed.errorText);
+                }
             }
 
             if (data['mapwidgets_oid']) {
@@ -239,10 +258,11 @@ vis.binds['mapwidgets'] = {
                 }
             }
 
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            visdata.tileLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             }).addTo(visdata.map);
+
             if (daynight) {
                 let options = {
                     color: daynightColor,
@@ -268,18 +288,20 @@ vis.binds['mapwidgets'] = {
 
             let visdata = vis.binds['mapwidgets'].data[widgetID];
             let config = visdata.config;
+            visdata.fitBounds = this.visMapwidgets.hasFitBounds(config);
 
             if (vis.editMode) {
-                const ajv = new Ajv2020({
-                    allErrors: true,
-                    strict: false,
-                });
-                const validate = ajv.compile(schema);
-                const valid = validate(config);
-                const schemaErrorsHtml = valid
-                    ? ''
-                    : formatAjvErrors(validate.errors, schema, config).replaceAll('\n', '<br>');
-                vis.binds['mapwidgets'].data[widgetID].schemaErrorsHtml = schemaErrorsHtml;
+                if (visdata.configParseErrorText) {
+                    visdata.schemaErrorsText = visdata.configParseErrorText;
+                } else {
+                    const ajv = new Ajv2020({
+                        allErrors: true,
+                        strict: false,
+                    });
+                    const validate = ajv.compile(schema);
+                    const valid = validate(config);
+                    visdata.schemaErrorsText = valid ? '' : formatAjvErrors(validate.errors, schema, config);
+                }
             }
             this.schemaErrorControl(widgetID);
             let oldConfig = visdata.oldConfig;
@@ -304,7 +326,7 @@ vis.binds['mapwidgets'] = {
         schemaErrorControl(widgetID) {
             const visdata = vis.binds['mapwidgets'].data[widgetID];
             const map = visdata.map;
-            const hasErrors = Boolean(visdata.schemaErrorsHtml);
+            const hasErrors = Boolean(visdata.schemaErrorsText);
 
             if (visdata.schemaErrorControl) {
                 map.removeControl(visdata.schemaErrorControl);
@@ -436,28 +458,38 @@ vis.binds['mapwidgets'] = {
             if (config.icons) {
                 let iconRegistry = this.visMapwidgets.data[widgetID].iconRegistry || {};
                 for (const [name, cfg] of Object.entries(config.icons)) {
-                    if (cfg.html) {
-                        iconRegistry[name] = L.divIcon({
-                            iconUrl: cfg.iconUrl,
-                            shadowUrl: cfg.shadowUrl ? cfg.shadowUrl : undefined,
-                            iconSize: cfg.iconSize,
-                            iconAnchor: cfg.iconAnchor,
-                            popupAnchor: cfg.popupAnchor,
-                            shadowSize: cfg.shadowSize,
-                            shadowAnchor: cfg.shadowAnchor,
+                    const hasHtml = Object.prototype.hasOwnProperty.call(cfg, 'html');
+
+                    if (hasHtml) {
+                        const options = {
                             html: cfg.html,
-                            bgPos: cfg.bgPos,
-                        });
-                    } else {
-                        iconRegistry[name] = L.icon({
-                            iconUrl: cfg.iconUrl,
-                            shadowUrl: cfg.shadowUrl ? cfg.shadowUrl : undefined,
                             iconSize: cfg.iconSize,
                             iconAnchor: cfg.iconAnchor,
                             popupAnchor: cfg.popupAnchor,
+                            className: cfg.className,
+                        };
+
+                        if (cfg.bgPos) {
+                            options.bgPos = cfg.bgPos;
+                        }
+
+                        iconRegistry[name] = L.divIcon(vis.binds['mapwidgets'].compactOptions(options));
+                    } else {
+                        const options = {
+                            iconUrl: cfg.iconUrl,
+                            iconRetinaUrl: cfg.iconRetinaUrl,
+                            shadowUrl: cfg.shadowUrl,
+                            shadowRetinaUrl: cfg.shadowRetinaUrl,
+                            iconSize: cfg.iconSize,
+                            iconAnchor: cfg.iconAnchor,
+                            popupAnchor: cfg.popupAnchor,
+                            tooltipAnchor: cfg.tooltipAnchor,
                             shadowSize: cfg.shadowSize,
                             shadowAnchor: cfg.shadowAnchor,
-                        });
+                            className: cfg.className,
+                        };
+
+                        iconRegistry[name] = L.icon(vis.binds['mapwidgets'].compactOptions(options));
                     }
                 }
                 this.visMapwidgets.data[widgetID].iconRegistry = iconRegistry;
@@ -478,17 +510,20 @@ vis.binds['mapwidgets'] = {
             layer.bindPopup(item.popup.text, item.popup.options || {});
         }
     },
+    compactOptions(options) {
+        return Object.fromEntries(Object.entries(options).filter(([, value]) => value !== undefined));
+    },
     showSchemaErrorDialog(widgetID) {
         const visdata = vis.binds['mapwidgets'].data[widgetID];
-        const html = visdata.schemaErrorsHtml || 'Keine Schemafehler vorhanden.';
+        const text = visdata.schemaErrorsText || 'Keine Schemafehler vorhanden.';
         const $widget = $(`#${widgetID}`);
 
         const width = Math.round($widget.width() * 0.9);
         const height = Math.round($widget.height() * 0.9);
 
-        $('<div></div>')
+        $('<pre></pre>')
             .addClass('mapwidgets-schema-error-dialog-content')
-            .html(html)
+            .text(text)
             .dialog({
                 title: 'Schemafehler',
                 modal: true,

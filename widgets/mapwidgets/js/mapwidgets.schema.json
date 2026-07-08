@@ -104,7 +104,7 @@
         "icon": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["iconUrl"],
+            "anyOf": [{ "required": ["iconUrl"] }, { "required": ["html"] }],
             "properties": {
                 "iconUrl": { "type": "string", "minLength": 1 },
                 "iconRetinaUrl": { "type": "string" },
@@ -116,7 +116,9 @@
                 "shadowRetinaUrl": { "type": "string" },
                 "shadowSize": { "$ref": "#/$defs/point" },
                 "shadowAnchor": { "$ref": "#/$defs/point" },
-                "className": { "type": "string" }
+                "className": { "type": "string" },
+                "html": { "type": "string" },
+                "bgPos": { "$ref": "#/$defs/point" }
             }
         },
         "pathBase": {
