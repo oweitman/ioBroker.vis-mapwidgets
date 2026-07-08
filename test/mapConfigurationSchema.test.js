@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const Ajv2020 = require('../widgets/node_modules/ajv/dist/2020');
+const Ajv2020 = require('ajv/dist/2020');
 const schema = require('../widgets/mapwidgets/js/mapwidgets.schema.json');
 
 const rootDir = path.join(__dirname, '..');
