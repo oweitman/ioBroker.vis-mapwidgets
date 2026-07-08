@@ -5,7 +5,10 @@
                 [-0.02, 0.45],
                 [-0.08, 0.42],
                 [-0.08, 0.48]
-            ]
+            ],
+            "iobOptions": {
+                "fitBounds": true
+            }
         },
         {
             "latlng": [
@@ -14,7 +17,10 @@
                 [-0.05, 0.65],
                 [-0.08, 0.62],
                 [-0.08, 0.68]
-            ]
+            ],
+            "iobOptions": {
+                "fitBounds": true
+            }
         }
     ],
     "rectangle": [
@@ -22,31 +28,46 @@
             "latlng": [
                 [0, 0],
                 [-0.1, 0.1]
-            ]
+            ],
+            "iobOptions": {
+                "fitBounds": true
+            }
         },
         {
             "latlng": [
                 [0.0, 0.2],
                 [-0.1, 0.3]
-            ]
+            ],
+            "iobOptions": {
+                "fitBounds": true
+            }
         },
         {
             "latlng": [
                 [-0.02, 0.22],
                 [-0.08, 0.28]
-            ]
+            ],
+            "iobOptions": {
+                "fitBounds": true
+            }
         },
         {
             "latlng": [
                 [0.0, 0.4],
                 [-0.1, 0.5]
-            ]
+            ],
+            "iobOptions": {
+                "fitBounds": true
+            }
         },
         {
             "latlng": [
                 [0.0, 0.6],
                 [-0.1, 0.7]
-            ]
+            ],
+            "iobOptions": {
+                "fitBounds": true
+            }
         }
     ],
     "circle": [
@@ -54,6 +75,9 @@
             "latlng": [-0.05, 0.05],
             "options": {
                 "radius": 4000
+            },
+            "iobOptions": {
+                "fitBounds": true
             }
         }
     ]
