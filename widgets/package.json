@@ -15,9 +15,7 @@
     "license": "MIT",
     "description": "",
     "devDependencies": {
-        "npm-watch": "^0.13.0"
-    },
-    "dependencies": {
+        "npm-watch": "^0.13.0",
         "ajv": "^8.20.0",
         "deep-object-diff": "^1.1.9",
         "leaflet": "^1.9.4",
