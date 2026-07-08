@@ -603,6 +603,8 @@ Waits for a global variable (or a nested property of `window`) to become availab
 
 - add fitBound option
 
+Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
+
 ## License
 
 MIT License
