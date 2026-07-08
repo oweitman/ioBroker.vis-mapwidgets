@@ -568,4 +568,4 @@ function resolveSchemaRef(rootSchema, node) {
     return node;
 }
 
-export { formatAjvErrors };
+module.exports = { formatAjvErrors };

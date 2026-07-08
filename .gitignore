@@ -10,6 +10,14 @@ nbproject
 # npm package files
 iobroker.*.tgz
 
+# frontend test artifacts
+playwright-report/
+test-results/
+
+# coverage artifacts
+.nyc_output/
+coverage/
+
 Thumbs.db
 
 # i18n intermediate files

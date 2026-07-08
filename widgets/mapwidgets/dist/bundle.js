@@ -19527,6 +19527,377 @@
     }
   });
 
+  // mapwidgets/js/formatAjvErrors.js
+  var require_formatAjvErrors = __commonJS({
+    "mapwidgets/js/formatAjvErrors.js"(exports, module) {
+      "use strict";
+      function formatAjvErrors2(errors, schema2, data) {
+        if (!errors || errors.length === 0) {
+          return _("The JSON configuration is valid.");
+        }
+        const sortedErrors = [...errors].sort(compareAjvErrors);
+        const relevantErrors = filterFollowUpOneOfErrors(sortedErrors);
+        const lines = [];
+        lines.push(_("The JSON configuration contains %s error(s).", relevantErrors.length));
+        lines.push("");
+        const groupedAdditional = groupAdditionalProperties(relevantErrors);
+        for (const group of groupedAdditional) {
+          const location = formatPath(group.instancePath);
+          lines.push(_("Unexpected properties in object %s:", location));
+          lines.push("");
+          for (const prop of group.properties) {
+            lines.push(`  - ${prop}`);
+          }
+          const allowed = getAllowedProperties(schema2, group.schemaPath, group.instancePath);
+          if (allowed.length > 0) {
+            lines.push("");
+            lines.push(_("Allowed properties are:"));
+            for (const prop of allowed) {
+              lines.push(`  - ${prop}`);
+            }
+          }
+          lines.push("");
+        }
+        const groupedAdditionalKeys = new Set(
+          groupedAdditional.flatMap(
+            (group) => group.properties.map((prop) => `${group.instancePath}|${group.schemaPath}|${prop}`)
+          )
+        );
+        const remainingErrors = relevantErrors.filter((err) => {
+          var _a;
+          if (err.keyword !== "additionalProperties") {
+            return true;
+          }
+          const prop = (_a = err.params) == null ? void 0 : _a.additionalProperty;
+          return !groupedAdditionalKeys.has(`${err.instancePath}|${err.schemaPath}|${prop}`);
+        });
+        for (const err of remainingErrors) {
+          lines.push(formatSingleAjvError(err, schema2, data));
+          lines.push("");
+        }
+        return lines.join("\n").trim();
+      }
+      function compareAjvErrors(a, b) {
+        const pathCompare = String(a.instancePath || "").localeCompare(String(b.instancePath || ""));
+        if (pathCompare !== 0) {
+          return pathCompare;
+        }
+        return String(a.keyword || "").localeCompare(String(b.keyword || ""));
+      }
+      function filterFollowUpOneOfErrors(errors) {
+        const oneOfPaths = new Set(errors.filter((err) => err.keyword === "oneOf").map((err) => err.instancePath || ""));
+        return errors.filter((err) => {
+          if (err.keyword === "oneOf") {
+            return true;
+          }
+          if (!oneOfPaths.has(err.instancePath || "")) {
+            return true;
+          }
+          return false;
+        });
+      }
+      function groupAdditionalProperties(errors) {
+        var _a, _b;
+        const groups = /* @__PURE__ */ new Map();
+        for (const err of errors) {
+          if (err.keyword !== "additionalProperties") {
+            continue;
+          }
+          const key = `${err.instancePath}|${err.schemaPath}`;
+          const prop = (_b = (_a = err.params) == null ? void 0 : _a.additionalProperty) != null ? _b : "<unknown>";
+          if (!groups.has(key)) {
+            groups.set(key, {
+              instancePath: err.instancePath || "",
+              schemaPath: err.schemaPath || "",
+              properties: []
+            });
+          }
+          groups.get(key).properties.push(prop);
+        }
+        return Array.from(groups.values());
+      }
+      function formatSingleAjvError(err, schema2, data) {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
+        const path = formatPath(err.instancePath);
+        const value = getValueAtJsonPointer(data, err.instancePath);
+        const actualType = getJsonType(value);
+        switch (err.keyword) {
+          case "required": {
+            const missing = (_b = (_a = err.params) == null ? void 0 : _a.missingProperty) != null ? _b : "<unknown>";
+            return [_("Error at %s:", path), _('Required property "%s" is missing.', missing)].join("\n");
+          }
+          case "type": {
+            return [
+              _("Error at %s:", path),
+              _("Invalid data type."),
+              _("Expected: %s", formatExpectedType((_c = err.params) == null ? void 0 : _c.type)),
+              _("Actual: %s", actualType),
+              _("Value: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "enum": {
+            const allowed = getSchemaValue(schema2, err.schemaPath, "enum");
+            return [
+              _("Error at %s:", path),
+              _("Invalid value: %s", formatValue(value)),
+              Array.isArray(allowed) ? _("Allowed values: %s", allowed.map(formatValue).join(", ")) : _("The value is not allowed.")
+            ].join("\n");
+          }
+          case "const": {
+            const expected = getSchemaValue(schema2, err.schemaPath, "const");
+            return [
+              _("Error at %s:", path),
+              _("Invalid value: %s", formatValue(value)),
+              _("Expected value: %s", formatValue(expected))
+            ].join("\n");
+          }
+          case "minimum": {
+            return [
+              _("Error at %s:", path),
+              _("Value is below the minimum."),
+              _("Minimum: %s", (_d = err.params) == null ? void 0 : _d.limit),
+              _("Actual: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "maximum": {
+            return [
+              _("Error at %s:", path),
+              _("Value exceeds the maximum."),
+              _("Maximum: %s", (_e = err.params) == null ? void 0 : _e.limit),
+              _("Actual: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "exclusiveMinimum": {
+            return [
+              _("Error at %s:", path),
+              _("Value must be greater than %s.", (_f = err.params) == null ? void 0 : _f.limit),
+              _("Actual: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "exclusiveMaximum": {
+            return [
+              _("Error at %s:", path),
+              _("Value must be less than %s.", (_g = err.params) == null ? void 0 : _g.limit),
+              _("Actual: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "minItems": {
+            return [
+              _("Error at %s:", path),
+              _("Array contains too few elements."),
+              _("Minimum number of elements: %s", (_h = err.params) == null ? void 0 : _h.limit),
+              _("Actual number of elements: %s", Array.isArray(value) ? value.length : actualType)
+            ].join("\n");
+          }
+          case "maxItems": {
+            return [
+              _("Error at %s:", path),
+              _("Array contains too many elements."),
+              _("Maximum number of elements: %s", (_i = err.params) == null ? void 0 : _i.limit),
+              _("Actual number of elements: %s", Array.isArray(value) ? value.length : actualType)
+            ].join("\n");
+          }
+          case "minLength": {
+            return [
+              _("Error at %s:", path),
+              _("String is too short."),
+              _("Minimum length: %s", (_j = err.params) == null ? void 0 : _j.limit),
+              _("Actual length: %s", typeof value === "string" ? value.length : actualType),
+              _("Value: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "maxLength": {
+            return [
+              _("Error at %s:", path),
+              _("String is too long."),
+              _("Maximum length: %s", (_k = err.params) == null ? void 0 : _k.limit),
+              _("Actual length: %s", typeof value === "string" ? value.length : actualType),
+              _("Value: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "pattern": {
+            return [
+              _("Error at %s:", path),
+              _("String does not match the required pattern."),
+              _("Pattern: %s", (_l = err.params) == null ? void 0 : _l.pattern),
+              _("Value: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "oneOf": {
+            return [
+              _("Error at %s:", path),
+              _("The object does not match any of the allowed variants."),
+              _("Please check whether the required combination of properties is correct."),
+              _("Value: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "anyOf": {
+            return [
+              _("Error at %s:", path),
+              _("The value does not match any of the allowed schemas."),
+              _("Value: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "allOf": {
+            return [
+              _("Error at %s:", path),
+              _("The value does not match all required schemas."),
+              _("Value: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "not": {
+            return [
+              _("Error at %s:", path),
+              _("This combination of properties is not allowed."),
+              _("Value: %s", formatValue(value))
+            ].join("\n");
+          }
+          case "additionalProperties": {
+            const prop = (_n = (_m = err.params) == null ? void 0 : _m.additionalProperty) != null ? _n : "<unknown>";
+            return [_("Error at %s:", path), _('Unexpected property "%s".', prop)].join("\n");
+          }
+          case "unevaluatedProperties": {
+            const prop = (_p = (_o = err.params) == null ? void 0 : _o.unevaluatedProperty) != null ? _p : "<unknown>";
+            return [_("Error at %s:", path), _('Unexpected property "%s".', prop)].join("\n");
+          }
+          default: {
+            return [
+              _("Error at %s:", path),
+              err.message ? _("Validation error: %s", err.message) : _("Validation error (%s).", err.keyword),
+              _("Value: %s", formatValue(value))
+            ].join("\n");
+          }
+        }
+      }
+      function formatPath(instancePath) {
+        if (!instancePath) {
+          return _("root object");
+        }
+        const parts = instancePath.split("/").slice(1).map(unescapeJsonPointerPart);
+        let result = "";
+        for (const part of parts) {
+          if (/^\d+$/.test(part)) {
+            result += `[${part}]`;
+          } else if (result === "") {
+            result += part;
+          } else if (/^[A-Za-z_$][A-Za-z0-9_$]*$/.test(part)) {
+            result += `.${part}`;
+          } else {
+            result += `[${JSON.stringify(part)}]`;
+          }
+        }
+        return result || _("root object");
+      }
+      function getValueAtJsonPointer(data, pointer) {
+        if (!pointer) {
+          return data;
+        }
+        return pointer.split("/").slice(1).reduce((current, part) => {
+          if (current === void 0 || current === null) {
+            return void 0;
+          }
+          const key = unescapeJsonPointerPart(part);
+          return current[key];
+        }, data);
+      }
+      function unescapeJsonPointerPart(part) {
+        return String(part).replace(/~1/g, "/").replace(/~0/g, "~");
+      }
+      function getJsonType(value) {
+        if (value === void 0) {
+          return _("undefined");
+        }
+        if (value === null) {
+          return "null";
+        }
+        if (Array.isArray(value)) {
+          return "array";
+        }
+        return typeof value;
+      }
+      function formatExpectedType(type) {
+        if (Array.isArray(type)) {
+          return type.join(" / ");
+        }
+        return String(type);
+      }
+      function formatValue(value) {
+        if (value === void 0) {
+          return _("<not available>");
+        }
+        try {
+          return JSON.stringify(value);
+        } catch (e) {
+          return String(value);
+        }
+      }
+      function getAllowedProperties(schema2, schemaPath, instancePath) {
+        let schemaNode = getSchemaNodeByInstancePath(schema2, instancePath);
+        if (!(schemaNode == null ? void 0 : schemaNode.properties) && instancePath) {
+          schemaNode = getSchemaNodeForKeyword(schema2, schemaPath, "additionalProperties");
+        }
+        if (!(schemaNode == null ? void 0 : schemaNode.properties)) {
+          return [];
+        }
+        return Object.keys(schemaNode.properties);
+      }
+      function getSchemaValue(schema2, schemaPath, keyword) {
+        const node = getSchemaNodeForKeyword(schema2, schemaPath, keyword);
+        return node == null ? void 0 : node[keyword];
+      }
+      function getSchemaNodeForKeyword(schema2, schemaPath, keyword) {
+        if (!schemaPath) {
+          return void 0;
+        }
+        let pointer = schemaPath;
+        if (pointer.startsWith("#")) {
+          pointer = pointer.slice(1);
+        }
+        if (pointer.endsWith(`/${keyword}`)) {
+          pointer = pointer.slice(0, -`/${keyword}`.length);
+        }
+        return getValueAtJsonPointer(schema2, pointer);
+      }
+      function getSchemaNodeByInstancePath(schema2, instancePath) {
+        var _a;
+        const parts = instancePath.split("/").slice(1).map(unescapeJsonPointerPart);
+        let node = schema2;
+        for (const part of parts) {
+          node = resolveSchemaRef(schema2, node);
+          if (!node) {
+            return void 0;
+          }
+          if (node.type === "object" && ((_a = node.properties) == null ? void 0 : _a[part])) {
+            node = node.properties[part];
+            continue;
+          }
+          if (node.type === "array" && node.items) {
+            node = node.items;
+            continue;
+          }
+          if (/^\d+$/.test(part) && node.items) {
+            node = node.items;
+            continue;
+          }
+          return void 0;
+        }
+        return resolveSchemaRef(schema2, node);
+      }
+      function resolveSchemaRef(rootSchema, node) {
+        while (node == null ? void 0 : node.$ref) {
+          let pointer = node.$ref;
+          if (!pointer.startsWith("#")) {
+            return node;
+          }
+          pointer = pointer.slice(1);
+          node = getValueAtJsonPointer(rootSchema, pointer);
+        }
+        return node;
+      }
+      module.exports = { formatAjvErrors: formatAjvErrors2 };
+    }
+  });
+
   // node_modules/object-hash/dist/object_hash.js
   var require_object_hash = __commonJS({
     "node_modules/object-hash/dist/object_hash.js"(exports, module) {
@@ -21307,373 +21678,7 @@
 
   // mapwidgets/js/mapwidgets.js
   var import__ = __toESM(require__());
-
-  // mapwidgets/js/formatAjvErrors.js
-  function formatAjvErrors(errors, schema2, data) {
-    if (!errors || errors.length === 0) {
-      return _("The JSON configuration is valid.");
-    }
-    const sortedErrors = [...errors].sort(compareAjvErrors);
-    const relevantErrors = filterFollowUpOneOfErrors(sortedErrors);
-    const lines = [];
-    lines.push(_("The JSON configuration contains %s error(s).", relevantErrors.length));
-    lines.push("");
-    const groupedAdditional = groupAdditionalProperties(relevantErrors);
-    for (const group of groupedAdditional) {
-      const location = formatPath(group.instancePath);
-      lines.push(_("Unexpected properties in object %s:", location));
-      lines.push("");
-      for (const prop of group.properties) {
-        lines.push(`  - ${prop}`);
-      }
-      const allowed = getAllowedProperties(schema2, group.schemaPath, group.instancePath);
-      if (allowed.length > 0) {
-        lines.push("");
-        lines.push(_("Allowed properties are:"));
-        for (const prop of allowed) {
-          lines.push(`  - ${prop}`);
-        }
-      }
-      lines.push("");
-    }
-    const groupedAdditionalKeys = new Set(
-      groupedAdditional.flatMap(
-        (group) => group.properties.map((prop) => `${group.instancePath}|${group.schemaPath}|${prop}`)
-      )
-    );
-    const remainingErrors = relevantErrors.filter((err) => {
-      var _a;
-      if (err.keyword !== "additionalProperties") {
-        return true;
-      }
-      const prop = (_a = err.params) == null ? void 0 : _a.additionalProperty;
-      return !groupedAdditionalKeys.has(`${err.instancePath}|${err.schemaPath}|${prop}`);
-    });
-    for (const err of remainingErrors) {
-      lines.push(formatSingleAjvError(err, schema2, data));
-      lines.push("");
-    }
-    return lines.join("\n").trim();
-  }
-  function compareAjvErrors(a, b) {
-    const pathCompare = String(a.instancePath || "").localeCompare(String(b.instancePath || ""));
-    if (pathCompare !== 0) {
-      return pathCompare;
-    }
-    return String(a.keyword || "").localeCompare(String(b.keyword || ""));
-  }
-  function filterFollowUpOneOfErrors(errors) {
-    const oneOfPaths = new Set(errors.filter((err) => err.keyword === "oneOf").map((err) => err.instancePath || ""));
-    return errors.filter((err) => {
-      if (err.keyword === "oneOf") {
-        return true;
-      }
-      if (!oneOfPaths.has(err.instancePath || "")) {
-        return true;
-      }
-      return false;
-    });
-  }
-  function groupAdditionalProperties(errors) {
-    var _a, _b;
-    const groups = /* @__PURE__ */ new Map();
-    for (const err of errors) {
-      if (err.keyword !== "additionalProperties") {
-        continue;
-      }
-      const key = `${err.instancePath}|${err.schemaPath}`;
-      const prop = (_b = (_a = err.params) == null ? void 0 : _a.additionalProperty) != null ? _b : "<unknown>";
-      if (!groups.has(key)) {
-        groups.set(key, {
-          instancePath: err.instancePath || "",
-          schemaPath: err.schemaPath || "",
-          properties: []
-        });
-      }
-      groups.get(key).properties.push(prop);
-    }
-    return Array.from(groups.values());
-  }
-  function formatSingleAjvError(err, schema2, data) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
-    const path = formatPath(err.instancePath);
-    const value = getValueAtJsonPointer(data, err.instancePath);
-    const actualType = getJsonType(value);
-    switch (err.keyword) {
-      case "required": {
-        const missing = (_b = (_a = err.params) == null ? void 0 : _a.missingProperty) != null ? _b : "<unknown>";
-        return [_("Error at %s:", path), _('Required property "%s" is missing.', missing)].join("\n");
-      }
-      case "type": {
-        return [
-          _("Error at %s:", path),
-          _("Invalid data type."),
-          _("Expected: %s", formatExpectedType((_c = err.params) == null ? void 0 : _c.type)),
-          _("Actual: %s", actualType),
-          _("Value: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "enum": {
-        const allowed = getSchemaValue(schema2, err.schemaPath, "enum");
-        return [
-          _("Error at %s:", path),
-          _("Invalid value: %s", formatValue(value)),
-          Array.isArray(allowed) ? _("Allowed values: %s", allowed.map(formatValue).join(", ")) : _("The value is not allowed.")
-        ].join("\n");
-      }
-      case "const": {
-        const expected = getSchemaValue(schema2, err.schemaPath, "const");
-        return [
-          _("Error at %s:", path),
-          _("Invalid value: %s", formatValue(value)),
-          _("Expected value: %s", formatValue(expected))
-        ].join("\n");
-      }
-      case "minimum": {
-        return [
-          _("Error at %s:", path),
-          _("Value is below the minimum."),
-          _("Minimum: %s", (_d = err.params) == null ? void 0 : _d.limit),
-          _("Actual: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "maximum": {
-        return [
-          _("Error at %s:", path),
-          _("Value exceeds the maximum."),
-          _("Maximum: %s", (_e = err.params) == null ? void 0 : _e.limit),
-          _("Actual: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "exclusiveMinimum": {
-        return [
-          _("Error at %s:", path),
-          _("Value must be greater than %s.", (_f = err.params) == null ? void 0 : _f.limit),
-          _("Actual: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "exclusiveMaximum": {
-        return [
-          _("Error at %s:", path),
-          _("Value must be less than %s.", (_g = err.params) == null ? void 0 : _g.limit),
-          _("Actual: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "minItems": {
-        return [
-          _("Error at %s:", path),
-          _("Array contains too few elements."),
-          _("Minimum number of elements: %s", (_h = err.params) == null ? void 0 : _h.limit),
-          _("Actual number of elements: %s", Array.isArray(value) ? value.length : actualType)
-        ].join("\n");
-      }
-      case "maxItems": {
-        return [
-          _("Error at %s:", path),
-          _("Array contains too many elements."),
-          _("Maximum number of elements: %s", (_i = err.params) == null ? void 0 : _i.limit),
-          _("Actual number of elements: %s", Array.isArray(value) ? value.length : actualType)
-        ].join("\n");
-      }
-      case "minLength": {
-        return [
-          _("Error at %s:", path),
-          _("String is too short."),
-          _("Minimum length: %s", (_j = err.params) == null ? void 0 : _j.limit),
-          _("Actual length: %s", typeof value === "string" ? value.length : actualType),
-          _("Value: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "maxLength": {
-        return [
-          _("Error at %s:", path),
-          _("String is too long."),
-          _("Maximum length: %s", (_k = err.params) == null ? void 0 : _k.limit),
-          _("Actual length: %s", typeof value === "string" ? value.length : actualType),
-          _("Value: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "pattern": {
-        return [
-          _("Error at %s:", path),
-          _("String does not match the required pattern."),
-          _("Pattern: %s", (_l = err.params) == null ? void 0 : _l.pattern),
-          _("Value: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "oneOf": {
-        return [
-          _("Error at %s:", path),
-          _("The object does not match any of the allowed variants."),
-          _("Please check whether the required combination of properties is correct."),
-          _("Value: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "anyOf": {
-        return [
-          _("Error at %s:", path),
-          _("The value does not match any of the allowed schemas."),
-          _("Value: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "allOf": {
-        return [
-          _("Error at %s:", path),
-          _("The value does not match all required schemas."),
-          _("Value: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "not": {
-        return [
-          _("Error at %s:", path),
-          _("This combination of properties is not allowed."),
-          _("Value: %s", formatValue(value))
-        ].join("\n");
-      }
-      case "additionalProperties": {
-        const prop = (_n = (_m = err.params) == null ? void 0 : _m.additionalProperty) != null ? _n : "<unknown>";
-        return [_("Error at %s:", path), _('Unexpected property "%s".', prop)].join("\n");
-      }
-      case "unevaluatedProperties": {
-        const prop = (_p = (_o = err.params) == null ? void 0 : _o.unevaluatedProperty) != null ? _p : "<unknown>";
-        return [_("Error at %s:", path), _('Unexpected property "%s".', prop)].join("\n");
-      }
-      default: {
-        return [
-          _("Error at %s:", path),
-          err.message ? _("Validation error: %s", err.message) : _("Validation error (%s).", err.keyword),
-          _("Value: %s", formatValue(value))
-        ].join("\n");
-      }
-    }
-  }
-  function formatPath(instancePath) {
-    if (!instancePath) {
-      return _("root object");
-    }
-    const parts = instancePath.split("/").slice(1).map(unescapeJsonPointerPart);
-    let result = "";
-    for (const part of parts) {
-      if (/^\d+$/.test(part)) {
-        result += `[${part}]`;
-      } else if (result === "") {
-        result += part;
-      } else if (/^[A-Za-z_$][A-Za-z0-9_$]*$/.test(part)) {
-        result += `.${part}`;
-      } else {
-        result += `[${JSON.stringify(part)}]`;
-      }
-    }
-    return result || _("root object");
-  }
-  function getValueAtJsonPointer(data, pointer) {
-    if (!pointer) {
-      return data;
-    }
-    return pointer.split("/").slice(1).reduce((current, part) => {
-      if (current === void 0 || current === null) {
-        return void 0;
-      }
-      const key = unescapeJsonPointerPart(part);
-      return current[key];
-    }, data);
-  }
-  function unescapeJsonPointerPart(part) {
-    return String(part).replace(/~1/g, "/").replace(/~0/g, "~");
-  }
-  function getJsonType(value) {
-    if (value === void 0) {
-      return _("undefined");
-    }
-    if (value === null) {
-      return "null";
-    }
-    if (Array.isArray(value)) {
-      return "array";
-    }
-    return typeof value;
-  }
-  function formatExpectedType(type) {
-    if (Array.isArray(type)) {
-      return type.join(" / ");
-    }
-    return String(type);
-  }
-  function formatValue(value) {
-    if (value === void 0) {
-      return _("<not available>");
-    }
-    try {
-      return JSON.stringify(value);
-    } catch (e) {
-      return String(value);
-    }
-  }
-  function getAllowedProperties(schema2, schemaPath, instancePath) {
-    let schemaNode = getSchemaNodeByInstancePath(schema2, instancePath);
-    if (!(schemaNode == null ? void 0 : schemaNode.properties) && instancePath) {
-      schemaNode = getSchemaNodeForKeyword(schema2, schemaPath, "additionalProperties");
-    }
-    if (!(schemaNode == null ? void 0 : schemaNode.properties)) {
-      return [];
-    }
-    return Object.keys(schemaNode.properties);
-  }
-  function getSchemaValue(schema2, schemaPath, keyword) {
-    const node = getSchemaNodeForKeyword(schema2, schemaPath, keyword);
-    return node == null ? void 0 : node[keyword];
-  }
-  function getSchemaNodeForKeyword(schema2, schemaPath, keyword) {
-    if (!schemaPath) {
-      return void 0;
-    }
-    let pointer = schemaPath;
-    if (pointer.startsWith("#")) {
-      pointer = pointer.slice(1);
-    }
-    if (pointer.endsWith(`/${keyword}`)) {
-      pointer = pointer.slice(0, -`/${keyword}`.length);
-    }
-    return getValueAtJsonPointer(schema2, pointer);
-  }
-  function getSchemaNodeByInstancePath(schema2, instancePath) {
-    var _a;
-    const parts = instancePath.split("/").slice(1).map(unescapeJsonPointerPart);
-    let node = schema2;
-    for (const part of parts) {
-      node = resolveSchemaRef(schema2, node);
-      if (!node) {
-        return void 0;
-      }
-      if (node.type === "object" && ((_a = node.properties) == null ? void 0 : _a[part])) {
-        node = node.properties[part];
-        continue;
-      }
-      if (node.type === "array" && node.items) {
-        node = node.items;
-        continue;
-      }
-      if (/^\d+$/.test(part) && node.items) {
-        node = node.items;
-        continue;
-      }
-      return void 0;
-    }
-    return resolveSchemaRef(schema2, node);
-  }
-  function resolveSchemaRef(rootSchema, node) {
-    while (node == null ? void 0 : node.$ref) {
-      let pointer = node.$ref;
-      if (!pointer.startsWith("#")) {
-        return node;
-      }
-      pointer = pointer.slice(1);
-      node = getValueAtJsonPointer(rootSchema, pointer);
-    }
-    return node;
-  }
-
-  // mapwidgets/js/mapwidgets.js
+  var import_formatAjvErrors = __toESM(require_formatAjvErrors());
   var hash = require_object_hash();
   var schema = require_mapwidgets_schema();
   var translations = require_translations();
@@ -21924,7 +21929,7 @@
             });
             const validate = ajv.compile(schema);
             const valid = validate(config);
-            visdata.schemaErrorsText = valid ? "" : formatAjvErrors(validate.errors, schema, config);
+            visdata.schemaErrorsText = valid ? "" : (0, import_formatAjvErrors.formatAjvErrors)(validate.errors, schema, config);
           }
         }
         this.schemaErrorControl(widgetID);

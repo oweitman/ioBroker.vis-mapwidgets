@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>mapwidgets frontend smoke test</title>
+        <link rel="stylesheet" href="../../../widgets/mapwidgets/dist/bundle.css" />
+        <style>
+            html,
+            body {
+                margin: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            #w00001 {
+                width: 800px;
+                height: 500px;
+            }
+
+            .marker-zero {
+                align-items: center;
+                background: #d32f2f;
+                border: 2px solid #ffffff;
+                border-radius: 50%;
+                color: #ffffff;
+                display: flex;
+                font: 700 13px Arial, sans-serif;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="w00001"></div>
+
+        <script>
+            window.systemDictionary = {};
+            window._ = function (text) {
+                const args = Array.prototype.slice.call(arguments, 1);
+                let index = 0;
+                return String(text).replace(/%s/g, function () {
+                    return args[index++];
+                });
+            };
+
+            window.__mapwidgetsStateValues = {};
+            window.__mapwidgetsStateHandlers = {};
+
+            function JQueryCollection(elements) {
+                this.elements = elements;
+                this.length = elements.length;
+            }
+
+            JQueryCollection.prototype.get = function (index) {
+                return this.elements[index];
+            };
+
+            JQueryCollection.prototype.html = function (value) {
+                if (value === undefined) {
+                    return this.elements[0] ? this.elements[0].innerHTML : undefined;
+                }
+                this.elements.forEach(function (element) {
+                    element.innerHTML = value;
+                });
+                return this;
+            };
+
+            JQueryCollection.prototype.width = function () {
+                return this.elements[0] ? this.elements[0].getBoundingClientRect().width : 0;
+            };
+
+            JQueryCollection.prototype.height = function () {
+                return this.elements[0] ? this.elements[0].getBoundingClientRect().height : 0;
+            };
+
+            JQueryCollection.prototype.data = function (key, value) {
+                if (!this.elements[0]) {
+                    return undefined;
+                }
+                this.elements[0].__jqueryData = this.elements[0].__jqueryData || {};
+                if (value === undefined) {
+                    return this.elements[0].__jqueryData[key];
+                }
+                this.elements.forEach(function (element) {
+                    element.__jqueryData = element.__jqueryData || {};
+                    element.__jqueryData[key] = value;
+                });
+                return this;
+            };
+
+            JQueryCollection.prototype.addClass = function (className) {
+                this.elements.forEach(function (element) {
+                    element.classList.add.apply(element.classList, className.split(/\s+/).filter(Boolean));
+                });
+                return this;
+            };
+
+            JQueryCollection.prototype.text = function (value) {
+                if (value === undefined) {
+                    return this.elements[0] ? this.elements[0].textContent : undefined;
+                }
+                this.elements.forEach(function (element) {
+                    element.textContent = value;
+                });
+                return this;
+            };
+
+            JQueryCollection.prototype.dialog = function () {
+                this.elements.forEach(function (element) {
+                    element.classList.add('test-dialog-open');
+                    document.body.appendChild(element);
+                });
+                return this;
+            };
+
+            JQueryCollection.prototype.remove = function () {
+                this.elements.forEach(function (element) {
+                    element.remove();
+                });
+                return this;
+            };
+
+            function $(selector) {
+                if (typeof selector === 'string' && selector.trim().startsWith('<')) {
+                    const template = document.createElement('template');
+                    template.innerHTML = selector.trim();
+                    return new JQueryCollection([template.content.firstElementChild]);
+                }
+                if (typeof selector === 'string') {
+                    return new JQueryCollection(Array.from(document.querySelectorAll(selector)));
+                }
+                if (selector instanceof Element || selector === window || selector === document) {
+                    return new JQueryCollection([selector]);
+                }
+                if (selector && selector.elements) {
+                    return selector;
+                }
+                return new JQueryCollection([]);
+            }
+
+            $.extend = function deepExtend() {
+                const deep = typeof arguments[0] === 'boolean' ? arguments[0] : false;
+                const target = arguments[deep ? 1 : 0] || {};
+                const sources = Array.prototype.slice.call(arguments, deep ? 2 : 1);
+
+                sources.forEach(function (source) {
+                    Object.keys(source || {}).forEach(function (key) {
+                        const value = source[key];
+                        if (
+                            deep &&
+                            value &&
+                            typeof value === 'object' &&
+                            !Array.isArray(value)
+                        ) {
+                            target[key] = deepExtend(true, target[key] || {}, value);
+                        } else {
+                            target[key] = value;
+                        }
+                    });
+                });
+
+                return target;
+            };
+
+            window.$ = $;
+            window.vis = {
+                binds: {},
+                editMode: false,
+                states: {
+                    attr: function (id) {
+                        return window.__mapwidgetsStateValues[id];
+                    },
+                    bind: function (id, callback) {
+                        window.__mapwidgetsStateHandlers[id] = callback;
+                    },
+                    unbind: function (id) {
+                        delete window.__mapwidgetsStateHandlers[id];
+                    },
+                },
+            };
+
+            window.renderMapWidget = function (config) {
+                window.__mapwidgetsStateValues['userdata.0.map.val'] = JSON.stringify(config);
+                return window.vis.binds.mapwidgets.leaflet.createWidget(
+                    'w00001',
+                    'main',
+                    {
+                        mapwidgets_oid: 'userdata.0.map',
+                        mapwidgets_lat: '0',
+                        mapwidgets_lon: '0',
+                        mapwidgets_zoom: '3',
+                    },
+                    {},
+                );
+            };
+
+            window.pushMapWidgetState = function (rawValue) {
+                const callback = window.__mapwidgetsStateHandlers['userdata.0.map.val'];
+                callback({}, rawValue);
+            };
+        </script>
+        <script src="../../../widgets/mapwidgets/dist/bundle.js"></script>
+    </body>
+</html>
