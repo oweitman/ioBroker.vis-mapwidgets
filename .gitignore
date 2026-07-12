@@ -26,3 +26,6 @@ admin/i18n/*/flat.txt
 .vscode/secrets.txt
 .commitinfo 
 .env
+example/ExamplePathHistory/icons.json
+example/ExamplePathHistory/sdfgh.json
+example/ExamplePathHistory/track.json
