@@ -21831,7 +21831,8 @@
             }, 100);
           }
           this.visMapwidgets = vis.binds["mapwidgets"];
-          const parsedConfig = data["mapwidgets_oid"] ? this.visMapwidgets.parseMapConfig(vis.states.attr(`${data["mapwidgets_oid"]}.val`) || "{}") : { config: {}, errorText: "", valid: true };
+          const oid = (data["mapwidgets_oid"] || "").trim();
+          const parsedConfig = oid ? this.visMapwidgets.parseMapConfig(vis.states.attr(`${oid}.val`) || "{}") : { config: {}, errorText: "", valid: true };
           let config = parsedConfig.config;
           let lat = data["mapwidgets_lat"] ? parseFloat(data["mapwidgets_lat"]) : 50.11552;
           let lon = data["mapwidgets_lon"] ? parseFloat(data["mapwidgets_lon"]) : 8.68417;
@@ -21868,10 +21869,8 @@
               console.warn(parsed.errorText);
             }
           }
-          if (data["mapwidgets_oid"]) {
-            if (!vis.editMode) {
-              vis.binds["mapwidgets"].bindStates($div, [data["mapwidgets_oid"]], onChange);
-            }
+          if (oid) {
+            vis.binds["mapwidgets"].bindStates($div, [oid], onChange);
           }
           L.Icon.Default.imagePath = "widgets/mapwidgets/dist/images/";
           if (!visdata.map || $(`#${widgetID} .mapwidgetsLeaflet`).length == 0) {

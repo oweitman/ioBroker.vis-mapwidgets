@@ -188,8 +188,9 @@ vis.binds['mapwidgets'] = {
 
             // mapwidgets_oid/id;mapwidgets_lat/number,-90,90;mapwidgets_lon/number,-180,180;mapwidgets_zoom/number,0;
             //frankfurt 50.11552 8.68417
-            const parsedConfig = data['mapwidgets_oid']
-                ? this.visMapwidgets.parseMapConfig(vis.states.attr(`${data['mapwidgets_oid']}.val`) || '{}')
+            const oid = (data['mapwidgets_oid'] || '').trim();
+            const parsedConfig = oid
+                ? this.visMapwidgets.parseMapConfig(vis.states.attr(`${oid}.val`) || '{}')
                 : { config: {}, errorText: '', valid: true };
             let config = parsedConfig.config;
             let lat = data['mapwidgets_lat'] ? parseFloat(data['mapwidgets_lat']) : 50.11552;
@@ -235,10 +236,10 @@ vis.binds['mapwidgets'] = {
                 }
             }
 
-            if (data['mapwidgets_oid']) {
-                if (!vis.editMode) {
-                    vis.binds['mapwidgets'].bindStates($div, [data['mapwidgets_oid']], onChange);
-                }
+            if (oid) {
+                //if (!vis.editMode) {
+                vis.binds['mapwidgets'].bindStates($div, [oid], onChange);
+                //}
             }
 
             L.Icon.Default.imagePath = 'widgets/mapwidgets/dist/images/';
