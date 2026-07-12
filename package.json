@@ -50,12 +50,13 @@
     "main.js"
   ],
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha --exit",
-    "test:coverage": "nyc --reporter=text --reporter=html node node_modules/mocha/bin/mocha --exit",
+    "test": "npm run test:js && npm run test:package",
+    "test:js": "mocha --config test/mocharc.custom.json \"*.test.js\" \"test/**/*.test.js\" --exit",
+    "test:coverage": "nyc --reporter=text --reporter=html npm run test:js",
     "test:frontend": "playwright test",
     "test:frontend:install": "playwright install chromium",
-    "test:package": "node node_modules/mocha/bin/mocha --exit",
-    "test:integration": "node node_modules/mocha/bin/mocha --exit",
+    "test:package": "mocha test/package --exit",
+    "test:integration": "mocha test/integration --exit",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint .",
     "lint:debug": "eslint . --debug",
