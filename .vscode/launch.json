@@ -42,6 +42,15 @@
             "runtimeExecutable": "c:/Users/oweit/AppData/Roaming/fnm/aliases/default/node.exe",
             "skipFiles": ["<node_internals>/**"],
             "type": "node"
+        },
+        {
+            "name": "repochecker local",
+            "program": "../iobroker.repochecker/index.js",
+            "args": ["https://github.com/oweitman/ioBroker.vis-mapwidgets", "--local"],
+            "request": "launch",
+            "stopOnEntry": false,
+            "skipFiles": ["<node_internals>/**"],
+            "type": "node"
         }
     ]
 }
