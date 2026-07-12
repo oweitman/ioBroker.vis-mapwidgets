@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "news": {
+      "0.1.2": {
+        "en": "add tests\nimprove build\nfix repochecker\nimprove datapoint handling",
+        "de": "Tests hinzufügen\nVerbesserung des Aufbaus\nRepochecker reparieren\nVerbesserung der Datenpunktverarbeitung",
+        "ru": "добавить тесты\nулучшить сборку\nисправить repochecker\nулучшить обработку точек данных",
+        "pt": "adicionar testes\nmelhorar a construção\ncorrigir repochecker\nMelhorar o tratamento dos pontos de dados",
+        "nl": "tests toevoegen\nverbeter de bouw\nrepochecker repareren\nVerbeter de verwerking van datapunten.",
+        "fr": "ajouter des tests\naméliorer la construction\ncorriger le rechecker\naméliorer la gestion des points de données",
+        "it": "aggiungere test\nmigliorare la costruzione\nfix repochecker\nmigliorare la gestione dei punti dati",
+        "es": "agregar pruebas\nmejorar la construcción\ncorregir repochecker\nmejorar el manejo de los puntos de datos",
+        "pl": "dodaj testy\nulepszyć kompilację\nnapraw repochecker\npoprawić obsługę punktów danych",
+        "uk": "додати тести\nпокращити збірку\nвиправити перевірку повторів\nпокращити обробку точок даних",
+        "zh-cn": "添加测试\n改进构建\n修复 repochecker\n改进数据点处理"
+      },
       "0.1.1": {
         "en": "fix schema error dialog in vis-2",
         "de": "Schemafehlerdialog in vis-2 beheben",
@@ -80,19 +93,6 @@
         "pl": "dodawanie funkcji użyteczności dokumentacji\ndodaj więcej przykładów i przerób przykładową dokumentację",
         "uk": "додати утиліту функції документації\nдодати більше прикладів і документації",
         "zh-cn": "添加工具函数一个文档\n添加更多示例和重做示例文档"
-      },
-      "0.0.9": {
-        "en": "- add polyline/path example to testdata.json. the path is located in Bathey,\n  few kilometers south of Dortmund\n- add polyline/path example to testdata.json. the path is located in\n  Frankfurt/Main. The trail starts in the city center of Frankfurt,\n  heading towards the southeast.\n- add vis1 example to manipulate map from vis script with the expose option\n- fix map creation if parameter changes",
-        "de": "- polyline/path Beispiel zu testdata.json hinzufügen. der Pfad befindet sich in Bathey,\nwenige Kilometer südlich von Dortmund\n- polyline/pfad beispiel zu testdaten hinzufügen. json. der pfad befindet sich in\nFrankfurt am Main. Der Weg beginnt im Stadtzentrum von Frankfurt,\nrichtung südosten.\n- fügen sie vis1 beispiel hinzu, um die karte aus dem vis-skript zu manipulieren, mit der belichtungsoption\n- die kartenerstellung festlegen, wenn parameteränderungen",
-        "ru": "- добавить пример полилина/пути в testdata.json. Путь расположен в Батее,\nв нескольких километрах к югу от Дортмунда\n- добавить пример полилина/пути к тестируемым данным. джейсон. путь находится в\nФранкфурт/Главная. Тропа начинается в центре города Франкфурт,\nнаправляется на юго-восток.\n- добавьте пример vis1 для манипулирования картой из скрипта vis с возможностью разоблачения\n- фиксировать создание карты при изменении параметров",
-        "pt": "- adicionar exemplo de polilinha/caminho ao testdata.json. o caminho está localizado em Bathey,\npoucos quilômetros ao sul de Dortmund\n- adicionar exemplo de polilinha/caminho aos testdata. json. o caminho está localizado em\nFrankfurt/Main. A trilha começa no centro da cidade de Frankfurt,\nem direcção ao sudeste.\n- adicionar exemplo vis1 para manipular o mapa do script vis com a opção expor\n- corrigir a criação do mapa se o parâmetro mudar",
-        "nl": "- voeg polyline/path voorbeeld aan testdata.json. het pad ligt in Bathe,\nenkele kilometers ten zuiden van Dortmund\n- polyline/path voorbeeld toevoegen aan testdata. json. het pad is gelegen in\nFrankfurt/Main. De route begint in het centrum van Frankfurt,\nrichting het zuidoosten.\n- vis1 voorbeeld toevoegen om kaart te manipuleren van vis script met de expo optie\n- map aanmaken als parameter verandert",
-        "fr": "- ajouter un exemple de polyligne/chemin à testdata.json. le sentier est situé à Bathey,\nà quelques kilomètres au sud de Dortmund\n- ajouter un exemple de polyligne/chemin aux données de test. json. le chemin est situé dans\nFrancfort/Main. Le sentier commence dans le centre-ville de Francfort,\ndirection le sud-est.\n- ajouter l'exemple vis1 pour manipuler la carte depuis le script vis avec l'option expose\n- fixer la création de la carte si le paramètre change",
-        "it": "- aggiungere l'esempio di poliline/path a testdata.json. il sentiero si trova a Bathey,\npochi chilometri a sud di Dortmund\n- aggiungere l'esempio di poliline/path a testdata. json. il sentiero si trova in\nFrancoforte sul Meno. Il sentiero inizia nel centro di Francoforte,\nverso sud-est.\n- aggiungere l'esempio vis1 per manipolare la mappa dallo script vis con l'opzione espositiva\n- correggere la creazione della mappa se i parametri cambiano",
-        "es": "- añadir ejemplo de polilínea/pata a testdata.json. el camino se encuentra en Bathey,\npocos kilómetros al sur de Dortmund\n- añadir ejemplo de poliline/path a testdata. json. el camino se encuentra en\nFrankfurt/Main. El sendero comienza en el centro de Frankfurt,\ndirigiéndose hacia el sureste.\n- añadir el ejemplo vis1 para manipular mapa de vis script con la opción de exponer\n- arreglar la creación de mapas si cambia el parámetro",
-        "pl": "- dodać przykład poliline / path do testdata.json. ścieżka znajduje się w Bahe,\nkilka kilometrów na południe od Dortmund\n- dodać przykład poliline / path do testdata. josh. ścieżka znajduje się w\nFrankfurt nad Menem. Szlak zaczyna się w centrum Frankfurtu,\nkieruje się na południowy wschód.\n- dodać vis1 przykład do manipulowania mapą ze skryptu z opcją demaskowania\n- naprawić tworzenie mapy, jeśli parametry ulegną zmianie",
-        "uk": "- додати полілін/пато приклад для testdata.json. Шлях знаходиться в Баня,\nкілька кілометрів на південь від Дортмунд\n- додати полілін / приклад для тестових даних. джсон. шлях знаходиться в\nФранкфурт/Майн. Причіп починається в центрі міста Франкфурт,\nна південному сході.\n- додати приклад vis1 для маніпуляції картою з скрипта vis з опцією\n- виправлено створення карти при зміні параметра",
-        "zh-cn": "- 在testdata.json中添加多线/路径示例。 大道位于巴西,\n在多尔特蒙德以南几公里处\n- 在测试数据中添加多线/路径示例。 强森。 路径位于\n法兰克福/ 美因. 线索从法兰克福市中心开始,\n朝东南方向去了.\n- 添加图例1, 使用曝光选项从脚本操作地图\n- 如果参数改变, 固定地图创建"
       }
     },
     "titleLang": {

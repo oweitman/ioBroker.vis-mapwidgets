@@ -573,6 +573,12 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.1.2 (2026-07-12)
+
+- add tests
+- improve build
+- fix repochecker
+- improve datapoint handling
 
 ### 0.1.1 (2026-07-06)
 
@@ -598,10 +604,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 - fix some picture alt names
 - fix some project filenames
 - improve version number output in the widget
-
-### 0.0.11 (2025-09-26)
-
-- add fitBound option
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 

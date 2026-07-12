@@ -1,4 +1,9 @@
 # Older changes
+
+## 0.0.11 (2025-09-26)
+
+- add fitBound option
+
 ## 0.0.10 (2025-09-26)
 
 - add utility functions an documentation
