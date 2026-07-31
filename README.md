@@ -573,6 +573,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.1.2 (2026-07-12)
 
 - add tests
@@ -606,6 +607,10 @@ Waits for a global variable (or a nested property of `window`) to become availab
 - improve version number output in the widget
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
+
+## Todo
+
+- new widget track history https://github.com/konewka17/timeline_card, https://community.home-assistant.io/t/location-timeline-card-to-easily-show-location-history/989513
 
 ## License
 
