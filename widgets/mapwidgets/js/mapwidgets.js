@@ -7,7 +7,7 @@
 
 // const { config } = require("chai");
 
-/* global $, vis, systemDictionary,L,window,document,_ */
+/* global $, vis, L, window, document, _ */
 
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
@@ -21,9 +21,6 @@ import { formatAjvErrors } from './formatAjvErrors.js';
 var hash = require('object-hash');
 
 const schema = require('./mapwidgets.schema.json');
-
-var translations = require('../myi18n/translations.json');
-$.extend(true, systemDictionary, translations);
 
 // this code can be placed directly in mapwidgets.html
 vis.binds['mapwidgets'] = {

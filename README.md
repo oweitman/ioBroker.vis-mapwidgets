@@ -454,6 +454,58 @@ and zooms the view so that all selected objects are visible.
 }
 ```
 
+### Location Timeline
+
+The **Location Timeline** widget shows the daily location history of up to five
+people. Its layout is inspired by the map-and-timeline interaction used by
+mobile map applications, without copying a particular application design.
+
+Each configured tracking datapoint must contain one combined WGS84 position:
+
+```text
+50.11552,8.68417
+```
+
+For testing, copy
+[`example/LocationTimeline/create-example-track.js`](example/LocationTimeline/create-example-track.js)
+into a JavaScript adapter script. It creates a configurable sample day and
+stores the raw positions in `history.0` through `storeState`.
+
+For the selected local calendar day the widget requests unaggregated values
+from `history.0`. Day boundaries and daylight-saving changes follow the time
+zone of the browser. If no history is available for today, the current state is
+shown as a single marker. Past days without history remain empty.
+
+The widget removes isolated implausible GPS jumps and groups nearby samples
+into stays. The following options control this processing:
+
+- **Timeline layout**: automatic, beside the map, or below the map
+- **Stay radius**: maximum distance of samples belonging to a stay (default 75 m)
+- **Minimum stay**: minimum duration of a stay (default 10 minutes)
+- **Maximum reasonable speed**: threshold for isolated GPS jumps (default 300 km/h; `0` disables the filter)
+
+Known places and reverse-geocoding results are persisted in these states,
+which are created during adapter installation:
+
+```text
+vis-mapwidgets.0.timeline.places
+vis-mapwidgets.0.timeline.geocodingCache
+```
+
+IndexedDB is used as the fast local cache. State writes are collected and
+performed in the background. A resolved stay can be saved as a known place
+with an editable label and radius.
+
+Resolved places are shown as a name plus a smaller address line. Route arrows
+indicate the travel direction, and both stay markers and route sections select
+the matching timeline entry when clicked.
+
+External reverse geocoding is disabled by default. When enabled, the endpoint
+defaults to the public Nominatim reverse API. Requests are deduplicated and
+serialized with at least 1.1 seconds between calls. Configure a contact email
+and observe the [Nominatim usage policy](https://operations.osmfoundation.org/policies/nominatim/).
+Location coordinates are sent to the configured external service.
+
 ### Utility Functions Documentation
 
 The following functions are available under `window.iobroker.mapwidgets`. For example:
@@ -574,6 +626,10 @@ Waits for a global variable (or a nested property of `window`) to become availab
     ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- add timeline widget
+
 ### 0.1.2 (2026-07-12)
 
 - add tests
@@ -607,10 +663,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 - improve version number output in the widget
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
-
-## Todo
-
-- new widget track history https://github.com/konewka17/timeline_card, https://community.home-assistant.io/t/location-timeline-card-to-easily-show-location-history/989513
 
 ## License
 

@@ -100,7 +100,6 @@
 
 -->
 
-
 <script id="tplMapWidgetLeaflet" type="text/ejs" class="vis-tpl"
     data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/mapwidgets/dist/images/mapwidgets.svg"></img>'
     data-vis-attrs="mapwidgets_oid/id;mapwidgets_lat;mapwidgets_lon;mapwidgets_zoom/number,0;mapwidgets_expose/checkbox[false];"
@@ -111,4 +110,25 @@
         vis.binds.mapwidgets.leaflet.createWidget(this.data.wid, this.view, this.data, this.style);
     %>
     </div>
+</script>
+
+<script
+    id="tplMapWidgetTimeline"
+    type="text/ejs"
+    class="vis-tpl"
+    data-vis-prev='<img style="display:block;margin:auto;width:50%;" src="widgets/mapwidgets/dist/images/mapwidgets.svg"></img>'
+    data-vis-attrs="group.timeline_layout;timeline_layout[auto]/select,auto,side,below;timeline_theme[auto]/select,auto,light,dark;"
+    data-vis-attrs0="group.timeline_people;timeline_oid1/id;timeline_name1;timeline_color1[#1a73e8]/color;timeline_oid2/id;timeline_name2;timeline_color2[#d93025]/color;timeline_oid3/id;timeline_name3;timeline_color3[#188038]/color;timeline_oid4/id;timeline_name4;timeline_color4[#a142f4]/color;timeline_oid5/id;timeline_name5;timeline_color5[#f9ab00]/color;"
+    data-vis-attrs1="group.timeline_detection;timeline_stayradius[75]/number,10,1000,5;timeline_minstay[10]/number,1,1440,1;timeline_maxspeed[300]/number,0,1000,10;"
+    data-vis-attrs2="group.timeline_geocoding;timeline_geocodingenabled/checkbox[false];timeline_email;timeline_language;timeline_endpoint[https://nominatim.openstreetmap.org/reverse];"
+    data-vis-set="mapwidgets"
+    data-vis-type="val"
+    data-vis-beta="true"
+    data-vis-update-style="true"
+    data-vis-name="Location Timeline"
+>
+    <div class="vis-widget mapwidgets-timeline-widget <%== this.data.attr('class') %>"
+        style="overflow:hidden;width:420px;height:640px" id="<%= this.data.attr('wid') %>"><%
+        vis.binds.mapwidgets.timeline.createWidget(this.data.wid, this.view, this.data, this.style);
+    %></div>
 </script>

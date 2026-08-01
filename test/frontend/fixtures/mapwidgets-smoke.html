@@ -3,7 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <title>mapwidgets frontend smoke test</title>
-        <link rel="stylesheet" href="../../../widgets/mapwidgets/dist/bundle.css" />
+        <link
+            rel="stylesheet"
+            href="../../../widgets/mapwidgets/dist/bundle.css"
+        />
         <style>
             html,
             body {
@@ -17,6 +20,11 @@
                 height: 500px;
             }
 
+            #wtimeline {
+                width: 430px;
+                height: 650px;
+            }
+
             .marker-zero {
                 align-items: center;
                 background: #d32f2f;
@@ -24,20 +32,25 @@
                 border-radius: 50%;
                 color: #ffffff;
                 display: flex;
-                font: 700 13px Arial, sans-serif;
+                font:
+                    700 13px Arial,
+                    sans-serif;
                 justify-content: center;
             }
         </style>
     </head>
     <body>
         <div id="w00001"></div>
+        <div id="wtimeline"></div>
 
         <script>
             window.systemDictionary = {};
             window._ = function (text) {
                 const args = Array.prototype.slice.call(arguments, 1);
                 let index = 0;
-                return String(text).replace(/%s/g, function () {
+                const dictionaryEntry = window.systemDictionary[text];
+                const translated = dictionaryEntry?.[window.vis?.language || 'en'] || text;
+                return String(translated).replace(/%s/g, function () {
                     return args[index++];
                 });
             };
@@ -145,12 +158,7 @@
                 sources.forEach(function (source) {
                     Object.keys(source || {}).forEach(function (key) {
                         const value = source[key];
-                        if (
-                            deep &&
-                            value &&
-                            typeof value === 'object' &&
-                            !Array.isArray(value)
-                        ) {
+                        if (deep && value && typeof value === 'object' && !Array.isArray(value)) {
                             target[key] = deepExtend(true, target[key] || {}, value);
                         } else {
                             target[key] = value;
@@ -165,6 +173,7 @@
             window.vis = {
                 binds: {},
                 editMode: false,
+                language: 'en',
                 states: {
                     attr: function (id) {
                         return window.__mapwidgetsStateValues[id];
@@ -175,6 +184,12 @@
                     unbind: function (id) {
                         delete window.__mapwidgetsStateHandlers[id];
                     },
+                },
+                getHistory: function (_id, _options, callback) {
+                    callback(null, window.__timelineHistory || []);
+                },
+                setValue: function (id, value) {
+                    window.__mapwidgetsStateValues[id + '.val'] = value;
                 },
             };
 
@@ -196,6 +211,48 @@
             window.pushMapWidgetState = function (rawValue) {
                 const callback = window.__mapwidgetsStateHandlers['userdata.0.map.val'];
                 callback({}, rawValue);
+            };
+
+            window.renderTimelineWidget = function (layout, theme) {
+                const start = new Date();
+                start.setHours(8, 0, 0, 0);
+                window.__timelineHistory = [
+                    { val: '50.11552,8.68417', ts: start.getTime() },
+                    { val: '50.11553,8.68418', ts: start.getTime() + 5 * 60000 },
+                    { val: '50.11552,8.68417', ts: start.getTime() + 15 * 60000 },
+                    { val: '50.12552,8.69417', ts: start.getTime() + 25 * 60000 },
+                ];
+                window.__mapwidgetsStateValues['tracker.0.alice.val'] = '50.12552,8.69417';
+                window.__mapwidgetsStateValues['vis-mapwidgets.0.timeline.places.val'] = JSON.stringify({
+                    version: 1,
+                    entries: [
+                        {
+                            id: 'hilton',
+                            address: {
+                                name: '5',
+                                street: 'Junghofstraße',
+                                housenumber: '5',
+                                city: 'Frankfurt am Main',
+                                country: 'Deutschland',
+                            },
+                            lat: 50.11552,
+                            lon: 8.68417,
+                            radius: 100,
+                            updated: 1,
+                        },
+                    ],
+                });
+                return window.vis.binds.mapwidgets.timeline.createWidget('wtimeline', 'main', {
+                    timeline_oid1: 'tracker.0.alice',
+                    timeline_name1: 'Alice',
+                    timeline_color1: '#1a73e8',
+                    timeline_layout: layout || 'auto',
+                    timeline_theme: theme || 'auto',
+                    timeline_stayradius: 75,
+                    timeline_minstay: 10,
+                    timeline_maxspeed: 300,
+                    timeline_geocodingenabled: false,
+                });
             };
         </script>
         <script src="../../../widgets/mapwidgets/dist/bundle.js"></script>

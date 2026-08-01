@@ -10,6 +10,7 @@
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __propIsEnum = Object.prototype.propertyIsEnumerable;
+  var __pow = Math.pow;
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __spreadValues = (a, b) => {
     for (var prop in b || (b = {}))
@@ -68,6 +69,1561 @@
       step((generator = generator.apply(__this, __arguments)).next());
     });
   };
+
+  // mapwidgets/myi18n/translations.json
+  var require_translations = __commonJS({
+    "mapwidgets/myi18n/translations.json"(exports, module) {
+      module.exports = {
+        mapwidgets_oid: {
+          en: "Datapoint",
+          de: "Datenpunkt",
+          ru: "\u0414\u0430\u043D\u043D\u044B\u0435",
+          pt: "Dado",
+          nl: "Gegevenspunt",
+          fr: "Donn\xE9e",
+          it: "Dato",
+          es: "Dato",
+          pl: "Punkt danych",
+          uk: "\u0414\u0430\u043D\u0456",
+          "zh-cn": "Datapoint"
+        },
+        mapwidgets_lat: {
+          en: "Map lat",
+          de: "Kartenbreitengrad",
+          ru: "\u0428\u0438\u0440\u043E\u0442\u0430 \u043D\u0430 \u043A\u0430\u0440\u0442\u0435",
+          pt: "Latitude do mapa",
+          nl: "Kaartbreedtegraad",
+          fr: "Latitude de la carte",
+          it: "Latitudine della mappa",
+          es: "Latitud del mapa",
+          pl: "Szeroko\u015B\u0107 geograficzna na mapie",
+          uk: "\u0428\u0438\u0440\u043E\u0442\u0430 \u043D\u0430 \u043A\u0430\u0440\u0442\u0456",
+          "zh-cn": "Map lat"
+        },
+        mapwidgets_lon: {
+          en: "Map lon",
+          de: "Karte L\xE4ngengrad",
+          ru: "\u041A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u044B \u043F\u043E \u0434\u043E\u043B\u0433\u043E\u0442\u0435 \u043D\u0430 \u043A\u0430\u0440\u0442\u0435",
+          pt: "Longitude do mapa",
+          nl: "Kaart lengtegraad",
+          fr: "Longitude sur la carte",
+          it: "Latitudine sulla mappa",
+          es: "Coordenadas de longitud del mapa",
+          pl: "D\u0142ugo\u015B\u0107 geograficzna na mapie",
+          uk: "\u041A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u0438 \u043D\u0430 \u043A\u0430\u0440\u0442\u0456",
+          "zh-cn": "Map lon"
+        },
+        mapwidgets_zoom: {
+          en: "Map Zoom",
+          de: "Karte vergr\xF6\xDFern",
+          ru: "\u041C\u0430\u0441\u0448\u0442\u0430\u0431 \u043A\u0430\u0440\u0442\u044B",
+          pt: "Ampliar o mapa",
+          nl: "Kaart vergroten/verkleinen",
+          fr: "Zoom sur la carte",
+          it: "Zoom sulla mappa",
+          es: "Acercar el mapa",
+          pl: "Powi\u0119kszenie mapy",
+          uk: "\u0417\u0431\u0456\u043B\u044C\u0448\u0435\u043D\u043D\u044F \u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0443 \u043A\u0430\u0440\u0442\u0438",
+          "zh-cn": "Map Zoom"
+        },
+        mapwidgets_expose: {
+          en: "Map Expose",
+          de: "Karte anzeigen",
+          ru: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043A\u0430\u0440\u0442\u0443",
+          pt: "Exibir mapa",
+          nl: "Kaart weergeven",
+          fr: "Afficher la carte",
+          it: "Visualizza mappa",
+          es: "Map Expose",
+          pl: "Poka\u017C map\u0119",
+          uk: "\u0412\u0456\u0434\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043D\u0430 \u043A\u0430\u0440\u0442\u0456",
+          "zh-cn": "Map Expose"
+        },
+        group_mapwidgets_daynight: {
+          en: "Map Day/Night",
+          de: "Karte Tag/Nacht",
+          ru: "\u041A\u0430\u0440\u0442\u0430 \xAB\u0414\u0435\u043D\u044C/\u041D\u043E\u0447\u044C\xBB",
+          pt: "Mapa Dia/Noite",
+          nl: "Kaart dag/nacht",
+          fr: "Carte jour/nuit",
+          it: "Mappa giorno/notte",
+          es: "Mapa de d\xEDa/noche",
+          pl: "Mapa \u2013 dzie\u0144/noc",
+          uk: "\u041A\u0430\u0440\u0442\u0430 \xAB\u0414\u0435\u043D\u044C/\u041D\u0456\u0447\xBB",
+          "zh-cn": "Map Day/Night"
+        },
+        mapwidgets_daynightenabled: {
+          en: "Day/Night Enabled",
+          de: "Tag-/Nachtmodus aktiviert",
+          ru: "\u0420\u0435\u0436\u0438\u043C \xAB\u0414\u0435\u043D\u044C/\u041D\u043E\u0447\u044C\xBB \u0432\u043A\u043B\u044E\u0447\u0435\u043D",
+          pt: "Modo Dia/Noite ativado",
+          nl: "Dag/nacht-modus ingeschakeld",
+          fr: "Mode jour/nuit activ\xE9",
+          it: "Day/Night Enabled",
+          es: "Day/Night Enabled",
+          pl: "W\u0142\u0105czono tryb dzienny/nocny",
+          uk: "\u0423\u0432\u0456\u043C\u043A\u043D\u0435\u043D\u043E \u0440\u0435\u0436\u0438\u043C \xAB\u0414\u0435\u043D\u044C/\u041D\u0456\u0447\xBB",
+          "zh-cn": "Day/Night Enabled"
+        },
+        mapwidgets_daynightcolor: {
+          en: "Day/Night Color",
+          de: "Tag-/Nachtfarbe",
+          ru: "\u0426\u0432\u0435\u0442 \u0434\u043D\u044F/\u043D\u043E\u0447\u0438",
+          pt: "Cor de dia/noite",
+          nl: "Dag-/nachtkleur",
+          fr: "Couleur jour/nuit",
+          it: "Colore giorno/notte",
+          es: "Color d\xEDa/noche",
+          pl: "Kolor dnia/nocy",
+          uk: "\u041A\u043E\u043B\u0456\u0440 \u0434\u043D\u044F/\u043D\u043E\u0447\u0456",
+          "zh-cn": "\u663C/\u591C\u989C\u8272"
+        },
+        mapwidgets_daynightopacity: {
+          en: "Day/Night Opacity",
+          de: "Tag-/Nachtdeckkraft",
+          ru: "\u041D\u0435\u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u043E\u0441\u0442\u044C \u0434\u043D\u044F/\u043D\u043E\u0447\u0438",
+          pt: "Opacidade de dia/noite",
+          nl: "Dag-/nachtdekking",
+          fr: "Opacit\xE9 jour/nuit",
+          it: "Opacit\xE0 giorno/notte",
+          es: "Opacidad d\xEDa/noche",
+          pl: "Krycie dnia/nocy",
+          uk: "\u041D\u0435\u043F\u0440\u043E\u0437\u043E\u0440\u0456\u0441\u0442\u044C \u0434\u043D\u044F/\u043D\u043E\u0447\u0456",
+          "zh-cn": "\u663C/\u591C\u4E0D\u900F\u660E\u5EA6"
+        },
+        mapwidgets_daynightfillcolor: {
+          en: "Day/Night Fill Color",
+          de: "Tag-/Nachtf\xFCllfarbe",
+          ru: "\u0426\u0432\u0435\u0442 \u0437\u0430\u043B\u0438\u0432\u043A\u0438 \u0434\u043D\u044F/\u043D\u043E\u0447\u0438",
+          pt: "Cor de preenchimento de dia/noite",
+          nl: "Dag-/nachtvulkleur",
+          fr: "Couleur de remplissage jour/nuit",
+          it: "Colore di riempimento giorno/notte",
+          es: "Color de relleno d\xEDa/noche",
+          pl: "Kolor wype\u0142nienia dnia/nocy",
+          uk: "\u041A\u043E\u043B\u0456\u0440 \u0437\u0430\u043B\u0438\u0432\u043A\u0438 \u0434\u043D\u044F/\u043D\u043E\u0447\u0456",
+          "zh-cn": "\u663C/\u591C\u586B\u5145\u989C\u8272"
+        },
+        mapwidgets_daynightfillopacity: {
+          en: "Day/Night Fill Opacity",
+          de: "Tag-/Nachtf\xFClldeckkraft",
+          ru: "\u041D\u0435\u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u043E\u0441\u0442\u044C \u0437\u0430\u043B\u0438\u0432\u043A\u0438 \u0434\u043D\u044F/\u043D\u043E\u0447\u0438",
+          pt: "Opacidade do preenchimento de dia/noite",
+          nl: "Dag-/nachtvuldekking",
+          fr: "Opacit\xE9 du remplissage jour/nuit",
+          it: "Opacit\xE0 di riempimento giorno/notte",
+          es: "Opacidad de relleno d\xEDa/noche",
+          pl: "Krycie wype\u0142nienia dnia/nocy",
+          uk: "\u041D\u0435\u043F\u0440\u043E\u0437\u043E\u0440\u0456\u0441\u0442\u044C \u0437\u0430\u043B\u0438\u0432\u043A\u0438 \u0434\u043D\u044F/\u043D\u043E\u0447\u0456",
+          "zh-cn": "\u663C/\u591C\u586B\u5145\u4E0D\u900F\u660E\u5EA6"
+        },
+        "The JSON configuration is valid.": {
+          en: "The JSON configuration is valid.",
+          de: "Die JSON-Konfiguration ist g\xFCltig.",
+          ru: "\u041A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F JSON \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u0430.",
+          pt: "A configura\xE7\xE3o JSON \xE9 v\xE1lida.",
+          nl: "De JSON-configuratie is geldig.",
+          fr: "La configuration JSON est valide.",
+          it: "La configurazione JSON \xE8 valida.",
+          es: "La configuraci\xF3n JSON es v\xE1lida.",
+          pl: "Konfiguracja JSON jest prawid\u0142owa.",
+          uk: "\u041A\u043E\u043D\u0444\u0456\u0433\u0443\u0440\u0430\u0446\u0456\u044F JSON \u0454 \u0434\u0456\u0439\u0441\u043D\u043E\u044E.",
+          "zh-cn": "JSON \u914D\u7F6E\u6709\u6548\u3002"
+        },
+        "The JSON configuration contains %s error(s).": {
+          en: "The JSON configuration contains %s error(s).",
+          de: "Die JSON-Konfiguration enth\xE4lt %s Fehler.",
+          ru: "\u041A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F JSON \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 %s \u043E\u0448\u0438\u0431\u043A\u0443(\u0438).",
+          pt: "A configura\xE7\xE3o JSON cont\xE9m %s erro(s).",
+          nl: "De JSON-configuratie bevat %s fout(en).",
+          fr: "La configuration JSON contient %s erreur(s).",
+          it: "La configurazione JSON contiene %s errore/i.",
+          es: "La configuraci\xF3n JSON contiene %s error(es).",
+          pl: "Konfiguracja JSON zawiera %s b\u0142\u0119d\xF3w.",
+          uk: "\u041A\u043E\u043D\u0444\u0456\u0433\u0443\u0440\u0430\u0446\u0456\u044F JSON \u043C\u0456\u0441\u0442\u0438\u0442\u044C %s \u043F\u043E\u043C\u0438\u043B\u043A\u0443(\u0438).",
+          "zh-cn": "JSON \u914D\u7F6E\u5305\u542B %s \u4E2A\u9519\u8BEF\u3002"
+        },
+        "Unexpected properties in object %s:": {
+          en: "Unexpected properties in object %s:",
+          de: "Unerwartete Eigenschaften in Objekt %s:",
+          ru: "\u041D\u0435\u043F\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043D\u043D\u044B\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u0432 \u043E\u0431\u044A\u0435\u043A\u0442\u0435 %s:",
+          pt: "Propriedades inesperadas no objeto %s:",
+          nl: "Onverwachte eigenschappen in object %s:",
+          fr: "Propri\xE9t\xE9s inattendues dans l'objet %s :",
+          it: "Propriet\xE0 impreviste nell'oggetto %s:",
+          es: "Propiedades inesperadas en el objeto %s:",
+          pl: "Nieoczekiwane w\u0142a\u015Bciwo\u015Bci w obiekcie %s:",
+          uk: "\u041D\u0435\u043E\u0447\u0456\u043A\u0443\u0432\u0430\u043D\u0456 \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u043E\u0441\u0442\u0456 \u0432 \u043E\u0431'\u0454\u043A\u0442\u0456 %s:",
+          "zh-cn": "\u5BF9\u8C61 %s \u4E2D\u5B58\u5728\u610F\u5916\u5C5E\u6027\uFF1A"
+        },
+        "Allowed properties are:": {
+          en: "Allowed properties are:",
+          de: "Erlaubte Eigenschaften sind:",
+          ru: "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430:",
+          pt: "As propriedades permitidas s\xE3o:",
+          nl: "Toegestane eigenschappen zijn:",
+          fr: "Les propri\xE9t\xE9s autoris\xE9es sont :",
+          it: "Le propriet\xE0 consentite sono:",
+          es: "Las propiedades permitidas son:",
+          pl: "Dozwolone w\u0142a\u015Bciwo\u015Bci to:",
+          uk: "\u0414\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0456 \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u043E\u0441\u0442\u0456:",
+          "zh-cn": "\u5141\u8BB8\u7684\u5C5E\u6027\u4E3A\uFF1A"
+        },
+        "Error at %s:": {
+          en: "Error at %s:",
+          de: "Fehler bei %s:",
+          ru: "\u041E\u0448\u0438\u0431\u043A\u0430 \u0432 %s:",
+          pt: "Erro em %s:",
+          nl: "Fout bij %s:",
+          fr: "Erreur \xE0 %s :",
+          it: "Errore in %s:",
+          es: "Error en %s:",
+          pl: "B\u0142\u0105d w %s:",
+          uk: "\u041F\u043E\u043C\u0438\u043B\u043A\u0430 \u0432 %s:",
+          "zh-cn": "%s \u5904\u51FA\u9519\uFF1A"
+        },
+        'Required property "%s" is missing.': {
+          en: 'Required property "%s" is missing.',
+          de: 'Die erforderliche Eigenschaft "%s" fehlt.',
+          ru: '\u041E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u043E "%s".',
+          pt: 'A propriedade obrigat\xF3ria "%s" est\xE1 ausente.',
+          nl: 'De vereiste eigenschap "%s" ontbreekt.',
+          fr: 'La propri\xE9t\xE9 obligatoire "%s" est manquante.',
+          it: 'La propriet\xE0 obbligatoria "%s" \xE8 mancante.',
+          es: 'Falta la propiedad obligatoria "%s".',
+          pl: 'Brakuje wymaganej w\u0142a\u015Bciwo\u015Bci "%s".',
+          uk: `\u0412\u0456\u0434\u0441\u0443\u0442\u043D\u044F \u043E\u0431\u043E\u0432'\u044F\u0437\u043A\u043E\u0432\u0430 \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044C "%s".`,
+          "zh-cn": '\u7F3A\u5C11\u5FC5\u9700\u5C5E\u6027 "%s"\u3002'
+        },
+        "Invalid data type.": {
+          en: "Invalid data type.",
+          de: "Ung\xFCltiger Datentyp.",
+          ru: "\u041D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0439 \u0442\u0438\u043F \u0434\u0430\u043D\u043D\u044B\u0445.",
+          pt: "Tipo de dados inv\xE1lido.",
+          nl: "Ongeldig gegevenstype.",
+          fr: "Type de donn\xE9es non valide.",
+          it: "Tipo di dati non valido.",
+          es: "Tipo de datos no v\xE1lido.",
+          pl: "Nieprawid\u0142owy typ danych.",
+          uk: "\u041D\u0435\u0434\u0456\u0439\u0441\u043D\u0438\u0439 \u0442\u0438\u043F \u0434\u0430\u043D\u0438\u0445.",
+          "zh-cn": "\u6570\u636E\u7C7B\u578B\u65E0\u6548\u3002"
+        },
+        "Expected: %s": {
+          en: "Expected: %s",
+          de: "Erwartet: %s",
+          ru: "\u041E\u0436\u0438\u0434\u0430\u043B\u043E\u0441\u044C: %s",
+          pt: "Esperado: %s",
+          nl: "Verwacht: %s",
+          fr: "Attendu : %s",
+          it: "Previsto: %s",
+          es: "Esperado: %s",
+          pl: "Oczekiwano: %s",
+          uk: "\u041E\u0447\u0456\u043A\u0443\u0432\u0430\u043B\u043E\u0441\u044F: %s",
+          "zh-cn": "\u9884\u671F\uFF1A%s"
+        },
+        "Actual: %s": {
+          en: "Actual: %s",
+          de: "Tats\xE4chlich: %s",
+          ru: "\u0424\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u0438: %s",
+          pt: "Real: %s",
+          nl: "Werkelijk: %s",
+          fr: "R\xE9el : %s",
+          it: "Effettivo: %s",
+          es: "Real: %s",
+          pl: "Rzeczywiste: %s",
+          uk: "\u0424\u0430\u043A\u0442\u0438\u0447\u043D\u043E: %s",
+          "zh-cn": "\u5B9E\u9645\uFF1A%s"
+        },
+        "Value: %s": {
+          en: "Value: %s",
+          de: "Wert: %s",
+          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435: %s",
+          pt: "Valor: %s",
+          nl: "Waarde: %s",
+          fr: "Valeur : %s",
+          it: "Valore: %s",
+          es: "Valor: %s",
+          pl: "Warto\u015B\u0107: %s",
+          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F: %s",
+          "zh-cn": "\u503C\uFF1A%s"
+        },
+        "Invalid value: %s": {
+          en: "Invalid value: %s",
+          de: "Ung\xFCltiger Wert: %s",
+          ru: "\u041D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435: %s",
+          pt: "Valor inv\xE1lido: %s",
+          nl: "Ongeldige waarde: %s",
+          fr: "Valeur non valide : %s",
+          it: "Valore non valido: %s",
+          es: "Valor no v\xE1lido: %s",
+          pl: "Nieprawid\u0142owa warto\u015B\u0107: %s",
+          uk: "\u041D\u0435\u0434\u0456\u0439\u0441\u043D\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F: %s",
+          "zh-cn": "\u503C\u65E0\u6548\uFF1A%s"
+        },
+        "Allowed values: %s": {
+          en: "Allowed values: %s",
+          de: "Erlaubte Werte: %s",
+          ru: "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F: %s",
+          pt: "Valores permitidos: %s",
+          nl: "Toegestane waarden: %s",
+          fr: "Valeurs autoris\xE9es : %s",
+          it: "Valori consentiti: %s",
+          es: "Valores permitidos: %s",
+          pl: "Dozwolone warto\u015Bci: %s",
+          uk: "\u0414\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0456 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F: %s",
+          "zh-cn": "\u5141\u8BB8\u7684\u503C\uFF1A%s"
+        },
+        "The value is not allowed.": {
+          en: "The value is not allowed.",
+          de: "Der Wert ist nicht erlaubt.",
+          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043E.",
+          pt: "O valor n\xE3o \xE9 permitido.",
+          nl: "De waarde is niet toegestaan.",
+          fr: "La valeur n'est pas autoris\xE9e.",
+          it: "Il valore non \xE8 consentito.",
+          es: "El valor no est\xE1 permitido.",
+          pl: "Warto\u015B\u0107 nie jest dozwolona.",
+          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043D\u0435 \u0434\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0435.",
+          "zh-cn": "\u8BE5\u503C\u4E0D\u88AB\u5141\u8BB8\u3002"
+        },
+        "Expected value: %s": {
+          en: "Expected value: %s",
+          de: "Erwarteter Wert: %s",
+          ru: "\u041E\u0436\u0438\u0434\u0430\u0435\u043C\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435: %s",
+          pt: "Valor esperado: %s",
+          nl: "Verwachte waarde: %s",
+          fr: "Valeur attendue : %s",
+          it: "Valore previsto: %s",
+          es: "Valor esperado: %s",
+          pl: "Oczekiwana warto\u015B\u0107: %s",
+          uk: "\u041E\u0447\u0456\u043A\u0443\u0432\u0430\u043D\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F: %s",
+          "zh-cn": "\u9884\u671F\u503C\uFF1A%s"
+        },
+        "Value is below the minimum.": {
+          en: "Value is below the minimum.",
+          de: "Der Wert liegt unter dem Minimum.",
+          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0438\u0436\u0435 \u043C\u0438\u043D\u0438\u043C\u0443\u043C\u0430.",
+          pt: "O valor est\xE1 abaixo do m\xEDnimo.",
+          nl: "De waarde ligt onder het minimum.",
+          fr: "La valeur est inf\xE9rieure au minimum.",
+          it: "Il valore \xE8 inferiore al minimo.",
+          es: "El valor est\xE1 por debajo del m\xEDnimo.",
+          pl: "Warto\u015B\u0107 jest poni\u017Cej minimum.",
+          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043D\u0438\u0436\u0447\u0435 \u043C\u0456\u043D\u0456\u043C\u0443\u043C\u0443.",
+          "zh-cn": "\u503C\u4F4E\u4E8E\u6700\u5C0F\u503C\u3002"
+        },
+        "Minimum: %s": {
+          en: "Minimum: %s",
+          de: "Minimum: %s",
+          ru: "\u041C\u0438\u043D\u0438\u043C\u0443\u043C: %s",
+          pt: "M\xEDnimo: %s",
+          nl: "Minimum: %s",
+          fr: "Minimum : %s",
+          it: "Minimo: %s",
+          es: "M\xEDnimo: %s",
+          pl: "Minimum: %s",
+          uk: "\u041C\u0456\u043D\u0456\u043C\u0443\u043C: %s",
+          "zh-cn": "\u6700\u5C0F\u503C\uFF1A%s"
+        },
+        "Value exceeds the maximum.": {
+          en: "Value exceeds the maximum.",
+          de: "Der Wert \xFCberschreitet das Maximum.",
+          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0435\u0442 \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C.",
+          pt: "O valor excede o m\xE1ximo.",
+          nl: "De waarde overschrijdt het maximum.",
+          fr: "La valeur d\xE9passe le maximum.",
+          it: "Il valore supera il massimo.",
+          es: "El valor supera el m\xE1ximo.",
+          pl: "Warto\u015B\u0107 przekracza maksimum.",
+          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043F\u0435\u0440\u0435\u0432\u0438\u0449\u0443\u0454 \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C.",
+          "zh-cn": "\u503C\u8D85\u8FC7\u6700\u5927\u503C\u3002"
+        },
+        "Maximum: %s": {
+          en: "Maximum: %s",
+          de: "Maximum: %s",
+          ru: "\u041C\u0430\u043A\u0441\u0438\u043C\u0443\u043C: %s",
+          pt: "M\xE1ximo: %s",
+          nl: "Maximum: %s",
+          fr: "Maximum : %s",
+          it: "Massimo: %s",
+          es: "M\xE1ximo: %s",
+          pl: "Maksimum: %s",
+          uk: "\u041C\u0430\u043A\u0441\u0438\u043C\u0443\u043C: %s",
+          "zh-cn": "\u6700\u5927\u503C\uFF1A%s"
+        },
+        "Value must be greater than %s.": {
+          en: "Value must be greater than %s.",
+          de: "Der Wert muss gr\xF6\xDFer als %s sein.",
+          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 %s.",
+          pt: "O valor deve ser maior que %s.",
+          nl: "De waarde moet groter zijn dan %s.",
+          fr: "La valeur doit \xEAtre sup\xE9rieure \xE0 %s.",
+          it: "Il valore deve essere maggiore di %s.",
+          es: "El valor debe ser mayor que %s.",
+          pl: "Warto\u015B\u0107 musi by\u0107 wi\u0119ksza ni\u017C %s.",
+          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043C\u0430\u0454 \u0431\u0443\u0442\u0438 \u0431\u0456\u043B\u044C\u0448\u0438\u043C \u0437\u0430 %s.",
+          "zh-cn": "\u503C\u5FC5\u987B\u5927\u4E8E %s\u3002"
+        },
+        "Value must be less than %s.": {
+          en: "Value must be less than %s.",
+          de: "Der Wert muss kleiner als %s sein.",
+          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 %s.",
+          pt: "O valor deve ser menor que %s.",
+          nl: "De waarde moet kleiner zijn dan %s.",
+          fr: "La valeur doit \xEAtre inf\xE9rieure \xE0 %s.",
+          it: "Il valore deve essere minore di %s.",
+          es: "El valor debe ser menor que %s.",
+          pl: "Warto\u015B\u0107 musi by\u0107 mniejsza ni\u017C %s.",
+          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043C\u0430\u0454 \u0431\u0443\u0442\u0438 \u043C\u0435\u043D\u0448\u0438\u043C \u0437\u0430 %s.",
+          "zh-cn": "\u503C\u5FC5\u987B\u5C0F\u4E8E %s\u3002"
+        },
+        "Array contains too few elements.": {
+          en: "Array contains too few elements.",
+          de: "Das Array enth\xE4lt zu wenige Elemente.",
+          ru: "\u041C\u0430\u0441\u0441\u0438\u0432 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u0430\u043B\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432.",
+          pt: "A matriz cont\xE9m poucos elementos.",
+          nl: "De array bevat te weinig elementen.",
+          fr: "Le tableau contient trop peu d'\xE9l\xE9ments.",
+          it: "L'array contiene troppo pochi elementi.",
+          es: "La matriz contiene muy pocos elementos.",
+          pl: "Tablica zawiera za ma\u0142o element\xF3w.",
+          uk: "\u041C\u0430\u0441\u0438\u0432 \u043C\u0456\u0441\u0442\u0438\u0442\u044C \u0437\u0430\u043C\u0430\u043B\u043E \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432.",
+          "zh-cn": "\u6570\u7EC4\u5305\u542B\u7684\u5143\u7D20\u592A\u5C11\u3002"
+        },
+        "Minimum number of elements: %s": {
+          en: "Minimum number of elements: %s",
+          de: "Mindestanzahl an Elementen: %s",
+          ru: "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432: %s",
+          pt: "N\xFAmero m\xEDnimo de elementos: %s",
+          nl: "Minimumaantal elementen: %s",
+          fr: "Nombre minimal d'\xE9l\xE9ments : %s",
+          it: "Numero minimo di elementi: %s",
+          es: "N\xFAmero m\xEDnimo de elementos: %s",
+          pl: "Minimalna liczba element\xF3w: %s",
+          uk: "\u041C\u0456\u043D\u0456\u043C\u0430\u043B\u044C\u043D\u0430 \u043A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432: %s",
+          "zh-cn": "\u6700\u5C11\u5143\u7D20\u6570\uFF1A%s"
+        },
+        "Actual number of elements: %s": {
+          en: "Actual number of elements: %s",
+          de: "Tats\xE4chliche Anzahl an Elementen: %s",
+          ru: "\u0424\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432: %s",
+          pt: "N\xFAmero real de elementos: %s",
+          nl: "Werkelijk aantal elementen: %s",
+          fr: "Nombre r\xE9el d'\xE9l\xE9ments : %s",
+          it: "Numero effettivo di elementi: %s",
+          es: "N\xFAmero real de elementos: %s",
+          pl: "Rzeczywista liczba element\xF3w: %s",
+          uk: "\u0424\u0430\u043A\u0442\u0438\u0447\u043D\u0430 \u043A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432: %s",
+          "zh-cn": "\u5B9E\u9645\u5143\u7D20\u6570\uFF1A%s"
+        },
+        "Array contains too many elements.": {
+          en: "Array contains too many elements.",
+          de: "Das Array enth\xE4lt zu viele Elemente.",
+          ru: "\u041C\u0430\u0441\u0441\u0438\u0432 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u043D\u043E\u0433\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432.",
+          pt: "A matriz cont\xE9m elementos demais.",
+          nl: "De array bevat te veel elementen.",
+          fr: "Le tableau contient trop d'\xE9l\xE9ments.",
+          it: "L'array contiene troppi elementi.",
+          es: "La matriz contiene demasiados elementos.",
+          pl: "Tablica zawiera za du\u017Co element\xF3w.",
+          uk: "\u041C\u0430\u0441\u0438\u0432 \u043C\u0456\u0441\u0442\u0438\u0442\u044C \u0437\u0430\u0431\u0430\u0433\u0430\u0442\u043E \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432.",
+          "zh-cn": "\u6570\u7EC4\u5305\u542B\u7684\u5143\u7D20\u592A\u591A\u3002"
+        },
+        "Maximum number of elements: %s": {
+          en: "Maximum number of elements: %s",
+          de: "Maximale Anzahl an Elementen: %s",
+          ru: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432: %s",
+          pt: "N\xFAmero m\xE1ximo de elementos: %s",
+          nl: "Maximumaantal elementen: %s",
+          fr: "Nombre maximal d'\xE9l\xE9ments : %s",
+          it: "Numero massimo di elementi: %s",
+          es: "N\xFAmero m\xE1ximo de elementos: %s",
+          pl: "Maksymalna liczba element\xF3w: %s",
+          uk: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430 \u043A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432: %s",
+          "zh-cn": "\u6700\u591A\u5143\u7D20\u6570\uFF1A%s"
+        },
+        "String is too short.": {
+          en: "String is too short.",
+          de: "Die Zeichenfolge ist zu kurz.",
+          ru: "\u0421\u0442\u0440\u043E\u043A\u0430 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u043A\u043E\u0440\u043E\u0442\u043A\u0430\u044F.",
+          pt: "A cadeia de caracteres \xE9 muito curta.",
+          nl: "De tekenreeks is te kort.",
+          fr: "La cha\xEEne est trop courte.",
+          it: "La stringa \xE8 troppo corta.",
+          es: "La cadena es demasiado corta.",
+          pl: "Ci\u0105g znak\xF3w jest za kr\xF3tki.",
+          uk: "\u0420\u044F\u0434\u043E\u043A \u0437\u0430\u043A\u043E\u0440\u043E\u0442\u043A\u0438\u0439.",
+          "zh-cn": "\u5B57\u7B26\u4E32\u592A\u77ED\u3002"
+        },
+        "Minimum length: %s": {
+          en: "Minimum length: %s",
+          de: "Mindestl\xE4nge: %s",
+          ru: "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430: %s",
+          pt: "Comprimento m\xEDnimo: %s",
+          nl: "Minimumlengte: %s",
+          fr: "Longueur minimale : %s",
+          it: "Lunghezza minima: %s",
+          es: "Longitud m\xEDnima: %s",
+          pl: "Minimalna d\u0142ugo\u015B\u0107: %s",
+          uk: "\u041C\u0456\u043D\u0456\u043C\u0430\u043B\u044C\u043D\u0430 \u0434\u043E\u0432\u0436\u0438\u043D\u0430: %s",
+          "zh-cn": "\u6700\u5C0F\u957F\u5EA6\uFF1A%s"
+        },
+        "Actual length: %s": {
+          en: "Actual length: %s",
+          de: "Tats\xE4chliche L\xE4nge: %s",
+          ru: "\u0424\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0434\u043B\u0438\u043D\u0430: %s",
+          pt: "Comprimento real: %s",
+          nl: "Werkelijke lengte: %s",
+          fr: "Longueur r\xE9elle : %s",
+          it: "Lunghezza effettiva: %s",
+          es: "Longitud real: %s",
+          pl: "Rzeczywista d\u0142ugo\u015B\u0107: %s",
+          uk: "\u0424\u0430\u043A\u0442\u0438\u0447\u043D\u0430 \u0434\u043E\u0432\u0436\u0438\u043D\u0430: %s",
+          "zh-cn": "\u5B9E\u9645\u957F\u5EA6\uFF1A%s"
+        },
+        "String is too long.": {
+          en: "String is too long.",
+          de: "Die Zeichenfolge ist zu lang.",
+          ru: "\u0421\u0442\u0440\u043E\u043A\u0430 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0434\u043B\u0438\u043D\u043D\u0430\u044F.",
+          pt: "A cadeia de caracteres \xE9 muito longa.",
+          nl: "De tekenreeks is te lang.",
+          fr: "La cha\xEEne est trop longue.",
+          it: "La stringa \xE8 troppo lunga.",
+          es: "La cadena es demasiado larga.",
+          pl: "Ci\u0105g znak\xF3w jest za d\u0142ugi.",
+          uk: "\u0420\u044F\u0434\u043E\u043A \u0437\u0430\u0434\u043E\u0432\u0433\u0438\u0439.",
+          "zh-cn": "\u5B57\u7B26\u4E32\u592A\u957F\u3002"
+        },
+        "Maximum length: %s": {
+          en: "Maximum length: %s",
+          de: "Maximale L\xE4nge: %s",
+          ru: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430: %s",
+          pt: "Comprimento m\xE1ximo: %s",
+          nl: "Maximumlengte: %s",
+          fr: "Longueur maximale : %s",
+          it: "Lunghezza massima: %s",
+          es: "Longitud m\xE1xima: %s",
+          pl: "Maksymalna d\u0142ugo\u015B\u0107: %s",
+          uk: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430 \u0434\u043E\u0432\u0436\u0438\u043D\u0430: %s",
+          "zh-cn": "\u6700\u5927\u957F\u5EA6\uFF1A%s"
+        },
+        "String does not match the required pattern.": {
+          en: "String does not match the required pattern.",
+          de: "Die Zeichenfolge entspricht nicht dem erforderlichen Muster.",
+          ru: "\u0421\u0442\u0440\u043E\u043A\u0430 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0442\u0440\u0435\u0431\u0443\u0435\u043C\u043E\u043C\u0443 \u0448\u0430\u0431\u043B\u043E\u043D\u0443.",
+          pt: "A cadeia de caracteres n\xE3o corresponde ao padr\xE3o obrigat\xF3rio.",
+          nl: "De tekenreeks komt niet overeen met het vereiste patroon.",
+          fr: "La cha\xEEne ne correspond pas au mod\xE8le requis.",
+          it: "La stringa non corrisponde al modello richiesto.",
+          es: "La cadena no coincide con el patr\xF3n requerido.",
+          pl: "Ci\u0105g znak\xF3w nie pasuje do wymaganego wzorca.",
+          uk: "\u0420\u044F\u0434\u043E\u043A \u043D\u0435 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u043E\u043C\u0443 \u0448\u0430\u0431\u043B\u043E\u043D\u0443.",
+          "zh-cn": "\u5B57\u7B26\u4E32\u4E0E\u6240\u9700\u6A21\u5F0F\u4E0D\u5339\u914D\u3002"
+        },
+        "Pattern: %s": {
+          en: "Pattern: %s",
+          de: "Muster: %s",
+          ru: "\u0428\u0430\u0431\u043B\u043E\u043D: %s",
+          pt: "Padr\xE3o: %s",
+          nl: "Patroon: %s",
+          fr: "Mod\xE8le : %s",
+          it: "Modello: %s",
+          es: "Patr\xF3n: %s",
+          pl: "Wzorzec: %s",
+          uk: "\u0428\u0430\u0431\u043B\u043E\u043D: %s",
+          "zh-cn": "\u6A21\u5F0F\uFF1A%s"
+        },
+        "The object does not match any of the allowed variants.": {
+          en: "The object does not match any of the allowed variants.",
+          de: "Das Objekt entspricht keiner der erlaubten Varianten.",
+          ru: "\u041E\u0431\u044A\u0435\u043A\u0442 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043D\u0438 \u043E\u0434\u043D\u043E\u043C\u0443 \u0438\u0437 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0445 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0432.",
+          pt: "O objeto n\xE3o corresponde a nenhuma das variantes permitidas.",
+          nl: "Het object komt niet overeen met een van de toegestane varianten.",
+          fr: "L'objet ne correspond \xE0 aucune des variantes autoris\xE9es.",
+          it: "L'oggetto non corrisponde ad alcuna delle varianti consentite.",
+          es: "El objeto no coincide con ninguna de las variantes permitidas.",
+          pl: "Obiekt nie pasuje do \u017Cadnego z dozwolonych wariant\xF3w.",
+          uk: "\u041E\u0431'\u0454\u043A\u0442 \u043D\u0435 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u0436\u043E\u0434\u043D\u043E\u043C\u0443 \u0437 \u0434\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0438\u0445 \u0432\u0430\u0440\u0456\u0430\u043D\u0442\u0456\u0432.",
+          "zh-cn": "\u5BF9\u8C61\u4E0E\u4EFB\u4F55\u5141\u8BB8\u7684\u53D8\u4F53\u90FD\u4E0D\u5339\u914D\u3002"
+        },
+        "Please check whether the required combination of properties is correct.": {
+          en: "Please check whether the required combination of properties is correct.",
+          de: "Bitte pr\xFCfen Sie, ob die erforderliche Kombination von Eigenschaften korrekt ist.",
+          ru: "\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435, \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E \u043B\u0438 \u0443\u043A\u0430\u0437\u0430\u043D\u0430 \u0442\u0440\u0435\u0431\u0443\u0435\u043C\u0430\u044F \u043A\u043E\u043C\u0431\u0438\u043D\u0430\u0446\u0438\u044F \u0441\u0432\u043E\u0439\u0441\u0442\u0432.",
+          pt: "Verifique se a combina\xE7\xE3o obrigat\xF3ria de propriedades est\xE1 correta.",
+          nl: "Controleer of de vereiste combinatie van eigenschappen correct is.",
+          fr: "Veuillez v\xE9rifier si la combinaison requise de propri\xE9t\xE9s est correcte.",
+          it: "Verificare che la combinazione richiesta di propriet\xE0 sia corretta.",
+          es: "Compruebe si la combinaci\xF3n requerida de propiedades es correcta.",
+          pl: "Sprawd\u017A, czy wymagana kombinacja w\u0142a\u015Bciwo\u015Bci jest poprawna.",
+          uk: "\u041F\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435, \u0447\u0438 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u0430 \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u0430 \u043A\u043E\u043C\u0431\u0456\u043D\u0430\u0446\u0456\u044F \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u043E\u0441\u0442\u0435\u0439.",
+          "zh-cn": "\u8BF7\u68C0\u67E5\u6240\u9700\u7684\u5C5E\u6027\u7EC4\u5408\u662F\u5426\u6B63\u786E\u3002"
+        },
+        "The value does not match any of the allowed schemas.": {
+          en: "The value does not match any of the allowed schemas.",
+          de: "Der Wert entspricht keinem der erlaubten Schemas.",
+          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043D\u0438 \u043E\u0434\u043D\u043E\u0439 \u0438\u0437 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0445 \u0441\u0445\u0435\u043C.",
+          pt: "O valor n\xE3o corresponde a nenhum dos esquemas permitidos.",
+          nl: "De waarde komt niet overeen met een van de toegestane schema's.",
+          fr: "La valeur ne correspond \xE0 aucun des sch\xE9mas autoris\xE9s.",
+          it: "Il valore non corrisponde ad alcuno degli schemi consentiti.",
+          es: "El valor no coincide con ninguno de los esquemas permitidos.",
+          pl: "Warto\u015B\u0107 nie pasuje do \u017Cadnego z dozwolonych schemat\xF3w.",
+          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043D\u0435 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u0436\u043E\u0434\u043D\u0456\u0439 \u0456\u0437 \u0434\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0438\u0445 \u0441\u0445\u0435\u043C.",
+          "zh-cn": "\u8BE5\u503C\u4E0E\u4EFB\u4F55\u5141\u8BB8\u7684\u67B6\u6784\u90FD\u4E0D\u5339\u914D\u3002"
+        },
+        "The value does not match all required schemas.": {
+          en: "The value does not match all required schemas.",
+          de: "Der Wert entspricht nicht allen erforderlichen Schemas.",
+          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0432\u0441\u0435\u043C \u0442\u0440\u0435\u0431\u0443\u0435\u043C\u044B\u043C \u0441\u0445\u0435\u043C\u0430\u043C.",
+          pt: "O valor n\xE3o corresponde a todos os esquemas obrigat\xF3rios.",
+          nl: "De waarde komt niet overeen met alle vereiste schema's.",
+          fr: "La valeur ne correspond pas \xE0 tous les sch\xE9mas requis.",
+          it: "Il valore non corrisponde a tutti gli schemi richiesti.",
+          es: "El valor no coincide con todos los esquemas requeridos.",
+          pl: "Warto\u015B\u0107 nie pasuje do wszystkich wymaganych schemat\xF3w.",
+          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043D\u0435 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u0432\u0441\u0456\u043C \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u0438\u043C \u0441\u0445\u0435\u043C\u0430\u043C.",
+          "zh-cn": "\u8BE5\u503C\u672A\u5339\u914D\u6240\u6709\u5FC5\u9700\u7684\u67B6\u6784\u3002"
+        },
+        "This combination of properties is not allowed.": {
+          en: "This combination of properties is not allowed.",
+          de: "Diese Kombination von Eigenschaften ist nicht erlaubt.",
+          ru: "\u042D\u0442\u0430 \u043A\u043E\u043C\u0431\u0438\u043D\u0430\u0446\u0438\u044F \u0441\u0432\u043E\u0439\u0441\u0442\u0432 \u043D\u0435 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u0430.",
+          pt: "Esta combina\xE7\xE3o de propriedades n\xE3o \xE9 permitida.",
+          nl: "Deze combinatie van eigenschappen is niet toegestaan.",
+          fr: "Cette combinaison de propri\xE9t\xE9s n'est pas autoris\xE9e.",
+          it: "Questa combinazione di propriet\xE0 non \xE8 consentita.",
+          es: "Esta combinaci\xF3n de propiedades no est\xE1 permitida.",
+          pl: "Ta kombinacja w\u0142a\u015Bciwo\u015Bci nie jest dozwolona.",
+          uk: "\u0426\u044F \u043A\u043E\u043C\u0431\u0456\u043D\u0430\u0446\u0456\u044F \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u043E\u0441\u0442\u0435\u0439 \u043D\u0435 \u0434\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0430.",
+          "zh-cn": "\u4E0D\u5141\u8BB8\u6B64\u5C5E\u6027\u7EC4\u5408\u3002"
+        },
+        'Unexpected property "%s".': {
+          en: 'Unexpected property "%s".',
+          de: 'Unerwartete Eigenschaft "%s".',
+          ru: '\u041D\u0435\u043F\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043D\u043D\u043E\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u043E "%s".',
+          pt: 'Propriedade inesperada "%s".',
+          nl: 'Onverwachte eigenschap "%s".',
+          fr: 'Propri\xE9t\xE9 inattendue "%s".',
+          it: 'Propriet\xE0 imprevista "%s".',
+          es: 'Propiedad inesperada "%s".',
+          pl: 'Nieoczekiwana w\u0142a\u015Bciwo\u015B\u0107 "%s".',
+          uk: '\u041D\u0435\u043E\u0447\u0456\u043A\u0443\u0432\u0430\u043D\u0430 \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044C "%s".',
+          "zh-cn": '\u610F\u5916\u5C5E\u6027 "%s"\u3002'
+        },
+        "Validation error: %s": {
+          en: "Validation error: %s",
+          de: "Validierungsfehler: %s",
+          ru: "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438: %s",
+          pt: "Erro de valida\xE7\xE3o: %s",
+          nl: "Validatiefout: %s",
+          fr: "Erreur de validation : %s",
+          it: "Errore di convalida: %s",
+          es: "Error de validaci\xF3n: %s",
+          pl: "B\u0142\u0105d walidacji: %s",
+          uk: "\u041F\u043E\u043C\u0438\u043B\u043A\u0430 \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0438: %s",
+          "zh-cn": "\u9A8C\u8BC1\u9519\u8BEF\uFF1A%s"
+        },
+        "Validation error (%s).": {
+          en: "Validation error (%s).",
+          de: "Validierungsfehler (%s).",
+          ru: "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 (%s).",
+          pt: "Erro de valida\xE7\xE3o (%s).",
+          nl: "Validatiefout (%s).",
+          fr: "Erreur de validation (%s).",
+          it: "Errore di convalida (%s).",
+          es: "Error de validaci\xF3n (%s).",
+          pl: "B\u0142\u0105d walidacji (%s).",
+          uk: "\u041F\u043E\u043C\u0438\u043B\u043A\u0430 \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0438 (%s).",
+          "zh-cn": "\u9A8C\u8BC1\u9519\u8BEF\uFF08%s\uFF09\u3002"
+        },
+        "root object": {
+          en: "root object",
+          de: "Stammobjekt",
+          ru: "\u043A\u043E\u0440\u043D\u0435\u0432\u043E\u0439 \u043E\u0431\u044A\u0435\u043A\u0442",
+          pt: "objeto raiz",
+          nl: "hoofdobject",
+          fr: "objet racine",
+          it: "oggetto radice",
+          es: "objeto ra\xEDz",
+          pl: "obiekt g\u0142\xF3wny",
+          uk: "\u043A\u043E\u0440\u0435\u043D\u0435\u0432\u0438\u0439 \u043E\u0431'\u0454\u043A\u0442",
+          "zh-cn": "\u6839\u5BF9\u8C61"
+        },
+        undefined: {
+          en: "undefined",
+          de: "nicht definiert",
+          ru: "\u043D\u0435 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043E",
+          pt: "indefinido",
+          nl: "niet gedefinieerd",
+          fr: "non d\xE9fini",
+          it: "non definito",
+          es: "no definido",
+          pl: "niezdefiniowane",
+          uk: "\u043D\u0435 \u0432\u0438\u0437\u043D\u0430\u0447\u0435\u043D\u043E",
+          "zh-cn": "\u672A\u5B9A\u4E49"
+        },
+        "<not available>": {
+          en: "<not available>",
+          de: "<nicht verf\xFCgbar>",
+          ru: "<\u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E>",
+          pt: "<n\xE3o dispon\xEDvel>",
+          nl: "<niet beschikbaar>",
+          fr: "<non disponible>",
+          it: "<non disponibile>",
+          es: "<no disponible>",
+          pl: "<niedost\u0119pne>",
+          uk: "<\u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E>",
+          "zh-cn": "<\u4E0D\u53EF\u7528>"
+        },
+        yyy: {
+          en: "yyy",
+          de: "yyy",
+          ru: "yyy",
+          pt: "yyy",
+          nl: "yyy",
+          fr: "yyy",
+          it: "yyy",
+          es: "yyy",
+          pl: "yyy",
+          uk: "yyy",
+          "zh-cn": "yyy"
+        },
+        Cancel: {
+          en: "Cancel",
+          de: "Abbrechen",
+          ru: "\u041E\u0442\u043C\u0435\u043D\u0430",
+          pt: "Cancelar",
+          nl: "Annuleren",
+          fr: "Annuler",
+          it: "Annulla",
+          es: "Cancelar",
+          pl: "Anuluj",
+          uk: "\u0421\u043A\u0430\u0441\u0443\u0432\u0430\u0442\u0438",
+          "zh-cn": "\u53D6\u6D88"
+        },
+        "Configure at least one tracking datapoint": {
+          en: "Configure at least one tracking datapoint",
+          de: "Mindestens einen Tracking-Datenpunkt konfigurieren",
+          ru: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0445\u043E\u0442\u044F \u0431\u044B \u043E\u0434\u043D\u0443 \u0442\u043E\u0447\u043A\u0443 \u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0442\u0441\u043B\u0435\u0436\u0438\u0432\u0430\u043D\u0438\u044F",
+          pt: "Configure pelo menos um ponto de dados de rastreamento",
+          nl: "Configureer ten minste \xE9\xE9n trackinggegevenspunt",
+          fr: "Configurez au moins un point de donn\xE9es de suivi",
+          it: "Configura almeno un punto dati di tracciamento",
+          es: "Configure al menos un punto de datos de seguimiento",
+          pl: "Skonfiguruj co najmniej jeden punkt danych \u015Bledzenia",
+          uk: "\u041D\u0430\u043B\u0430\u0448\u0442\u0443\u0439\u0442\u0435 \u043F\u0440\u0438\u043D\u0430\u0439\u043C\u043D\u0456 \u043E\u0434\u043D\u0443 \u0442\u043E\u0447\u043A\u0443 \u0434\u0430\u043D\u0438\u0445 \u0432\u0456\u0434\u0441\u0442\u0435\u0436\u0435\u043D\u043D\u044F",
+          "zh-cn": "\u8BF7\u81F3\u5C11\u914D\u7F6E\u4E00\u4E2A\u8DDF\u8E2A\u6570\u636E\u70B9"
+        },
+        "Current position": {
+          en: "Current position",
+          de: "Aktuelle Position",
+          ru: "\u0422\u0435\u043A\u0443\u0449\u0435\u0435 \u043C\u0435\u0441\u0442\u043E\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435",
+          pt: "Posi\xE7\xE3o atual",
+          nl: "Huidige positie",
+          fr: "Position actuelle",
+          it: "Posizione attuale",
+          es: "Posici\xF3n actual",
+          pl: "Bie\u017C\u0105ca pozycja",
+          uk: "\u041F\u043E\u0442\u043E\u0447\u043D\u0435 \u043C\u0456\u0441\u0446\u0435\u0437\u043D\u0430\u0445\u043E\u0434\u0436\u0435\u043D\u043D\u044F",
+          "zh-cn": "\u5F53\u524D\u4F4D\u7F6E"
+        },
+        h: {
+          en: "h",
+          de: "Std.",
+          ru: "\u0447",
+          pt: "h",
+          nl: "u",
+          fr: "h",
+          it: "h",
+          es: "h",
+          pl: "godz.",
+          uk: "\u0433\u043E\u0434",
+          "zh-cn": "\u5C0F\u65F6"
+        },
+        "History could not be loaded": {
+          en: "History could not be loaded",
+          de: "History konnte nicht geladen werden",
+          ru: "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0438\u0441\u0442\u043E\u0440\u0438\u044E",
+          pt: "N\xE3o foi poss\xEDvel carregar o hist\xF3rico",
+          nl: "Geschiedenis kon niet worden geladen",
+          fr: "L'historique n'a pas pu \xEAtre charg\xE9",
+          it: "Impossibile caricare la cronologia",
+          es: "No se pudo cargar el historial",
+          pl: "Nie uda\u0142o si\u0119 wczyta\u0107 historii",
+          uk: "\u041D\u0435 \u0432\u0434\u0430\u043B\u043E\u0441\u044F \u0437\u0430\u0432\u0430\u043D\u0442\u0430\u0436\u0438\u0442\u0438 \u0456\u0441\u0442\u043E\u0440\u0456\u044E",
+          "zh-cn": "\u65E0\u6CD5\u52A0\u8F7D\u5386\u53F2\u8BB0\u5F55"
+        },
+        "Known place": {
+          en: "Known place",
+          de: "Bekannter Ort",
+          ru: "\u0418\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 \u043C\u0435\u0441\u0442\u043E",
+          pt: "Local conhecido",
+          nl: "Bekende plaats",
+          fr: "Lieu connu",
+          it: "Luogo conosciuto",
+          es: "Lugar conocido",
+          pl: "Znane miejsce",
+          uk: "\u0412\u0456\u0434\u043E\u043C\u0435 \u043C\u0456\u0441\u0446\u0435",
+          "zh-cn": "\u5DF2\u77E5\u5730\u70B9"
+        },
+        "Loading history...": {
+          en: "Loading history...",
+          de: "History wird geladen ...",
+          ru: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0438\u0441\u0442\u043E\u0440\u0438\u0438...",
+          pt: "Carregando hist\xF3rico...",
+          nl: "Geschiedenis laden...",
+          fr: "Chargement de l'historique...",
+          it: "Caricamento cronologia...",
+          es: "Cargando historial...",
+          pl: "Wczytywanie historii...",
+          uk: "\u0417\u0430\u0432\u0430\u043D\u0442\u0430\u0436\u0435\u043D\u043D\u044F \u0456\u0441\u0442\u043E\u0440\u0456\u0457...",
+          "zh-cn": "\u6B63\u5728\u52A0\u8F7D\u5386\u53F2\u8BB0\u5F55\u2026"
+        },
+        min: {
+          en: "min",
+          de: "Min.",
+          ru: "\u043C\u0438\u043D",
+          pt: "min",
+          nl: "min",
+          fr: "min",
+          it: "min",
+          es: "min",
+          pl: "min",
+          uk: "\u0445\u0432",
+          "zh-cn": "\u5206\u949F"
+        },
+        "Name of the known place": {
+          en: "Name of the known place",
+          de: "Name des bekannten Ortes",
+          ru: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0433\u043E \u043C\u0435\u0441\u0442\u0430",
+          pt: "Nome do local conhecido",
+          nl: "Naam van de bekende plaats",
+          fr: "Nom du lieu connu",
+          it: "Nome del luogo conosciuto",
+          es: "Nombre del lugar conocido",
+          pl: "Nazwa znanego miejsca",
+          uk: "\u041D\u0430\u0437\u0432\u0430 \u0432\u0456\u0434\u043E\u043C\u043E\u0433\u043E \u043C\u0456\u0441\u0446\u044F",
+          "zh-cn": "\u5DF2\u77E5\u5730\u70B9\u7684\u540D\u79F0"
+        },
+        "Next day": {
+          en: "Next day",
+          de: "N\xE4chster Tag",
+          ru: "\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0434\u0435\u043D\u044C",
+          pt: "Pr\xF3ximo dia",
+          nl: "Volgende dag",
+          fr: "Jour suivant",
+          it: "Giorno successivo",
+          es: "D\xEDa siguiente",
+          pl: "Nast\u0119pny dzie\u0144",
+          uk: "\u041D\u0430\u0441\u0442\u0443\u043F\u043D\u0438\u0439 \u0434\u0435\u043D\u044C",
+          "zh-cn": "\u540E\u4E00\u5929"
+        },
+        "No history data for this day": {
+          en: "No history data for this day",
+          de: "Keine History-Daten f\xFCr diesen Tag",
+          ru: "\u041D\u0435\u0442 \u0434\u0430\u043D\u043D\u044B\u0445 \u0438\u0441\u0442\u043E\u0440\u0438\u0438 \u0437\u0430 \u044D\u0442\u043E\u0442 \u0434\u0435\u043D\u044C",
+          pt: "N\xE3o h\xE1 dados de hist\xF3rico para este dia",
+          nl: "Geen geschiedenisgegevens voor deze dag",
+          fr: "Aucune donn\xE9e d'historique pour ce jour",
+          it: "Nessun dato storico per questo giorno",
+          es: "No hay datos de historial para este d\xEDa",
+          pl: "Brak danych historii dla tego dnia",
+          uk: "\u041D\u0435\u043C\u0430\u0454 \u0434\u0430\u043D\u0438\u0445 \u0456\u0441\u0442\u043E\u0440\u0456\u0457 \u0437\u0430 \u0446\u0435\u0439 \u0434\u0435\u043D\u044C",
+          "zh-cn": "\u5F53\u5929\u6CA1\u6709\u5386\u53F2\u6570\u636E"
+        },
+        "No history data. Showing current position.": {
+          en: "No history data. Showing current position.",
+          de: "Keine History-Daten. Die aktuelle Position wird angezeigt.",
+          ru: "\u041D\u0435\u0442 \u0434\u0430\u043D\u043D\u044B\u0445 \u0438\u0441\u0442\u043E\u0440\u0438\u0438. \u041F\u043E\u043A\u0430\u0437\u0430\u043D\u043E \u0442\u0435\u043A\u0443\u0449\u0435\u0435 \u043C\u0435\u0441\u0442\u043E\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435.",
+          pt: "Sem dados de hist\xF3rico. Mostrando a posi\xE7\xE3o atual.",
+          nl: "Geen geschiedenisgegevens. De huidige positie wordt weergegeven.",
+          fr: "Aucune donn\xE9e d'historique. Affichage de la position actuelle.",
+          it: "Nessun dato storico. Visualizzazione della posizione attuale.",
+          es: "No hay datos de historial. Se muestra la posici\xF3n actual.",
+          pl: "Brak danych historii. Wy\u015Bwietlana jest bie\u017C\u0105ca pozycja.",
+          uk: "\u041D\u0435\u043C\u0430\u0454 \u0434\u0430\u043D\u0438\u0445 \u0456\u0441\u0442\u043E\u0440\u0456\u0457. \u041F\u043E\u043A\u0430\u0437\u0430\u043D\u043E \u043F\u043E\u0442\u043E\u0447\u043D\u0435 \u043C\u0456\u0441\u0446\u0435\u0437\u043D\u0430\u0445\u043E\u0434\u0436\u0435\u043D\u043D\u044F.",
+          "zh-cn": "\u6CA1\u6709\u5386\u53F2\u6570\u636E\u3002\u6B63\u5728\u663E\u793A\u5F53\u524D\u4F4D\u7F6E\u3002"
+        },
+        "On the move": {
+          en: "On the move",
+          de: "Unterwegs",
+          ru: "\u0412 \u043F\u0443\u0442\u0438",
+          pt: "Em movimento",
+          nl: "Onderweg",
+          fr: "En d\xE9placement",
+          it: "In movimento",
+          es: "En movimiento",
+          pl: "W drodze",
+          uk: "\u0423 \u0434\u043E\u0440\u043E\u0437\u0456",
+          "zh-cn": "\u79FB\u52A8\u4E2D"
+        },
+        Person: {
+          en: "Person",
+          de: "Person",
+          ru: "\u0427\u0435\u043B\u043E\u0432\u0435\u043A",
+          pt: "Pessoa",
+          nl: "Persoon",
+          fr: "Personne",
+          it: "Persona",
+          es: "Persona",
+          pl: "Osoba",
+          uk: "\u041E\u0441\u043E\u0431\u0430",
+          "zh-cn": "\u4EBA\u5458"
+        },
+        "Previous day": {
+          en: "Previous day",
+          de: "Vorheriger Tag",
+          ru: "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0434\u0435\u043D\u044C",
+          pt: "Dia anterior",
+          nl: "Vorige dag",
+          fr: "Jour pr\xE9c\xE9dent",
+          it: "Giorno precedente",
+          es: "D\xEDa anterior",
+          pl: "Poprzedni dzie\u0144",
+          uk: "\u041F\u043E\u043F\u0435\u0440\u0435\u0434\u043D\u0456\u0439 \u0434\u0435\u043D\u044C",
+          "zh-cn": "\u524D\u4E00\u5929"
+        },
+        "Radius in meters": {
+          en: "Radius in meters",
+          de: "Radius in Metern",
+          ru: "\u0420\u0430\u0434\u0438\u0443\u0441 \u0432 \u043C\u0435\u0442\u0440\u0430\u0445",
+          pt: "Raio em metros",
+          nl: "Straal in meters",
+          fr: "Rayon en m\xE8tres",
+          it: "Raggio in metri",
+          es: "Radio en metros",
+          pl: "Promie\u0144 w metrach",
+          uk: "\u0420\u0430\u0434\u0456\u0443\u0441 \u0443 \u043C\u0435\u0442\u0440\u0430\u0445",
+          "zh-cn": "\u534A\u5F84\uFF08\u7C73\uFF09"
+        },
+        "Resolving place...": {
+          en: "Resolving place...",
+          de: "Ort wird ermittelt ...",
+          ru: "\u041E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435 \u043C\u0435\u0441\u0442\u0430...",
+          pt: "Determinando o local...",
+          nl: "Plaats bepalen...",
+          fr: "Recherche du lieu...",
+          it: "Ricerca del luogo...",
+          es: "Determinando el lugar...",
+          pl: "Ustalanie miejsca...",
+          uk: "\u0412\u0438\u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043C\u0456\u0441\u0446\u044F...",
+          "zh-cn": "\u6B63\u5728\u786E\u5B9A\u5730\u70B9\u2026"
+        },
+        "Save as known place": {
+          en: "Save as known place",
+          de: "Als bekannten Ort speichern",
+          ru: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u0430\u043A \u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 \u043C\u0435\u0441\u0442\u043E",
+          pt: "Salvar como local conhecido",
+          nl: "Opslaan als bekende plaats",
+          fr: "Enregistrer comme lieu connu",
+          it: "Salva come luogo conosciuto",
+          es: "Guardar como lugar conocido",
+          pl: "Zapisz jako znane miejsce",
+          uk: "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438 \u044F\u043A \u0432\u0456\u0434\u043E\u043C\u0435 \u043C\u0456\u0441\u0446\u0435",
+          "zh-cn": "\u4FDD\u5B58\u4E3A\u5DF2\u77E5\u5730\u70B9"
+        },
+        Save: {
+          en: "Save",
+          de: "Speichern",
+          ru: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C",
+          pt: "Salvar",
+          nl: "Opslaan",
+          fr: "Enregistrer",
+          it: "Salva",
+          es: "Guardar",
+          pl: "Zapisz",
+          uk: "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438",
+          "zh-cn": "\u4FDD\u5B58"
+        },
+        "Select date": {
+          en: "Select date",
+          de: "Datum ausw\xE4hlen",
+          ru: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0434\u0430\u0442\u0443",
+          pt: "Selecionar data",
+          nl: "Datum selecteren",
+          fr: "S\xE9lectionner une date",
+          it: "Seleziona data",
+          es: "Seleccionar fecha",
+          pl: "Wybierz dat\u0119",
+          uk: "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044C \u0434\u0430\u0442\u0443",
+          "zh-cn": "\u9009\u62E9\u65E5\u671F"
+        },
+        "Show complete route": {
+          en: "Show complete route",
+          de: "Gesamte Route anzeigen",
+          ru: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0432\u0435\u0441\u044C \u043C\u0430\u0440\u0448\u0440\u0443\u0442",
+          pt: "Mostrar rota completa",
+          nl: "Volledige route tonen",
+          fr: "Afficher l'itin\xE9raire complet",
+          it: "Mostra l'intero percorso",
+          es: "Mostrar ruta completa",
+          pl: "Poka\u017C ca\u0142\u0105 tras\u0119",
+          uk: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u0438 \u0432\u0435\u0441\u044C \u043C\u0430\u0440\u0448\u0440\u0443\u0442",
+          "zh-cn": "\u663E\u793A\u5B8C\u6574\u8DEF\u7EBF"
+        },
+        Today: {
+          en: "Today",
+          de: "Heute",
+          ru: "\u0421\u0435\u0433\u043E\u0434\u043D\u044F",
+          pt: "Hoje",
+          nl: "Vandaag",
+          fr: "Aujourd'hui",
+          it: "Oggi",
+          es: "Hoy",
+          pl: "Dzisiaj",
+          uk: "\u0421\u044C\u043E\u0433\u043E\u0434\u043D\u0456",
+          "zh-cn": "\u4ECA\u5929"
+        },
+        "Unknown place": {
+          en: "Unknown place",
+          de: "Unbekannter Ort",
+          ru: "\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 \u043C\u0435\u0441\u0442\u043E",
+          pt: "Local desconhecido",
+          nl: "Onbekende plaats",
+          fr: "Lieu inconnu",
+          it: "Luogo sconosciuto",
+          es: "Lugar desconocido",
+          pl: "Nieznane miejsce",
+          uk: "\u041D\u0435\u0432\u0456\u0434\u043E\u043C\u0435 \u043C\u0456\u0441\u0446\u0435",
+          "zh-cn": "\u672A\u77E5\u5730\u70B9"
+        },
+        group_timeline_layout: {
+          en: "Layout",
+          de: "Layout",
+          ru: "\u041C\u0430\u043A\u0435\u0442",
+          pt: "Layout",
+          nl: "Indeling",
+          fr: "Disposition",
+          it: "Layout",
+          es: "Dise\xF1o",
+          pl: "Uk\u0142ad",
+          uk: "\u041C\u0430\u043A\u0435\u0442",
+          "zh-cn": "\u5E03\u5C40"
+        },
+        group_timeline_people: {
+          en: "Tracked people",
+          de: "Verfolgte Personen",
+          ru: "\u041E\u0442\u0441\u043B\u0435\u0436\u0438\u0432\u0430\u0435\u043C\u044B\u0435 \u043B\u044E\u0434\u0438",
+          pt: "Pessoas rastreadas",
+          nl: "Gevolgde personen",
+          fr: "Personnes suivies",
+          it: "Persone tracciate",
+          es: "Personas rastreadas",
+          pl: "\u015Aledzone osoby",
+          uk: "\u0412\u0456\u0434\u0441\u0442\u0435\u0436\u0443\u0432\u0430\u043D\u0456 \u043B\u044E\u0434\u0438",
+          "zh-cn": "\u8DDF\u8E2A\u4EBA\u5458"
+        },
+        group_timeline_detection: {
+          en: "Stay detection",
+          de: "Aufenthaltserkennung",
+          ru: "\u041E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043E\u043A",
+          pt: "Detec\xE7\xE3o de perman\xEAncia",
+          nl: "Verblijfsdetectie",
+          fr: "D\xE9tection des arr\xEAts",
+          it: "Rilevamento soste",
+          es: "Detecci\xF3n de estancias",
+          pl: "Wykrywanie postoj\xF3w",
+          uk: "\u0412\u0438\u044F\u0432\u043B\u0435\u043D\u043D\u044F \u0437\u0443\u043F\u0438\u043D\u043E\u043A",
+          "zh-cn": "\u505C\u7559\u68C0\u6D4B"
+        },
+        group_timeline_geocoding: {
+          en: "Reverse geocoding",
+          de: "Reverse Geocoding",
+          ru: "\u041E\u0431\u0440\u0430\u0442\u043D\u043E\u0435 \u0433\u0435\u043E\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          pt: "Geocodifica\xE7\xE3o reversa",
+          nl: "Omgekeerde geocodering",
+          fr: "G\xE9ocodage invers\xE9",
+          it: "Geocodifica inversa",
+          es: "Geocodificaci\xF3n inversa",
+          pl: "Geokodowanie odwrotne",
+          uk: "\u0417\u0432\u043E\u0440\u043E\u0442\u043D\u0435 \u0433\u0435\u043E\u043A\u043E\u0434\u0443\u0432\u0430\u043D\u043D\u044F",
+          "zh-cn": "\u53CD\u5411\u5730\u7406\u7F16\u7801"
+        },
+        timeline_oid1: {
+          en: "Tracking datapoint 1",
+          de: "Tracking-Datenpunkt 1",
+          ru: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0442\u0441\u043B\u0435\u0436\u0438\u0432\u0430\u043D\u0438\u044F 1",
+          pt: "Ponto de dados de rastreamento 1",
+          nl: "Trackinggegevenspunt 1",
+          fr: "Point de donn\xE9es de suivi 1",
+          it: "Punto dati di tracciamento 1",
+          es: "Punto de datos de seguimiento 1",
+          pl: "Punkt danych \u015Bledzenia 1",
+          uk: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u0438\u0445 \u0432\u0456\u0434\u0441\u0442\u0435\u0436\u0435\u043D\u043D\u044F 1",
+          "zh-cn": "\u8DDF\u8E2A\u6570\u636E\u70B9 1"
+        },
+        timeline_oid2: {
+          en: "Tracking datapoint 2",
+          de: "Tracking-Datenpunkt 2",
+          ru: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0442\u0441\u043B\u0435\u0436\u0438\u0432\u0430\u043D\u0438\u044F 2",
+          pt: "Ponto de dados de rastreamento 2",
+          nl: "Trackinggegevenspunt 2",
+          fr: "Point de donn\xE9es de suivi 2",
+          it: "Punto dati di tracciamento 2",
+          es: "Punto de datos de seguimiento 2",
+          pl: "Punkt danych \u015Bledzenia 2",
+          uk: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u0438\u0445 \u0432\u0456\u0434\u0441\u0442\u0435\u0436\u0435\u043D\u043D\u044F 2",
+          "zh-cn": "\u8DDF\u8E2A\u6570\u636E\u70B9 2"
+        },
+        timeline_oid3: {
+          en: "Tracking datapoint 3",
+          de: "Tracking-Datenpunkt 3",
+          ru: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0442\u0441\u043B\u0435\u0436\u0438\u0432\u0430\u043D\u0438\u044F 3",
+          pt: "Ponto de dados de rastreamento 3",
+          nl: "Trackinggegevenspunt 3",
+          fr: "Point de donn\xE9es de suivi 3",
+          it: "Punto dati di tracciamento 3",
+          es: "Punto de datos de seguimiento 3",
+          pl: "Punkt danych \u015Bledzenia 3",
+          uk: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u0438\u0445 \u0432\u0456\u0434\u0441\u0442\u0435\u0436\u0435\u043D\u043D\u044F 3",
+          "zh-cn": "\u8DDF\u8E2A\u6570\u636E\u70B9 3"
+        },
+        timeline_oid4: {
+          en: "Tracking datapoint 4",
+          de: "Tracking-Datenpunkt 4",
+          ru: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0442\u0441\u043B\u0435\u0436\u0438\u0432\u0430\u043D\u0438\u044F 4",
+          pt: "Ponto de dados de rastreamento 4",
+          nl: "Trackinggegevenspunt 4",
+          fr: "Point de donn\xE9es de suivi 4",
+          it: "Punto dati di tracciamento 4",
+          es: "Punto de datos de seguimiento 4",
+          pl: "Punkt danych \u015Bledzenia 4",
+          uk: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u0438\u0445 \u0432\u0456\u0434\u0441\u0442\u0435\u0436\u0435\u043D\u043D\u044F 4",
+          "zh-cn": "\u8DDF\u8E2A\u6570\u636E\u70B9 4"
+        },
+        timeline_oid5: {
+          en: "Tracking datapoint 5",
+          de: "Tracking-Datenpunkt 5",
+          ru: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u043D\u044B\u0445 \u043E\u0442\u0441\u043B\u0435\u0436\u0438\u0432\u0430\u043D\u0438\u044F 5",
+          pt: "Ponto de dados de rastreamento 5",
+          nl: "Trackinggegevenspunt 5",
+          fr: "Point de donn\xE9es de suivi 5",
+          it: "Punto dati di tracciamento 5",
+          es: "Punto de datos de seguimiento 5",
+          pl: "Punkt danych \u015Bledzenia 5",
+          uk: "\u0422\u043E\u0447\u043A\u0430 \u0434\u0430\u043D\u0438\u0445 \u0432\u0456\u0434\u0441\u0442\u0435\u0436\u0435\u043D\u043D\u044F 5",
+          "zh-cn": "\u8DDF\u8E2A\u6570\u636E\u70B9 5"
+        },
+        timeline_name1: {
+          en: "Name 1",
+          de: "Name 1",
+          ru: "\u0418\u043C\u044F 1",
+          pt: "Nome 1",
+          nl: "Naam 1",
+          fr: "Nom 1",
+          it: "Nome 1",
+          es: "Nombre 1",
+          pl: "Nazwa 1",
+          uk: "\u0406\u043C'\u044F 1",
+          "zh-cn": "\u540D\u79F0 1"
+        },
+        timeline_name2: {
+          en: "Name 2",
+          de: "Name 2",
+          ru: "\u0418\u043C\u044F 2",
+          pt: "Nome 2",
+          nl: "Naam 2",
+          fr: "Nom 2",
+          it: "Nome 2",
+          es: "Nombre 2",
+          pl: "Nazwa 2",
+          uk: "\u0406\u043C'\u044F 2",
+          "zh-cn": "\u540D\u79F0 2"
+        },
+        timeline_name3: {
+          en: "Name 3",
+          de: "Name 3",
+          ru: "\u0418\u043C\u044F 3",
+          pt: "Nome 3",
+          nl: "Naam 3",
+          fr: "Nom 3",
+          it: "Nome 3",
+          es: "Nombre 3",
+          pl: "Nazwa 3",
+          uk: "\u0406\u043C'\u044F 3",
+          "zh-cn": "\u540D\u79F0 3"
+        },
+        timeline_name4: {
+          en: "Name 4",
+          de: "Name 4",
+          ru: "\u0418\u043C\u044F 4",
+          pt: "Nome 4",
+          nl: "Naam 4",
+          fr: "Nom 4",
+          it: "Nome 4",
+          es: "Nombre 4",
+          pl: "Nazwa 4",
+          uk: "\u0406\u043C'\u044F 4",
+          "zh-cn": "\u540D\u79F0 4"
+        },
+        timeline_name5: {
+          en: "Name 5",
+          de: "Name 5",
+          ru: "\u0418\u043C\u044F 5",
+          pt: "Nome 5",
+          nl: "Naam 5",
+          fr: "Nom 5",
+          it: "Nome 5",
+          es: "Nombre 5",
+          pl: "Nazwa 5",
+          uk: "\u0406\u043C'\u044F 5",
+          "zh-cn": "\u540D\u79F0 5"
+        },
+        timeline_color1: {
+          en: "Color 1",
+          de: "Farbe 1",
+          ru: "\u0426\u0432\u0435\u0442 1",
+          pt: "Cor 1",
+          nl: "Kleur 1",
+          fr: "Couleur 1",
+          it: "Colore 1",
+          es: "Color 1",
+          pl: "Kolor 1",
+          uk: "\u041A\u043E\u043B\u0456\u0440 1",
+          "zh-cn": "\u989C\u8272 1"
+        },
+        timeline_color2: {
+          en: "Color 2",
+          de: "Farbe 2",
+          ru: "\u0426\u0432\u0435\u0442 2",
+          pt: "Cor 2",
+          nl: "Kleur 2",
+          fr: "Couleur 2",
+          it: "Colore 2",
+          es: "Color 2",
+          pl: "Kolor 2",
+          uk: "\u041A\u043E\u043B\u0456\u0440 2",
+          "zh-cn": "\u989C\u8272 2"
+        },
+        timeline_color3: {
+          en: "Color 3",
+          de: "Farbe 3",
+          ru: "\u0426\u0432\u0435\u0442 3",
+          pt: "Cor 3",
+          nl: "Kleur 3",
+          fr: "Couleur 3",
+          it: "Colore 3",
+          es: "Color 3",
+          pl: "Kolor 3",
+          uk: "\u041A\u043E\u043B\u0456\u0440 3",
+          "zh-cn": "\u989C\u8272 3"
+        },
+        timeline_color4: {
+          en: "Color 4",
+          de: "Farbe 4",
+          ru: "\u0426\u0432\u0435\u0442 4",
+          pt: "Cor 4",
+          nl: "Kleur 4",
+          fr: "Couleur 4",
+          it: "Colore 4",
+          es: "Color 4",
+          pl: "Kolor 4",
+          uk: "\u041A\u043E\u043B\u0456\u0440 4",
+          "zh-cn": "\u989C\u8272 4"
+        },
+        timeline_color5: {
+          en: "Color 5",
+          de: "Farbe 5",
+          ru: "\u0426\u0432\u0435\u0442 5",
+          pt: "Cor 5",
+          nl: "Kleur 5",
+          fr: "Couleur 5",
+          it: "Colore 5",
+          es: "Color 5",
+          pl: "Kolor 5",
+          uk: "\u041A\u043E\u043B\u0456\u0440 5",
+          "zh-cn": "\u989C\u8272 5"
+        },
+        timeline_layout: {
+          en: "Timeline layout",
+          de: "Anordnung der Timeline",
+          ru: "\u0420\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0439 \u0448\u043A\u0430\u043B\u044B",
+          pt: "Layout da linha do tempo",
+          nl: "Tijdlijnindeling",
+          fr: "Disposition de la chronologie",
+          it: "Layout della cronologia",
+          es: "Dise\xF1o de la cronolog\xEDa",
+          pl: "Uk\u0142ad osi czasu",
+          uk: "\u0420\u043E\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043D\u043D\u044F \u0447\u0430\u0441\u043E\u0432\u043E\u0457 \u0448\u043A\u0430\u043B\u0438",
+          "zh-cn": "\u65F6\u95F4\u8F74\u5E03\u5C40"
+        },
+        timeline_theme: {
+          en: "Color scheme",
+          de: "Farbschema",
+          ru: "\u0426\u0432\u0435\u0442\u043E\u0432\u0430\u044F \u0441\u0445\u0435\u043C\u0430",
+          pt: "Esquema de cores",
+          nl: "Kleurenschema",
+          fr: "Th\xE8me de couleurs",
+          it: "Combinazione di colori",
+          es: "Esquema de colores",
+          pl: "Schemat kolor\xF3w",
+          uk: "\u041A\u043E\u043B\u0456\u0440\u043D\u0430 \u0441\u0445\u0435\u043C\u0430",
+          "zh-cn": "\u914D\u8272\u65B9\u6848"
+        },
+        auto: {
+          en: "Automatic",
+          de: "Automatisch",
+          ru: "\u0410\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438",
+          pt: "Autom\xE1tico",
+          nl: "Automatisch",
+          fr: "Automatique",
+          it: "Automatico",
+          es: "Autom\xE1tico",
+          pl: "Automatycznie",
+          uk: "\u0410\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E",
+          "zh-cn": "\u81EA\u52A8"
+        },
+        side: {
+          en: "Timeline at the side",
+          de: "Timeline seitlich",
+          ru: "\u0412\u0440\u0435\u043C\u0435\u043D\u043D\u0430\u044F \u0448\u043A\u0430\u043B\u0430 \u0441\u0431\u043E\u043A\u0443",
+          pt: "Linha do tempo ao lado",
+          nl: "Tijdlijn aan de zijkant",
+          fr: "Chronologie sur le c\xF4t\xE9",
+          it: "Cronologia laterale",
+          es: "Cronolog\xEDa al lado",
+          pl: "O\u015B czasu z boku",
+          uk: "\u0427\u0430\u0441\u043E\u0432\u0430 \u0448\u043A\u0430\u043B\u0430 \u0437\u0431\u043E\u043A\u0443",
+          "zh-cn": "\u65F6\u95F4\u8F74\u4F4D\u4E8E\u4FA7\u9762"
+        },
+        below: {
+          en: "Timeline below the map",
+          de: "Timeline unter der Karte",
+          ru: "\u0412\u0440\u0435\u043C\u0435\u043D\u043D\u0430\u044F \u0448\u043A\u0430\u043B\u0430 \u043F\u043E\u0434 \u043A\u0430\u0440\u0442\u043E\u0439",
+          pt: "Linha do tempo abaixo do mapa",
+          nl: "Tijdlijn onder de kaart",
+          fr: "Chronologie sous la carte",
+          it: "Cronologia sotto la mappa",
+          es: "Cronolog\xEDa debajo del mapa",
+          pl: "O\u015B czasu pod map\u0105",
+          uk: "\u0427\u0430\u0441\u043E\u0432\u0430 \u0448\u043A\u0430\u043B\u0430 \u043F\u0456\u0434 \u043A\u0430\u0440\u0442\u043E\u044E",
+          "zh-cn": "\u65F6\u95F4\u8F74\u4F4D\u4E8E\u5730\u56FE\u4E0B\u65B9"
+        },
+        light: {
+          en: "Light",
+          de: "Hell",
+          ru: "\u0421\u0432\u0435\u0442\u043B\u0430\u044F",
+          pt: "Claro",
+          nl: "Licht",
+          fr: "Clair",
+          it: "Chiaro",
+          es: "Claro",
+          pl: "Jasny",
+          uk: "\u0421\u0432\u0456\u0442\u043B\u0430",
+          "zh-cn": "\u6D45\u8272"
+        },
+        dark: {
+          en: "Dark",
+          de: "Dunkel",
+          ru: "\u0422\u0451\u043C\u043D\u0430\u044F",
+          pt: "Escuro",
+          nl: "Donker",
+          fr: "Sombre",
+          it: "Scuro",
+          es: "Oscuro",
+          pl: "Ciemny",
+          uk: "\u0422\u0435\u043C\u043D\u0430",
+          "zh-cn": "\u6DF1\u8272"
+        },
+        timeline_stayradius: {
+          en: "Stay radius in metres",
+          de: "Aufenthaltsradius in Metern",
+          ru: "\u0420\u0430\u0434\u0438\u0443\u0441 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438 \u0432 \u043C\u0435\u0442\u0440\u0430\u0445",
+          pt: "Raio de perman\xEAncia em metros",
+          nl: "Verblijfsradius in meters",
+          fr: "Rayon de s\xE9jour en m\xE8tres",
+          it: "Raggio di sosta in metri",
+          es: "Radio de estancia en metros",
+          pl: "Promie\u0144 postoju w metrach",
+          uk: "\u0420\u0430\u0434\u0456\u0443\u0441 \u0437\u0443\u043F\u0438\u043D\u043A\u0438 \u0432 \u043C\u0435\u0442\u0440\u0430\u0445",
+          "zh-cn": "\u505C\u7559\u534A\u5F84\uFF08\u7C73\uFF09"
+        },
+        timeline_minstay: {
+          en: "Minimum stay in minutes",
+          de: "Mindestaufenthalt in Minuten",
+          ru: "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430 \u0432 \u043C\u0438\u043D\u0443\u0442\u0430\u0445",
+          pt: "Perman\xEAncia m\xEDnima em minutos",
+          nl: "Minimale verblijfsduur in minuten",
+          fr: "Dur\xE9e minimale du s\xE9jour en minutes",
+          it: "Sosta minima in minuti",
+          es: "Estancia m\xEDnima en minutos",
+          pl: "Minimalny post\xF3j w minutach",
+          uk: "\u041C\u0456\u043D\u0456\u043C\u0430\u043B\u044C\u043D\u0430 \u0437\u0443\u043F\u0438\u043D\u043A\u0430 \u0443 \u0445\u0432\u0438\u043B\u0438\u043D\u0430\u0445",
+          "zh-cn": "\u6700\u77ED\u505C\u7559\u65F6\u95F4\uFF08\u5206\u949F\uFF09"
+        },
+        timeline_maxspeed: {
+          en: "Maximum reasonable speed in km/h",
+          de: "Maximal plausible Geschwindigkeit in km/h",
+          ru: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u0430\u044F \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u0432 \u043A\u043C/\u0447",
+          pt: "Velocidade m\xE1xima plaus\xEDvel em km/h",
+          nl: "Maximaal aannemelijke snelheid in km/u",
+          fr: "Vitesse maximale plausible en km/h",
+          it: "Velocit\xE0 massima plausibile in km/h",
+          es: "Velocidad m\xE1xima plausible en km/h",
+          pl: "Maksymalna wiarygodna pr\u0119dko\u015B\u0107 w km/h",
+          uk: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u0430 \u0448\u0432\u0438\u0434\u043A\u0456\u0441\u0442\u044C \u0443 \u043A\u043C/\u0433\u043E\u0434",
+          "zh-cn": "\u6700\u5927\u5408\u7406\u901F\u5EA6\uFF08\u516C\u91CC/\u5C0F\u65F6\uFF09"
+        },
+        timeline_geocodingenabled: {
+          en: "Enable external reverse geocoding",
+          de: "Externes Reverse Geocoding aktivieren",
+          ru: "\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u0432\u043D\u0435\u0448\u043D\u0435\u0435 \u043E\u0431\u0440\u0430\u0442\u043D\u043E\u0435 \u0433\u0435\u043E\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          pt: "Ativar geocodifica\xE7\xE3o reversa externa",
+          nl: "Externe omgekeerde geocodering inschakelen",
+          fr: "Activer le g\xE9ocodage invers\xE9 externe",
+          it: "Abilita geocodifica inversa esterna",
+          es: "Activar geocodificaci\xF3n inversa externa",
+          pl: "W\u0142\u0105cz zewn\u0119trzne geokodowanie odwrotne",
+          uk: "\u0423\u0432\u0456\u043C\u043A\u043D\u0443\u0442\u0438 \u0437\u043E\u0432\u043D\u0456\u0448\u043D\u0454 \u0437\u0432\u043E\u0440\u043E\u0442\u043D\u0435 \u0433\u0435\u043E\u043A\u043E\u0434\u0443\u0432\u0430\u043D\u043D\u044F",
+          "zh-cn": "\u542F\u7528\u5916\u90E8\u53CD\u5411\u5730\u7406\u7F16\u7801"
+        },
+        timeline_email: {
+          en: "Nominatim contact email",
+          de: "Nominatim-Kontakt-E-Mail",
+          ru: "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u044B\u0439 \u0430\u0434\u0440\u0435\u0441 Nominatim",
+          pt: "E-mail de contato do Nominatim",
+          nl: "Nominatim-contactadres",
+          fr: "E-mail de contact Nominatim",
+          it: "E-mail di contatto Nominatim",
+          es: "Correo de contacto de Nominatim",
+          pl: "Kontaktowy e-mail Nominatim",
+          uk: "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u0430 \u0430\u0434\u0440\u0435\u0441\u0430 Nominatim",
+          "zh-cn": "Nominatim \u8054\u7CFB\u90AE\u7BB1"
+        },
+        timeline_language: {
+          en: "Address language (optional)",
+          de: "Adresssprache (optional)",
+          ru: "\u042F\u0437\u044B\u043A \u0430\u0434\u0440\u0435\u0441\u0430 (\u043D\u0435\u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E)",
+          pt: "Idioma do endere\xE7o (opcional)",
+          nl: "Adrestaal (optioneel)",
+          fr: "Langue de l'adresse (facultatif)",
+          it: "Lingua dell'indirizzo (opzionale)",
+          es: "Idioma de la direcci\xF3n (opcional)",
+          pl: "J\u0119zyk adresu (opcjonalnie)",
+          uk: "\u041C\u043E\u0432\u0430 \u0430\u0434\u0440\u0435\u0441\u0438 (\u043D\u0435\u043E\u0431\u043E\u0432'\u044F\u0437\u043A\u043E\u0432\u043E)",
+          "zh-cn": "\u5730\u5740\u8BED\u8A00\uFF08\u53EF\u9009\uFF09"
+        },
+        timeline_endpoint: {
+          en: "Reverse-geocoding endpoint",
+          de: "Reverse-Geocoding-Endpunkt",
+          ru: "\u041A\u043E\u043D\u0435\u0447\u043D\u0430\u044F \u0442\u043E\u0447\u043A\u0430 \u043E\u0431\u0440\u0430\u0442\u043D\u043E\u0433\u043E \u0433\u0435\u043E\u043A\u043E\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F",
+          pt: "Endpoint de geocodifica\xE7\xE3o reversa",
+          nl: "Eindpunt voor omgekeerde geocodering",
+          fr: "Point de terminaison du g\xE9ocodage invers\xE9",
+          it: "Endpoint di geocodifica inversa",
+          es: "Endpoint de geocodificaci\xF3n inversa",
+          pl: "Punkt ko\u0144cowy geokodowania odwrotnego",
+          uk: "\u041A\u0456\u043D\u0446\u0435\u0432\u0430 \u0442\u043E\u0447\u043A\u0430 \u0437\u0432\u043E\u0440\u043E\u0442\u043D\u043E\u0433\u043E \u0433\u0435\u043E\u043A\u043E\u0434\u0443\u0432\u0430\u043D\u043D\u044F",
+          "zh-cn": "\u53CD\u5411\u5730\u7406\u7F16\u7801\u7AEF\u70B9"
+        },
+        Address: {
+          en: "Address",
+          de: "Adresse",
+          ru: "\u0410\u0434\u0440\u0435\u0441",
+          pt: "Endere\xE7o",
+          nl: "Adres",
+          fr: "Adresse",
+          it: "Indirizzo",
+          es: "Direcci\xF3n",
+          pl: "Adres",
+          uk: "\u0410\u0434\u0440\u0435\u0441\u0430",
+          "zh-cn": "\u5730\u5740"
+        },
+        "Edit known place": {
+          en: "Edit known place",
+          de: "Bekannten Ort bearbeiten",
+          ru: "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 \u043C\u0435\u0441\u0442\u043E",
+          pt: "Editar local conhecido",
+          nl: "Bekende plaats bewerken",
+          fr: "Modifier le lieu connu",
+          it: "Modifica luogo conosciuto",
+          es: "Editar lugar conocido",
+          pl: "Edytuj znane miejsce",
+          uk: "\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u0432\u0456\u0434\u043E\u043C\u0435 \u043C\u0456\u0441\u0446\u0435",
+          "zh-cn": "\u7F16\u8F91\u5DF2\u77E5\u5730\u70B9"
+        },
+        "No address available": {
+          en: "No address available",
+          de: "Keine Adresse verf\xFCgbar",
+          ru: "\u0410\u0434\u0440\u0435\u0441 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u0435\u043D",
+          pt: "Nenhum endere\xE7o dispon\xEDvel",
+          nl: "Geen adres beschikbaar",
+          fr: "Aucune adresse disponible",
+          it: "Nessun indirizzo disponibile",
+          es: "No hay direcci\xF3n disponible",
+          pl: "Brak dost\u0119pnego adresu",
+          uk: "\u0410\u0434\u0440\u0435\u0441\u0430 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u0430",
+          "zh-cn": "\u65E0\u53EF\u7528\u5730\u5740"
+        },
+        "Remove known place": {
+          en: "Remove known place",
+          de: "Bekannten Ort entfernen",
+          ru: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 \u043C\u0435\u0441\u0442\u043E",
+          pt: "Remover local conhecido",
+          nl: "Bekende plaats verwijderen",
+          fr: "Supprimer le lieu connu",
+          it: "Rimuovi luogo conosciuto",
+          es: "Eliminar lugar conocido",
+          pl: "Usu\u0144 znane miejsce",
+          uk: "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0432\u0456\u0434\u043E\u043C\u0435 \u043C\u0456\u0441\u0446\u0435",
+          "zh-cn": "\u79FB\u9664\u5DF2\u77E5\u5730\u70B9"
+        },
+        Street: {
+          en: "Street",
+          de: "Stra\xDFe",
+          ru: "\u0423\u043B\u0438\u0446\u0430",
+          pt: "Rua",
+          nl: "Straat",
+          fr: "Rue",
+          it: "Via",
+          es: "Calle",
+          pl: "Ulica",
+          uk: "\u0412\u0443\u043B\u0438\u0446\u044F",
+          "zh-cn": "\u8857\u9053"
+        },
+        "House number": {
+          en: "House number",
+          de: "Hausnummer",
+          ru: "\u041D\u043E\u043C\u0435\u0440 \u0434\u043E\u043C\u0430",
+          pt: "N\xFAmero",
+          nl: "Huisnummer",
+          fr: "Num\xE9ro",
+          it: "Numero civico",
+          es: "N\xFAmero",
+          pl: "Numer domu",
+          uk: "\u041D\u043E\u043C\u0435\u0440 \u0431\u0443\u0434\u0438\u043D\u043A\u0443",
+          "zh-cn": "\u95E8\u724C\u53F7"
+        },
+        City: {
+          en: "City",
+          de: "Ort",
+          ru: "\u0413\u043E\u0440\u043E\u0434",
+          pt: "Cidade",
+          nl: "Plaats",
+          fr: "Ville",
+          it: "Citt\xE0",
+          es: "Ciudad",
+          pl: "Miejscowo\u015B\u0107",
+          uk: "\u041C\u0456\u0441\u0442\u043E",
+          "zh-cn": "\u57CE\u5E02"
+        },
+        Country: {
+          en: "Country",
+          de: "Land",
+          ru: "\u0421\u0442\u0440\u0430\u043D\u0430",
+          pt: "Pa\xEDs",
+          nl: "Land",
+          fr: "Pays",
+          it: "Paese",
+          es: "Pa\xEDs",
+          pl: "Kraj",
+          uk: "\u041A\u0440\u0430\u0457\u043D\u0430",
+          "zh-cn": "\u56FD\u5BB6"
+        }
+      };
+    }
+  });
 
   // node_modules/leaflet/dist/leaflet.js
   var require_leaflet = __commonJS({
@@ -5909,7 +7465,7 @@
             this._moveEnd(true);
           }
         });
-        function createMap(id, options) {
+        function createMap2(id, options) {
           return new Map2(id, options);
         }
         var Control = Class.extend({
@@ -10376,11 +11932,11 @@
             }
           },
           _setZoomTransform: function(level, center, zoom2) {
-            var scale2 = this._map.getZoomScale(zoom2, level.zoom), translate = level.origin.multiplyBy(scale2).subtract(this._map._getNewPixelOrigin(center, zoom2)).round();
+            var scale2 = this._map.getZoomScale(zoom2, level.zoom), translate2 = level.origin.multiplyBy(scale2).subtract(this._map._getNewPixelOrigin(center, zoom2)).round();
             if (Browser.any3d) {
-              setTransform(level.el, translate, scale2);
+              setTransform(level.el, translate2, scale2);
             } else {
-              setPosition(level.el, translate);
+              setPosition(level.el, translate2);
             }
           },
           _resetGrid: function() {
@@ -12277,7 +13833,7 @@
         exports2.latLng = toLatLng;
         exports2.latLngBounds = toLatLngBounds;
         exports2.layerGroup = layerGroup;
-        exports2.map = createMap;
+        exports2.map = createMap2;
         exports2.marker = marker;
         exports2.point = toPoint;
         exports2.polygon = polygon;
@@ -16621,8 +18177,8 @@
               return this;
             }
             case "object": {
-              const cacheKey = schemaKeyRef;
-              this._cache.delete(cacheKey);
+              const cacheKey2 = schemaKeyRef;
+              this._cache.delete(cacheKey2);
               let id = schemaKeyRef[this.opts.schemaId];
               if (id) {
                 id = (0, resolve_1.normalizeId)(id);
@@ -20910,728 +22466,176 @@
     }
   });
 
-  // mapwidgets/myi18n/translations.json
-  var require_translations = __commonJS({
-    "mapwidgets/myi18n/translations.json"(exports, module) {
-      module.exports = {
-        mapwidgets_oid: {
-          en: "Datapoint",
-          de: "Datenpunkt",
-          ru: "\u0414\u0430\u043D\u043D\u044B\u0435",
-          pt: "Dado",
-          nl: "Gegevenspunt",
-          fr: "Donn\xE9e",
-          it: "Dato",
-          es: "Dato",
-          pl: "Punkt danych",
-          uk: "\u0414\u0430\u043D\u0456",
-          "zh-cn": "Datapoint"
-        },
-        mapwidgets_lat: {
-          en: "Map lat",
-          de: "Kartenbreitengrad",
-          ru: "\u0428\u0438\u0440\u043E\u0442\u0430 \u043D\u0430 \u043A\u0430\u0440\u0442\u0435",
-          pt: "Latitude do mapa",
-          nl: "Kaartbreedtegraad",
-          fr: "Latitude de la carte",
-          it: "Latitudine della mappa",
-          es: "Latitud del mapa",
-          pl: "Szeroko\u015B\u0107 geograficzna na mapie",
-          uk: "\u0428\u0438\u0440\u043E\u0442\u0430 \u043D\u0430 \u043A\u0430\u0440\u0442\u0456",
-          "zh-cn": "Map lat"
-        },
-        mapwidgets_lon: {
-          en: "Map lon",
-          de: "Karte L\xE4ngengrad",
-          ru: "\u041A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u044B \u043F\u043E \u0434\u043E\u043B\u0433\u043E\u0442\u0435 \u043D\u0430 \u043A\u0430\u0440\u0442\u0435",
-          pt: "Longitude do mapa",
-          nl: "Kaart lengtegraad",
-          fr: "Longitude sur la carte",
-          it: "Latitudine sulla mappa",
-          es: "Coordenadas de longitud del mapa",
-          pl: "D\u0142ugo\u015B\u0107 geograficzna na mapie",
-          uk: "\u041A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u0438 \u043D\u0430 \u043A\u0430\u0440\u0442\u0456",
-          "zh-cn": "Map lon"
-        },
-        mapwidgets_zoom: {
-          en: "Map Zoom",
-          de: "Karte vergr\xF6\xDFern",
-          ru: "\u041C\u0430\u0441\u0448\u0442\u0430\u0431 \u043A\u0430\u0440\u0442\u044B",
-          pt: "Ampliar o mapa",
-          nl: "Kaart vergroten/verkleinen",
-          fr: "Zoom sur la carte",
-          it: "Zoom sulla mappa",
-          es: "Acercar el mapa",
-          pl: "Powi\u0119kszenie mapy",
-          uk: "\u0417\u0431\u0456\u043B\u044C\u0448\u0435\u043D\u043D\u044F \u043C\u0430\u0441\u0448\u0442\u0430\u0431\u0443 \u043A\u0430\u0440\u0442\u0438",
-          "zh-cn": "Map Zoom"
-        },
-        mapwidgets_expose: {
-          en: "Map Expose",
-          de: "Karte anzeigen",
-          ru: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043A\u0430\u0440\u0442\u0443",
-          pt: "Exibir mapa",
-          nl: "Kaart weergeven",
-          fr: "Afficher la carte",
-          it: "Visualizza mappa",
-          es: "Map Expose",
-          pl: "Poka\u017C map\u0119",
-          uk: "\u0412\u0456\u0434\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043D\u0430 \u043A\u0430\u0440\u0442\u0456",
-          "zh-cn": "Map Expose"
-        },
-        group_mapwidgets_daynight: {
-          en: "Map Day/Night",
-          de: "Karte Tag/Nacht",
-          ru: "\u041A\u0430\u0440\u0442\u0430 \xAB\u0414\u0435\u043D\u044C/\u041D\u043E\u0447\u044C\xBB",
-          pt: "Mapa Dia/Noite",
-          nl: "Kaart dag/nacht",
-          fr: "Carte jour/nuit",
-          it: "Mappa giorno/notte",
-          es: "Mapa de d\xEDa/noche",
-          pl: "Mapa \u2013 dzie\u0144/noc",
-          uk: "\u041A\u0430\u0440\u0442\u0430 \xAB\u0414\u0435\u043D\u044C/\u041D\u0456\u0447\xBB",
-          "zh-cn": "Map Day/Night"
-        },
-        mapwidgets_daynightenabled: {
-          en: "Day/Night Enabled",
-          de: "Tag-/Nachtmodus aktiviert",
-          ru: "\u0420\u0435\u0436\u0438\u043C \xAB\u0414\u0435\u043D\u044C/\u041D\u043E\u0447\u044C\xBB \u0432\u043A\u043B\u044E\u0447\u0435\u043D",
-          pt: "Modo Dia/Noite ativado",
-          nl: "Dag/nacht-modus ingeschakeld",
-          fr: "Mode jour/nuit activ\xE9",
-          it: "Day/Night Enabled",
-          es: "Day/Night Enabled",
-          pl: "W\u0142\u0105czono tryb dzienny/nocny",
-          uk: "\u0423\u0432\u0456\u043C\u043A\u043D\u0435\u043D\u043E \u0440\u0435\u0436\u0438\u043C \xAB\u0414\u0435\u043D\u044C/\u041D\u0456\u0447\xBB",
-          "zh-cn": "Day/Night Enabled"
-        },
-        mapwidgets_daynightcolor: {
-          en: "Day/Night Color",
-          de: "Tag-/Nachtfarbe",
-          ru: "\u0426\u0432\u0435\u0442 \u0434\u043D\u044F/\u043D\u043E\u0447\u0438",
-          pt: "Cor de dia/noite",
-          nl: "Dag-/nachtkleur",
-          fr: "Couleur jour/nuit",
-          it: "Colore giorno/notte",
-          es: "Color d\xEDa/noche",
-          pl: "Kolor dnia/nocy",
-          uk: "\u041A\u043E\u043B\u0456\u0440 \u0434\u043D\u044F/\u043D\u043E\u0447\u0456",
-          "zh-cn": "\u663C/\u591C\u989C\u8272"
-        },
-        mapwidgets_daynightopacity: {
-          en: "Day/Night Opacity",
-          de: "Tag-/Nachtdeckkraft",
-          ru: "\u041D\u0435\u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u043E\u0441\u0442\u044C \u0434\u043D\u044F/\u043D\u043E\u0447\u0438",
-          pt: "Opacidade de dia/noite",
-          nl: "Dag-/nachtdekking",
-          fr: "Opacit\xE9 jour/nuit",
-          it: "Opacit\xE0 giorno/notte",
-          es: "Opacidad d\xEDa/noche",
-          pl: "Krycie dnia/nocy",
-          uk: "\u041D\u0435\u043F\u0440\u043E\u0437\u043E\u0440\u0456\u0441\u0442\u044C \u0434\u043D\u044F/\u043D\u043E\u0447\u0456",
-          "zh-cn": "\u663C/\u591C\u4E0D\u900F\u660E\u5EA6"
-        },
-        mapwidgets_daynightfillcolor: {
-          en: "Day/Night Fill Color",
-          de: "Tag-/Nachtf\xFCllfarbe",
-          ru: "\u0426\u0432\u0435\u0442 \u0437\u0430\u043B\u0438\u0432\u043A\u0438 \u0434\u043D\u044F/\u043D\u043E\u0447\u0438",
-          pt: "Cor de preenchimento de dia/noite",
-          nl: "Dag-/nachtvulkleur",
-          fr: "Couleur de remplissage jour/nuit",
-          it: "Colore di riempimento giorno/notte",
-          es: "Color de relleno d\xEDa/noche",
-          pl: "Kolor wype\u0142nienia dnia/nocy",
-          uk: "\u041A\u043E\u043B\u0456\u0440 \u0437\u0430\u043B\u0438\u0432\u043A\u0438 \u0434\u043D\u044F/\u043D\u043E\u0447\u0456",
-          "zh-cn": "\u663C/\u591C\u586B\u5145\u989C\u8272"
-        },
-        mapwidgets_daynightfillopacity: {
-          en: "Day/Night Fill Opacity",
-          de: "Tag-/Nachtf\xFClldeckkraft",
-          ru: "\u041D\u0435\u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u043E\u0441\u0442\u044C \u0437\u0430\u043B\u0438\u0432\u043A\u0438 \u0434\u043D\u044F/\u043D\u043E\u0447\u0438",
-          pt: "Opacidade do preenchimento de dia/noite",
-          nl: "Dag-/nachtvuldekking",
-          fr: "Opacit\xE9 du remplissage jour/nuit",
-          it: "Opacit\xE0 di riempimento giorno/notte",
-          es: "Opacidad de relleno d\xEDa/noche",
-          pl: "Krycie wype\u0142nienia dnia/nocy",
-          uk: "\u041D\u0435\u043F\u0440\u043E\u0437\u043E\u0440\u0456\u0441\u0442\u044C \u0437\u0430\u043B\u0438\u0432\u043A\u0438 \u0434\u043D\u044F/\u043D\u043E\u0447\u0456",
-          "zh-cn": "\u663C/\u591C\u586B\u5145\u4E0D\u900F\u660E\u5EA6"
-        },
-        "The JSON configuration is valid.": {
-          en: "The JSON configuration is valid.",
-          de: "Die JSON-Konfiguration ist g\xFCltig.",
-          ru: "\u041A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F JSON \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u0430.",
-          pt: "A configura\xE7\xE3o JSON \xE9 v\xE1lida.",
-          nl: "De JSON-configuratie is geldig.",
-          fr: "La configuration JSON est valide.",
-          it: "La configurazione JSON \xE8 valida.",
-          es: "La configuraci\xF3n JSON es v\xE1lida.",
-          pl: "Konfiguracja JSON jest prawid\u0142owa.",
-          uk: "\u041A\u043E\u043D\u0444\u0456\u0433\u0443\u0440\u0430\u0446\u0456\u044F JSON \u0454 \u0434\u0456\u0439\u0441\u043D\u043E\u044E.",
-          "zh-cn": "JSON \u914D\u7F6E\u6709\u6548\u3002"
-        },
-        "The JSON configuration contains %s error(s).": {
-          en: "The JSON configuration contains %s error(s).",
-          de: "Die JSON-Konfiguration enth\xE4lt %s Fehler.",
-          ru: "\u041A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F JSON \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 %s \u043E\u0448\u0438\u0431\u043A\u0443(\u0438).",
-          pt: "A configura\xE7\xE3o JSON cont\xE9m %s erro(s).",
-          nl: "De JSON-configuratie bevat %s fout(en).",
-          fr: "La configuration JSON contient %s erreur(s).",
-          it: "La configurazione JSON contiene %s errore/i.",
-          es: "La configuraci\xF3n JSON contiene %s error(es).",
-          pl: "Konfiguracja JSON zawiera %s b\u0142\u0119d\xF3w.",
-          uk: "\u041A\u043E\u043D\u0444\u0456\u0433\u0443\u0440\u0430\u0446\u0456\u044F JSON \u043C\u0456\u0441\u0442\u0438\u0442\u044C %s \u043F\u043E\u043C\u0438\u043B\u043A\u0443(\u0438).",
-          "zh-cn": "JSON \u914D\u7F6E\u5305\u542B %s \u4E2A\u9519\u8BEF\u3002"
-        },
-        "Unexpected properties in object %s:": {
-          en: "Unexpected properties in object %s:",
-          de: "Unerwartete Eigenschaften in Objekt %s:",
-          ru: "\u041D\u0435\u043F\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043D\u043D\u044B\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u0432 \u043E\u0431\u044A\u0435\u043A\u0442\u0435 %s:",
-          pt: "Propriedades inesperadas no objeto %s:",
-          nl: "Onverwachte eigenschappen in object %s:",
-          fr: "Propri\xE9t\xE9s inattendues dans l'objet %s :",
-          it: "Propriet\xE0 impreviste nell'oggetto %s:",
-          es: "Propiedades inesperadas en el objeto %s:",
-          pl: "Nieoczekiwane w\u0142a\u015Bciwo\u015Bci w obiekcie %s:",
-          uk: "\u041D\u0435\u043E\u0447\u0456\u043A\u0443\u0432\u0430\u043D\u0456 \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u043E\u0441\u0442\u0456 \u0432 \u043E\u0431'\u0454\u043A\u0442\u0456 %s:",
-          "zh-cn": "\u5BF9\u8C61 %s \u4E2D\u5B58\u5728\u610F\u5916\u5C5E\u6027\uFF1A"
-        },
-        "Allowed properties are:": {
-          en: "Allowed properties are:",
-          de: "Erlaubte Eigenschaften sind:",
-          ru: "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430:",
-          pt: "As propriedades permitidas s\xE3o:",
-          nl: "Toegestane eigenschappen zijn:",
-          fr: "Les propri\xE9t\xE9s autoris\xE9es sont :",
-          it: "Le propriet\xE0 consentite sono:",
-          es: "Las propiedades permitidas son:",
-          pl: "Dozwolone w\u0142a\u015Bciwo\u015Bci to:",
-          uk: "\u0414\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0456 \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u043E\u0441\u0442\u0456:",
-          "zh-cn": "\u5141\u8BB8\u7684\u5C5E\u6027\u4E3A\uFF1A"
-        },
-        "Error at %s:": {
-          en: "Error at %s:",
-          de: "Fehler bei %s:",
-          ru: "\u041E\u0448\u0438\u0431\u043A\u0430 \u0432 %s:",
-          pt: "Erro em %s:",
-          nl: "Fout bij %s:",
-          fr: "Erreur \xE0 %s :",
-          it: "Errore in %s:",
-          es: "Error en %s:",
-          pl: "B\u0142\u0105d w %s:",
-          uk: "\u041F\u043E\u043C\u0438\u043B\u043A\u0430 \u0432 %s:",
-          "zh-cn": "%s \u5904\u51FA\u9519\uFF1A"
-        },
-        'Required property "%s" is missing.': {
-          en: 'Required property "%s" is missing.',
-          de: 'Die erforderliche Eigenschaft "%s" fehlt.',
-          ru: '\u041E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u043E "%s".',
-          pt: 'A propriedade obrigat\xF3ria "%s" est\xE1 ausente.',
-          nl: 'De vereiste eigenschap "%s" ontbreekt.',
-          fr: 'La propri\xE9t\xE9 obligatoire "%s" est manquante.',
-          it: 'La propriet\xE0 obbligatoria "%s" \xE8 mancante.',
-          es: 'Falta la propiedad obligatoria "%s".',
-          pl: 'Brakuje wymaganej w\u0142a\u015Bciwo\u015Bci "%s".',
-          uk: `\u0412\u0456\u0434\u0441\u0443\u0442\u043D\u044F \u043E\u0431\u043E\u0432'\u044F\u0437\u043A\u043E\u0432\u0430 \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044C "%s".`,
-          "zh-cn": '\u7F3A\u5C11\u5FC5\u9700\u5C5E\u6027 "%s"\u3002'
-        },
-        "Invalid data type.": {
-          en: "Invalid data type.",
-          de: "Ung\xFCltiger Datentyp.",
-          ru: "\u041D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0439 \u0442\u0438\u043F \u0434\u0430\u043D\u043D\u044B\u0445.",
-          pt: "Tipo de dados inv\xE1lido.",
-          nl: "Ongeldig gegevenstype.",
-          fr: "Type de donn\xE9es non valide.",
-          it: "Tipo di dati non valido.",
-          es: "Tipo de datos no v\xE1lido.",
-          pl: "Nieprawid\u0142owy typ danych.",
-          uk: "\u041D\u0435\u0434\u0456\u0439\u0441\u043D\u0438\u0439 \u0442\u0438\u043F \u0434\u0430\u043D\u0438\u0445.",
-          "zh-cn": "\u6570\u636E\u7C7B\u578B\u65E0\u6548\u3002"
-        },
-        "Expected: %s": {
-          en: "Expected: %s",
-          de: "Erwartet: %s",
-          ru: "\u041E\u0436\u0438\u0434\u0430\u043B\u043E\u0441\u044C: %s",
-          pt: "Esperado: %s",
-          nl: "Verwacht: %s",
-          fr: "Attendu : %s",
-          it: "Previsto: %s",
-          es: "Esperado: %s",
-          pl: "Oczekiwano: %s",
-          uk: "\u041E\u0447\u0456\u043A\u0443\u0432\u0430\u043B\u043E\u0441\u044F: %s",
-          "zh-cn": "\u9884\u671F\uFF1A%s"
-        },
-        "Actual: %s": {
-          en: "Actual: %s",
-          de: "Tats\xE4chlich: %s",
-          ru: "\u0424\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u0438: %s",
-          pt: "Real: %s",
-          nl: "Werkelijk: %s",
-          fr: "R\xE9el : %s",
-          it: "Effettivo: %s",
-          es: "Real: %s",
-          pl: "Rzeczywiste: %s",
-          uk: "\u0424\u0430\u043A\u0442\u0438\u0447\u043D\u043E: %s",
-          "zh-cn": "\u5B9E\u9645\uFF1A%s"
-        },
-        "Value: %s": {
-          en: "Value: %s",
-          de: "Wert: %s",
-          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435: %s",
-          pt: "Valor: %s",
-          nl: "Waarde: %s",
-          fr: "Valeur : %s",
-          it: "Valore: %s",
-          es: "Valor: %s",
-          pl: "Warto\u015B\u0107: %s",
-          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F: %s",
-          "zh-cn": "\u503C\uFF1A%s"
-        },
-        "Invalid value: %s": {
-          en: "Invalid value: %s",
-          de: "Ung\xFCltiger Wert: %s",
-          ru: "\u041D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435: %s",
-          pt: "Valor inv\xE1lido: %s",
-          nl: "Ongeldige waarde: %s",
-          fr: "Valeur non valide : %s",
-          it: "Valore non valido: %s",
-          es: "Valor no v\xE1lido: %s",
-          pl: "Nieprawid\u0142owa warto\u015B\u0107: %s",
-          uk: "\u041D\u0435\u0434\u0456\u0439\u0441\u043D\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F: %s",
-          "zh-cn": "\u503C\u65E0\u6548\uFF1A%s"
-        },
-        "Allowed values: %s": {
-          en: "Allowed values: %s",
-          de: "Erlaubte Werte: %s",
-          ru: "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F: %s",
-          pt: "Valores permitidos: %s",
-          nl: "Toegestane waarden: %s",
-          fr: "Valeurs autoris\xE9es : %s",
-          it: "Valori consentiti: %s",
-          es: "Valores permitidos: %s",
-          pl: "Dozwolone warto\u015Bci: %s",
-          uk: "\u0414\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0456 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F: %s",
-          "zh-cn": "\u5141\u8BB8\u7684\u503C\uFF1A%s"
-        },
-        "The value is not allowed.": {
-          en: "The value is not allowed.",
-          de: "Der Wert ist nicht erlaubt.",
-          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043E.",
-          pt: "O valor n\xE3o \xE9 permitido.",
-          nl: "De waarde is niet toegestaan.",
-          fr: "La valeur n'est pas autoris\xE9e.",
-          it: "Il valore non \xE8 consentito.",
-          es: "El valor no est\xE1 permitido.",
-          pl: "Warto\u015B\u0107 nie jest dozwolona.",
-          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043D\u0435 \u0434\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0435.",
-          "zh-cn": "\u8BE5\u503C\u4E0D\u88AB\u5141\u8BB8\u3002"
-        },
-        "Expected value: %s": {
-          en: "Expected value: %s",
-          de: "Erwarteter Wert: %s",
-          ru: "\u041E\u0436\u0438\u0434\u0430\u0435\u043C\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435: %s",
-          pt: "Valor esperado: %s",
-          nl: "Verwachte waarde: %s",
-          fr: "Valeur attendue : %s",
-          it: "Valore previsto: %s",
-          es: "Valor esperado: %s",
-          pl: "Oczekiwana warto\u015B\u0107: %s",
-          uk: "\u041E\u0447\u0456\u043A\u0443\u0432\u0430\u043D\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F: %s",
-          "zh-cn": "\u9884\u671F\u503C\uFF1A%s"
-        },
-        "Value is below the minimum.": {
-          en: "Value is below the minimum.",
-          de: "Der Wert liegt unter dem Minimum.",
-          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0438\u0436\u0435 \u043C\u0438\u043D\u0438\u043C\u0443\u043C\u0430.",
-          pt: "O valor est\xE1 abaixo do m\xEDnimo.",
-          nl: "De waarde ligt onder het minimum.",
-          fr: "La valeur est inf\xE9rieure au minimum.",
-          it: "Il valore \xE8 inferiore al minimo.",
-          es: "El valor est\xE1 por debajo del m\xEDnimo.",
-          pl: "Warto\u015B\u0107 jest poni\u017Cej minimum.",
-          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043D\u0438\u0436\u0447\u0435 \u043C\u0456\u043D\u0456\u043C\u0443\u043C\u0443.",
-          "zh-cn": "\u503C\u4F4E\u4E8E\u6700\u5C0F\u503C\u3002"
-        },
-        "Minimum: %s": {
-          en: "Minimum: %s",
-          de: "Minimum: %s",
-          ru: "\u041C\u0438\u043D\u0438\u043C\u0443\u043C: %s",
-          pt: "M\xEDnimo: %s",
-          nl: "Minimum: %s",
-          fr: "Minimum : %s",
-          it: "Minimo: %s",
-          es: "M\xEDnimo: %s",
-          pl: "Minimum: %s",
-          uk: "\u041C\u0456\u043D\u0456\u043C\u0443\u043C: %s",
-          "zh-cn": "\u6700\u5C0F\u503C\uFF1A%s"
-        },
-        "Value exceeds the maximum.": {
-          en: "Value exceeds the maximum.",
-          de: "Der Wert \xFCberschreitet das Maximum.",
-          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0435\u0442 \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C.",
-          pt: "O valor excede o m\xE1ximo.",
-          nl: "De waarde overschrijdt het maximum.",
-          fr: "La valeur d\xE9passe le maximum.",
-          it: "Il valore supera il massimo.",
-          es: "El valor supera el m\xE1ximo.",
-          pl: "Warto\u015B\u0107 przekracza maksimum.",
-          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043F\u0435\u0440\u0435\u0432\u0438\u0449\u0443\u0454 \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C.",
-          "zh-cn": "\u503C\u8D85\u8FC7\u6700\u5927\u503C\u3002"
-        },
-        "Maximum: %s": {
-          en: "Maximum: %s",
-          de: "Maximum: %s",
-          ru: "\u041C\u0430\u043A\u0441\u0438\u043C\u0443\u043C: %s",
-          pt: "M\xE1ximo: %s",
-          nl: "Maximum: %s",
-          fr: "Maximum : %s",
-          it: "Massimo: %s",
-          es: "M\xE1ximo: %s",
-          pl: "Maksimum: %s",
-          uk: "\u041C\u0430\u043A\u0441\u0438\u043C\u0443\u043C: %s",
-          "zh-cn": "\u6700\u5927\u503C\uFF1A%s"
-        },
-        "Value must be greater than %s.": {
-          en: "Value must be greater than %s.",
-          de: "Der Wert muss gr\xF6\xDFer als %s sein.",
-          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 %s.",
-          pt: "O valor deve ser maior que %s.",
-          nl: "De waarde moet groter zijn dan %s.",
-          fr: "La valeur doit \xEAtre sup\xE9rieure \xE0 %s.",
-          it: "Il valore deve essere maggiore di %s.",
-          es: "El valor debe ser mayor que %s.",
-          pl: "Warto\u015B\u0107 musi by\u0107 wi\u0119ksza ni\u017C %s.",
-          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043C\u0430\u0454 \u0431\u0443\u0442\u0438 \u0431\u0456\u043B\u044C\u0448\u0438\u043C \u0437\u0430 %s.",
-          "zh-cn": "\u503C\u5FC5\u987B\u5927\u4E8E %s\u3002"
-        },
-        "Value must be less than %s.": {
-          en: "Value must be less than %s.",
-          de: "Der Wert muss kleiner als %s sein.",
-          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 %s.",
-          pt: "O valor deve ser menor que %s.",
-          nl: "De waarde moet kleiner zijn dan %s.",
-          fr: "La valeur doit \xEAtre inf\xE9rieure \xE0 %s.",
-          it: "Il valore deve essere minore di %s.",
-          es: "El valor debe ser menor que %s.",
-          pl: "Warto\u015B\u0107 musi by\u0107 mniejsza ni\u017C %s.",
-          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043C\u0430\u0454 \u0431\u0443\u0442\u0438 \u043C\u0435\u043D\u0448\u0438\u043C \u0437\u0430 %s.",
-          "zh-cn": "\u503C\u5FC5\u987B\u5C0F\u4E8E %s\u3002"
-        },
-        "Array contains too few elements.": {
-          en: "Array contains too few elements.",
-          de: "Das Array enth\xE4lt zu wenige Elemente.",
-          ru: "\u041C\u0430\u0441\u0441\u0438\u0432 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u0430\u043B\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432.",
-          pt: "A matriz cont\xE9m poucos elementos.",
-          nl: "De array bevat te weinig elementen.",
-          fr: "Le tableau contient trop peu d'\xE9l\xE9ments.",
-          it: "L'array contiene troppo pochi elementi.",
-          es: "La matriz contiene muy pocos elementos.",
-          pl: "Tablica zawiera za ma\u0142o element\xF3w.",
-          uk: "\u041C\u0430\u0441\u0438\u0432 \u043C\u0456\u0441\u0442\u0438\u0442\u044C \u0437\u0430\u043C\u0430\u043B\u043E \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432.",
-          "zh-cn": "\u6570\u7EC4\u5305\u542B\u7684\u5143\u7D20\u592A\u5C11\u3002"
-        },
-        "Minimum number of elements: %s": {
-          en: "Minimum number of elements: %s",
-          de: "Mindestanzahl an Elementen: %s",
-          ru: "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432: %s",
-          pt: "N\xFAmero m\xEDnimo de elementos: %s",
-          nl: "Minimumaantal elementen: %s",
-          fr: "Nombre minimal d'\xE9l\xE9ments : %s",
-          it: "Numero minimo di elementi: %s",
-          es: "N\xFAmero m\xEDnimo de elementos: %s",
-          pl: "Minimalna liczba element\xF3w: %s",
-          uk: "\u041C\u0456\u043D\u0456\u043C\u0430\u043B\u044C\u043D\u0430 \u043A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432: %s",
-          "zh-cn": "\u6700\u5C11\u5143\u7D20\u6570\uFF1A%s"
-        },
-        "Actual number of elements: %s": {
-          en: "Actual number of elements: %s",
-          de: "Tats\xE4chliche Anzahl an Elementen: %s",
-          ru: "\u0424\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432: %s",
-          pt: "N\xFAmero real de elementos: %s",
-          nl: "Werkelijk aantal elementen: %s",
-          fr: "Nombre r\xE9el d'\xE9l\xE9ments : %s",
-          it: "Numero effettivo di elementi: %s",
-          es: "N\xFAmero real de elementos: %s",
-          pl: "Rzeczywista liczba element\xF3w: %s",
-          uk: "\u0424\u0430\u043A\u0442\u0438\u0447\u043D\u0430 \u043A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432: %s",
-          "zh-cn": "\u5B9E\u9645\u5143\u7D20\u6570\uFF1A%s"
-        },
-        "Array contains too many elements.": {
-          en: "Array contains too many elements.",
-          de: "Das Array enth\xE4lt zu viele Elemente.",
-          ru: "\u041C\u0430\u0441\u0441\u0438\u0432 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u043D\u043E\u0433\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432.",
-          pt: "A matriz cont\xE9m elementos demais.",
-          nl: "De array bevat te veel elementen.",
-          fr: "Le tableau contient trop d'\xE9l\xE9ments.",
-          it: "L'array contiene troppi elementi.",
-          es: "La matriz contiene demasiados elementos.",
-          pl: "Tablica zawiera za du\u017Co element\xF3w.",
-          uk: "\u041C\u0430\u0441\u0438\u0432 \u043C\u0456\u0441\u0442\u0438\u0442\u044C \u0437\u0430\u0431\u0430\u0433\u0430\u0442\u043E \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432.",
-          "zh-cn": "\u6570\u7EC4\u5305\u542B\u7684\u5143\u7D20\u592A\u591A\u3002"
-        },
-        "Maximum number of elements: %s": {
-          en: "Maximum number of elements: %s",
-          de: "Maximale Anzahl an Elementen: %s",
-          ru: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432: %s",
-          pt: "N\xFAmero m\xE1ximo de elementos: %s",
-          nl: "Maximumaantal elementen: %s",
-          fr: "Nombre maximal d'\xE9l\xE9ments : %s",
-          it: "Numero massimo di elementi: %s",
-          es: "N\xFAmero m\xE1ximo de elementos: %s",
-          pl: "Maksymalna liczba element\xF3w: %s",
-          uk: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430 \u043A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0435\u043B\u0435\u043C\u0435\u043D\u0442\u0456\u0432: %s",
-          "zh-cn": "\u6700\u591A\u5143\u7D20\u6570\uFF1A%s"
-        },
-        "String is too short.": {
-          en: "String is too short.",
-          de: "Die Zeichenfolge ist zu kurz.",
-          ru: "\u0421\u0442\u0440\u043E\u043A\u0430 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u043A\u043E\u0440\u043E\u0442\u043A\u0430\u044F.",
-          pt: "A cadeia de caracteres \xE9 muito curta.",
-          nl: "De tekenreeks is te kort.",
-          fr: "La cha\xEEne est trop courte.",
-          it: "La stringa \xE8 troppo corta.",
-          es: "La cadena es demasiado corta.",
-          pl: "Ci\u0105g znak\xF3w jest za kr\xF3tki.",
-          uk: "\u0420\u044F\u0434\u043E\u043A \u0437\u0430\u043A\u043E\u0440\u043E\u0442\u043A\u0438\u0439.",
-          "zh-cn": "\u5B57\u7B26\u4E32\u592A\u77ED\u3002"
-        },
-        "Minimum length: %s": {
-          en: "Minimum length: %s",
-          de: "Mindestl\xE4nge: %s",
-          ru: "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430: %s",
-          pt: "Comprimento m\xEDnimo: %s",
-          nl: "Minimumlengte: %s",
-          fr: "Longueur minimale : %s",
-          it: "Lunghezza minima: %s",
-          es: "Longitud m\xEDnima: %s",
-          pl: "Minimalna d\u0142ugo\u015B\u0107: %s",
-          uk: "\u041C\u0456\u043D\u0456\u043C\u0430\u043B\u044C\u043D\u0430 \u0434\u043E\u0432\u0436\u0438\u043D\u0430: %s",
-          "zh-cn": "\u6700\u5C0F\u957F\u5EA6\uFF1A%s"
-        },
-        "Actual length: %s": {
-          en: "Actual length: %s",
-          de: "Tats\xE4chliche L\xE4nge: %s",
-          ru: "\u0424\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0434\u043B\u0438\u043D\u0430: %s",
-          pt: "Comprimento real: %s",
-          nl: "Werkelijke lengte: %s",
-          fr: "Longueur r\xE9elle : %s",
-          it: "Lunghezza effettiva: %s",
-          es: "Longitud real: %s",
-          pl: "Rzeczywista d\u0142ugo\u015B\u0107: %s",
-          uk: "\u0424\u0430\u043A\u0442\u0438\u0447\u043D\u0430 \u0434\u043E\u0432\u0436\u0438\u043D\u0430: %s",
-          "zh-cn": "\u5B9E\u9645\u957F\u5EA6\uFF1A%s"
-        },
-        "String is too long.": {
-          en: "String is too long.",
-          de: "Die Zeichenfolge ist zu lang.",
-          ru: "\u0421\u0442\u0440\u043E\u043A\u0430 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0434\u043B\u0438\u043D\u043D\u0430\u044F.",
-          pt: "A cadeia de caracteres \xE9 muito longa.",
-          nl: "De tekenreeks is te lang.",
-          fr: "La cha\xEEne est trop longue.",
-          it: "La stringa \xE8 troppo lunga.",
-          es: "La cadena es demasiado larga.",
-          pl: "Ci\u0105g znak\xF3w jest za d\u0142ugi.",
-          uk: "\u0420\u044F\u0434\u043E\u043A \u0437\u0430\u0434\u043E\u0432\u0433\u0438\u0439.",
-          "zh-cn": "\u5B57\u7B26\u4E32\u592A\u957F\u3002"
-        },
-        "Maximum length: %s": {
-          en: "Maximum length: %s",
-          de: "Maximale L\xE4nge: %s",
-          ru: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430: %s",
-          pt: "Comprimento m\xE1ximo: %s",
-          nl: "Maximumlengte: %s",
-          fr: "Longueur maximale : %s",
-          it: "Lunghezza massima: %s",
-          es: "Longitud m\xE1xima: %s",
-          pl: "Maksymalna d\u0142ugo\u015B\u0107: %s",
-          uk: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430 \u0434\u043E\u0432\u0436\u0438\u043D\u0430: %s",
-          "zh-cn": "\u6700\u5927\u957F\u5EA6\uFF1A%s"
-        },
-        "String does not match the required pattern.": {
-          en: "String does not match the required pattern.",
-          de: "Die Zeichenfolge entspricht nicht dem erforderlichen Muster.",
-          ru: "\u0421\u0442\u0440\u043E\u043A\u0430 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0442\u0440\u0435\u0431\u0443\u0435\u043C\u043E\u043C\u0443 \u0448\u0430\u0431\u043B\u043E\u043D\u0443.",
-          pt: "A cadeia de caracteres n\xE3o corresponde ao padr\xE3o obrigat\xF3rio.",
-          nl: "De tekenreeks komt niet overeen met het vereiste patroon.",
-          fr: "La cha\xEEne ne correspond pas au mod\xE8le requis.",
-          it: "La stringa non corrisponde al modello richiesto.",
-          es: "La cadena no coincide con el patr\xF3n requerido.",
-          pl: "Ci\u0105g znak\xF3w nie pasuje do wymaganego wzorca.",
-          uk: "\u0420\u044F\u0434\u043E\u043A \u043D\u0435 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u043E\u043C\u0443 \u0448\u0430\u0431\u043B\u043E\u043D\u0443.",
-          "zh-cn": "\u5B57\u7B26\u4E32\u4E0E\u6240\u9700\u6A21\u5F0F\u4E0D\u5339\u914D\u3002"
-        },
-        "Pattern: %s": {
-          en: "Pattern: %s",
-          de: "Muster: %s",
-          ru: "\u0428\u0430\u0431\u043B\u043E\u043D: %s",
-          pt: "Padr\xE3o: %s",
-          nl: "Patroon: %s",
-          fr: "Mod\xE8le : %s",
-          it: "Modello: %s",
-          es: "Patr\xF3n: %s",
-          pl: "Wzorzec: %s",
-          uk: "\u0428\u0430\u0431\u043B\u043E\u043D: %s",
-          "zh-cn": "\u6A21\u5F0F\uFF1A%s"
-        },
-        "The object does not match any of the allowed variants.": {
-          en: "The object does not match any of the allowed variants.",
-          de: "Das Objekt entspricht keiner der erlaubten Varianten.",
-          ru: "\u041E\u0431\u044A\u0435\u043A\u0442 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043D\u0438 \u043E\u0434\u043D\u043E\u043C\u0443 \u0438\u0437 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0445 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0432.",
-          pt: "O objeto n\xE3o corresponde a nenhuma das variantes permitidas.",
-          nl: "Het object komt niet overeen met een van de toegestane varianten.",
-          fr: "L'objet ne correspond \xE0 aucune des variantes autoris\xE9es.",
-          it: "L'oggetto non corrisponde ad alcuna delle varianti consentite.",
-          es: "El objeto no coincide con ninguna de las variantes permitidas.",
-          pl: "Obiekt nie pasuje do \u017Cadnego z dozwolonych wariant\xF3w.",
-          uk: "\u041E\u0431'\u0454\u043A\u0442 \u043D\u0435 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u0436\u043E\u0434\u043D\u043E\u043C\u0443 \u0437 \u0434\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0438\u0445 \u0432\u0430\u0440\u0456\u0430\u043D\u0442\u0456\u0432.",
-          "zh-cn": "\u5BF9\u8C61\u4E0E\u4EFB\u4F55\u5141\u8BB8\u7684\u53D8\u4F53\u90FD\u4E0D\u5339\u914D\u3002"
-        },
-        "Please check whether the required combination of properties is correct.": {
-          en: "Please check whether the required combination of properties is correct.",
-          de: "Bitte pr\xFCfen Sie, ob die erforderliche Kombination von Eigenschaften korrekt ist.",
-          ru: "\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435, \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E \u043B\u0438 \u0443\u043A\u0430\u0437\u0430\u043D\u0430 \u0442\u0440\u0435\u0431\u0443\u0435\u043C\u0430\u044F \u043A\u043E\u043C\u0431\u0438\u043D\u0430\u0446\u0438\u044F \u0441\u0432\u043E\u0439\u0441\u0442\u0432.",
-          pt: "Verifique se a combina\xE7\xE3o obrigat\xF3ria de propriedades est\xE1 correta.",
-          nl: "Controleer of de vereiste combinatie van eigenschappen correct is.",
-          fr: "Veuillez v\xE9rifier si la combinaison requise de propri\xE9t\xE9s est correcte.",
-          it: "Verificare che la combinazione richiesta di propriet\xE0 sia corretta.",
-          es: "Compruebe si la combinaci\xF3n requerida de propiedades es correcta.",
-          pl: "Sprawd\u017A, czy wymagana kombinacja w\u0142a\u015Bciwo\u015Bci jest poprawna.",
-          uk: "\u041F\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435, \u0447\u0438 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u0430 \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u0430 \u043A\u043E\u043C\u0431\u0456\u043D\u0430\u0446\u0456\u044F \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u043E\u0441\u0442\u0435\u0439.",
-          "zh-cn": "\u8BF7\u68C0\u67E5\u6240\u9700\u7684\u5C5E\u6027\u7EC4\u5408\u662F\u5426\u6B63\u786E\u3002"
-        },
-        "The value does not match any of the allowed schemas.": {
-          en: "The value does not match any of the allowed schemas.",
-          de: "Der Wert entspricht keinem der erlaubten Schemas.",
-          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043D\u0438 \u043E\u0434\u043D\u043E\u0439 \u0438\u0437 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u043D\u044B\u0445 \u0441\u0445\u0435\u043C.",
-          pt: "O valor n\xE3o corresponde a nenhum dos esquemas permitidos.",
-          nl: "De waarde komt niet overeen met een van de toegestane schema's.",
-          fr: "La valeur ne correspond \xE0 aucun des sch\xE9mas autoris\xE9s.",
-          it: "Il valore non corrisponde ad alcuno degli schemi consentiti.",
-          es: "El valor no coincide con ninguno de los esquemas permitidos.",
-          pl: "Warto\u015B\u0107 nie pasuje do \u017Cadnego z dozwolonych schemat\xF3w.",
-          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043D\u0435 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u0436\u043E\u0434\u043D\u0456\u0439 \u0456\u0437 \u0434\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0438\u0445 \u0441\u0445\u0435\u043C.",
-          "zh-cn": "\u8BE5\u503C\u4E0E\u4EFB\u4F55\u5141\u8BB8\u7684\u67B6\u6784\u90FD\u4E0D\u5339\u914D\u3002"
-        },
-        "The value does not match all required schemas.": {
-          en: "The value does not match all required schemas.",
-          de: "Der Wert entspricht nicht allen erforderlichen Schemas.",
-          ru: "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0432\u0441\u0435\u043C \u0442\u0440\u0435\u0431\u0443\u0435\u043C\u044B\u043C \u0441\u0445\u0435\u043C\u0430\u043C.",
-          pt: "O valor n\xE3o corresponde a todos os esquemas obrigat\xF3rios.",
-          nl: "De waarde komt niet overeen met alle vereiste schema's.",
-          fr: "La valeur ne correspond pas \xE0 tous les sch\xE9mas requis.",
-          it: "Il valore non corrisponde a tutti gli schemi richiesti.",
-          es: "El valor no coincide con todos los esquemas requeridos.",
-          pl: "Warto\u015B\u0107 nie pasuje do wszystkich wymaganych schemat\xF3w.",
-          uk: "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u043D\u0435 \u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u0430\u0454 \u0432\u0441\u0456\u043C \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u0438\u043C \u0441\u0445\u0435\u043C\u0430\u043C.",
-          "zh-cn": "\u8BE5\u503C\u672A\u5339\u914D\u6240\u6709\u5FC5\u9700\u7684\u67B6\u6784\u3002"
-        },
-        "This combination of properties is not allowed.": {
-          en: "This combination of properties is not allowed.",
-          de: "Diese Kombination von Eigenschaften ist nicht erlaubt.",
-          ru: "\u042D\u0442\u0430 \u043A\u043E\u043C\u0431\u0438\u043D\u0430\u0446\u0438\u044F \u0441\u0432\u043E\u0439\u0441\u0442\u0432 \u043D\u0435 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u0430.",
-          pt: "Esta combina\xE7\xE3o de propriedades n\xE3o \xE9 permitida.",
-          nl: "Deze combinatie van eigenschappen is niet toegestaan.",
-          fr: "Cette combinaison de propri\xE9t\xE9s n'est pas autoris\xE9e.",
-          it: "Questa combinazione di propriet\xE0 non \xE8 consentita.",
-          es: "Esta combinaci\xF3n de propiedades no est\xE1 permitida.",
-          pl: "Ta kombinacja w\u0142a\u015Bciwo\u015Bci nie jest dozwolona.",
-          uk: "\u0426\u044F \u043A\u043E\u043C\u0431\u0456\u043D\u0430\u0446\u0456\u044F \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u043E\u0441\u0442\u0435\u0439 \u043D\u0435 \u0434\u043E\u0437\u0432\u043E\u043B\u0435\u043D\u0430.",
-          "zh-cn": "\u4E0D\u5141\u8BB8\u6B64\u5C5E\u6027\u7EC4\u5408\u3002"
-        },
-        'Unexpected property "%s".': {
-          en: 'Unexpected property "%s".',
-          de: 'Unerwartete Eigenschaft "%s".',
-          ru: '\u041D\u0435\u043F\u0440\u0435\u0434\u0432\u0438\u0434\u0435\u043D\u043D\u043E\u0435 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u043E "%s".',
-          pt: 'Propriedade inesperada "%s".',
-          nl: 'Onverwachte eigenschap "%s".',
-          fr: 'Propri\xE9t\xE9 inattendue "%s".',
-          it: 'Propriet\xE0 imprevista "%s".',
-          es: 'Propiedad inesperada "%s".',
-          pl: 'Nieoczekiwana w\u0142a\u015Bciwo\u015B\u0107 "%s".',
-          uk: '\u041D\u0435\u043E\u0447\u0456\u043A\u0443\u0432\u0430\u043D\u0430 \u0432\u043B\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044C "%s".',
-          "zh-cn": '\u610F\u5916\u5C5E\u6027 "%s"\u3002'
-        },
-        "Validation error: %s": {
-          en: "Validation error: %s",
-          de: "Validierungsfehler: %s",
-          ru: "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438: %s",
-          pt: "Erro de valida\xE7\xE3o: %s",
-          nl: "Validatiefout: %s",
-          fr: "Erreur de validation : %s",
-          it: "Errore di convalida: %s",
-          es: "Error de validaci\xF3n: %s",
-          pl: "B\u0142\u0105d walidacji: %s",
-          uk: "\u041F\u043E\u043C\u0438\u043B\u043A\u0430 \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0438: %s",
-          "zh-cn": "\u9A8C\u8BC1\u9519\u8BEF\uFF1A%s"
-        },
-        "Validation error (%s).": {
-          en: "Validation error (%s).",
-          de: "Validierungsfehler (%s).",
-          ru: "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 (%s).",
-          pt: "Erro de valida\xE7\xE3o (%s).",
-          nl: "Validatiefout (%s).",
-          fr: "Erreur de validation (%s).",
-          it: "Errore di convalida (%s).",
-          es: "Error de validaci\xF3n (%s).",
-          pl: "B\u0142\u0105d walidacji (%s).",
-          uk: "\u041F\u043E\u043C\u0438\u043B\u043A\u0430 \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0438 (%s).",
-          "zh-cn": "\u9A8C\u8BC1\u9519\u8BEF\uFF08%s\uFF09\u3002"
-        },
-        "root object": {
-          en: "root object",
-          de: "Stammobjekt",
-          ru: "\u043A\u043E\u0440\u043D\u0435\u0432\u043E\u0439 \u043E\u0431\u044A\u0435\u043A\u0442",
-          pt: "objeto raiz",
-          nl: "hoofdobject",
-          fr: "objet racine",
-          it: "oggetto radice",
-          es: "objeto ra\xEDz",
-          pl: "obiekt g\u0142\xF3wny",
-          uk: "\u043A\u043E\u0440\u0435\u043D\u0435\u0432\u0438\u0439 \u043E\u0431'\u0454\u043A\u0442",
-          "zh-cn": "\u6839\u5BF9\u8C61"
-        },
-        undefined: {
-          en: "undefined",
-          de: "nicht definiert",
-          ru: "\u043D\u0435 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043E",
-          pt: "indefinido",
-          nl: "niet gedefinieerd",
-          fr: "non d\xE9fini",
-          it: "non definito",
-          es: "no definido",
-          pl: "niezdefiniowane",
-          uk: "\u043D\u0435 \u0432\u0438\u0437\u043D\u0430\u0447\u0435\u043D\u043E",
-          "zh-cn": "\u672A\u5B9A\u4E49"
-        },
-        "<not available>": {
-          en: "<not available>",
-          de: "<nicht verf\xFCgbar>",
-          ru: "<\u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E>",
-          pt: "<n\xE3o dispon\xEDvel>",
-          nl: "<niet beschikbaar>",
-          fr: "<non disponible>",
-          it: "<non disponibile>",
-          es: "<no disponible>",
-          pl: "<niedost\u0119pne>",
-          uk: "<\u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E>",
-          "zh-cn": "<\u4E0D\u53EF\u7528>"
-        },
-        yyy: {
-          en: "yyy",
-          de: "yyy",
-          ru: "yyy",
-          pt: "yyy",
-          nl: "yyy",
-          fr: "yyy",
-          it: "yyy",
-          es: "yyy",
-          pl: "yyy",
-          uk: "yyy",
-          "zh-cn": "yyy"
+  // mapwidgets/js/timelineCore.js
+  var require_timelineCore = __commonJS({
+    "mapwidgets/js/timelineCore.js"(exports, module) {
+      "use strict";
+      function parsePosition2(value) {
+        if (typeof value !== "string" && typeof value !== "number") {
+          return null;
         }
+        const parts = String(value).trim().split(",").map((part) => Number(part.trim()));
+        if (parts.length !== 2 || !Number.isFinite(parts[0]) || !Number.isFinite(parts[1])) {
+          return null;
+        }
+        if (parts[0] < -90 || parts[0] > 90 || parts[1] < -180 || parts[1] > 180) {
+          return null;
+        }
+        return { lat: parts[0], lon: parts[1] };
+      }
+      function normalizeHistory2(values) {
+        const points = [];
+        for (const item of Array.isArray(values) ? values : []) {
+          const position = parsePosition2(item == null ? void 0 : item.val);
+          const ts = Number(item == null ? void 0 : item.ts);
+          if (position && Number.isFinite(ts)) {
+            points.push(__spreadProps(__spreadValues({}, position), { ts }));
+          }
+        }
+        points.sort((a, b) => a.ts - b.ts);
+        return points.filter(
+          (point, index) => index === 0 || point.ts !== points[index - 1].ts || point.lat !== points[index - 1].lat || point.lon !== points[index - 1].lon
+        );
+      }
+      function distanceMeters(a, b) {
+        const radius = 6371e3;
+        const toRadians = (value2) => value2 * Math.PI / 180;
+        const lat1 = toRadians(a.lat);
+        const lat2 = toRadians(b.lat);
+        const deltaLat = lat2 - lat1;
+        const deltaLon = toRadians(b.lon - a.lon);
+        const value = __pow(Math.sin(deltaLat / 2), 2) + Math.cos(lat1) * Math.cos(lat2) * __pow(Math.sin(deltaLon / 2), 2);
+        return radius * 2 * Math.atan2(Math.sqrt(value), Math.sqrt(1 - value));
+      }
+      function speedKmh(a, b) {
+        const hours = (b.ts - a.ts) / 36e5;
+        return hours > 0 ? distanceMeters(a, b) / 1e3 / hours : Number.POSITIVE_INFINITY;
+      }
+      function removeGpsOutliers2(points, maxReasonableSpeedKmh = 300) {
+        if (!maxReasonableSpeedKmh || points.length < 3) {
+          return [...points];
+        }
+        return points.filter((point, index) => {
+          if (index === 0 || index === points.length - 1) {
+            return true;
+          }
+          const previous = points[index - 1];
+          const next = points[index + 1];
+          const isJump = speedKmh(previous, point) > maxReasonableSpeedKmh && speedKmh(point, next) > maxReasonableSpeedKmh;
+          const directIsReasonable = speedKmh(previous, next) <= maxReasonableSpeedKmh;
+          return !(isJump && directIsReasonable);
+        });
+      }
+      function centroid(points) {
+        const sum = points.reduce((result, point) => ({ lat: result.lat + point.lat, lon: result.lon + point.lon }), {
+          lat: 0,
+          lon: 0
+        });
+        return { lat: sum.lat / points.length, lon: sum.lon / points.length };
+      }
+      function totalDistance(points) {
+        let distance = 0;
+        for (let index = 1; index < points.length; index++) {
+          distance += distanceMeters(points[index - 1], points[index]);
+        }
+        return distance;
+      }
+      function detectStays(points, stayRadiusM = 75, minStayMinutes = 10) {
+        const stays = [];
+        const minDuration = minStayMinutes * 6e4;
+        let startIndex = 0;
+        while (startIndex < points.length - 1) {
+          let endIndex = startIndex + 1;
+          let lastInside = startIndex;
+          let center = { lat: points[startIndex].lat, lon: points[startIndex].lon };
+          while (endIndex < points.length) {
+            if (distanceMeters(center, points[endIndex]) > stayRadiusM) {
+              break;
+            }
+            lastInside = endIndex;
+            center = centroid(points.slice(startIndex, lastInside + 1));
+            endIndex++;
+          }
+          if (lastInside > startIndex && points[lastInside].ts - points[startIndex].ts >= minDuration) {
+            const stayPoints = points.slice(startIndex, lastInside + 1);
+            stays.push(__spreadProps(__spreadValues({
+              type: "stay",
+              startIndex,
+              endIndex: lastInside,
+              startTs: points[startIndex].ts,
+              endTs: points[lastInside].ts,
+              durationMs: points[lastInside].ts - points[startIndex].ts
+            }, centroid(stayPoints)), {
+              points: stayPoints
+            }));
+            startIndex = lastInside + 1;
+          } else {
+            startIndex++;
+          }
+        }
+        return stays;
+      }
+      function buildTimeline2(points, options = {}) {
+        if (!points.length) {
+          return [];
+        }
+        const stays = detectStays(points, options.stayRadiusM, options.minStayMinutes);
+        const segments = [];
+        let movementStart = 0;
+        for (const stay of stays) {
+          if (stay.startIndex > movementStart) {
+            const movementPoints = points.slice(movementStart, stay.startIndex + 1);
+            segments.push({
+              type: "move",
+              startTs: movementPoints[0].ts,
+              endTs: movementPoints.at(-1).ts,
+              durationMs: movementPoints.at(-1).ts - movementPoints[0].ts,
+              distanceM: totalDistance(movementPoints),
+              points: movementPoints
+            });
+          }
+          segments.push(stay);
+          movementStart = stay.endIndex;
+        }
+        if (movementStart < points.length - 1 || !stays.length) {
+          const movementPoints = points.slice(movementStart);
+          segments.push({
+            type: "move",
+            startTs: movementPoints[0].ts,
+            endTs: movementPoints.at(-1).ts,
+            durationMs: movementPoints.at(-1).ts - movementPoints[0].ts,
+            distanceM: totalDistance(movementPoints),
+            points: movementPoints
+          });
+        }
+        return segments.filter((segment) => segment.type === "stay" || segment.points.length > 1);
+      }
+      function findKnownPlace2(position, places, personId) {
+        var _a;
+        return (_a = (Array.isArray(places) ? places : []).filter((place) => !place.deleted && (!place.personId || place.personId === personId)).map((place) => ({ place, distance: distanceMeters(position, place) })).filter((match) => match.distance <= (Number(match.place.radius) || 100)).sort((a, b) => a.distance - b.distance)[0]) == null ? void 0 : _a.place;
+      }
+      function getLocalDayBounds2(date) {
+        const start = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        const end = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+        return { start: start.getTime(), end: end.getTime() - 1 };
+      }
+      module.exports = {
+        buildTimeline: buildTimeline2,
+        detectStays,
+        distanceMeters,
+        findKnownPlace: findKnownPlace2,
+        getLocalDayBounds: getLocalDayBounds2,
+        normalizeHistory: normalizeHistory2,
+        parsePosition: parsePosition2,
+        removeGpsOutliers: removeGpsOutliers2,
+        totalDistance
       };
     }
   });
+
+  // mapwidgets/js/loadTranslations.js
+  var translations = require_translations();
+  $.extend(true, systemDictionary, translations);
 
   // mapwidgets/js/mapwidgets.js
   var import_leaflet2 = __toESM(require_leaflet());
@@ -21681,8 +22685,6 @@
   var import_formatAjvErrors = __toESM(require_formatAjvErrors());
   var hash = require_object_hash();
   var schema = require_mapwidgets_schema();
-  var translations = require_translations();
-  $.extend(true, systemDictionary, translations);
   vis.binds["mapwidgets"] = {
     version,
     data: {},
@@ -22266,6 +23268,911 @@
   };
   vis.binds["mapwidgets"].showVersion();
   vis.binds["mapwidgets"].provideFunctions();
+
+  // mapwidgets/js/timelineWidget.js
+  var {
+    buildTimeline,
+    findKnownPlace,
+    getLocalDayBounds,
+    normalizeHistory,
+    parsePosition,
+    removeGpsOutliers
+  } = require_timelineCore();
+  var PLACES_ID = "vis-mapwidgets.0.timeline.places";
+  var CACHE_ID = "vis-mapwidgets.0.timeline.geocodingCache";
+  var DEFAULT_COLORS = ["#1a73e8", "#d93025", "#188038", "#a142f4", "#f9ab00"];
+  function translate(text) {
+    return typeof _ === "function" ? _(text) : text;
+  }
+  function dateStorageKey(widgetID) {
+    return `mapwidgets.timeline.date.${widgetID}`;
+  }
+  function readStoredDate(widgetID) {
+    var _a;
+    const value = (_a = window.localStorage) == null ? void 0 : _a.getItem(dateStorageKey(widgetID));
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value || "")) {
+      return /* @__PURE__ */ new Date();
+    }
+    const [year, month, day] = value.split("-").map(Number);
+    const date = new Date(year, month - 1, day);
+    return Number.isNaN(date.getTime()) ? /* @__PURE__ */ new Date() : date;
+  }
+  function storeSelectedDate(runtime) {
+    var _a;
+    const year = runtime.date.getFullYear();
+    const month = String(runtime.date.getMonth() + 1).padStart(2, "0");
+    const day = String(runtime.date.getDate()).padStart(2, "0");
+    (_a = window.localStorage) == null ? void 0 : _a.setItem(dateStorageKey(runtime.widgetID), `${year}-${month}-${day}`);
+  }
+  function selectDate(runtime, date) {
+    runtime.date = date;
+    storeSelectedDate(runtime);
+    loadDay(runtime);
+  }
+  function escapeHtml(value) {
+    return String(value != null ? value : "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+  }
+  function parseJsonState(rawValue, fallback) {
+    try {
+      const value = JSON.parse(rawValue || "");
+      return value && typeof value === "object" ? value : fallback;
+    } catch (e) {
+      return fallback;
+    }
+  }
+  function stateValue(id) {
+    return vis.states.attr(`${id}.val`);
+  }
+  function formatTime(timestamp) {
+    return new Intl.DateTimeFormat(void 0, { hour: "2-digit", minute: "2-digit" }).format(timestamp);
+  }
+  function formatDuration(durationMs) {
+    const minutes = Math.max(0, Math.round(durationMs / 6e4));
+    if (minutes < 60) {
+      return `${minutes} ${translate("min")}`;
+    }
+    const hours = Math.floor(minutes / 60);
+    const remainder = minutes % 60;
+    return remainder ? `${hours} ${translate("h")} ${remainder} ${translate("min")}` : `${hours} ${translate("h")}`;
+  }
+  function formatDistance(distanceM) {
+    return distanceM < 1e3 ? `${Math.round(distanceM)} m` : `${(distanceM / 1e3).toLocaleString(void 0, { maximumFractionDigits: 1 })} km`;
+  }
+  function formatPlace(place, fallback) {
+    const label = String((place == null ? void 0 : place.label) || fallback || "").trim();
+    const address = (place == null ? void 0 : place.address) || {};
+    const houseNumber = String(address.housenumber || "").trim();
+    const addressName = String(address.name || "").trim();
+    const rawName = String(
+      (place == null ? void 0 : place.name) || (addressName && addressName !== houseNumber && !/^\d+[a-z]?$/i.test(addressName) ? addressName : "")
+    ).trim();
+    const name = houseNumber ? rawName.replace(new RegExp(`(?:,|\\s)\\s*${houseNumber.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`), "").trim() : rawName;
+    const street = String(address.street || address.road || "").trim();
+    const locality = String(
+      address.city || address.town || address.village || address.municipality || address.locality || ""
+    ).trim();
+    const country = String(address.country || "").trim();
+    const structuredAddress = [[street, houseNumber].filter(Boolean).join(" "), locality, country].filter(Boolean).join(", ");
+    if (structuredAddress && !name) {
+      return { name: translate("Unknown place"), address: structuredAddress };
+    }
+    if (name) {
+      const fallbackAddress = label.startsWith(`${rawName},`) ? label.slice(rawName.length + 1).trim() : label === rawName ? "" : label;
+      return { name, address: structuredAddress || fallbackAddress };
+    }
+    const [first, ...rest] = label.split(",").map((part) => part.trim());
+    return { name: first || fallback || "", address: rest.join(", ") };
+  }
+  function placeMarkup(place, fallback, className) {
+    const display = formatPlace(place, fallback);
+    return `<span class="${className}"><strong>${escapeHtml(display.name)}</strong>${display.address ? `<small>${escapeHtml(display.address)}</small>` : ""}</span>`;
+  }
+  function cachedPlaceFromKnownPlace(place, segment) {
+    const now = Date.now();
+    const address = (place == null ? void 0 : place.address) || {};
+    const display = formatPlace({ address, label: place == null ? void 0 : place.geocodingLabel }, translate("Unknown place"));
+    return {
+      status: Object.keys(address).length ? "resolved" : "unknown",
+      label: (place == null ? void 0 : place.geocodingLabel) || address.label || [display.name === translate("Unknown place") ? "" : display.name, display.address].filter(Boolean).join(", ") || translate("Unknown place"),
+      address,
+      lat: segment.lat,
+      lon: segment.lon,
+      created: Number(place == null ? void 0 : place.created) || now,
+      updated: now,
+      lastUsed: now
+    };
+  }
+  function bearing(from, to) {
+    const fromLat = from.lat * Math.PI / 180;
+    const toLat = to.lat * Math.PI / 180;
+    const deltaLon = (to.lon - from.lon) * Math.PI / 180;
+    const y = Math.sin(deltaLon) * Math.cos(toLat);
+    const x = Math.cos(fromLat) * Math.sin(toLat) - Math.sin(fromLat) * Math.cos(toLat) * Math.cos(deltaLon);
+    return Math.atan2(y, x) * 180 / Math.PI;
+  }
+  function isToday(date) {
+    const now = /* @__PURE__ */ new Date();
+    return date.getFullYear() === now.getFullYear() && date.getMonth() === now.getMonth() && date.getDate() === now.getDate();
+  }
+  function readPeople(data) {
+    const people = [];
+    for (let index = 1; index <= 5; index++) {
+      const oid = String(data[`timeline_oid${index}`] || "").trim();
+      if (!oid) {
+        continue;
+      }
+      people.push({
+        id: oid,
+        oid,
+        name: String(data[`timeline_name${index}`] || "").trim() || `${translate("Person")} ${index}`,
+        color: String(data[`timeline_color${index}`] || "").trim() || DEFAULT_COLORS[index - 1]
+      });
+    }
+    return people;
+  }
+  function openDatabase() {
+    if (!window.indexedDB) {
+      return Promise.resolve(null);
+    }
+    return new Promise((resolve) => {
+      const request = window.indexedDB.open("vis-mapwidgets-timeline", 1);
+      request.onupgradeneeded = () => {
+        if (!request.result.objectStoreNames.contains("data")) {
+          request.result.createObjectStore("data");
+        }
+      };
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => resolve(null);
+    });
+  }
+  function indexedDbGet(key, fallback) {
+    return __async(this, null, function* () {
+      const database = yield openDatabase();
+      if (!database) {
+        return fallback;
+      }
+      return new Promise((resolve) => {
+        const request = database.transaction("data", "readonly").objectStore("data").get(key);
+        request.onsuccess = () => resolve(request.result || fallback);
+        request.onerror = () => resolve(fallback);
+      });
+    });
+  }
+  function indexedDbSet(key, value) {
+    return __async(this, null, function* () {
+      const database = yield openDatabase();
+      if (!database) {
+        return;
+      }
+      yield new Promise((resolve) => {
+        const transaction = database.transaction("data", "readwrite");
+        transaction.objectStore("data").put(value, key);
+        transaction.oncomplete = resolve;
+        transaction.onerror = resolve;
+      });
+    });
+  }
+  function mergePlaces(localPlaces, remotePlaces) {
+    const entries = /* @__PURE__ */ new Map();
+    for (const place of [...localPlaces, ...remotePlaces]) {
+      if (!(place == null ? void 0 : place.id)) {
+        continue;
+      }
+      const current = entries.get(place.id);
+      if (!current || Number(place.updated || 0) >= Number(current.updated || 0)) {
+        entries.set(place.id, place);
+      }
+    }
+    return [...entries.values()];
+  }
+  function mergeCaches(localCache, remoteCache) {
+    const merged = { version: 1, entries: __spreadValues({}, (localCache == null ? void 0 : localCache.entries) || {}) };
+    for (const [key, entry] of Object.entries((remoteCache == null ? void 0 : remoteCache.entries) || {})) {
+      const current = merged.entries[key];
+      if (!current || Number(entry.updated || entry.created || 0) >= Number(current.updated || current.created || 0)) {
+        merged.entries[key] = entry;
+      }
+    }
+    const keys = Object.keys(merged.entries);
+    if (keys.length > 2e3) {
+      keys.sort((a, b) => Number(merged.entries[b].lastUsed || 0) - Number(merged.entries[a].lastUsed || 0));
+      for (const key of keys.slice(2e3)) {
+        delete merged.entries[key];
+      }
+    }
+    return merged;
+  }
+  function queueStateWrite(runtime, type) {
+    clearTimeout(runtime.writeTimers[type]);
+    runtime.writeTimers[type] = setTimeout(() => {
+      const id = type === "places" ? PLACES_ID : CACHE_ID;
+      const localValue = type === "places" ? { version: 1, entries: runtime.places } : runtime.cache;
+      const remote = parseJsonState(stateValue(id), type === "places" ? { entries: [] } : { entries: {} });
+      const merged = type === "places" ? { version: 1, entries: mergePlaces(localValue.entries, remote.entries || []) } : mergeCaches(localValue, remote);
+      if (type === "places") {
+        runtime.places = merged.entries;
+      } else {
+        runtime.cache = merged;
+      }
+      indexedDbSet(type, merged);
+      vis.setValue(id, JSON.stringify(merged));
+    }, 1500);
+  }
+  var NominatimQueue = class {
+    constructor() {
+      this.jobs = [];
+      this.pending = /* @__PURE__ */ new Map();
+      this.running = false;
+      this.lastRequest = 0;
+    }
+    enqueue(key, options) {
+      if (this.pending.has(key)) {
+        return this.pending.get(key);
+      }
+      const promise = new Promise((resolve, reject) => this.jobs.push({ key, options, resolve, reject }));
+      this.pending.set(key, promise);
+      this.run();
+      return promise;
+    }
+    run() {
+      return __async(this, null, function* () {
+        var _a, _b, _c, _d, _e;
+        if (this.running) {
+          return;
+        }
+        this.running = true;
+        while (this.jobs.length) {
+          const job = this.jobs.shift();
+          try {
+            if (job.options.isCurrent && !job.options.isCurrent()) {
+              job.resolve(null);
+              continue;
+            }
+            const waitMs = Math.max(0, 1100 - (Date.now() - this.lastRequest));
+            if (waitMs) {
+              yield new Promise((resolve) => setTimeout(resolve, waitMs));
+            }
+            const sharedNextRequest = Number(
+              ((_a = window.localStorage) == null ? void 0 : _a.getItem("mapwidgets.timeline.nominatimNext")) || 0
+            );
+            if (sharedNextRequest > Date.now()) {
+              yield new Promise((resolve) => setTimeout(resolve, sharedNextRequest - Date.now()));
+            }
+            if (job.options.isCurrent && !job.options.isCurrent()) {
+              job.resolve(null);
+              continue;
+            }
+            this.lastRequest = Date.now();
+            (_b = window.localStorage) == null ? void 0 : _b.setItem("mapwidgets.timeline.nominatimNext", String(this.lastRequest + 1100));
+            const url = new URL(job.options.endpoint || "https://nominatim.openstreetmap.org/reverse");
+            url.searchParams.set("format", "geocodejson");
+            url.searchParams.set("lat", job.options.lat);
+            url.searchParams.set("lon", job.options.lon);
+            url.searchParams.set("accept-language", job.options.language || navigator.language || "de");
+            if (job.options.email) {
+              url.searchParams.set("email", job.options.email);
+            }
+            const response = yield fetch(url, { headers: { Accept: "application/json" } });
+            if (!response.ok) {
+              throw new Error(`HTTP ${response.status}`);
+            }
+            const json = yield response.json();
+            const geocoding = (_e = (_d = (_c = json == null ? void 0 : json.features) == null ? void 0 : _c[0]) == null ? void 0 : _d.properties) == null ? void 0 : _e.geocoding;
+            job.resolve({
+              status: (geocoding == null ? void 0 : geocoding.label) ? "resolved" : "unknown",
+              label: (geocoding == null ? void 0 : geocoding.label) || translate("Unknown place"),
+              address: geocoding || {}
+            });
+          } catch (error) {
+            job.reject(error);
+          } finally {
+            this.pending.delete(job.key);
+          }
+        }
+        this.running = false;
+      });
+    }
+  };
+  var nominatimQueue = new NominatimQueue();
+  function cacheKey(runtime, position) {
+    const language = runtime.options.language || navigator.language || "de";
+    return `nominatim|${language}|${position.lat.toFixed(4)}|${position.lon.toFixed(4)}`;
+  }
+  function resolveStay(runtime, person, segment, loadId) {
+    return __async(this, null, function* () {
+      const knownPlace = findKnownPlace(segment, runtime.places, person.id);
+      if (knownPlace) {
+        segment.place = __spreadProps(__spreadValues({}, knownPlace), { source: "known" });
+        return;
+      }
+      const key = cacheKey(runtime, segment);
+      const cached = runtime.cache.entries[key];
+      const negativeExpired = (cached == null ? void 0 : cached.status) !== "resolved" && Date.now() - Number((cached == null ? void 0 : cached.created) || 0) > 6048e5;
+      if (cached && !negativeExpired) {
+        cached.lastUsed = Date.now();
+        segment.place = __spreadProps(__spreadValues({}, cached), { source: "cache" });
+        return;
+      }
+      if (!runtime.options.geocodingEnabled || loadId !== runtime.loadId) {
+        segment.place = { label: translate("Unknown place"), source: "unknown" };
+        return;
+      }
+      try {
+        const result = yield nominatimQueue.enqueue(key, {
+          endpoint: runtime.options.endpoint,
+          email: runtime.options.email,
+          language: runtime.options.language,
+          lat: segment.lat,
+          lon: segment.lon,
+          isCurrent: () => loadId === runtime.loadId
+        });
+        if (!result || loadId !== runtime.loadId) {
+          return;
+        }
+        const entry = __spreadProps(__spreadValues({}, result), {
+          lat: segment.lat,
+          lon: segment.lon,
+          created: Date.now(),
+          updated: Date.now(),
+          lastUsed: Date.now()
+        });
+        runtime.cache.entries[key] = entry;
+        segment.place = __spreadProps(__spreadValues({}, entry), { source: "nominatim" });
+        indexedDbSet("cache", runtime.cache);
+        queueStateWrite(runtime, "cache");
+      } catch (error) {
+        segment.place = { label: `${translate("Unknown place")} (${error.message})`, source: "error" };
+      }
+    });
+  }
+  function getHistory(oid, date) {
+    const bounds = getLocalDayBounds(date);
+    return new Promise((resolve, reject) => {
+      vis.getHistory(
+        oid,
+        {
+          instance: "history.0",
+          start: bounds.start,
+          end: bounds.end,
+          aggregate: "none",
+          limit: 1e4,
+          ignoreNull: true,
+          addId: false
+        },
+        (error, values) => error ? reject(error) : resolve(Array.isArray(values) ? values : [])
+      );
+    });
+  }
+  function renderShell(runtime) {
+    runtime.root.classList.remove(
+      "mapwidgets-timeline-layout-auto",
+      "mapwidgets-timeline-layout-side",
+      "mapwidgets-timeline-layout-below",
+      "is-timeline-narrow"
+    );
+    runtime.root.classList.add(`mapwidgets-timeline-layout-${runtime.options.layout}`);
+    applyTheme(runtime);
+    runtime.root.innerHTML = `
+        <div class="mapwidgets-timeline-header">
+            <button type="button" class="mapwidgets-timeline-nav" data-action="previous" aria-label="${escapeHtml(translate("Previous day"))}">\u2039</button>
+            <button type="button" class="mapwidgets-timeline-date" data-action="calendar"></button>
+            <input class="mapwidgets-timeline-date-input" type="date" aria-label="${escapeHtml(translate("Select date"))}">
+            <button type="button" class="mapwidgets-timeline-nav" data-action="next" aria-label="${escapeHtml(translate("Next day"))}">\u203A</button>
+            <button type="button" class="mapwidgets-timeline-today" data-action="today">${escapeHtml(translate("Today"))}</button>
+        </div>
+        <div class="mapwidgets-timeline-people"></div>
+        <div class="mapwidgets-timeline-layout">
+            <div class="mapwidgets-timeline-map-wrap">
+                <div class="mapwidgets-timeline-map"></div>
+                <button type="button" class="mapwidgets-timeline-fit" data-action="fit" title="${escapeHtml(translate("Show complete route"))}">\u2316</button>
+            </div>
+            <div class="mapwidgets-timeline-list" aria-live="polite"></div>
+        </div>
+        <div class="mapwidgets-timeline-dialog-backdrop" hidden>
+            <form class="mapwidgets-timeline-dialog" aria-modal="true" role="dialog">
+                <h3>${escapeHtml(translate("Save as known place"))}</h3>
+                <label>${escapeHtml(translate("Name of the known place"))}
+                    <input name="placeName" type="text" required>
+                </label>
+                <label>${escapeHtml(translate("Radius in meters"))}
+                    <input name="placeRadius" type="number" min="1" step="1" value="100" required>
+                </label>
+                <div class="mapwidgets-timeline-dialog-address" aria-label="${escapeHtml(translate("Address"))}">
+                    <span>${escapeHtml(translate("Street"))}</span><strong data-place-address="street"></strong>
+                    <span>${escapeHtml(translate("House number"))}</span><strong data-place-address="housenumber"></strong>
+                    <span>${escapeHtml(translate("City"))}</span><strong data-place-address="city"></strong>
+                    <span>${escapeHtml(translate("Country"))}</span><strong data-place-address="country"></strong>
+                </div>
+                <div class="mapwidgets-timeline-dialog-actions">
+                    <button type="button" class="mapwidgets-timeline-delete" data-action="delete-place" hidden>${escapeHtml(translate("Remove known place"))}</button>
+                    <button type="button" data-action="cancel-place">${escapeHtml(translate("Cancel"))}</button>
+                    <button type="button" data-action="commit-place">${escapeHtml(translate("Save"))}</button>
+                </div>
+            </form>
+        </div>`;
+    runtime.clickHandler = (event) => handleClick(runtime, event);
+    runtime.dateHandler = (event) => {
+      if (event.target.value) {
+        const [year, month, day] = event.target.value.split("-").map(Number);
+        selectDate(runtime, new Date(year, month - 1, day));
+      }
+    };
+    runtime.root.addEventListener("click", runtime.clickHandler);
+    runtime.submitHandler = (event) => {
+      if (event.target.matches(".mapwidgets-timeline-dialog")) {
+        event.preventDefault();
+        commitKnownPlace(runtime);
+      }
+    };
+    runtime.root.addEventListener("submit", runtime.submitHandler);
+    runtime.root.querySelector(".mapwidgets-timeline-date-input").addEventListener("change", runtime.dateHandler);
+  }
+  function applyTheme(runtime) {
+    var _a;
+    const dark = runtime.options.theme === "dark" || runtime.options.theme === "auto" && ((_a = window.matchMedia) == null ? void 0 : _a.call(window, "(prefers-color-scheme: dark)").matches);
+    runtime.root.classList.toggle("mapwidgets-timeline-theme-dark", dark);
+    runtime.root.classList.toggle("mapwidgets-timeline-theme-light", !dark);
+  }
+  function renderHeader(runtime) {
+    const formatter = new Intl.DateTimeFormat(void 0, {
+      weekday: "short",
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    });
+    runtime.root.querySelector(".mapwidgets-timeline-date").textContent = formatter.format(runtime.date);
+    runtime.root.querySelector(".mapwidgets-timeline-today").hidden = isToday(runtime.date);
+    const dateInput = runtime.root.querySelector(".mapwidgets-timeline-date-input");
+    const localDate = new Date(runtime.date.getTime() - runtime.date.getTimezoneOffset() * 6e4);
+    dateInput.value = localDate.toISOString().slice(0, 10);
+  }
+  function renderPeople(runtime) {
+    const container = runtime.root.querySelector(".mapwidgets-timeline-people");
+    container.innerHTML = runtime.people.map(
+      (person) => `<button type="button" class="mapwidgets-timeline-person${person.id === runtime.selectedPersonId ? " is-active" : ""}"
+                data-person-id="${escapeHtml(person.id)}" style="--person-color:${escapeHtml(person.color)}">
+                <span></span>${escapeHtml(person.name)}</button>`
+    ).join("");
+  }
+  function createMap(runtime) {
+    const element = runtime.root.querySelector(".mapwidgets-timeline-map");
+    runtime.map = L.map(element).setView([50.11552, 8.68417], 13);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(runtime.map);
+    runtime.layers = L.featureGroup().addTo(runtime.map);
+  }
+  function scrollToSegment(runtime, index) {
+    var _a;
+    (_a = runtime.root.querySelector(`[data-segment-index="${index}"]`)) == null ? void 0 : _a.scrollIntoView({ behavior: "smooth", block: "center" });
+    selectSegment(runtime, index);
+  }
+  function addDirectionArrows(runtime, segment, index, color) {
+    const points = segment.points || [];
+    const arrowCount = points.length > 5 ? 2 : 1;
+    for (let arrowIndex = 1; arrowIndex <= arrowCount; arrowIndex++) {
+      const pointIndex = Math.min(
+        points.length - 1,
+        Math.max(1, Math.round(arrowIndex * (points.length - 1) / (arrowCount + 1)))
+      );
+      const point = points[pointIndex];
+      const previous = points[pointIndex - 1];
+      const icon = L.divIcon({
+        className: "mapwidgets-timeline-direction-icon",
+        html: `<span style="--direction:${bearing(previous, point)}deg;--person-color:${escapeHtml(color)}">\u27A4</span>`,
+        iconSize: [20, 20],
+        iconAnchor: [10, 10]
+      });
+      L.marker([point.lat, point.lon], { icon, interactive: true }).addTo(runtime.layers).on("click", () => scrollToSegment(runtime, index));
+    }
+  }
+  function renderMap(runtime) {
+    runtime.layers.clearLayers();
+    const selected = runtime.results.get(runtime.selectedPersonId);
+    if (!selected) {
+      return;
+    }
+    const person = runtime.people.find((item) => item.id === runtime.selectedPersonId);
+    selected.segments.forEach((segment, index) => {
+      if (segment.type === "move" && segment.points.length > 1) {
+        L.polyline(
+          segment.points.map((point) => [point.lat, point.lon]),
+          { color: person.color, weight: 6, opacity: 0.85 }
+        ).addTo(runtime.layers).on("click", () => scrollToSegment(runtime, index));
+        addDirectionArrows(runtime, segment, index, person.color);
+        return;
+      }
+      if (segment.type !== "stay") {
+        return;
+      }
+      const marker = L.circleMarker([segment.lat, segment.lon], {
+        radius: 8,
+        color: "#fff",
+        weight: 2,
+        fillColor: person.color,
+        fillOpacity: 1
+      }).addTo(runtime.layers);
+      marker.bindTooltip(placeMarkup(segment.place, translate("Resolving place..."), "mapwidgets-timeline-tooltip"));
+      marker.on("click", () => scrollToSegment(runtime, index));
+      segment.marker = marker;
+    });
+    if (selected.currentOnly) {
+      const point = selected.points[0];
+      L.marker([point.lat, point.lon]).addTo(runtime.layers).bindPopup(translate("Current position"));
+    }
+    fitMap(runtime);
+  }
+  function fitMap(runtime) {
+    const bounds = runtime.layers.getBounds();
+    if (bounds.isValid()) {
+      runtime.map.fitBounds(bounds, { padding: [24, 24], maxZoom: 16 });
+    }
+  }
+  function renderTimeline(runtime, status) {
+    const list = runtime.root.querySelector(".mapwidgets-timeline-list");
+    if (status) {
+      list.innerHTML = `<div class="mapwidgets-timeline-status">${escapeHtml(status)}</div>`;
+      return;
+    }
+    const selected = runtime.results.get(runtime.selectedPersonId);
+    if (selected == null ? void 0 : selected.currentOnly) {
+      list.innerHTML = `<div class="mapwidgets-timeline-status">${escapeHtml(translate("No history data. Showing current position."))}</div>`;
+      return;
+    }
+    if ((selected == null ? void 0 : selected.historyError) && !selected.points.length) {
+      list.innerHTML = `<div class="mapwidgets-timeline-status">${escapeHtml(`${translate("History could not be loaded")}: ${selected.historyError.message || selected.historyError}`)}</div>`;
+      return;
+    }
+    if (!(selected == null ? void 0 : selected.segments.length)) {
+      list.innerHTML = `<div class="mapwidgets-timeline-status">${escapeHtml(translate("No history data for this day"))}</div>`;
+      return;
+    }
+    list.innerHTML = selected.segments.map((segment, index) => {
+      var _a, _b, _c, _d, _e, _f;
+      if (segment.type === "move") {
+        return `<button type="button" class="mapwidgets-timeline-entry is-move" data-segment-index="${index}">
+                    <span class="mapwidgets-timeline-time">${formatTime(segment.startTs)}</span>
+                    <span class="mapwidgets-timeline-spine"><i></i></span>
+                    <span class="mapwidgets-timeline-content"><strong>${escapeHtml(translate("On the move"))}</strong>
+                    <small>${formatDuration(segment.durationMs)} \xB7 ${formatDistance(segment.distanceM)}</small></span></button>`;
+      }
+      const place = placeMarkup(segment.place, translate("Resolving place..."), "mapwidgets-timeline-place");
+      return `<div class="mapwidgets-timeline-entry is-stay" data-segment-index="${index}">
+                <span class="mapwidgets-timeline-time">${formatTime(segment.startTs)}</span>
+                <span class="mapwidgets-timeline-spine"><i style="--person-color:${escapeHtml((_a = runtime.people.find((person) => person.id === runtime.selectedPersonId)) == null ? void 0 : _a.color)}"></i></span>
+                <button type="button" class="mapwidgets-timeline-content" data-action="select-segment">
+                    ${place}
+                    <small>${formatTime(segment.startTs)}\u2013${formatTime(segment.endTs)} \xB7 ${formatDuration(segment.durationMs)}</small>
+                </button>
+                <button type="button" class="mapwidgets-timeline-menu${((_b = segment.place) == null ? void 0 : _b.source) === "known" ? " is-known" : ""}" data-action="save-place" title="${escapeHtml(translate(((_c = segment.place) == null ? void 0 : _c.source) === "known" ? "Edit known place" : "Save as known place"))}" aria-label="${escapeHtml(translate(((_d = segment.place) == null ? void 0 : _d.source) === "known" ? "Edit known place" : "Save as known place"))}" aria-pressed="${((_e = segment.place) == null ? void 0 : _e.source) === "known"}">${((_f = segment.place) == null ? void 0 : _f.source) === "known" ? "\u2605" : "\u2606"}</button>
+            </div>`;
+    }).join("");
+  }
+  function selectSegment(runtime, index) {
+    var _a, _b, _c;
+    const selected = runtime.results.get(runtime.selectedPersonId);
+    const segment = selected == null ? void 0 : selected.segments[index];
+    runtime.root.querySelectorAll(".mapwidgets-timeline-entry").forEach((element) => element.classList.remove("is-selected"));
+    (_a = runtime.root.querySelector(`[data-segment-index="${index}"]`)) == null ? void 0 : _a.classList.add("is-selected");
+    if ((segment == null ? void 0 : segment.type) === "stay") {
+      runtime.map.flyTo([segment.lat, segment.lon], Math.max(runtime.map.getZoom(), 16));
+      (_b = segment.marker) == null ? void 0 : _b.openTooltip();
+    } else if ((_c = segment == null ? void 0 : segment.points) == null ? void 0 : _c.length) {
+      runtime.map.fitBounds(L.latLngBounds(segment.points.map((point) => [point.lat, point.lon])), {
+        padding: [32, 32],
+        maxZoom: 16
+      });
+    }
+  }
+  function openKnownPlaceDialog(runtime, index) {
+    var _a, _b;
+    const selected = runtime.results.get(runtime.selectedPersonId);
+    const segment = selected == null ? void 0 : selected.segments[index];
+    if (!segment || segment.type !== "stay") {
+      return;
+    }
+    const backdrop = runtime.root.querySelector(".mapwidgets-timeline-dialog-backdrop");
+    const nameInput = backdrop.querySelector('[name="placeName"]');
+    const knownPlace = ((_a = segment.place) == null ? void 0 : _a.source) === "known" ? segment.place : null;
+    const display = formatPlace(segment.place, translate("Known place"));
+    const address = ((_b = segment.place) == null ? void 0 : _b.address) || {};
+    runtime.dialogSegmentIndex = index;
+    runtime.dialogPlaceId = (knownPlace == null ? void 0 : knownPlace.id) || null;
+    nameInput.value = display.name;
+    backdrop.querySelector('[name="placeRadius"]').value = String((knownPlace == null ? void 0 : knownPlace.radius) || 100);
+    const addressValues = {
+      street: address.street || address.road,
+      housenumber: address.housenumber,
+      city: address.city || address.town || address.village || address.municipality || address.locality,
+      country: address.country
+    };
+    for (const [field, value] of Object.entries(addressValues)) {
+      backdrop.querySelector(`[data-place-address="${field}"]`).textContent = value || "\u2013";
+    }
+    backdrop.querySelector('[data-action="delete-place"]').hidden = !knownPlace;
+    backdrop.hidden = false;
+    nameInput.focus();
+    nameInput.select();
+  }
+  function closeKnownPlaceDialog(runtime) {
+    runtime.root.querySelector(".mapwidgets-timeline-dialog-backdrop").hidden = true;
+    runtime.dialogSegmentIndex = null;
+    runtime.dialogPlaceId = null;
+  }
+  function commitKnownPlace(runtime) {
+    var _a, _b, _c, _d, _e;
+    const index = runtime.dialogSegmentIndex;
+    const selected = runtime.results.get(runtime.selectedPersonId);
+    const segment = selected == null ? void 0 : selected.segments[index];
+    if (!segment || segment.type !== "stay") {
+      closeKnownPlaceDialog(runtime);
+      return;
+    }
+    const dialog = runtime.root.querySelector(".mapwidgets-timeline-dialog");
+    const name = dialog.elements.placeName.value.trim();
+    const radius = Number(dialog.elements.placeRadius.value);
+    if (!name || !Number.isFinite(radius) || radius <= 0) {
+      dialog.reportValidity();
+      return;
+    }
+    const now = Date.now();
+    const existing = runtime.places.find((item) => item.id === runtime.dialogPlaceId);
+    const place = __spreadProps(__spreadValues({}, existing || {}), {
+      id: (existing == null ? void 0 : existing.id) || ((_b = (_a = window.crypto) == null ? void 0 : _a.randomUUID) == null ? void 0 : _b.call(_a)) || `place_${now}_${Math.random().toString(16).slice(2)}`,
+      name,
+      label: name,
+      geocodingLabel: (existing == null ? void 0 : existing.geocodingLabel) || (((_c = segment.place) == null ? void 0 : _c.source) === "known" ? "" : (_d = segment.place) == null ? void 0 : _d.label),
+      address: (existing == null ? void 0 : existing.address) || ((_e = segment.place) == null ? void 0 : _e.address) || {},
+      lat: segment.lat,
+      lon: segment.lon,
+      radius,
+      created: (existing == null ? void 0 : existing.created) || now,
+      updated: now
+    });
+    if (existing) {
+      runtime.places[runtime.places.indexOf(existing)] = place;
+    } else {
+      runtime.places.push(place);
+    }
+    closeKnownPlaceDialog(runtime);
+    indexedDbSet("places", { version: 1, entries: runtime.places });
+    queueStateWrite(runtime, "places");
+    for (const result of runtime.results.values()) {
+      for (const item of result.segments) {
+        if (item.type === "stay") {
+          const match = findKnownPlace(item, runtime.places, result.person.id);
+          if (match) {
+            item.place = __spreadProps(__spreadValues({}, match), { source: "known" });
+          }
+        }
+      }
+    }
+    renderTimeline(runtime);
+    renderMap(runtime);
+  }
+  function deleteKnownPlace(runtime) {
+    const index = runtime.dialogSegmentIndex;
+    const selected = runtime.results.get(runtime.selectedPersonId);
+    const segment = selected == null ? void 0 : selected.segments[index];
+    const place = runtime.places.find((item) => item.id === runtime.dialogPlaceId);
+    if (!segment || !place) {
+      closeKnownPlaceDialog(runtime);
+      return;
+    }
+    place.deleted = true;
+    place.updated = Date.now();
+    const key = cacheKey(runtime, segment);
+    runtime.cache.entries[key] = cachedPlaceFromKnownPlace(place, segment);
+    segment.place = __spreadProps(__spreadValues({}, runtime.cache.entries[key]), { source: "cache" });
+    closeKnownPlaceDialog(runtime);
+    indexedDbSet("places", { version: 1, entries: runtime.places });
+    indexedDbSet("cache", runtime.cache);
+    queueStateWrite(runtime, "places");
+    queueStateWrite(runtime, "cache");
+    renderTimeline(runtime);
+    renderMap(runtime);
+  }
+  function handleClick(runtime, event) {
+    var _a, _b;
+    const button = event.target.closest("button");
+    if (!button) {
+      return;
+    }
+    const personId = button.dataset.personId;
+    if (personId) {
+      runtime.selectedPersonId = personId;
+      renderPeople(runtime);
+      renderTimeline(runtime);
+      renderMap(runtime);
+      return;
+    }
+    const action = button.dataset.action;
+    if (action === "previous" || action === "next") {
+      selectDate(
+        runtime,
+        new Date(
+          runtime.date.getFullYear(),
+          runtime.date.getMonth(),
+          runtime.date.getDate() + (action === "next" ? 1 : -1)
+        )
+      );
+    } else if (action === "today") {
+      selectDate(runtime, /* @__PURE__ */ new Date());
+    } else if (action === "calendar") {
+      (_b = (_a = runtime.root.querySelector(".mapwidgets-timeline-date-input")).showPicker) == null ? void 0 : _b.call(_a);
+      runtime.root.querySelector(".mapwidgets-timeline-date-input").focus();
+    } else if (action === "fit") {
+      fitMap(runtime);
+    } else if (action === "select-segment") {
+      selectSegment(runtime, Number(button.closest("[data-segment-index]").dataset.segmentIndex));
+    } else if (action === "save-place") {
+      openKnownPlaceDialog(runtime, Number(button.closest("[data-segment-index]").dataset.segmentIndex));
+    } else if (action === "cancel-place") {
+      closeKnownPlaceDialog(runtime);
+    } else if (action === "delete-place") {
+      deleteKnownPlace(runtime);
+    } else if (action === "commit-place") {
+      commitKnownPlace(runtime);
+    } else if (button.dataset.segmentIndex !== void 0) {
+      selectSegment(runtime, Number(button.dataset.segmentIndex));
+    }
+  }
+  function loadPerson(runtime, person, loadId) {
+    return __async(this, null, function* () {
+      let values = [];
+      let historyError = null;
+      try {
+        values = yield getHistory(person.oid, runtime.date);
+      } catch (error) {
+        historyError = error;
+      }
+      if (loadId !== runtime.loadId) {
+        return null;
+      }
+      let points = removeGpsOutliers(normalizeHistory(values), runtime.options.maxSpeedKmh);
+      let currentOnly = false;
+      if (!points.length && isToday(runtime.date)) {
+        const position = parsePosition(stateValue(person.oid));
+        if (position) {
+          points = [__spreadProps(__spreadValues({}, position), { ts: Date.now() })];
+          currentOnly = true;
+        }
+      }
+      const segments = currentOnly ? [] : buildTimeline(points, {
+        stayRadiusM: runtime.options.stayRadiusM,
+        minStayMinutes: runtime.options.minStayMinutes
+      });
+      const result = { person, points, segments, currentOnly, historyError };
+      yield Promise.all(
+        segments.filter((segment) => segment.type === "stay").map((segment) => resolveStay(runtime, person, segment, loadId))
+      );
+      return result;
+    });
+  }
+  function loadDay(runtime) {
+    return __async(this, null, function* () {
+      const loadId = ++runtime.loadId;
+      renderHeader(runtime);
+      renderTimeline(runtime, translate("Loading history..."));
+      const results = yield Promise.all(runtime.people.map((person) => loadPerson(runtime, person, loadId)));
+      if (loadId !== runtime.loadId) {
+        return;
+      }
+      runtime.results = new Map(results.filter(Boolean).map((result) => [result.person.id, result]));
+      renderTimeline(runtime);
+      renderMap(runtime);
+    });
+  }
+  function initializeStorage(runtime) {
+    return __async(this, null, function* () {
+      const localPlaces = yield indexedDbGet("places", { entries: [] });
+      const localCache = yield indexedDbGet("cache", { version: 1, entries: {} });
+      const remotePlaces = parseJsonState(stateValue(PLACES_ID), { entries: [] });
+      const remoteCache = parseJsonState(stateValue(CACHE_ID), { version: 1, entries: {} });
+      runtime.places = mergePlaces(localPlaces.entries || [], remotePlaces.entries || []);
+      runtime.cache = mergeCaches(localCache, remoteCache);
+      yield Promise.all([
+        indexedDbSet("places", { version: 1, entries: runtime.places }),
+        indexedDbSet("cache", runtime.cache)
+      ]);
+    });
+  }
+  function createWidget(widgetID, view, data) {
+    return __async(this, null, function* () {
+      var _a, _b, _c, _d, _e, _f, _g;
+      const root = document.getElementById(widgetID);
+      if (!root) {
+        setTimeout(() => createWidget(widgetID, view, data), 100);
+        return;
+      }
+      const previous = vis.binds.mapwidgets.timeline.data[widgetID];
+      if (previous) {
+        previous.loadId++;
+        Object.values(previous.writeTimers || {}).forEach((timer) => clearTimeout(timer));
+        (_a = previous.resizeObserver) == null ? void 0 : _a.disconnect();
+        if (previous.themeMedia && previous.themeHandler) {
+          (_c = (_b = previous.themeMedia).removeEventListener) == null ? void 0 : _c.call(_b, "change", previous.themeHandler);
+        }
+        if (previous.clickHandler) {
+          root.removeEventListener("click", previous.clickHandler);
+        }
+        if (previous.submitHandler) {
+          root.removeEventListener("submit", previous.submitHandler);
+        }
+        (_d = previous.map) == null ? void 0 : _d.remove();
+      }
+      const people = readPeople(data);
+      const runtime = {
+        widgetID,
+        root,
+        people,
+        selectedPersonId: (_e = people[0]) == null ? void 0 : _e.id,
+        date: readStoredDate(widgetID),
+        loadId: 0,
+        results: /* @__PURE__ */ new Map(),
+        places: [],
+        cache: { version: 1, entries: {} },
+        writeTimers: {},
+        options: {
+          layout: ["auto", "side", "below"].includes(data.timeline_layout) ? data.timeline_layout : "auto",
+          theme: ["auto", "light", "dark"].includes(data.timeline_theme) ? data.timeline_theme : "auto",
+          stayRadiusM: Number(data.timeline_stayradius) || 75,
+          minStayMinutes: Number(data.timeline_minstay) || 10,
+          maxSpeedKmh: Number(data.timeline_maxspeed) || 300,
+          geocodingEnabled: data.timeline_geocodingenabled === true || data.timeline_geocodingenabled === "true",
+          email: String(data.timeline_email || "").trim(),
+          endpoint: String(data.timeline_endpoint || "").trim() || "https://nominatim.openstreetmap.org/reverse",
+          language: String(data.timeline_language || "").trim()
+        }
+      };
+      vis.binds.mapwidgets.timeline.data[widgetID] = runtime;
+      renderShell(runtime);
+      if (runtime.options.theme === "auto" && window.matchMedia) {
+        runtime.themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+        runtime.themeHandler = () => applyTheme(runtime);
+        (_g = (_f = runtime.themeMedia).addEventListener) == null ? void 0 : _g.call(_f, "change", runtime.themeHandler);
+      }
+      createMap(runtime);
+      if (window.ResizeObserver) {
+        runtime.resizeObserver = new window.ResizeObserver((entries) => {
+          var _a2, _b2, _c2;
+          const width = ((_b2 = (_a2 = entries[0]) == null ? void 0 : _a2.contentRect) == null ? void 0 : _b2.width) || root.clientWidth;
+          root.classList.toggle("is-timeline-narrow", runtime.options.layout === "auto" && width < 760);
+          (_c2 = runtime.map) == null ? void 0 : _c2.invalidateSize();
+        });
+        runtime.resizeObserver.observe(root);
+      }
+      const bound = [...people.map((person) => person.oid), PLACES_ID, CACHE_ID];
+      vis.binds.mapwidgets.bindStates(root, bound, (event, newValue) => __async(null, null, function* () {
+        const id = String((event == null ? void 0 : event.type) || event || "").replace(/\.val$/, "");
+        if (id === PLACES_ID) {
+          const remote = parseJsonState(newValue, { entries: [] });
+          runtime.places = mergePlaces(runtime.places, remote.entries || []);
+          yield indexedDbSet("places", { version: 1, entries: runtime.places });
+          loadDay(runtime);
+        } else if (id === CACHE_ID) {
+          runtime.cache = mergeCaches(runtime.cache, parseJsonState(newValue, { entries: {} }));
+          yield indexedDbSet("cache", runtime.cache);
+        } else if (isToday(runtime.date)) {
+          loadDay(runtime);
+        }
+      }));
+      if (!people.length) {
+        renderHeader(runtime);
+        renderTimeline(runtime, translate("Configure at least one tracking datapoint"));
+        return;
+      }
+      yield initializeStorage(runtime);
+      renderPeople(runtime);
+      yield loadDay(runtime);
+      setTimeout(() => runtime.map.invalidateSize(), 0);
+    });
+  }
+  vis.binds.mapwidgets.timeline = {
+    data: {},
+    createWidget
+  };
 })();
 /*! Bundled license information:
 
