@@ -625,8 +625,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.2.0 (2026-08-01)
 
 - add timeline widget
 
@@ -653,14 +652,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 ### 0.0.13 (2025-09-30)
 
 - add day/Night terminator
-
-### 0.0.12 (2025-09-27)
-
-- Another example of using the Geocoder plugin has been added,
-  demonstrating the use of the loadCSS and loadScript functions.
-- fix some picture alt names
-- fix some project filenames
-- improve version number output in the widget
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 

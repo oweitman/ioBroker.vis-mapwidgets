@@ -1,197 +1,194 @@
 {
-    "common": {
-        "name": "vis-mapwidgets",
-        "version": "0.1.2",
-        "news": {
-            "0.2.0": {
-                "en": "add timeline widget",
-                "de": "Timeline-Widget hinzufügen",
-                "ru": "добавить виджет временной шкалы",
-                "pt": "adicionar widget de linha do tempo",
-                "nl": "tijdlijnwidget toevoegen",
-                "fr": "ajouter un widget de chronologie",
-                "it": "aggiungere il widget della sequenza temporale",
-                "es": "agregar widget de línea de tiempo",
-                "pl": "dodać widżet osi czasu",
-                "uk": "додати віджет часової шкали",
-                "zh-cn": "添加时间轴组件"
-            },
-            "0.1.2": {
-                "en": "add tests\nimprove build\nfix repochecker\nimprove datapoint handling",
-                "de": "Tests hinzufügen\nVerbesserung des Aufbaus\nRepochecker reparieren\nVerbesserung der Datenpunktverarbeitung",
-                "ru": "добавить тесты\nулучшить сборку\nисправить repochecker\nулучшить обработку точек данных",
-                "pt": "adicionar testes\nmelhorar a construção\ncorrigir repochecker\nMelhorar o tratamento dos pontos de dados",
-                "nl": "tests toevoegen\nverbeter de bouw\nrepochecker repareren\nVerbeter de verwerking van datapunten.",
-                "fr": "ajouter des tests\naméliorer la construction\ncorriger le rechecker\naméliorer la gestion des points de données",
-                "it": "aggiungere test\nmigliorare la costruzione\nfix repochecker\nmigliorare la gestione dei punti dati",
-                "es": "agregar pruebas\nmejorar la construcción\ncorregir repochecker\nmejorar el manejo de los puntos de datos",
-                "pl": "dodaj testy\nulepszyć kompilację\nnapraw repochecker\npoprawić obsługę punktów danych",
-                "uk": "додати тести\nпокращити збірку\nвиправити перевірку повторів\nпокращити обробку точок даних",
-                "zh-cn": "添加测试\n改进构建\n修复 repochecker\n改进数据点处理"
-            },
-            "0.1.1": {
-                "en": "fix schema error dialog in vis-2",
-                "de": "Schemafehlerdialog in vis-2 beheben",
-                "ru": "Исправление диалогового окна ошибки схемы в vis-2",
-                "pt": "Corrigir diálogo de erro de esquema no vis-2",
-                "nl": "Foutmelding over schemafout in vis-2 corrigeren",
-                "fr": "Correction de la boîte de dialogue d'erreur de schéma dans vis-2",
-                "it": "correggere la finestra di dialogo degli errori di schema in vis-2",
-                "es": "Corregir el cuadro de diálogo de error de esquema en vis-2",
-                "pl": "napraw okno dialogowe błędu schematu w vis-2",
-                "uk": "виправити діалогове вікно помилки схеми у vis-2",
-                "zh-cn": "修复 vis-2 中的架构错误对话框"
-            },
-            "0.1.0": {
-                "en": "fix translation map lng\nadd main in package.json for dev-server\nadd schema validation for mapdata in edit mode\nimprove error handling for fitbounds\nadd example for path history\nfix lint errors",
-                "de": "Übersetzungskarte korrigieren (lang)\nFüge „main“ in der package.json für den Entwicklungsserver hinzu.\nSchemavalidierung für Mapdata im Bearbeitungsmodus hinzufügen\nFehlerbehandlung für fitbounds verbessern\nBeispiel für Pfadverlauf hinzufügen\nLint-Fehler beheben",
-                "ru": "исправление перевода карты lng\nДобавьте параметр main в файл package.json для dev-сервера.\nДобавить проверку схемы для данных карты в режиме редактирования.\nулучшить обработку ошибок для функции fitbounds\nдобавить пример истории перемещений\nИсправление ошибок линтинга",
-                "pt": "corrigir mapa de tradução ng\nAdicione o arquivo `package.json` para o servidor de desenvolvimento.\nAdicionar validação de esquema para dados de mapeamento no modo de edição\nMelhorar o tratamento de erros para o fitbounds\nAdicionar exemplo para o histórico de caminhos\ncorrigir erros de lint",
-                "nl": "fix translation map lng\nVoeg 'main' toe aan package.json voor de ontwikkelserver.\nVoeg schemavalidatie toe voor mapdata in de bewerkingsmodus.\nVerbeter de foutafhandeling voor fitbounds.\nVoeg een voorbeeld toe voor de padgeschiedenis.\nlint-fouten corrigeren",
-                "fr": "corriger la carte de traduction lng\najouter main dans package.json pour le serveur de développement\nAjouter la validation du schéma pour les données cartographiques en mode édition\naméliorer la gestion des erreurs pour fitbounds\najouter un exemple pour l'historique du chemin\ncorriger les erreurs de lint",
-                "it": "correzione della mappa di traduzione lng\naggiungi main in package.json per dev-server\naggiungi la convalida dello schema per i dati della mappa in modalità di modifica\nmigliorare la gestione degli errori per fitbounds\naggiungi esempio per la cronologia del percorso\ncorreggere gli errori di lint",
-                "es": "corregir el mapa de traducción lng\nagregar main en package.json para dev-server\nagregar validación de esquema para mapdata en modo de edición\nmejorar el manejo de errores para fitbounds\nagregar ejemplo para el historial de ruta\ncorregir errores de lint",
-                "pl": "napraw mapę tłumaczenia lng\ndodaj main w package.json dla serwera deweloperskiego\ndodaj walidację schematu dla mapdata w trybie edycji\npoprawić obsługę błędów dla fitbounds\ndodaj przykład historii ścieżki\nnapraw błędy lint",
-                "uk": "виправити карту перекладу (мовний рядок)\nдодати main у package.json для dev-сервера\nдодати перевірку схеми для даних карти в режимі редагування\nпокращено обробку помилок для fitbounds\nдодати приклад історії шляхів\nвиправити помилки lint",
-                "zh-cn": "修复翻译地图 lng\n在开发服务器的 package.json 文件中添加 main 函数\n在编辑模式下为地图数据添加架构验证\n改进 fitbounds 的错误处理\n添加路径历史记录示例\n修复 lint 错误"
-            },
-            "0.0.13": {
-                "en": "add day/Night terminator",
-                "de": "tag/Nacht Terminator hinzufügen",
-                "ru": "обсуждение Day/Night Terminator",
-                "pt": "adicionar dia/terminador noturno",
-                "nl": "dag/nachtterminator toevoegen",
-                "fr": "ajouter le terminateur jour/nuit",
-                "it": "aggiungere giorno/Night terminator",
-                "es": "añadir día/noche final",
-                "pl": "dodaj terminator dnia / nocy",
-                "uk": "додати день/Нічний термінатор",
-                "zh-cn": "添加日/ 夜间定义符"
-            },
-            "0.0.12": {
-                "en": "- Another example of using the Geocoder plugin has been added,\n  demonstrating the use of the loadCSS and loadScript functions.\n- fix some picture alt names\n- fix some project filenames\n- improve version number output in the widget",
-                "de": "- Ein weiteres Beispiel für die Verwendung des Geocoder Plugins wurde hinzugefügt,\ndie Verwendung der LoadCSS- und LoadScript-Funktionen demonstrieren.\n- einige bild-al-namen reparieren\n- einige projektdateinamen beheben\n- die ausgabe der versionsnummer im widget verbessern",
-                "ru": "- добавлен еще один пример использования плагина Geocoder,\nдемонстрация использования функций loadCSS и loadScript.\n- починить картинку альтернативные имена\n- исправить некоторые имена файлов проекта\n- улучшить выход номера версии в виджете",
-                "pt": "- Outro exemplo de utilização do plugin Geocoder foi adicionado,\ndemonstração da utilização das funções loadCSS e loadScript.\n- consertar alguns nomes de imagens\n- corrigir alguns nomes de arquivos do projeto\n- melhorar a saída de número de versão no widget",
-                "nl": "- Een ander voorbeeld van het gebruik van de Geocoder plugin is toegevoegd,\nhet aantonen van het gebruik van de loadCSS- en loadScript-functies.\n- maak wat foto alt namen\n- sommige project bestandsnamen repareren\n- het verbeteren van versienummer output in de widget",
-                "fr": "- Un autre exemple d'utilisation du plugin Geocoder a été ajouté,\ndémontrer l'utilisation des fonctions loadCSS et loadScript.\n- fixer quelques noms de photos\n- correction de certains noms de fichiers de projets\n- améliorer la sortie du numéro de version dans le widget",
-                "it": "- È stato aggiunto un altro esempio di utilizzo del plugin Geocoder,\ndimostrare l'uso delle funzioni loadCSS e loadScript.\n- sistemare dei nomi delle foto\n- fissare alcuni nomi di file di progetto\n- migliorare l'output del numero di versione nel widget",
-                "es": "- Otro ejemplo de uso del plugin Geocoder se ha añadido,\ndemostrando el uso de las funciones loadCSS y loadScript.\n- arreglar algunos nombres de alt\n- arreglar algunos nombres de archivo del proyecto\n- mejorar la salida del número de versión en el widget",
-                "pl": "- Dodano kolejny przykład użycia wtyczki Geocoder,\ndemonstrujące wykorzystanie funkcji loadCSS i loadScript.\n- naprawić kilka zdjęć alt nazwy\n- naprawić nazwy plików projektu\n- poprawiają wyjście numeru wersji w widgecie",
-                "uk": "- Додано ще один приклад використання плагіна Geocoder,\nдемонстрація використання функцій LoadCS та LoadScript.\n- зафіксувати деякі імена альт\n- виправлення деяких назв проекту\n- поліпшити вихід номеру версії в віджеті",
-                "zh-cn": "- 增加了另一个使用Geocoder插件的例子,\n显示加载CSS和加载脚本函数的使用.\n- 修复一些图片替代名称\n- 修正一些工程文件名\n- 改进部件中的版本编号输出"
-            },
-            "0.0.11": {
-                "en": "add fitBound option",
-                "de": "fitBound Option hinzufügen",
-                "ru": "добавить опцию fitBound",
-                "pt": "adicionar a opção fitBound",
-                "nl": "fitBound-optie toevoegen",
-                "fr": "ajouter l'option fitBound",
-                "it": "aggiungere l'opzione fitBound",
-                "es": "añadir fitBound opción",
-                "pl": "dodaj opcję fitBound",
-                "uk": "add fitЗлягання варіант",
-                "zh-cn": "添加适切选项"
-            },
-            "0.0.10": {
-                "en": "add utility functions an documentation\nadd more examples and rework example documentation",
-                "de": "hinzufügen von dienstfunktionen\nweitere beispiele und rework beispieldokumentation hinzufügen",
-                "ru": "добавить полезные функции в документацию\nдобавить больше примеров и переработать примерную документацию",
-                "pt": "adicionar funções de utilitário uma documentação\nadicionar mais exemplos e refazer a documentação do exemplo",
-                "nl": "utility functies toevoegen aan een documentatie\nvoeg meer voorbeelden toe en rework voorbeeld documentatie",
-                "fr": "ajouter des fonctions d'utilité une documentation\najouter plus d'exemples et retravailler la documentation exemple",
-                "it": "aggiungere funzioni di utilità una documentazione\naggiungere più esempi e rielaborare documentazione di esempio",
-                "es": "añadir funciones de utilidad una documentación\nañadir más ejemplos y rework ejemplo documentación",
-                "pl": "dodawanie funkcji użyteczności dokumentacji\ndodaj więcej przykładów i przerób przykładową dokumentację",
-                "uk": "додати утиліту функції документації\nдодати більше прикладів і документації",
-                "zh-cn": "添加工具函数一个文档\n添加更多示例和重做示例文档"
-            }
-        },
-        "titleLang": {
-            "en": "Map Widgets",
-            "de": "Karten -Widgets",
-            "ru": "Карты виджетов",
-            "pt": "Widgets de mapa",
-            "nl": "Kaartwidgets",
-            "fr": "Widgets cartographiques",
-            "it": "Widget della mappa",
-            "es": "Widgets de mapa",
-            "pl": "Widżety map",
-            "uk": "Відродження карт",
-            "zh-cn": "地图小部件"
-        },
-        "desc": {
-            "en": "Map Widgets for ioBroker.vis",
-            "de": "Karten -Widgets für iobroker.vis",
-            "ru": "Карты виджетов для iobroker.vis",
-            "pt": "Widgets de mapa para iobroker.vis",
-            "nl": "Kaartwidgets voor IoBRoker.Vis",
-            "fr": "Widgets cartographiques pour iobroker.vis",
-            "it": "Widget mappa per iobroker.vis",
-            "es": "Widgets de mapa para iobroker.vis",
-            "pl": "Widget map dla iobrent.vis",
-            "uk": "Віджетів карт для iobroker.vis",
-            "zh-cn": "iobroker.vis的地图小部件"
-        },
-        "platform": "Javascript/Node.js",
-        "loglevel": "info",
-        "icon": "mapwidgets.svg",
-        "enabled": true,
-        "mode": "none",
-        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-mapwidgets/main/admin/mapwidgets.svg",
-        "keywords": ["map widgets", "vis"],
-        "readme": "https://github.com/oweitman/ioBroker.vis-mapwidgets/blob/main/README.md",
-        "authors": ["oweitman <oweitman@gmx.de>"],
-        "dependencies": ["vis"],
-        "onlyWWW": true,
-        "singleton": true,
-        "type": "visualization-widgets",
-        "tier": 3,
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "adminUI": {
-            "config": "none"
-        },
-        "restartAdapters": ["vis", "vis-2"]
+  "common": {
+    "name": "vis-mapwidgets",
+    "version": "0.2.0",
+    "news": {
+      "0.2.0": {
+        "en": "add timeline widget",
+        "de": "Timeline-Widget hinzufügen",
+        "ru": "добавить виджет временной шкалы",
+        "pt": "adicionar widget de linha do tempo",
+        "nl": "tijdlijnwidget toevoegen",
+        "fr": "ajouter un widget de chronologie",
+        "it": "aggiungere il widget della sequenza temporale",
+        "es": "agregar widget de línea de tiempo",
+        "pl": "dodać widżet osi czasu",
+        "uk": "додати віджет часової шкали",
+        "zh-cn": "添加时间轴组件"
+      },
+      "0.1.2": {
+        "en": "add tests\nimprove build\nfix repochecker\nimprove datapoint handling",
+        "de": "Tests hinzufügen\nVerbesserung des Aufbaus\nRepochecker reparieren\nVerbesserung der Datenpunktverarbeitung",
+        "ru": "добавить тесты\nулучшить сборку\nисправить repochecker\nулучшить обработку точек данных",
+        "pt": "adicionar testes\nmelhorar a construção\ncorrigir repochecker\nMelhorar o tratamento dos pontos de dados",
+        "nl": "tests toevoegen\nverbeter de bouw\nrepochecker repareren\nVerbeter de verwerking van datapunten.",
+        "fr": "ajouter des tests\naméliorer la construction\ncorriger le rechecker\naméliorer la gestion des points de données",
+        "it": "aggiungere test\nmigliorare la costruzione\nfix repochecker\nmigliorare la gestione dei punti dati",
+        "es": "agregar pruebas\nmejorar la construcción\ncorregir repochecker\nmejorar el manejo de los puntos de datos",
+        "pl": "dodaj testy\nulepszyć kompilację\nnapraw repochecker\npoprawić obsługę punktów danych",
+        "uk": "додати тести\nпокращити збірку\nвиправити перевірку повторів\nпокращити обробку точок даних",
+        "zh-cn": "添加测试\n改进构建\n修复 repochecker\n改进数据点处理"
+      },
+      "0.1.1": {
+        "en": "fix schema error dialog in vis-2",
+        "de": "Schemafehlerdialog in vis-2 beheben",
+        "ru": "Исправление диалогового окна ошибки схемы в vis-2",
+        "pt": "Corrigir diálogo de erro de esquema no vis-2",
+        "nl": "Foutmelding over schemafout in vis-2 corrigeren",
+        "fr": "Correction de la boîte de dialogue d'erreur de schéma dans vis-2",
+        "it": "correggere la finestra di dialogo degli errori di schema in vis-2",
+        "es": "Corregir el cuadro de diálogo de error de esquema en vis-2",
+        "pl": "napraw okno dialogowe błędu schematu w vis-2",
+        "uk": "виправити діалогове вікно помилки схеми у vis-2",
+        "zh-cn": "修复 vis-2 中的架构错误对话框"
+      },
+      "0.1.0": {
+        "en": "fix translation map lng\nadd main in package.json for dev-server\nadd schema validation for mapdata in edit mode\nimprove error handling for fitbounds\nadd example for path history\nfix lint errors",
+        "de": "Übersetzungskarte korrigieren (lang)\nFüge „main“ in der package.json für den Entwicklungsserver hinzu.\nSchemavalidierung für Mapdata im Bearbeitungsmodus hinzufügen\nFehlerbehandlung für fitbounds verbessern\nBeispiel für Pfadverlauf hinzufügen\nLint-Fehler beheben",
+        "ru": "исправление перевода карты lng\nДобавьте параметр main в файл package.json для dev-сервера.\nДобавить проверку схемы для данных карты в режиме редактирования.\nулучшить обработку ошибок для функции fitbounds\nдобавить пример истории перемещений\nИсправление ошибок линтинга",
+        "pt": "corrigir mapa de tradução ng\nAdicione o arquivo `package.json` para o servidor de desenvolvimento.\nAdicionar validação de esquema para dados de mapeamento no modo de edição\nMelhorar o tratamento de erros para o fitbounds\nAdicionar exemplo para o histórico de caminhos\ncorrigir erros de lint",
+        "nl": "fix translation map lng\nVoeg 'main' toe aan package.json voor de ontwikkelserver.\nVoeg schemavalidatie toe voor mapdata in de bewerkingsmodus.\nVerbeter de foutafhandeling voor fitbounds.\nVoeg een voorbeeld toe voor de padgeschiedenis.\nlint-fouten corrigeren",
+        "fr": "corriger la carte de traduction lng\najouter main dans package.json pour le serveur de développement\nAjouter la validation du schéma pour les données cartographiques en mode édition\naméliorer la gestion des erreurs pour fitbounds\najouter un exemple pour l'historique du chemin\ncorriger les erreurs de lint",
+        "it": "correzione della mappa di traduzione lng\naggiungi main in package.json per dev-server\naggiungi la convalida dello schema per i dati della mappa in modalità di modifica\nmigliorare la gestione degli errori per fitbounds\naggiungi esempio per la cronologia del percorso\ncorreggere gli errori di lint",
+        "es": "corregir el mapa de traducción lng\nagregar main en package.json para dev-server\nagregar validación de esquema para mapdata en modo de edición\nmejorar el manejo de errores para fitbounds\nagregar ejemplo para el historial de ruta\ncorregir errores de lint",
+        "pl": "napraw mapę tłumaczenia lng\ndodaj main w package.json dla serwera deweloperskiego\ndodaj walidację schematu dla mapdata w trybie edycji\npoprawić obsługę błędów dla fitbounds\ndodaj przykład historii ścieżki\nnapraw błędy lint",
+        "uk": "виправити карту перекладу (мовний рядок)\nдодати main у package.json для dev-сервера\nдодати перевірку схеми для даних карти в режимі редагування\nпокращено обробку помилок для fitbounds\nдодати приклад історії шляхів\nвиправити помилки lint",
+        "zh-cn": "修复翻译地图 lng\n在开发服务器的 package.json 文件中添加 main 函数\n在编辑模式下为地图数据添加架构验证\n改进 fitbounds 的错误处理\n添加路径历史记录示例\n修复 lint 错误"
+      },
+      "0.0.13": {
+        "en": "add day/Night terminator",
+        "de": "tag/Nacht Terminator hinzufügen",
+        "ru": "обсуждение Day/Night Terminator",
+        "pt": "adicionar dia/terminador noturno",
+        "nl": "dag/nachtterminator toevoegen",
+        "fr": "ajouter le terminateur jour/nuit",
+        "it": "aggiungere giorno/Night terminator",
+        "es": "añadir día/noche final",
+        "pl": "dodaj terminator dnia / nocy",
+        "uk": "додати день/Нічний термінатор",
+        "zh-cn": "添加日/ 夜间定义符"
+      },
+      "0.0.12": {
+        "en": "- Another example of using the Geocoder plugin has been added,\n  demonstrating the use of the loadCSS and loadScript functions.\n- fix some picture alt names\n- fix some project filenames\n- improve version number output in the widget",
+        "de": "- Ein weiteres Beispiel für die Verwendung des Geocoder Plugins wurde hinzugefügt,\ndie Verwendung der LoadCSS- und LoadScript-Funktionen demonstrieren.\n- einige bild-al-namen reparieren\n- einige projektdateinamen beheben\n- die ausgabe der versionsnummer im widget verbessern",
+        "ru": "- добавлен еще один пример использования плагина Geocoder,\nдемонстрация использования функций loadCSS и loadScript.\n- починить картинку альтернативные имена\n- исправить некоторые имена файлов проекта\n- улучшить выход номера версии в виджете",
+        "pt": "- Outro exemplo de utilização do plugin Geocoder foi adicionado,\ndemonstração da utilização das funções loadCSS e loadScript.\n- consertar alguns nomes de imagens\n- corrigir alguns nomes de arquivos do projeto\n- melhorar a saída de número de versão no widget",
+        "nl": "- Een ander voorbeeld van het gebruik van de Geocoder plugin is toegevoegd,\nhet aantonen van het gebruik van de loadCSS- en loadScript-functies.\n- maak wat foto alt namen\n- sommige project bestandsnamen repareren\n- het verbeteren van versienummer output in de widget",
+        "fr": "- Un autre exemple d'utilisation du plugin Geocoder a été ajouté,\ndémontrer l'utilisation des fonctions loadCSS et loadScript.\n- fixer quelques noms de photos\n- correction de certains noms de fichiers de projets\n- améliorer la sortie du numéro de version dans le widget",
+        "it": "- È stato aggiunto un altro esempio di utilizzo del plugin Geocoder,\ndimostrare l'uso delle funzioni loadCSS e loadScript.\n- sistemare dei nomi delle foto\n- fissare alcuni nomi di file di progetto\n- migliorare l'output del numero di versione nel widget",
+        "es": "- Otro ejemplo de uso del plugin Geocoder se ha añadido,\ndemostrando el uso de las funciones loadCSS y loadScript.\n- arreglar algunos nombres de alt\n- arreglar algunos nombres de archivo del proyecto\n- mejorar la salida del número de versión en el widget",
+        "pl": "- Dodano kolejny przykład użycia wtyczki Geocoder,\ndemonstrujące wykorzystanie funkcji loadCSS i loadScript.\n- naprawić kilka zdjęć alt nazwy\n- naprawić nazwy plików projektu\n- poprawiają wyjście numeru wersji w widgecie",
+        "uk": "- Додано ще один приклад використання плагіна Geocoder,\nдемонстрація використання функцій LoadCS та LoadScript.\n- зафіксувати деякі імена альт\n- виправлення деяких назв проекту\n- поліпшити вихід номеру версії в віджеті",
+        "zh-cn": "- 增加了另一个使用Geocoder插件的例子,\n显示加载CSS和加载脚本函数的使用.\n- 修复一些图片替代名称\n- 修正一些工程文件名\n- 改进部件中的版本编号输出"
+      },
+      "0.0.11": {
+        "en": "add fitBound option",
+        "de": "fitBound Option hinzufügen",
+        "ru": "добавить опцию fitBound",
+        "pt": "adicionar a opção fitBound",
+        "nl": "fitBound-optie toevoegen",
+        "fr": "ajouter l'option fitBound",
+        "it": "aggiungere l'opzione fitBound",
+        "es": "añadir fitBound opción",
+        "pl": "dodaj opcję fitBound",
+        "uk": "add fitЗлягання варіант",
+        "zh-cn": "添加适切选项"
+      }
     },
-    "native": {},
-    "instanceObjects": [
-        {
-            "_id": "timeline",
-            "type": "channel",
-            "common": {
-                "name": "Location timeline"
-            },
-            "native": {}
-        },
-        {
-            "_id": "timeline.places",
-            "type": "state",
-            "common": {
-                "name": "Known timeline places",
-                "type": "string",
-                "role": "json",
-                "read": true,
-                "write": true,
-                "def": "{\"version\":1,\"entries\":[]}"
-            },
-            "native": {}
-        },
-        {
-            "_id": "timeline.geocodingCache",
-            "type": "state",
-            "common": {
-                "name": "Timeline reverse-geocoding cache",
-                "type": "string",
-                "role": "json",
-                "read": true,
-                "write": true,
-                "def": "{\"version\":1,\"entries\":{}}"
-            },
-            "native": {}
-        }
+    "titleLang": {
+      "en": "Map Widgets",
+      "de": "Karten -Widgets",
+      "ru": "Карты виджетов",
+      "pt": "Widgets de mapa",
+      "nl": "Kaartwidgets",
+      "fr": "Widgets cartographiques",
+      "it": "Widget della mappa",
+      "es": "Widgets de mapa",
+      "pl": "Widżety map",
+      "uk": "Відродження карт",
+      "zh-cn": "地图小部件"
+    },
+    "desc": {
+      "en": "Map Widgets for ioBroker.vis",
+      "de": "Karten -Widgets für iobroker.vis",
+      "ru": "Карты виджетов для iobroker.vis",
+      "pt": "Widgets de mapa para iobroker.vis",
+      "nl": "Kaartwidgets voor IoBRoker.Vis",
+      "fr": "Widgets cartographiques pour iobroker.vis",
+      "it": "Widget mappa per iobroker.vis",
+      "es": "Widgets de mapa para iobroker.vis",
+      "pl": "Widget map dla iobrent.vis",
+      "uk": "Віджетів карт для iobroker.vis",
+      "zh-cn": "iobroker.vis的地图小部件"
+    },
+    "platform": "Javascript/Node.js",
+    "loglevel": "info",
+    "icon": "mapwidgets.svg",
+    "enabled": true,
+    "mode": "none",
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-mapwidgets/main/admin/mapwidgets.svg",
+    "keywords": [
+      "map widgets",
+      "vis"
+    ],
+    "readme": "https://github.com/oweitman/ioBroker.vis-mapwidgets/blob/main/README.md",
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "dependencies": [
+      "vis"
+    ],
+    "onlyWWW": true,
+    "singleton": true,
+    "type": "visualization-widgets",
+    "tier": 3,
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "adminUI": {
+      "config": "none"
+    },
+    "restartAdapters": [
+      "vis",
+      "vis-2"
     ]
+  },
+  "native": {},
+  "instanceObjects": [
+    {
+      "_id": "timeline",
+      "type": "channel",
+      "common": {
+        "name": "Location timeline"
+      },
+      "native": {}
+    },
+    {
+      "_id": "timeline.places",
+      "type": "state",
+      "common": {
+        "name": "Known timeline places",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": true,
+        "def": "{\"version\":1,\"entries\":[]}"
+      },
+      "native": {}
+    },
+    {
+      "_id": "timeline.geocodingCache",
+      "type": "state",
+      "common": {
+        "name": "Timeline reverse-geocoding cache",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": true,
+        "def": "{\"version\":1,\"entries\":{}}"
+      },
+      "native": {}
+    }
+  ]
 }
