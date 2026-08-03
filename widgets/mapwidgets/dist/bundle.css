@@ -617,6 +617,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   background-image: url("./images/layers-2x.png");
   background-image: url("./images/layers.png");
   background-image: url("./images/mapwidgets.svg");
+  background-image: url("./images/timelinelocation.svg");
 }
 .mapwidgets-schema-error-btn {
   width: 34px;

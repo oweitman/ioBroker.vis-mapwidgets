@@ -627,6 +627,10 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.2.2 (2026-08-03)
+
+- besseres icon für timeline location widget
+
 ### 0.2.1 (2026-08-03)
 
 - add support link to widgets
@@ -645,15 +649,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 ### 0.1.1 (2026-07-06)
 
 - fix schema error dialog in vis-2
-
-### 0.1.0 (2026-07-06)
-
-- fix translation map lng
-- add main in package.json for dev-server
-- add schema validation for mapdata in edit mode
-- improve error handling for fitbounds
-- add example for path history
-- fix lint errors
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 

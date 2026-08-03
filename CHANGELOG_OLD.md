@@ -1,8 +1,17 @@
 # Older changes
+## 0.1.0 (2026-07-06)
+
+- fix translation map lng
+- add main in package.json for dev-server
+- add schema validation for mapdata in edit mode
+- improve error handling for fitbounds
+- add example for path history
+- fix lint errors
+
+
 ## 0.0.13 (2025-09-30)
 
 - add day/Night terminator
-
 
 ## 0.0.12 (2025-09-27)
 

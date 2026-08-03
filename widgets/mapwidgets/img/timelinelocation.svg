@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 24 24" aria-hidden="true">
+  <!-- Hintergrund + Rahmen -->
+  <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="4" ry="4"
+   fill="#000000" stroke="#ffffff" stroke-width="1.5"/>
+  <circle
+     cx="7.0226583"
+     cy="17.912111"
+     r="2.5610647"
+     style="stroke:#ffffff;stroke-width:0.853688" />
+  <path
+     d="m 9.8649728,17.912111 h 6.9751002 c 3.983877,0 3.983877,-5.975818 0,-5.975818 H 7.4495021 c -3.982614,-0.0013 -3.982614,-5.9770795 0,-5.9758175 h 7.2563509"
+     style="stroke:#ffffff;stroke-width:0.853688" />
+  <circle
+     cx="17.266916"
+     cy="5.9604754"
+     r="2.5610647"
+     style="stroke:#ffffff;stroke-width:0.853688" />
+</svg>
