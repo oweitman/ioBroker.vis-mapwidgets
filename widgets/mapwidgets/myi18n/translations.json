@@ -1495,15 +1495,68 @@
         "zh-cn": "移除已知地点"
     },
     "Street": {
-        "en": "Street", "de": "Straße", "ru": "Улица", "pt": "Rua", "nl": "Straat", "fr": "Rue", "it": "Via", "es": "Calle", "pl": "Ulica", "uk": "Вулиця", "zh-cn": "街道"
+        "en": "Street",
+        "de": "Straße",
+        "ru": "Улица",
+        "pt": "Rua",
+        "nl": "Straat",
+        "fr": "Rue",
+        "it": "Via",
+        "es": "Calle",
+        "pl": "Ulica",
+        "uk": "Вулиця",
+        "zh-cn": "街道"
     },
     "House number": {
-        "en": "House number", "de": "Hausnummer", "ru": "Номер дома", "pt": "Número", "nl": "Huisnummer", "fr": "Numéro", "it": "Numero civico", "es": "Número", "pl": "Numer domu", "uk": "Номер будинку", "zh-cn": "门牌号"
+        "en": "House number",
+        "de": "Hausnummer",
+        "ru": "Номер дома",
+        "pt": "Número",
+        "nl": "Huisnummer",
+        "fr": "Numéro",
+        "it": "Numero civico",
+        "es": "Número",
+        "pl": "Numer domu",
+        "uk": "Номер будинку",
+        "zh-cn": "门牌号"
     },
     "City": {
-        "en": "City", "de": "Ort", "ru": "Город", "pt": "Cidade", "nl": "Plaats", "fr": "Ville", "it": "Città", "es": "Ciudad", "pl": "Miejscowość", "uk": "Місто", "zh-cn": "城市"
+        "en": "City",
+        "de": "Ort",
+        "ru": "Город",
+        "pt": "Cidade",
+        "nl": "Plaats",
+        "fr": "Ville",
+        "it": "Città",
+        "es": "Ciudad",
+        "pl": "Miejscowość",
+        "uk": "Місто",
+        "zh-cn": "城市"
     },
     "Country": {
-        "en": "Country", "de": "Land", "ru": "Страна", "pt": "País", "nl": "Land", "fr": "Pays", "it": "Paese", "es": "País", "pl": "Kraj", "uk": "Країна", "zh-cn": "国家"
+        "en": "Country",
+        "de": "Land",
+        "ru": "Страна",
+        "pt": "País",
+        "nl": "Land",
+        "fr": "Pays",
+        "it": "Paese",
+        "es": "País",
+        "pl": "Kraj",
+        "uk": "Країна",
+        "zh-cn": "国家"
+    },
+    "support": {
+        "en": "Support",
+        "de": "Support",
+        "ru": "Поддержка",
+        "pt": "Suporte",
+        "nl": "Ondersteuning",
+        "fr": "Support",
+        "it": "Supporto",
+        "es": "Soporte",
+        "pl": "Wsparcie",
+        "uk": "Підтримка",
+        "zh-cn": "支持"
     }
 }

@@ -1620,6 +1620,19 @@
           pl: "Kraj",
           uk: "\u041A\u0440\u0430\u0457\u043D\u0430",
           "zh-cn": "\u56FD\u5BB6"
+        },
+        support: {
+          en: "Support",
+          de: "Support",
+          ru: "\u041F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430",
+          pt: "Suporte",
+          nl: "Ondersteuning",
+          fr: "Support",
+          it: "Supporto",
+          es: "Soporte",
+          pl: "Wsparcie",
+          uk: "\u041F\u0456\u0434\u0442\u0440\u0438\u043C\u043A\u0430",
+          "zh-cn": "\u652F\u6301"
         }
       };
     }
@@ -22642,7 +22655,7 @@
   var import_L = __toESM(require_L_Terminator());
 
   // ../package.json
-  var version = "0.2.0";
+  var version = "0.2.1";
 
   // node_modules/deep-object-diff/mjs/utils.js
   var isDate = (d) => d instanceof Date;
@@ -24172,6 +24185,14 @@
   vis.binds.mapwidgets.timeline = {
     data: {},
     createWidget
+  };
+
+  // mapwidgets/js/customLink.js
+  vis.binds.mapwidgets.customLink = function(wid_attr, options) {
+    let [, linktext, protocol, port, ...link] = options;
+    return {
+      input: `<a href="${protocol}://${port ? port : ""}/${link.join("/")}" target="_blank">${linktext}</a>`
+    };
   };
 })();
 /*! Bundled license information:

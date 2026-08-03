@@ -1,4 +1,9 @@
 # Older changes
+## 0.0.13 (2025-09-30)
+
+- add day/Night terminator
+
+
 ## 0.0.12 (2025-09-27)
 
 - Another example of using the Geocoder plugin has been added,
@@ -6,7 +11,6 @@
 - fix some picture alt names
 - fix some project filenames
 - improve version number output in the widget
-
 
 ## 0.0.11 (2025-09-26)
 

@@ -33,7 +33,8 @@ variable and manipulated using JavaScript.
 
 For use cases see the [examples](./example/example.md)
 
-Additional features can be added upon request, depending on their relevance and feasibility.
+Additional features can be added upon request,
+depending on their relevance and feasibility.
 
 ## Configuration
 
@@ -482,7 +483,8 @@ into stays. The following options control this processing:
 - **Timeline layout**: automatic, beside the map, or below the map
 - **Stay radius**: maximum distance of samples belonging to a stay (default 75 m)
 - **Minimum stay**: minimum duration of a stay (default 10 minutes)
-- **Maximum reasonable speed**: threshold for isolated GPS jumps (default 300 km/h; `0` disables the filter)
+- **Maximum reasonable speed**: threshold for isolated GPS jumps
+  (default 300 km/h; `0` disables the filter)
 
 Known places and reverse-geocoding results are persisted in these states,
 which are created during adapter installation:
@@ -625,6 +627,10 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.2.1 (2026-08-03)
+
+- add support link to widgets
+
 ### 0.2.0 (2026-08-01)
 
 - add timeline widget
@@ -648,10 +654,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 - improve error handling for fitbounds
 - add example for path history
 - fix lint errors
-
-### 0.0.13 (2025-09-30)
-
-- add day/Night terminator
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 
