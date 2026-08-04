@@ -22703,7 +22703,7 @@
   var import_L = __toESM(require_L_Terminator());
 
   // ../package.json
-  var version = "0.2.2";
+  var version = "0.2.3";
 
   // node_modules/deep-object-diff/mjs/utils.js
   var isDate = (d) => d instanceof Date;

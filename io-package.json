@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "news": {
+      "0.2.3": {
+        "en": "improved stay detection\noptimized timeline rendering",
+        "de": "verbesserte Aufenthaltserkennung\nOptimierte Zeitleistendarstellung",
+        "ru": "улучшенное обнаружение пребывания\nоптимизированная отрисовка временной шкалы",
+        "pt": "detecção de permanência aprimorada\nrenderização de linha do tempo otimizada",
+        "nl": "verbeterde verblijfdetectie\ngeoptimaliseerde tijdlijnweergave",
+        "fr": "détection de séjour améliorée\nrendu optimisé de la chronologie",
+        "it": "rilevamento del soggiorno migliorato\nrendering ottimizzato della timeline",
+        "es": "detección de estancias mejorada\nRenderizado de línea de tiempo optimizado",
+        "pl": "ulepszone wykrywanie pobytu\nzoptymalizowane renderowanie osi czasu",
+        "uk": "покращене виявлення перебування\nоптимізований рендеринг часової шкали",
+        "zh-cn": "改进的停留检测\n优化时间线渲染"
+      },
       "0.2.2": {
         "en": "better icon for timeline location widget",
         "de": "Besseres Symbol für das Timeline-Standort-Widget",
@@ -80,19 +93,6 @@
         "pl": "napraw mapę tłumaczenia lng\ndodaj main w package.json dla serwera deweloperskiego\ndodaj walidację schematu dla mapdata w trybie edycji\npoprawić obsługę błędów dla fitbounds\ndodaj przykład historii ścieżki\nnapraw błędy lint",
         "uk": "виправити карту перекладу (мовний рядок)\nдодати main у package.json для dev-сервера\nдодати перевірку схеми для даних карти в режимі редагування\nпокращено обробку помилок для fitbounds\nдодати приклад історії шляхів\nвиправити помилки lint",
         "zh-cn": "修复翻译地图 lng\n在开发服务器的 package.json 文件中添加 main 函数\n在编辑模式下为地图数据添加架构验证\n改进 fitbounds 的错误处理\n添加路径历史记录示例\n修复 lint 错误"
-      },
-      "0.0.13": {
-        "en": "add day/Night terminator",
-        "de": "tag/Nacht Terminator hinzufügen",
-        "ru": "обсуждение Day/Night Terminator",
-        "pt": "adicionar dia/terminador noturno",
-        "nl": "dag/nachtterminator toevoegen",
-        "fr": "ajouter le terminateur jour/nuit",
-        "it": "aggiungere giorno/Night terminator",
-        "es": "añadir día/noche final",
-        "pl": "dodaj terminator dnia / nocy",
-        "uk": "додати день/Нічний термінатор",
-        "zh-cn": "添加日/ 夜间定义符"
       }
     },
     "titleLang": {
