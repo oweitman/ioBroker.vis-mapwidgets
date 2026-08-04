@@ -118,6 +118,7 @@ function detectStays(points, stayRadiusM = 75, minStayMinutes = 10) {
                 type: 'stay',
                 startIndex,
                 endIndex: boundaryIndex,
+                movementStartIndex: lastInside,
                 startTs: points[startIndex].ts,
                 endTs: points[boundaryIndex].ts,
                 durationMs: points[boundaryIndex].ts - points[startIndex].ts,
@@ -162,6 +163,7 @@ function detectKnownPlaceStays(points, places, personId) {
             type: 'stay',
             startIndex,
             endIndex: boundaryIndex,
+            movementStartIndex: lastInside,
             startTs: points[startIndex].ts,
             endTs: points[boundaryIndex].ts,
             durationMs: points[boundaryIndex].ts - points[startIndex].ts,
@@ -184,7 +186,10 @@ function buildTimeline(points, options = {}) {
     const knownPlaceStays = detectKnownPlaceStays(points, options.knownPlaces, options.personId);
     const occupiedIndexes = new Set(
         knownPlaceStays.flatMap(stay =>
-            Array.from({ length: stay.endIndex - stay.startIndex + 1 }, (_, index) => stay.startIndex + index),
+            Array.from(
+                { length: (stay.movementStartIndex ?? stay.endIndex) - stay.startIndex + 1 },
+                (_, index) => stay.startIndex + index,
+            ),
         ),
     );
     const detectedStays = detectStays(points, options.stayRadiusM, options.minStayMinutes).filter(
@@ -196,30 +201,32 @@ function buildTimeline(points, options = {}) {
     const stays = [...knownPlaceStays, ...detectedStays].sort((a, b) => a.startIndex - b.startIndex);
     const segments = [];
     let movementStart = 0;
+    let movementStartTs = points[0].ts;
 
     for (const stay of stays) {
         if (stay.startIndex > movementStart) {
             const movementPoints = points.slice(movementStart, stay.startIndex + 1);
             segments.push({
                 type: 'move',
-                startTs: movementPoints[0].ts,
+                startTs: movementStartTs,
                 endTs: movementPoints.at(-1).ts,
-                durationMs: movementPoints.at(-1).ts - movementPoints[0].ts,
+                durationMs: movementPoints.at(-1).ts - movementStartTs,
                 distanceM: totalDistance(movementPoints),
                 points: movementPoints,
             });
         }
         segments.push(stay);
-        movementStart = stay.endIndex;
+        movementStart = stay.movementStartIndex ?? stay.endIndex;
+        movementStartTs = stay.endTs;
     }
 
     if (movementStart < points.length - 1 || !stays.length) {
         const movementPoints = points.slice(movementStart);
         segments.push({
             type: 'move',
-            startTs: movementPoints[0].ts,
+            startTs: movementStartTs,
             endTs: movementPoints.at(-1).ts,
-            durationMs: movementPoints.at(-1).ts - movementPoints[0].ts,
+            durationMs: movementPoints.at(-1).ts - movementStartTs,
             distanceM: totalDistance(movementPoints),
             points: movementPoints,
         });

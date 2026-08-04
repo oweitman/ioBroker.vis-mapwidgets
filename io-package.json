@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "news": {
+      "0.2.4": {
+        "en": "fix tests\nfix last segment handling",
+        "de": "Fixtests\nFehler bei der Verarbeitung des letzten Segments",
+        "ru": "исправить тесты\nисправлена обработка последнего сегмента",
+        "pt": "corrigir testes\ncorrigir o tratamento do último segmento",
+        "nl": "fix tests\nCorrectie van de afhandeling van het laatste segment",
+        "fr": "tests de correction\ncorrection de la gestion du dernier segment",
+        "it": "test di correzione\ncorrezione gestione ultimo segmento",
+        "es": "pruebas de corrección\nCorregir el manejo del último segmento",
+        "pl": "naprawić testy\nnapraw obsługę ostatniego segmentu",
+        "uk": "виправити тести\nвиправити обробку останнього сегмента",
+        "zh-cn": "修复测试\n修复最后一个片段的处理"
+      },
       "0.2.3": {
         "en": "improved stay detection\noptimized timeline rendering",
         "de": "verbesserte Aufenthaltserkennung\nOptimierte Zeitleistendarstellung",
@@ -80,19 +93,6 @@
         "pl": "napraw okno dialogowe błędu schematu w vis-2",
         "uk": "виправити діалогове вікно помилки схеми у vis-2",
         "zh-cn": "修复 vis-2 中的架构错误对话框"
-      },
-      "0.1.0": {
-        "en": "fix translation map lng\nadd main in package.json for dev-server\nadd schema validation for mapdata in edit mode\nimprove error handling for fitbounds\nadd example for path history\nfix lint errors",
-        "de": "Übersetzungskarte korrigieren (lang)\nFüge „main“ in der package.json für den Entwicklungsserver hinzu.\nSchemavalidierung für Mapdata im Bearbeitungsmodus hinzufügen\nFehlerbehandlung für fitbounds verbessern\nBeispiel für Pfadverlauf hinzufügen\nLint-Fehler beheben",
-        "ru": "исправление перевода карты lng\nДобавьте параметр main в файл package.json для dev-сервера.\nДобавить проверку схемы для данных карты в режиме редактирования.\nулучшить обработку ошибок для функции fitbounds\nдобавить пример истории перемещений\nИсправление ошибок линтинга",
-        "pt": "corrigir mapa de tradução ng\nAdicione o arquivo `package.json` para o servidor de desenvolvimento.\nAdicionar validação de esquema para dados de mapeamento no modo de edição\nMelhorar o tratamento de erros para o fitbounds\nAdicionar exemplo para o histórico de caminhos\ncorrigir erros de lint",
-        "nl": "fix translation map lng\nVoeg 'main' toe aan package.json voor de ontwikkelserver.\nVoeg schemavalidatie toe voor mapdata in de bewerkingsmodus.\nVerbeter de foutafhandeling voor fitbounds.\nVoeg een voorbeeld toe voor de padgeschiedenis.\nlint-fouten corrigeren",
-        "fr": "corriger la carte de traduction lng\najouter main dans package.json pour le serveur de développement\nAjouter la validation du schéma pour les données cartographiques en mode édition\naméliorer la gestion des erreurs pour fitbounds\najouter un exemple pour l'historique du chemin\ncorriger les erreurs de lint",
-        "it": "correzione della mappa di traduzione lng\naggiungi main in package.json per dev-server\naggiungi la convalida dello schema per i dati della mappa in modalità di modifica\nmigliorare la gestione degli errori per fitbounds\naggiungi esempio per la cronologia del percorso\ncorreggere gli errori di lint",
-        "es": "corregir el mapa de traducción lng\nagregar main en package.json para dev-server\nagregar validación de esquema para mapdata en modo de edición\nmejorar el manejo de errores para fitbounds\nagregar ejemplo para el historial de ruta\ncorregir errores de lint",
-        "pl": "napraw mapę tłumaczenia lng\ndodaj main w package.json dla serwera deweloperskiego\ndodaj walidację schematu dla mapdata w trybie edycji\npoprawić obsługę błędów dla fitbounds\ndodaj przykład historii ścieżki\nnapraw błędy lint",
-        "uk": "виправити карту перекладу (мовний рядок)\nдодати main у package.json для dev-сервера\nдодати перевірку схеми для даних карти в режимі редагування\nпокращено обробку помилок для fitbounds\nдодати приклад історії шляхів\nвиправити помилки lint",
-        "zh-cn": "修复翻译地图 lng\n在开发服务器的 package.json 文件中添加 main 函数\n在编辑模式下为地图数据添加架构验证\n改进 fitbounds 的错误处理\n添加路径历史记录示例\n修复 lint 错误"
       }
     },
     "titleLang": {

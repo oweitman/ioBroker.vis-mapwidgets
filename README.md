@@ -627,6 +627,11 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.2.4 (2026-08-04)
+
+- fix tests
+- fix last segment handling
+
 ### 0.2.3 (2026-08-04)
 
 - improved stay detection
@@ -643,13 +648,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 ### 0.2.0 (2026-08-01)
 
 - add timeline widget
-
-### 0.1.2 (2026-07-12)
-
-- add tests
-- improve build
-- fix repochecker
-- improve datapoint handling
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 
