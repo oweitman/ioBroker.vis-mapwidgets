@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "news": {
+      "0.2.5": {
+        "en": "The dark theme has been adjusted to make the dialog easier to read.",
+        "de": "Das dunkle Design wurde angepasst, um die Lesbarkeit der Dialoge zu verbessern.",
+        "ru": "Темная тема была изменена для облегчения чтения диалогов.",
+        "pt": "O tema escuro foi ajustado para facilitar a leitura dos diálogos.",
+        "nl": "Het donkere thema is aangepast om de dialoog beter leesbaar te maken.",
+        "fr": "Le thème sombre a été ajusté pour faciliter la lecture des dialogues.",
+        "it": "Il tema scuro è stato adattato per rendere i dialoghi più facili da leggere.",
+        "es": "Se ha ajustado el tema oscuro para facilitar la lectura de los diálogos.",
+        "pl": "Aby ułatwić czytanie dialogów, zmieniono ciemny motyw.",
+        "uk": "Темну тему було налаштовано, щоб діалоги було легше читати.",
+        "zh-cn": "已调整深色主题，使对话框更易于阅读。"
+      },
       "0.2.4": {
         "en": "fix tests\nfix last segment handling",
         "de": "Fixtests\nFehler bei der Verarbeitung des letzten Segments",
@@ -80,19 +93,6 @@
         "pl": "dodaj testy\nulepszyć kompilację\nnapraw repochecker\npoprawić obsługę punktów danych",
         "uk": "додати тести\nпокращити збірку\nвиправити перевірку повторів\nпокращити обробку точок даних",
         "zh-cn": "添加测试\n改进构建\n修复 repochecker\n改进数据点处理"
-      },
-      "0.1.1": {
-        "en": "fix schema error dialog in vis-2",
-        "de": "Schemafehlerdialog in vis-2 beheben",
-        "ru": "Исправление диалогового окна ошибки схемы в vis-2",
-        "pt": "Corrigir diálogo de erro de esquema no vis-2",
-        "nl": "Foutmelding over schemafout in vis-2 corrigeren",
-        "fr": "Correction de la boîte de dialogue d'erreur de schéma dans vis-2",
-        "it": "correggere la finestra di dialogo degli errori di schema in vis-2",
-        "es": "Corregir el cuadro de diálogo de error de esquema en vis-2",
-        "pl": "napraw okno dialogowe błędu schematu w vis-2",
-        "uk": "виправити діалогове вікно помилки схеми у vis-2",
-        "zh-cn": "修复 vis-2 中的架构错误对话框"
       }
     },
     "titleLang": {

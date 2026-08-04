@@ -133,6 +133,14 @@ test('uses the selected layout, dark theme and an in-widget known-place dialog',
     await expect(page.locator('#wtimeline [data-place-address="city"]')).toHaveText('Frankfurt am Main');
     await expect(page.locator('#wtimeline [data-place-address="country"]')).toHaveText('Deutschland');
     await expect(page.locator('#wtimeline [data-action="delete-place"]')).toBeVisible();
+    await expect(page.locator('#wtimeline [name="placeName"]')).toHaveCSS('background-color', 'rgb(48, 49, 52)');
+    await expect(page.locator('#wtimeline [name="placeName"]')).toHaveCSS('color', 'rgb(232, 234, 237)');
+    await expect(page.locator('#wtimeline [data-action="cancel-place"]')).toHaveCSS('color', 'rgb(138, 180, 248)');
+    await expect(page.locator('#wtimeline [data-action="commit-place"]')).toHaveCSS(
+        'background-color',
+        'rgb(138, 180, 248)',
+    );
+    await expect(page.locator('#wtimeline [data-action="commit-place"]')).toHaveCSS('color', 'rgb(32, 33, 36)');
 
     await page.locator('#wtimeline [name="placeName"]').fill('Office');
     await page.locator('#wtimeline [data-action="commit-place"]').click();

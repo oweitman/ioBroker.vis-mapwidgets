@@ -627,6 +627,10 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.2.5 (2026-08-04)
+
+- The dark theme has been adjusted to make the dialog easier to read.
+
 ### 0.2.4 (2026-08-04)
 
 - fix tests
@@ -644,10 +648,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 ### 0.2.1 (2026-08-03)
 
 - add support link to widgets
-
-### 0.2.0 (2026-08-01)
-
-- add timeline widget
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 

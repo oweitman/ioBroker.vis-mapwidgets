@@ -650,6 +650,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --timeline-bg: #fff;
   --timeline-text: #202124;
   --timeline-muted: #5f6368;
+  --timeline-input-bg: #fff;
+  --timeline-input-border: #80868b;
+  --timeline-action: #1967d2;
+  --timeline-action-contrast: #fff;
+  --timeline-action-hover: #1558b0;
+  --timeline-action-soft: #e8f0fe;
   background: var(--timeline-bg);
   color: var(--timeline-text);
   font-family: Arial, sans-serif;
@@ -660,6 +666,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --timeline-bg: #202124;
   --timeline-text: #e8eaed;
   --timeline-muted: #bdc1c6;
+  --timeline-input-bg: #303134;
+  --timeline-input-border: #9aa0a6;
+  --timeline-action: #8ab4f8;
+  --timeline-action-contrast: #202124;
+  --timeline-action-hover: #aecbfa;
+  --timeline-action-soft: #303f55;
 }
 .mapwidgets-timeline-widget button {
   color: inherit;
@@ -985,10 +997,16 @@ button.mapwidgets-timeline-entry {
 .mapwidgets-timeline-dialog input {
   min-width: 0;
   padding: 9px 10px;
-  border: 1px solid var(--timeline-border);
+  border: 1px solid var(--timeline-input-border);
   border-radius: 6px;
+  background: var(--timeline-input-bg);
   color: var(--timeline-text);
   font: inherit;
+}
+.mapwidgets-timeline-dialog input:focus {
+  border-color: var(--timeline-action);
+  outline: 2px solid var(--timeline-action);
+  outline-offset: 1px;
 }
 .mapwidgets-timeline-dialog-address {
   display: grid;
@@ -1013,9 +1031,20 @@ button.mapwidgets-timeline-entry {
   padding: 8px 14px;
   border: 0;
   border-radius: 18px;
-  color: #1967d2;
+  color: var(--timeline-action);
   background: transparent;
   cursor: pointer;
+}
+.mapwidgets-timeline-dialog-actions [data-action=commit-place] {
+  color: var(--timeline-action-contrast);
+  background: var(--timeline-action);
+  font-weight: 600;
+}
+.mapwidgets-timeline-dialog-actions button:hover {
+  background: var(--timeline-action-soft);
+}
+.mapwidgets-timeline-dialog-actions [data-action=commit-place]:hover {
+  background: var(--timeline-action-hover);
 }
 .mapwidgets-timeline-dialog-actions .mapwidgets-timeline-delete {
   margin-right: auto;

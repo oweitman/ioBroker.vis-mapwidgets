@@ -1,11 +1,15 @@
 # Older changes
+## 0.2.0 (2026-08-01)
+
+- add timeline widget
+
+
 ## 0.1.2 (2026-07-12)
 
 - add tests
 - improve build
 - fix repochecker
 - improve datapoint handling
-
 
 ## 0.1.1 (2026-07-06)
 
