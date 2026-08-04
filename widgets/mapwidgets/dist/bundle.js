@@ -22569,15 +22569,16 @@
             center = centroid(points.slice(startIndex, lastInside + 1));
             endIndex++;
           }
-          if (lastInside > startIndex && points[lastInside].ts - points[startIndex].ts >= minDuration) {
+          const boundaryIndex = endIndex < points.length ? endIndex : lastInside;
+          if (lastInside > startIndex && points[boundaryIndex].ts - points[startIndex].ts >= minDuration) {
             const stayPoints = points.slice(startIndex, lastInside + 1);
             stays.push(__spreadProps(__spreadValues({
               type: "stay",
               startIndex,
-              endIndex: lastInside,
+              endIndex: boundaryIndex,
               startTs: points[startIndex].ts,
-              endTs: points[lastInside].ts,
-              durationMs: points[lastInside].ts - points[startIndex].ts
+              endTs: points[boundaryIndex].ts,
+              durationMs: points[boundaryIndex].ts - points[startIndex].ts
             }, centroid(stayPoints)), {
               points: stayPoints
             }));
@@ -22588,11 +22589,57 @@
         }
         return stays;
       }
+      function detectKnownPlaceStays(points, places, personId) {
+        const stays = [];
+        let startIndex = 0;
+        while (startIndex < points.length) {
+          const place = findKnownPlace2(points[startIndex], places, personId);
+          if (!place) {
+            startIndex++;
+            continue;
+          }
+          let lastInside = startIndex;
+          while (lastInside + 1 < points.length) {
+            const nextPlace = findKnownPlace2(points[lastInside + 1], places, personId);
+            if ((nextPlace == null ? void 0 : nextPlace.id) !== place.id) {
+              break;
+            }
+            lastInside++;
+          }
+          const boundaryIndex = lastInside + 1 < points.length ? lastInside + 1 : lastInside;
+          const stayPoints = points.slice(startIndex, lastInside + 1);
+          stays.push({
+            type: "stay",
+            startIndex,
+            endIndex: boundaryIndex,
+            startTs: points[startIndex].ts,
+            endTs: points[boundaryIndex].ts,
+            durationMs: points[boundaryIndex].ts - points[startIndex].ts,
+            lat: Number(place.lat),
+            lon: Number(place.lon),
+            points: stayPoints,
+            knownPlace: place
+          });
+          startIndex = boundaryIndex + 1;
+        }
+        return stays;
+      }
       function buildTimeline2(points, options = {}) {
         if (!points.length) {
           return [];
         }
-        const stays = detectStays(points, options.stayRadiusM, options.minStayMinutes);
+        const knownPlaceStays = detectKnownPlaceStays(points, options.knownPlaces, options.personId);
+        const occupiedIndexes = new Set(
+          knownPlaceStays.flatMap(
+            (stay) => Array.from({ length: stay.endIndex - stay.startIndex + 1 }, (_2, index) => stay.startIndex + index)
+          )
+        );
+        const detectedStays = detectStays(points, options.stayRadiusM, options.minStayMinutes).filter(
+          (stay) => !Array.from({ length: stay.endIndex - stay.startIndex + 1 }, (_2, index) => stay.startIndex + index).some(
+            (index) => occupiedIndexes.has(index)
+          )
+        );
+        const stays = [...knownPlaceStays, ...detectedStays].sort((a, b) => a.startIndex - b.startIndex);
         const segments = [];
         let movementStart = 0;
         for (const stay of stays) {
@@ -22634,6 +22681,7 @@
       }
       module.exports = {
         buildTimeline: buildTimeline2,
+        detectKnownPlaceStays,
         detectStays,
         distanceMeters,
         findKnownPlace: findKnownPlace2,
@@ -23593,7 +23641,7 @@
   }
   function resolveStay(runtime, person, segment, loadId) {
     return __async(this, null, function* () {
-      const knownPlace = findKnownPlace(segment, runtime.places, person.id);
+      const knownPlace = segment.knownPlace || findKnownPlace(segment, runtime.places, person.id);
       if (knownPlace) {
         segment.place = __spreadProps(__spreadValues({}, knownPlace), { source: "known" });
         return;
@@ -24054,7 +24102,9 @@
       }
       const segments = currentOnly ? [] : buildTimeline(points, {
         stayRadiusM: runtime.options.stayRadiusM,
-        minStayMinutes: runtime.options.minStayMinutes
+        minStayMinutes: runtime.options.minStayMinutes,
+        knownPlaces: runtime.places,
+        personId: person.id
       });
       const result = { person, points, segments, currentOnly, historyError };
       yield Promise.all(
@@ -24063,11 +24113,13 @@
       return result;
     });
   }
-  function loadDay(runtime) {
-    return __async(this, null, function* () {
+  function loadDay(_0) {
+    return __async(this, arguments, function* (runtime, options = {}) {
       const loadId = ++runtime.loadId;
       renderHeader(runtime);
-      renderTimeline(runtime, translate("Loading history..."));
+      if (options.showLoading !== false) {
+        renderTimeline(runtime, translate("Loading history..."));
+      }
       const results = yield Promise.all(runtime.people.map((person) => loadPerson(runtime, person, loadId)));
       if (loadId !== runtime.loadId) {
         return;
@@ -24076,6 +24128,15 @@
       renderTimeline(runtime);
       renderMap(runtime);
     });
+  }
+  function scheduleLiveReload(runtime) {
+    if (runtime.liveReloadTimer) {
+      return;
+    }
+    runtime.liveReloadTimer = setTimeout(() => __async(null, null, function* () {
+      runtime.liveReloadTimer = null;
+      yield loadDay(runtime, { showLoading: false });
+    }), 1e3);
   }
   function initializeStorage(runtime) {
     return __async(this, null, function* () {
@@ -24103,6 +24164,7 @@
       if (previous) {
         previous.loadId++;
         Object.values(previous.writeTimers || {}).forEach((timer) => clearTimeout(timer));
+        clearTimeout(previous.liveReloadTimer);
         (_a = previous.resizeObserver) == null ? void 0 : _a.disconnect();
         if (previous.themeMedia && previous.themeHandler) {
           (_c = (_b = previous.themeMedia).removeEventListener) == null ? void 0 : _c.call(_b, "change", previous.themeHandler);
@@ -24168,7 +24230,7 @@
           runtime.cache = mergeCaches(runtime.cache, parseJsonState(newValue, { entries: {} }));
           yield indexedDbSet("cache", runtime.cache);
         } else if (isToday(runtime.date)) {
-          loadDay(runtime);
+          scheduleLiveReload(runtime);
         }
       }));
       if (!people.length) {

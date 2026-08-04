@@ -365,7 +365,7 @@ function cacheKey(runtime, position) {
 }
 
 async function resolveStay(runtime, person, segment, loadId) {
-    const knownPlace = findKnownPlace(segment, runtime.places, person.id);
+    const knownPlace = segment.knownPlace || findKnownPlace(segment, runtime.places, person.id);
     if (knownPlace) {
         segment.place = { ...knownPlace, source: 'known' };
         return;
@@ -858,6 +858,8 @@ async function loadPerson(runtime, person, loadId) {
         : buildTimeline(points, {
               stayRadiusM: runtime.options.stayRadiusM,
               minStayMinutes: runtime.options.minStayMinutes,
+              knownPlaces: runtime.places,
+              personId: person.id,
           });
     const result = { person, points, segments, currentOnly, historyError };
     await Promise.all(
@@ -868,10 +870,12 @@ async function loadPerson(runtime, person, loadId) {
     return result;
 }
 
-async function loadDay(runtime) {
+async function loadDay(runtime, options = {}) {
     const loadId = ++runtime.loadId;
     renderHeader(runtime);
-    renderTimeline(runtime, translate('Loading history...'));
+    if (options.showLoading !== false) {
+        renderTimeline(runtime, translate('Loading history...'));
+    }
     const results = await Promise.all(runtime.people.map(person => loadPerson(runtime, person, loadId)));
     if (loadId !== runtime.loadId) {
         return;
@@ -879,6 +883,16 @@ async function loadDay(runtime) {
     runtime.results = new Map(results.filter(Boolean).map(result => [result.person.id, result]));
     renderTimeline(runtime);
     renderMap(runtime);
+}
+
+function scheduleLiveReload(runtime) {
+    if (runtime.liveReloadTimer) {
+        return;
+    }
+    runtime.liveReloadTimer = setTimeout(async () => {
+        runtime.liveReloadTimer = null;
+        await loadDay(runtime, { showLoading: false });
+    }, 1000);
 }
 
 async function initializeStorage(runtime) {
@@ -904,6 +918,7 @@ async function createWidget(widgetID, view, data) {
     if (previous) {
         previous.loadId++;
         Object.values(previous.writeTimers || {}).forEach(timer => clearTimeout(timer));
+        clearTimeout(previous.liveReloadTimer);
         previous.resizeObserver?.disconnect();
         if (previous.themeMedia && previous.themeHandler) {
             previous.themeMedia.removeEventListener?.('change', previous.themeHandler);
@@ -969,7 +984,7 @@ async function createWidget(widgetID, view, data) {
             runtime.cache = mergeCaches(runtime.cache, parseJsonState(newValue, { entries: {} }));
             await indexedDbSet('cache', runtime.cache);
         } else if (isToday(runtime.date)) {
-            loadDay(runtime);
+            scheduleLiveReload(runtime);
         }
     });
 

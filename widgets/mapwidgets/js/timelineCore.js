@@ -111,15 +111,16 @@ function detectStays(points, stayRadiusM = 75, minStayMinutes = 10) {
             endIndex++;
         }
 
-        if (lastInside > startIndex && points[lastInside].ts - points[startIndex].ts >= minDuration) {
+        const boundaryIndex = endIndex < points.length ? endIndex : lastInside;
+        if (lastInside > startIndex && points[boundaryIndex].ts - points[startIndex].ts >= minDuration) {
             const stayPoints = points.slice(startIndex, lastInside + 1);
             stays.push({
                 type: 'stay',
                 startIndex,
-                endIndex: lastInside,
+                endIndex: boundaryIndex,
                 startTs: points[startIndex].ts,
-                endTs: points[lastInside].ts,
-                durationMs: points[lastInside].ts - points[startIndex].ts,
+                endTs: points[boundaryIndex].ts,
+                durationMs: points[boundaryIndex].ts - points[startIndex].ts,
                 ...centroid(stayPoints),
                 points: stayPoints,
             });
@@ -132,12 +133,67 @@ function detectStays(points, stayRadiusM = 75, minStayMinutes = 10) {
     return stays;
 }
 
+function detectKnownPlaceStays(points, places, personId) {
+    const stays = [];
+    let startIndex = 0;
+
+    while (startIndex < points.length) {
+        const place = findKnownPlace(points[startIndex], places, personId);
+        if (!place) {
+            startIndex++;
+            continue;
+        }
+
+        let lastInside = startIndex;
+        while (lastInside + 1 < points.length) {
+            const nextPlace = findKnownPlace(points[lastInside + 1], places, personId);
+            if (nextPlace?.id !== place.id) {
+                break;
+            }
+            lastInside++;
+        }
+
+        // At departure the first point outside a known zone is the first evidence
+        // that the person has left it. Attribute an initial history gap to the
+        // known place instead of reporting it as movement.
+        const boundaryIndex = lastInside + 1 < points.length ? lastInside + 1 : lastInside;
+        const stayPoints = points.slice(startIndex, lastInside + 1);
+        stays.push({
+            type: 'stay',
+            startIndex,
+            endIndex: boundaryIndex,
+            startTs: points[startIndex].ts,
+            endTs: points[boundaryIndex].ts,
+            durationMs: points[boundaryIndex].ts - points[startIndex].ts,
+            lat: Number(place.lat),
+            lon: Number(place.lon),
+            points: stayPoints,
+            knownPlace: place,
+        });
+        startIndex = boundaryIndex + 1;
+    }
+
+    return stays;
+}
+
 function buildTimeline(points, options = {}) {
     if (!points.length) {
         return [];
     }
 
-    const stays = detectStays(points, options.stayRadiusM, options.minStayMinutes);
+    const knownPlaceStays = detectKnownPlaceStays(points, options.knownPlaces, options.personId);
+    const occupiedIndexes = new Set(
+        knownPlaceStays.flatMap(stay =>
+            Array.from({ length: stay.endIndex - stay.startIndex + 1 }, (_, index) => stay.startIndex + index),
+        ),
+    );
+    const detectedStays = detectStays(points, options.stayRadiusM, options.minStayMinutes).filter(
+        stay =>
+            !Array.from({ length: stay.endIndex - stay.startIndex + 1 }, (_, index) => stay.startIndex + index).some(
+                index => occupiedIndexes.has(index),
+            ),
+    );
+    const stays = [...knownPlaceStays, ...detectedStays].sort((a, b) => a.startIndex - b.startIndex);
     const segments = [];
     let movementStart = 0;
 
@@ -188,6 +244,7 @@ function getLocalDayBounds(date) {
 
 module.exports = {
     buildTimeline,
+    detectKnownPlaceStays,
     detectStays,
     distanceMeters,
     findKnownPlace,

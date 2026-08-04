@@ -4,6 +4,7 @@
 const assert = require('node:assert/strict');
 const {
     buildTimeline,
+    detectKnownPlaceStays,
     distanceMeters,
     findKnownPlace,
     getLocalDayBounds,
@@ -58,9 +59,25 @@ describe('timeline core', () => {
         ];
         const segments = buildTimeline(points, { stayRadiusM: 75, minStayMinutes: 10 });
         assert.equal(segments[0].type, 'stay');
-        assert.equal(segments[0].durationMs, 15 * 60000);
+        assert.equal(segments[0].durationMs, 25 * 60000);
         assert.equal(segments[1].type, 'move');
         assert.ok(segments[1].distanceM > 1000);
+    });
+
+    it('counts a sparse interval until the first point outside as an unknown stay', () => {
+        const points = [
+            { lat: 50, lon: 8, ts: 0 },
+            { lat: 50, lon: 8.00001, ts: 60000 },
+            { lat: 50.01, lon: 8.01, ts: 12 * 60000 },
+            { lat: 50.02, lon: 8.02, ts: 13 * 60000 },
+        ];
+
+        const segments = buildTimeline(points, { stayRadiusM: 75, minStayMinutes: 10 });
+        assert.equal(segments[0].type, 'stay');
+        assert.equal(segments[0].durationMs, 12 * 60000);
+        assert.equal(segments[0].points.length, 2);
+        assert.equal(segments[1].type, 'move');
+        assert.equal(segments[1].startTs, 12 * 60000);
     });
 
     it('uses the nearest matching known place and respects person scope', () => {
@@ -70,6 +87,32 @@ describe('timeline core', () => {
         ];
         assert.equal(findKnownPlace({ lat: 50, lon: 8.00001 }, places, 'alice').id, 'private');
         assert.equal(findKnownPlace({ lat: 50, lon: 8.00001 }, places, 'bob').id, 'global');
+    });
+
+    it('uses known zones at sparse start and end points without waiting for the minimum stay duration', () => {
+        const home = { id: 'home', lat: 50, lon: 8, radius: 75 };
+        const points = [
+            { lat: 50, lon: 8, ts: 0 },
+            { lat: 50, lon: 8.00001, ts: 60000 },
+            { lat: 50.01, lon: 8.01, ts: 40 * 60000 },
+            { lat: 50, lon: 8, ts: 50 * 60000 },
+        ];
+
+        const knownStays = detectKnownPlaceStays(points, [home], 'alice');
+        assert.equal(knownStays.length, 2);
+        assert.equal(knownStays[0].endTs, 40 * 60000);
+        assert.equal(knownStays[1].startTs, 50 * 60000);
+
+        const segments = buildTimeline(points, {
+            stayRadiusM: 75,
+            minStayMinutes: 10,
+            knownPlaces: [home],
+            personId: 'alice',
+        });
+        assert.equal(segments[0].type, 'stay');
+        assert.equal(segments[0].knownPlace.id, 'home');
+        assert.equal(segments.at(-1).type, 'stay');
+        assert.equal(segments.at(-1).knownPlace.id, 'home');
     });
 
     it('creates local calendar-day bounds', () => {

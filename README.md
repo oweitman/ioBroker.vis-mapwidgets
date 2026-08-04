@@ -627,6 +627,12 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+**WORK IN PROGRESS**
+
+- improved stay detection
+- optimized timeline rendering
+
 ### 0.2.2 (2026-08-03)
 
 - besseres icon für timeline location widget
