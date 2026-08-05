@@ -643,7 +643,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.3.0 (2026-08-05)
 
 - Added an independent automatic, light, or dark map color scheme to the Map
   Leaflet and Location Timeline widgets.
@@ -665,10 +665,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 ### 0.2.2 (2026-08-03)
 
 - besseres icon für timeline location widget
-
-### 0.2.1 (2026-08-03)
-
-- add support link to widgets
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 

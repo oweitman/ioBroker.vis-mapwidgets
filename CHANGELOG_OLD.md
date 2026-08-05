@@ -1,8 +1,11 @@
 # Older changes
+## 0.2.1 (2026-08-03)
+
+- add support link to widgets
+
 ## 0.2.0 (2026-08-01)
 
 - add timeline widget
-
 
 ## 0.1.2 (2026-07-12)
 

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.2.5",
+    "version": "0.3.0",
     "news": {
+      "0.3.0": {
+        "en": "- Added an independent automatic, light, or dark map color scheme to the Map\n  Leaflet and Location Timeline widgets.",
+        "de": "- Der Karte wurde ein unabhängiges automatisches Farbschema (hell oder dunkel) hinzugefügt.\nLeaflet- und Standort-Zeitleisten-Widgets.",
+        "ru": "- Добавлена независимая автоматическая цветовая схема для карты: светлая или темная.\nВиджеты «Листовка» и «Хронология местоположения».",
+        "pt": "- Adicionada uma opção independente de esquema de cores automático, claro ou escuro para o mapa.\nWidgets de folheto e linha do tempo de localização.",
+        "nl": "- Er is een onafhankelijk automatisch kleurenschema voor de kaart toegevoegd, met de mogelijkheid om te kiezen tussen een lichte of donkere kaart.\nWidgets voor Leaflet en Locatietijdlijn.",
+        "fr": "- Ajout d'un schéma de couleurs automatique indépendant (clair ou foncé) pour la carte.\nWidgets Leaflet et Chronologie de localisation.",
+        "it": "- Aggiunto uno schema di colori della mappa automatico, chiaro o scuro indipendente alla mappa\nWidget per volantini e cronologia delle posizioni.",
+        "es": "- Se agregó un esquema de color de mapa automático, claro u oscuro independiente al mapa.\nWidgets de folletos y línea de tiempo de ubicación.",
+        "pl": "- Dodano niezależny automatyczny, jasny lub ciemny schemat kolorów mapy do mapy\nWidżety ulotki i osi czasu lokalizacji.",
+        "uk": "- Додано незалежну автоматичну, світлу або темну кольорову схему карти\nВіджети листівки та шкали місцезнаходження.",
+        "zh-cn": "- 为地图添加了独立的自动浅色或深色地图配色方案。\n宣传单和位置时间轴小部件。"
+      },
       "0.2.5": {
         "en": "The dark theme has been adjusted to make the dialog easier to read.",
         "de": "Das dunkle Design wurde angepasst, um die Lesbarkeit der Dialoge zu verbessern.",
@@ -80,19 +93,6 @@
         "pl": "dodać widżet osi czasu",
         "uk": "додати віджет часової шкали",
         "zh-cn": "添加时间轴组件"
-      },
-      "0.1.2": {
-        "en": "add tests\nimprove build\nfix repochecker\nimprove datapoint handling",
-        "de": "Tests hinzufügen\nVerbesserung des Aufbaus\nRepochecker reparieren\nVerbesserung der Datenpunktverarbeitung",
-        "ru": "добавить тесты\nулучшить сборку\nисправить repochecker\nулучшить обработку точек данных",
-        "pt": "adicionar testes\nmelhorar a construção\ncorrigir repochecker\nMelhorar o tratamento dos pontos de dados",
-        "nl": "tests toevoegen\nverbeter de bouw\nrepochecker repareren\nVerbeter de verwerking van datapunten.",
-        "fr": "ajouter des tests\naméliorer la construction\ncorriger le rechecker\naméliorer la gestion des points de données",
-        "it": "aggiungere test\nmigliorare la costruzione\nfix repochecker\nmigliorare la gestione dei punti dati",
-        "es": "agregar pruebas\nmejorar la construcción\ncorregir repochecker\nmejorar el manejo de los puntos de datos",
-        "pl": "dodaj testy\nulepszyć kompilację\nnapraw repochecker\npoprawić obsługę punktów danych",
-        "uk": "додати тести\nпокращити збірку\nвиправити перевірку повторів\nпокращити обробку точок даних",
-        "zh-cn": "添加测试\n改进构建\n修复 repochecker\n改进数据点处理"
       }
     },
     "titleLang": {
