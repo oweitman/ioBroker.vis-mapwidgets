@@ -1286,6 +1286,19 @@
         "uk": "Колірна схема",
         "zh-cn": "配色方案"
     },
+    "mapwidgets_maptheme": {
+        "en": "Map color scheme",
+        "de": "Kartenfarbschema",
+        "ru": "Цветовая схема карты",
+        "pt": "Esquema de cores do mapa",
+        "nl": "Kleurenschema van de kaart",
+        "fr": "Thème de couleurs de la carte",
+        "it": "Combinazione di colori della mappa",
+        "es": "Esquema de colores del mapa",
+        "pl": "Schemat kolorów mapy",
+        "uk": "Колірна схема карти",
+        "zh-cn": "地图配色方案"
+    },
     "auto": {
         "en": "Automatic",
         "de": "Automatisch",

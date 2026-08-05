@@ -107,6 +107,13 @@
                 return this;
             };
 
+            JQueryCollection.prototype.toggleClass = function (className, state) {
+                this.elements.forEach(function (element) {
+                    element.classList.toggle(className, state);
+                });
+                return this;
+            };
+
             JQueryCollection.prototype.text = function (value) {
                 if (value === undefined) {
                     return this.elements[0] ? this.elements[0].textContent : undefined;
@@ -193,7 +200,7 @@
                 },
             };
 
-            window.renderMapWidget = function (config) {
+            window.renderMapWidget = function (config, mapTheme) {
                 window.__mapwidgetsStateValues['userdata.0.map.val'] = JSON.stringify(config);
                 return window.vis.binds.mapwidgets.leaflet.createWidget(
                     'w00001',
@@ -203,6 +210,7 @@
                         mapwidgets_lat: '0',
                         mapwidgets_lon: '0',
                         mapwidgets_zoom: '3',
+                        mapwidgets_maptheme: mapTheme || 'auto',
                     },
                     {},
                 );
@@ -213,7 +221,7 @@
                 callback({}, rawValue);
             };
 
-            window.renderTimelineWidget = function (layout, theme) {
+            window.renderTimelineWidget = function (layout, theme, mapTheme) {
                 const start = new Date();
                 start.setHours(8, 0, 0, 0);
                 window.__timelineHistory = [
@@ -248,6 +256,7 @@
                     timeline_color1: '#1a73e8',
                     timeline_layout: layout || 'auto',
                     timeline_theme: theme || 'auto',
+                    mapwidgets_maptheme: mapTheme || 'auto',
                     timeline_stayradius: 75,
                     timeline_minstay: 10,
                     timeline_maxspeed: 300,

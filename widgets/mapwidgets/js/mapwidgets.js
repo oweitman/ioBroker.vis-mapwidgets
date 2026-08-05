@@ -194,6 +194,9 @@ vis.binds['mapwidgets'] = {
             let lon = data['mapwidgets_lon'] ? parseFloat(data['mapwidgets_lon']) : 8.68417;
             let zoom = data['mapwidgets_zoom'] ? parseFloat(data['mapwidgets_zoom']) : 13;
             let expose = data['mapwidgets_expose'] ? Boolean(data['mapwidgets_expose']) : false;
+            const mapTheme = ['auto', 'light', 'dark'].includes(data['mapwidgets_maptheme'])
+                ? data['mapwidgets_maptheme']
+                : 'auto';
             let daynight = data['mapwidgets_daynightenabled'] ? Boolean(data['mapwidgets_daynightenabled']) : false;
             let daynightColor = data['mapwidgets_daynightcolor'] ? String(data['mapwidgets_daynightcolor']) : '#000000';
             let daynightOpacity = data['mapwidgets_daynightopacity'] ? Number(data['mapwidgets_daynightopacity']) : 0.1;
@@ -215,6 +218,26 @@ vis.binds['mapwidgets'] = {
             let visdata = vis.binds['mapwidgets'].data[widgetID];
             visdata.config = config;
             visdata.configParseErrorText = parsedConfig.errorText;
+
+            const applyMapTheme = () => {
+                const dark =
+                    mapTheme === 'dark' ||
+                    (mapTheme === 'auto' && window.matchMedia?.('(prefers-color-scheme: dark)').matches);
+                $div.toggleClass('mapwidgets-map-theme-dark', dark);
+                $div.toggleClass('mapwidgets-map-theme-light', !dark);
+            };
+            if (visdata.mapThemeMedia && visdata.mapThemeHandler) {
+                visdata.mapThemeMedia.removeEventListener?.('change', visdata.mapThemeHandler);
+            }
+            applyMapTheme();
+            if (mapTheme === 'auto' && window.matchMedia) {
+                visdata.mapThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+                visdata.mapThemeHandler = applyMapTheme;
+                visdata.mapThemeMedia.addEventListener?.('change', visdata.mapThemeHandler);
+            } else {
+                visdata.mapThemeMedia = null;
+                visdata.mapThemeHandler = null;
+            }
 
             function onChange(e, newValue) {
                 console.log('onChange');

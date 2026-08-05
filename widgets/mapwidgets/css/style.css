@@ -2,6 +2,35 @@
 .mapwidgetsLeaflet {
     height: 100%;
 }
+
+.mapwidgets-map-theme-light,
+.mapwidgets-timeline-map-theme-light {
+    --mapwidgets-map-filter: invert(0);
+}
+
+.mapwidgets-map-theme-dark,
+.mapwidgets-timeline-map-theme-dark {
+    --mapwidgets-map-filter: invert(0.9) hue-rotate(170deg) brightness(1.5) contrast(1.2) saturate(0.3);
+}
+
+.mapwidgets-map-theme-dark .mapwidgetsLeaflet,
+.mapwidgets-timeline-map-theme-dark .mapwidgets-timeline-map {
+    background: #000;
+    color: #fff;
+}
+
+.mapwidgets-map-theme-light .mapwidgetsLeaflet,
+.mapwidgets-timeline-map-theme-light .mapwidgets-timeline-map {
+    background: #fff;
+    color: #000;
+}
+
+.mapwidgets-map-theme-light .leaflet-tile-pane,
+.mapwidgets-map-theme-dark .leaflet-tile-pane,
+.mapwidgets-timeline-map-theme-light .leaflet-tile-pane,
+.mapwidgets-timeline-map-theme-dark .leaflet-tile-pane {
+    filter: var(--mapwidgets-map-filter);
+}
 .notusedcss {
     /* used only in path-guessing heuristic, see L.Icon.Default */
     background-image: url(../../node_modules/leaflet/dist/images/marker-shadow.png);
@@ -178,10 +207,6 @@
 .mapwidgets-timeline-theme-dark .mapwidgets-timeline-fit:hover,
 .mapwidgets-timeline-theme-dark .mapwidgets-timeline-menu:hover {
     background: #303134;
-}
-
-.mapwidgets-timeline-theme-dark .leaflet-tile-pane {
-    filter: brightness(0.72) contrast(1.15) saturate(0.75);
 }
 
 .mapwidgets-timeline-layout {

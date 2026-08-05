@@ -45,6 +45,16 @@ test('renders a real Leaflet map with zero-coordinate marker and DivIcon html', 
     expect(center.lng).toBeCloseTo(0, 5);
 });
 
+test('applies the selected map theme only to Leaflet tiles', async ({ page }) => {
+    await page.evaluate(() => window.renderMapWidget({}, 'dark'));
+
+    await expect(page.locator('#w00001')).toHaveClass(/mapwidgets-map-theme-dark/);
+    await expect(page.locator('#w00001 .leaflet-tile-pane')).toHaveCSS(
+        'filter',
+        'invert(0.9) hue-rotate(170deg) brightness(1.5) contrast(1.2) saturate(0.3)',
+    );
+});
+
 test('keeps the last valid rendered map when a state update contains invalid JSON', async ({ page }) => {
     await page.evaluate(() =>
         window.renderMapWidget({
@@ -111,10 +121,12 @@ test('renders history as a linked map and location timeline', async ({ page }) =
 });
 
 test('uses the selected layout, dark theme and an in-widget known-place dialog', async ({ page }) => {
-    await page.evaluate(() => window.renderTimelineWidget('below', 'dark'));
+    await page.evaluate(() => window.renderTimelineWidget('below', 'dark', 'light'));
 
     await expect(page.locator('#wtimeline')).toHaveClass(/mapwidgets-timeline-layout-below/);
     await expect(page.locator('#wtimeline')).toHaveClass(/mapwidgets-timeline-theme-dark/);
+    await expect(page.locator('#wtimeline')).toHaveClass(/mapwidgets-timeline-map-theme-light/);
+    await expect(page.locator('#wtimeline .leaflet-tile-pane')).toHaveCSS('filter', 'invert(0)');
     await expect(page.locator('#wtimeline .mapwidgets-timeline-menu')).toHaveText('★');
     await expect(page.locator('#wtimeline .mapwidgets-timeline-menu')).toHaveAttribute('aria-pressed', 'true');
     await expect(page.locator('#wtimeline .mapwidgets-timeline-menu')).toHaveCSS('color', 'rgb(249, 171, 0)');

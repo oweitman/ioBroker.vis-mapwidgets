@@ -1361,6 +1361,19 @@
           uk: "\u041A\u043E\u043B\u0456\u0440\u043D\u0430 \u0441\u0445\u0435\u043C\u0430",
           "zh-cn": "\u914D\u8272\u65B9\u6848"
         },
+        mapwidgets_maptheme: {
+          en: "Map color scheme",
+          de: "Kartenfarbschema",
+          ru: "\u0426\u0432\u0435\u0442\u043E\u0432\u0430\u044F \u0441\u0445\u0435\u043C\u0430 \u043A\u0430\u0440\u0442\u044B",
+          pt: "Esquema de cores do mapa",
+          nl: "Kleurenschema van de kaart",
+          fr: "Th\xE8me de couleurs de la carte",
+          it: "Combinazione di colori della mappa",
+          es: "Esquema de colores del mapa",
+          pl: "Schemat kolor\xF3w mapy",
+          uk: "\u041A\u043E\u043B\u0456\u0440\u043D\u0430 \u0441\u0445\u0435\u043C\u0430 \u043A\u0430\u0440\u0442\u0438",
+          "zh-cn": "\u5730\u56FE\u914D\u8272\u65B9\u6848"
+        },
         auto: {
           en: "Automatic",
           de: "Automatisch",
@@ -22898,6 +22911,7 @@
     leaflet: {
       createWidget: function(widgetID, view, data, style) {
         return __async(this, null, function* () {
+          var _a, _b, _c, _d;
           var $div = $(`#${widgetID}`);
           if (!$div.length) {
             return setTimeout(function() {
@@ -22912,6 +22926,7 @@
           let lon = data["mapwidgets_lon"] ? parseFloat(data["mapwidgets_lon"]) : 8.68417;
           let zoom = data["mapwidgets_zoom"] ? parseFloat(data["mapwidgets_zoom"]) : 13;
           let expose = data["mapwidgets_expose"] ? Boolean(data["mapwidgets_expose"]) : false;
+          const mapTheme = ["auto", "light", "dark"].includes(data["mapwidgets_maptheme"]) ? data["mapwidgets_maptheme"] : "auto";
           let daynight = data["mapwidgets_daynightenabled"] ? Boolean(data["mapwidgets_daynightenabled"]) : false;
           let daynightColor = data["mapwidgets_daynightcolor"] ? String(data["mapwidgets_daynightcolor"]) : "#000000";
           let daynightOpacity = data["mapwidgets_daynightopacity"] ? Number(data["mapwidgets_daynightopacity"]) : 0.1;
@@ -22928,6 +22943,24 @@
           let visdata = vis.binds["mapwidgets"].data[widgetID];
           visdata.config = config;
           visdata.configParseErrorText = parsedConfig.errorText;
+          const applyMapTheme2 = () => {
+            var _a2;
+            const dark = mapTheme === "dark" || mapTheme === "auto" && ((_a2 = window.matchMedia) == null ? void 0 : _a2.call(window, "(prefers-color-scheme: dark)").matches);
+            $div.toggleClass("mapwidgets-map-theme-dark", dark);
+            $div.toggleClass("mapwidgets-map-theme-light", !dark);
+          };
+          if (visdata.mapThemeMedia && visdata.mapThemeHandler) {
+            (_b = (_a = visdata.mapThemeMedia).removeEventListener) == null ? void 0 : _b.call(_a, "change", visdata.mapThemeHandler);
+          }
+          applyMapTheme2();
+          if (mapTheme === "auto" && window.matchMedia) {
+            visdata.mapThemeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+            visdata.mapThemeHandler = applyMapTheme2;
+            (_d = (_c = visdata.mapThemeMedia).addEventListener) == null ? void 0 : _d.call(_c, "change", visdata.mapThemeHandler);
+          } else {
+            visdata.mapThemeMedia = null;
+            visdata.mapThemeHandler = null;
+          }
           function onChange(e, newValue) {
             console.log("onChange");
             let visdata2 = vis.binds["mapwidgets"].data[widgetID];
@@ -23785,6 +23818,12 @@
     runtime.root.classList.toggle("mapwidgets-timeline-theme-dark", dark);
     runtime.root.classList.toggle("mapwidgets-timeline-theme-light", !dark);
   }
+  function applyMapTheme(runtime) {
+    var _a;
+    const dark = runtime.options.mapTheme === "dark" || runtime.options.mapTheme === "auto" && ((_a = window.matchMedia) == null ? void 0 : _a.call(window, "(prefers-color-scheme: dark)").matches);
+    runtime.root.classList.toggle("mapwidgets-timeline-map-theme-dark", dark);
+    runtime.root.classList.toggle("mapwidgets-timeline-map-theme-light", !dark);
+  }
   function renderHeader(runtime) {
     const formatter = new Intl.DateTimeFormat(void 0, {
       weekday: "short",
@@ -24165,7 +24204,7 @@
   }
   function createWidget(widgetID, view, data) {
     return __async(this, null, function* () {
-      var _a, _b, _c, _d, _e, _f, _g;
+      var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
       const root = document.getElementById(widgetID);
       if (!root) {
         setTimeout(() => createWidget(widgetID, view, data), 100);
@@ -24180,20 +24219,23 @@
         if (previous.themeMedia && previous.themeHandler) {
           (_c = (_b = previous.themeMedia).removeEventListener) == null ? void 0 : _c.call(_b, "change", previous.themeHandler);
         }
+        if (previous.mapThemeMedia && previous.mapThemeHandler) {
+          (_e = (_d = previous.mapThemeMedia).removeEventListener) == null ? void 0 : _e.call(_d, "change", previous.mapThemeHandler);
+        }
         if (previous.clickHandler) {
           root.removeEventListener("click", previous.clickHandler);
         }
         if (previous.submitHandler) {
           root.removeEventListener("submit", previous.submitHandler);
         }
-        (_d = previous.map) == null ? void 0 : _d.remove();
+        (_f = previous.map) == null ? void 0 : _f.remove();
       }
       const people = readPeople(data);
       const runtime = {
         widgetID,
         root,
         people,
-        selectedPersonId: (_e = people[0]) == null ? void 0 : _e.id,
+        selectedPersonId: (_g = people[0]) == null ? void 0 : _g.id,
         date: readStoredDate(widgetID),
         loadId: 0,
         results: /* @__PURE__ */ new Map(),
@@ -24203,6 +24245,7 @@
         options: {
           layout: ["auto", "side", "below"].includes(data.timeline_layout) ? data.timeline_layout : "auto",
           theme: ["auto", "light", "dark"].includes(data.timeline_theme) ? data.timeline_theme : "auto",
+          mapTheme: ["auto", "light", "dark"].includes(data.mapwidgets_maptheme) ? data.mapwidgets_maptheme : "auto",
           stayRadiusM: Number(data.timeline_stayradius) || 75,
           minStayMinutes: Number(data.timeline_minstay) || 10,
           maxSpeedKmh: Number(data.timeline_maxspeed) || 300,
@@ -24214,10 +24257,16 @@
       };
       vis.binds.mapwidgets.timeline.data[widgetID] = runtime;
       renderShell(runtime);
+      applyMapTheme(runtime);
       if (runtime.options.theme === "auto" && window.matchMedia) {
         runtime.themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
         runtime.themeHandler = () => applyTheme(runtime);
-        (_g = (_f = runtime.themeMedia).addEventListener) == null ? void 0 : _g.call(_f, "change", runtime.themeHandler);
+        (_i = (_h = runtime.themeMedia).addEventListener) == null ? void 0 : _i.call(_h, "change", runtime.themeHandler);
+      }
+      if (runtime.options.mapTheme === "auto" && window.matchMedia) {
+        runtime.mapThemeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+        runtime.mapThemeHandler = () => applyMapTheme(runtime);
+        (_k = (_j = runtime.mapThemeMedia).addEventListener) == null ? void 0 : _k.call(_j, "change", runtime.mapThemeHandler);
       }
       createMap(runtime);
       if (window.ResizeObserver) {

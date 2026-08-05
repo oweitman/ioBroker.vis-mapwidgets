@@ -102,7 +102,7 @@
 
 <script id="tplMapWidgetLeaflet" type="text/ejs" class="vis-tpl"
     data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/mapwidgets/dist/images/mapwidgets.svg"></img>'
-    data-vis-attrs="mapwidgets_oid/id;mapwidgets_lat;mapwidgets_lon;mapwidgets_zoom/number,0;mapwidgets_expose/checkbox[false];support/custom,mapwidgets.customLink,iobroker Forum,https,,forum.iobroker.net,topic,82214,test-iobroker-vis-mapwidgets;"
+    data-vis-attrs="mapwidgets_oid/id;mapwidgets_lat;mapwidgets_lon;mapwidgets_zoom/number,0;mapwidgets_expose/checkbox[false];mapwidgets_maptheme[auto]/select,auto,light,dark;support/custom,mapwidgets.customLink,iobroker Forum,https,,forum.iobroker.net,topic,82214,test-iobroker-vis-mapwidgets;"
     data-vis-attrs0="group.mapwidgets_daynight;mapwidgets_daynightenabled/checkbox[false];mapwidgets_daynightcolor[#000000]/color;mapwidgets_daynightopacity[0.1];mapwidgets_daynightfillcolor[#000000]/color;mapwidgets_daynightfillopacity[0.3];"
     data-vis-set="mapwidgets" data-vis-type="val" data-vis-beta="false" data-vis-update-style="true"
     data-vis-name="Mapwidgets Leaflet">
@@ -115,7 +115,7 @@
 <script id="tplMapWidgetTimeline" type="text/ejs" class="vis-tpl"
     data-vis-prev='<img style="display:block;margin:auto;width:50%;" src="widgets/mapwidgets/dist/images/timelinelocation.svg"></img>'
     data-vis-attrs="support/custom,mapwidgets.customLink,iobroker Forum,https,,forum.iobroker.net,topic,82214,test-iobroker-vis-mapwidgets;"
-    data-vis-attrs0="group.timeline_layout;timeline_layout[auto]/select,auto,side,below;timeline_theme[auto]/select,auto,light,dark;"
+    data-vis-attrs0="group.timeline_layout;timeline_layout[auto]/select,auto,side,below;timeline_theme[auto]/select,auto,light,dark;mapwidgets_maptheme[auto]/select,auto,light,dark;"
     data-vis-attrs1="group.timeline_people;timeline_oid1/id;timeline_name1;timeline_color1[#1a73e8]/color;timeline_oid2/id;timeline_name2;timeline_color2[#d93025]/color;timeline_oid3/id;timeline_name3;timeline_color3[#188038]/color;timeline_oid4/id;timeline_name4;timeline_color4[#a142f4]/color;timeline_oid5/id;timeline_name5;timeline_color5[#f9ab00]/color;"
     data-vis-attrs2="group.timeline_detection;timeline_stayradius[75]/number,10,1000,5;timeline_minstay[10]/number,1,1440,1;timeline_maxspeed[300]/number,0,1000,10;"
     data-vis-attrs3="group.timeline_geocoding;timeline_geocodingenabled/checkbox[false];timeline_email;timeline_language;timeline_endpoint[https://nominatim.openstreetmap.org/reverse];"

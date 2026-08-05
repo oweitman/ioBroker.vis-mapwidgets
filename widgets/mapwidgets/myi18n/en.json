@@ -98,6 +98,7 @@
     "timeline_color5": "Color 5",
     "timeline_layout": "Timeline layout",
     "timeline_theme": "Color scheme",
+    "mapwidgets_maptheme": "Map color scheme",
     "auto": "Automatic",
     "side": "Timeline at the side",
     "below": "Timeline below the map",

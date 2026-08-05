@@ -506,6 +506,14 @@ function applyTheme(runtime) {
     runtime.root.classList.toggle('mapwidgets-timeline-theme-light', !dark);
 }
 
+function applyMapTheme(runtime) {
+    const dark =
+        runtime.options.mapTheme === 'dark' ||
+        (runtime.options.mapTheme === 'auto' && window.matchMedia?.('(prefers-color-scheme: dark)').matches);
+    runtime.root.classList.toggle('mapwidgets-timeline-map-theme-dark', dark);
+    runtime.root.classList.toggle('mapwidgets-timeline-map-theme-light', !dark);
+}
+
 function renderHeader(runtime) {
     const formatter = new Intl.DateTimeFormat(undefined, {
         weekday: 'short',
@@ -923,6 +931,9 @@ async function createWidget(widgetID, view, data) {
         if (previous.themeMedia && previous.themeHandler) {
             previous.themeMedia.removeEventListener?.('change', previous.themeHandler);
         }
+        if (previous.mapThemeMedia && previous.mapThemeHandler) {
+            previous.mapThemeMedia.removeEventListener?.('change', previous.mapThemeHandler);
+        }
         if (previous.clickHandler) {
             root.removeEventListener('click', previous.clickHandler);
         }
@@ -946,6 +957,7 @@ async function createWidget(widgetID, view, data) {
         options: {
             layout: ['auto', 'side', 'below'].includes(data.timeline_layout) ? data.timeline_layout : 'auto',
             theme: ['auto', 'light', 'dark'].includes(data.timeline_theme) ? data.timeline_theme : 'auto',
+            mapTheme: ['auto', 'light', 'dark'].includes(data.mapwidgets_maptheme) ? data.mapwidgets_maptheme : 'auto',
             stayRadiusM: Number(data.timeline_stayradius) || 75,
             minStayMinutes: Number(data.timeline_minstay) || 10,
             maxSpeedKmh: Number(data.timeline_maxspeed) || 300,
@@ -957,10 +969,16 @@ async function createWidget(widgetID, view, data) {
     };
     vis.binds.mapwidgets.timeline.data[widgetID] = runtime;
     renderShell(runtime);
+    applyMapTheme(runtime);
     if (runtime.options.theme === 'auto' && window.matchMedia) {
         runtime.themeMedia = window.matchMedia('(prefers-color-scheme: dark)');
         runtime.themeHandler = () => applyTheme(runtime);
         runtime.themeMedia.addEventListener?.('change', runtime.themeHandler);
+    }
+    if (runtime.options.mapTheme === 'auto' && window.matchMedia) {
+        runtime.mapThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+        runtime.mapThemeHandler = () => applyMapTheme(runtime);
+        runtime.mapThemeMedia.addEventListener?.('change', runtime.mapThemeHandler);
     }
     createMap(runtime);
     if (window.ResizeObserver) {

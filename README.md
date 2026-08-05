@@ -61,11 +61,18 @@ Display of various elements on a map.
 | `mapwidgets_lon`                 | Longitude of the map center                                             |
 | `mapwidgets_zoom`                | Initial zoom level                                                      |
 | `mapwidgets_expose`              | Expose the map object under `window.iobroker.mapwidgets.<widgetID>.map` |
+| `mapwidgets_maptheme`            | Map color scheme: automatic, light, or dark (default: automatic)       |
 | `mapwidgets_daynightenabled`     | Enable day/night mode                                                   |
 | `mapwidgets_daynightcolor`       | Frame color for the day/night zone                                      |
 | `mapwidgets_daynightopacity`     | Opacity for the day/night zone                                          |
 | `mapwidgets_daynightfillcolor`   | Fill color for the day/night zone                                       |
 | `mapwidgets_daynightfillopacity` | Fill Opacity for the day/night zone                                     |
+
+The map color scheme changes only the OpenStreetMap tile rendering. `auto`
+follows the browser's `prefers-color-scheme` setting and updates when that
+setting changes. `light` displays the original tiles, while `dark` applies a
+dark-map filter. Markers, paths, polygons, and other Leaflet overlays are not
+filtered.
 
 #### Map Configuration
 
@@ -481,10 +488,19 @@ The widget removes isolated implausible GPS jumps and groups nearby samples
 into stays. The following options control this processing:
 
 - **Timeline layout**: automatic, beside the map, or below the map
+- **Color scheme** (`timeline_theme`): automatic, light, or dark for the
+  timeline controls, list, and dialogs
+- **Map color scheme** (`mapwidgets_maptheme`): automatic, light, or dark for
+  the OpenStreetMap tiles only
 - **Stay radius**: maximum distance of samples belonging to a stay (default 75 m)
 - **Minimum stay**: minimum duration of a stay (default 10 minutes)
 - **Maximum reasonable speed**: threshold for isolated GPS jumps
   (default 300 km/h; `0` disables the filter)
+
+Both color-scheme options default to `auto` and follow the browser's
+`prefers-color-scheme` setting. They can be selected independently, for
+example to combine a dark timeline interface with light map tiles. The map
+theme does not filter route lines, markers, or other Leaflet overlays.
 
 Known places and reverse-geocoding results are persisted in these states,
 which are created during adapter installation:
@@ -627,6 +643,11 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+- Added an independent automatic, light, or dark map color scheme to the Map
+  Leaflet and Location Timeline widgets.
+
 ### 0.2.5 (2026-08-04)
 
 - The dark theme has been adjusted to make the dialog easier to read.
