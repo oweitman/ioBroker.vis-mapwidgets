@@ -1481,19 +1481,6 @@
         "uk": "Редагувати відоме місце",
         "zh-cn": "编辑已知地点"
     },
-    "No address available": {
-        "en": "No address available",
-        "de": "Keine Adresse verfügbar",
-        "ru": "Адрес недоступен",
-        "pt": "Nenhum endereço disponível",
-        "nl": "Geen adres beschikbaar",
-        "fr": "Aucune adresse disponible",
-        "it": "Nessun indirizzo disponibile",
-        "es": "No hay dirección disponible",
-        "pl": "Brak dostępnego adresu",
-        "uk": "Адреса недоступна",
-        "zh-cn": "无可用地址"
-    },
     "Remove known place": {
         "en": "Remove known place",
         "de": "Bekannten Ort entfernen",

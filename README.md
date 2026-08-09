@@ -433,11 +433,11 @@ and zooms the view so that all selected objects are visible.
         {
             "latlng": [50.2, 8.8],
             "options": {
-                "title": "Mit Custom Icon",
+                "title": "with Custom Icon",
                 "icon": "redleaf"
             },
             "tooltip": {
-                "text": "Mit Custom Icon",
+                "text": "with Custom Icon",
                 "options": {
                     "permanent": true,
                     "direction": "bottom"
@@ -643,6 +643,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.3.1 (2026-08-09)
 
 - fix review problems
