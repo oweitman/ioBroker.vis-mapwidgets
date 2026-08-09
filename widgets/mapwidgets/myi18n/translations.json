@@ -142,6 +142,19 @@
         "uk": "Непрозорість заливки дня/ночі",
         "zh-cn": "昼/夜填充不透明度"
     },
+    "Invalid JSON configuration: %s": {
+        "en": "Invalid JSON configuration: %s",
+        "de": "Ungültige JSON-Konfiguration: %s",
+        "ru": "Недопустимая конфигурация JSON: %s",
+        "pt": "Configuração JSON inválida: %s",
+        "nl": "Ongeldige JSON-configuratie: %s",
+        "fr": "Configuration JSON non valide : %s",
+        "it": "Configurazione JSON non valida: %s",
+        "es": "Configuración JSON no válida: %s",
+        "pl": "Nieprawidłowa konfiguracja JSON: %s",
+        "uk": "Некоректна конфігурація JSON: %s",
+        "zh-cn": "JSON 配置无效：%s"
+    },
     "The JSON configuration is valid.": {
         "en": "The JSON configuration is valid.",
         "de": "Die JSON-Konfiguration ist gültig.",
@@ -700,19 +713,6 @@
         "pl": "<niedostępne>",
         "uk": "<недоступно>",
         "zh-cn": "<不可用>"
-    },
-    "yyy": {
-        "en": "yyy",
-        "de": "yyy",
-        "ru": "yyy",
-        "pt": "yyy",
-        "nl": "yyy",
-        "fr": "yyy",
-        "it": "yyy",
-        "es": "yyy",
-        "pl": "yyy",
-        "uk": "yyy",
-        "zh-cn": "yyy"
     },
     "Cancel": {
         "en": "Cancel",
@@ -1571,5 +1571,44 @@
         "pl": "Wsparcie",
         "uk": "Підтримка",
         "zh-cn": "支持"
+    },
+    "Show schema errors": {
+        "en": "Show schema errors",
+        "de": "Schema-Fehler anzeigen",
+        "ru": "Показать ошибки схемы",
+        "pt": "Mostrar erros de schema",
+        "nl": "Schemafouten tonen",
+        "fr": "Afficher les erreurs de schéma",
+        "it": "Mostra errori dello schema",
+        "es": "Mostrar errores de esquema",
+        "pl": "Pokazanie błędów w schemacie",
+        "uk": "Показати помилки схеми",
+        "zh-cn": "显示模式错误"
+    },
+    "No schema errors present.": {
+        "en": "No schema errors present.",
+        "de": "Keine Schema-Fehler vorhanden.",
+        "ru": "Нет ошибок схемы.",
+        "pt": "Nenhum erro de schema presente.",
+        "nl": "Geen schemafouten aanwezig.",
+        "fr": "Aucune erreur de schéma présente.",
+        "it": "Nessun errore dello schema presente.",
+        "es": "No hay errores de esquema presentes.",
+        "pl": "Brak błędów w schemacie.",
+        "uk": "Немає помилок схеми.",
+        "zh-cn": "没有模式错误。"
+    },
+    "Schema errors": {
+        "en": "Schema errors",
+        "de": "Schema-Fehler",
+        "ru": "Ошибки схемы",
+        "pt": "Erros de schema",
+        "nl": "Schemafouten",
+        "fr": "Erreurs de schéma",
+        "it": "Errori dello schema",
+        "es": "Errores de esquema",
+        "pl": "Błędy w schemacie",
+        "uk": "Помилки схеми",
+        "zh-cn": "模式错误"
     }
 }

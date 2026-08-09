@@ -367,7 +367,7 @@ vis.binds['mapwidgets'] = {
                     const div = L.DomUtil.create('div', 'mapwidgets-schema-error-control');
 
                     div.innerHTML = `
-                        <button class="mapwidgets-schema-error-btn" title="Schemafehler anzeigen">
+                        <button class="mapwidgets-schema-error-btn" title="${_('Show schema errors')}">
                             ⚠
                         </button>
                     `;
@@ -536,7 +536,7 @@ vis.binds['mapwidgets'] = {
     },
     showSchemaErrorDialog(widgetID) {
         const visdata = vis.binds['mapwidgets'].data[widgetID];
-        const text = visdata.schemaErrorsText || 'Keine Schemafehler vorhanden.';
+        const text = visdata.schemaErrorsText || _('No schema errors present.');
         const $widget = $(`#${widgetID}`);
 
         const width = Math.round($widget.width() * 0.9);
@@ -546,7 +546,7 @@ vis.binds['mapwidgets'] = {
             .addClass('mapwidgets-schema-error-dialog-content')
             .text(text)
             .dialog({
-                title: 'Schemafehler',
+                title: _('Schema errors'),
                 modal: true,
                 dialogClass: 'mapwidgets-schema-error-dialog',
                 width,

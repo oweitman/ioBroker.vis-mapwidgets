@@ -336,11 +336,27 @@ class NominatimQueue {
                 if (job.options.email) {
                     url.searchParams.set('email', job.options.email);
                 }
-                const response = await fetch(url, { headers: { Accept: 'application/json' } });
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}`);
+                const timeoutMs = 10_000;
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+                let json;
+                try {
+                    const response = await fetch(url, {
+                        headers: { Accept: 'application/json' },
+                        signal: controller.signal,
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    json = await response.json();
+                } catch (error) {
+                    if (controller.signal.aborted) {
+                        throw new Error(`Nominatim request timed out after ${timeoutMs} ms`, { cause: error });
+                    }
+                    throw error;
+                } finally {
+                    clearTimeout(timeoutId);
                 }
-                const json = await response.json();
                 const geocoding = json?.features?.[0]?.properties?.geocoding;
                 job.resolve({
                     status: geocoding?.label ? 'resolved' : 'unknown',
@@ -358,6 +374,14 @@ class NominatimQueue {
 }
 
 const nominatimQueue = new NominatimQueue();
+
+function clampNumber(value, fallback, min, max) {
+    if (value === '' || value === null || value === undefined) {
+        return fallback;
+    }
+    const number = Number(value);
+    return Number.isFinite(number) ? Math.min(max, Math.max(min, number)) : fallback;
+}
 
 function cacheKey(runtime, position) {
     const language = runtime.options.language || navigator.language || 'de';
@@ -958,9 +982,9 @@ async function createWidget(widgetID, view, data) {
             layout: ['auto', 'side', 'below'].includes(data.timeline_layout) ? data.timeline_layout : 'auto',
             theme: ['auto', 'light', 'dark'].includes(data.timeline_theme) ? data.timeline_theme : 'auto',
             mapTheme: ['auto', 'light', 'dark'].includes(data.mapwidgets_maptheme) ? data.mapwidgets_maptheme : 'auto',
-            stayRadiusM: Number(data.timeline_stayradius) || 75,
-            minStayMinutes: Number(data.timeline_minstay) || 10,
-            maxSpeedKmh: Number(data.timeline_maxspeed) || 300,
+            stayRadiusM: clampNumber(data.timeline_stayradius, 75, 10, 1000),
+            minStayMinutes: clampNumber(data.timeline_minstay, 10, 1, 1440),
+            maxSpeedKmh: clampNumber(data.timeline_maxspeed, 300, 0, 1000),
             geocodingEnabled: data.timeline_geocodingenabled === true || data.timeline_geocodingenabled === 'true',
             email: String(data.timeline_email || '').trim(),
             endpoint: String(data.timeline_endpoint || '').trim() || 'https://nominatim.openstreetmap.org/reverse',

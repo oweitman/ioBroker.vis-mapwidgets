@@ -502,7 +502,7 @@ describe('mapwidgets runtime helpers', function () {
 
         const dialog = global.$.created.at(-1);
         assert.equal(dialog.text, '<img src=x onerror=alert(1)>');
-        assert.equal(dialog.dialogOptions.title, 'Schemafehler');
+        assert.equal(dialog.dialogOptions.title, 'Schema errors');
         assert.equal(dialog.dialogOptions.modal, true);
     });
 

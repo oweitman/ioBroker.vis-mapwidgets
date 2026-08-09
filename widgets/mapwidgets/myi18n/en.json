@@ -10,6 +10,7 @@
     "mapwidgets_daynightopacity": "Day/Night Opacity",
     "mapwidgets_daynightfillcolor": "Day/Night Fill Color",
     "mapwidgets_daynightfillopacity": "Day/Night Fill Opacity",
+    "Invalid JSON configuration: %s": "Invalid JSON configuration: %s",
     "The JSON configuration is valid.": "The JSON configuration is valid.",
     "The JSON configuration contains %s error(s).": "The JSON configuration contains %s error(s).",
     "Unexpected properties in object %s:": "Unexpected properties in object %s:",
@@ -53,7 +54,6 @@
     "root object": "root object",
     "undefined": "undefined",
     "<not available>": "<not available>",
-    "yyy": "yyy",
     "Cancel": "Cancel",
     "Configure at least one tracking datapoint": "Configure at least one tracking datapoint",
     "Current position": "Current position",
@@ -119,5 +119,8 @@
     "House number": "House number",
     "City": "City",
     "Country": "Country",
-    "support": "Support"
+    "support": "Support",
+    "Show schema errors": "Show schema errors",
+    "No schema errors present.": "No schema errors present.",
+    "Schema errors": "Schema errors"
 }

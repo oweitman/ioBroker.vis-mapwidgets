@@ -217,6 +217,19 @@
           uk: "\u041D\u0435\u043F\u0440\u043E\u0437\u043E\u0440\u0456\u0441\u0442\u044C \u0437\u0430\u043B\u0438\u0432\u043A\u0438 \u0434\u043D\u044F/\u043D\u043E\u0447\u0456",
           "zh-cn": "\u663C/\u591C\u586B\u5145\u4E0D\u900F\u660E\u5EA6"
         },
+        "Invalid JSON configuration: %s": {
+          en: "Invalid JSON configuration: %s",
+          de: "Ung\xFCltige JSON-Konfiguration: %s",
+          ru: "\u041D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u0430\u044F \u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044F JSON: %s",
+          pt: "Configura\xE7\xE3o JSON inv\xE1lida: %s",
+          nl: "Ongeldige JSON-configuratie: %s",
+          fr: "Configuration JSON non valide : %s",
+          it: "Configurazione JSON non valida: %s",
+          es: "Configuraci\xF3n JSON no v\xE1lida: %s",
+          pl: "Nieprawid\u0142owa konfiguracja JSON: %s",
+          uk: "\u041D\u0435\u043A\u043E\u0440\u0435\u043A\u0442\u043D\u0430 \u043A\u043E\u043D\u0444\u0456\u0433\u0443\u0440\u0430\u0446\u0456\u044F JSON: %s",
+          "zh-cn": "JSON \u914D\u7F6E\u65E0\u6548\uFF1A%s"
+        },
         "The JSON configuration is valid.": {
           en: "The JSON configuration is valid.",
           de: "Die JSON-Konfiguration ist g\xFCltig.",
@@ -775,19 +788,6 @@
           pl: "<niedost\u0119pne>",
           uk: "<\u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E>",
           "zh-cn": "<\u4E0D\u53EF\u7528>"
-        },
-        yyy: {
-          en: "yyy",
-          de: "yyy",
-          ru: "yyy",
-          pt: "yyy",
-          nl: "yyy",
-          fr: "yyy",
-          it: "yyy",
-          es: "yyy",
-          pl: "yyy",
-          uk: "yyy",
-          "zh-cn": "yyy"
         },
         Cancel: {
           en: "Cancel",
@@ -1646,6 +1646,45 @@
           pl: "Wsparcie",
           uk: "\u041F\u0456\u0434\u0442\u0440\u0438\u043C\u043A\u0430",
           "zh-cn": "\u652F\u6301"
+        },
+        "Show schema errors": {
+          en: "Show schema errors",
+          de: "Schema-Fehler anzeigen",
+          ru: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043E\u0448\u0438\u0431\u043A\u0438 \u0441\u0445\u0435\u043C\u044B",
+          pt: "Mostrar erros de schema",
+          nl: "Schemafouten tonen",
+          fr: "Afficher les erreurs de sch\xE9ma",
+          it: "Mostra errori dello schema",
+          es: "Mostrar errores de esquema",
+          pl: "Pokazanie b\u0142\u0119d\xF3w w schemacie",
+          uk: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u0438 \u043F\u043E\u043C\u0438\u043B\u043A\u0438 \u0441\u0445\u0435\u043C\u0438",
+          "zh-cn": "\u663E\u793A\u6A21\u5F0F\u9519\u8BEF"
+        },
+        "No schema errors present.": {
+          en: "No schema errors present.",
+          de: "Keine Schema-Fehler vorhanden.",
+          ru: "\u041D\u0435\u0442 \u043E\u0448\u0438\u0431\u043E\u043A \u0441\u0445\u0435\u043C\u044B.",
+          pt: "Nenhum erro de schema presente.",
+          nl: "Geen schemafouten aanwezig.",
+          fr: "Aucune erreur de sch\xE9ma pr\xE9sente.",
+          it: "Nessun errore dello schema presente.",
+          es: "No hay errores de esquema presentes.",
+          pl: "Brak b\u0142\u0119d\xF3w w schemacie.",
+          uk: "\u041D\u0435\u043C\u0430\u0454 \u043F\u043E\u043C\u0438\u043B\u043E\u043A \u0441\u0445\u0435\u043C\u0438.",
+          "zh-cn": "\u6CA1\u6709\u6A21\u5F0F\u9519\u8BEF\u3002"
+        },
+        "Schema errors": {
+          en: "Schema errors",
+          de: "Schema-Fehler",
+          ru: "\u041E\u0448\u0438\u0431\u043A\u0438 \u0441\u0445\u0435\u043C\u044B",
+          pt: "Erros de schema",
+          nl: "Schemafouten",
+          fr: "Erreurs de sch\xE9ma",
+          it: "Errori dello schema",
+          es: "Errores de esquema",
+          pl: "B\u0142\u0119dy w schemacie",
+          uk: "\u041F\u043E\u043C\u0438\u043B\u043A\u0438 \u0441\u0445\u0435\u043C\u0438",
+          "zh-cn": "\u6A21\u5F0F\u9519\u8BEF"
         }
       };
     }
@@ -22727,7 +22766,7 @@
   var import_L = __toESM(require_L_Terminator());
 
   // ../package.json
-  var version = "0.3.0";
+  var version = "0.3.1";
 
   // node_modules/deep-object-diff/mjs/utils.js
   var isDate = (d) => d instanceof Date;
@@ -23075,7 +23114,7 @@
           onAdd: function() {
             const div = L.DomUtil.create("div", "mapwidgets-schema-error-control");
             div.innerHTML = `
-                        <button class="mapwidgets-schema-error-btn" title="Schemafehler anzeigen">
+                        <button class="mapwidgets-schema-error-btn" title="${_("Show schema errors")}">
                             \u26A0
                         </button>
                     `;
@@ -23224,12 +23263,12 @@
     },
     showSchemaErrorDialog(widgetID) {
       const visdata = vis.binds["mapwidgets"].data[widgetID];
-      const text = visdata.schemaErrorsText || "Keine Schemafehler vorhanden.";
+      const text = visdata.schemaErrorsText || _("No schema errors present.");
       const $widget = $(`#${widgetID}`);
       const width = Math.round($widget.width() * 0.9);
       const height = Math.round($widget.height() * 0.9);
       $("<pre></pre>").addClass("mapwidgets-schema-error-dialog-content").text(text).dialog({
-        title: "Schemafehler",
+        title: _("Schema errors"),
         modal: true,
         dialogClass: "mapwidgets-schema-error-dialog",
         width,
@@ -23657,11 +23696,27 @@
             if (job.options.email) {
               url.searchParams.set("email", job.options.email);
             }
-            const response = yield fetch(url, { headers: { Accept: "application/json" } });
-            if (!response.ok) {
-              throw new Error(`HTTP ${response.status}`);
+            const timeoutMs = 1e4;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+            let json;
+            try {
+              const response = yield fetch(url, {
+                headers: { Accept: "application/json" },
+                signal: controller.signal
+              });
+              if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+              }
+              json = yield response.json();
+            } catch (error) {
+              if (controller.signal.aborted) {
+                throw new Error(`Nominatim request timed out after ${timeoutMs} ms`, { cause: error });
+              }
+              throw error;
+            } finally {
+              clearTimeout(timeoutId);
             }
-            const json = yield response.json();
             const geocoding = (_e = (_d = (_c = json == null ? void 0 : json.features) == null ? void 0 : _c[0]) == null ? void 0 : _d.properties) == null ? void 0 : _e.geocoding;
             job.resolve({
               status: (geocoding == null ? void 0 : geocoding.label) ? "resolved" : "unknown",
@@ -23679,6 +23734,13 @@
     }
   };
   var nominatimQueue = new NominatimQueue();
+  function clampNumber(value, fallback, min, max) {
+    if (value === "" || value === null || value === void 0) {
+      return fallback;
+    }
+    const number = Number(value);
+    return Number.isFinite(number) ? Math.min(max, Math.max(min, number)) : fallback;
+  }
   function cacheKey(runtime, position) {
     const language = runtime.options.language || navigator.language || "de";
     return `nominatim|${language}|${position.lat.toFixed(4)}|${position.lon.toFixed(4)}`;
@@ -24246,9 +24308,9 @@
           layout: ["auto", "side", "below"].includes(data.timeline_layout) ? data.timeline_layout : "auto",
           theme: ["auto", "light", "dark"].includes(data.timeline_theme) ? data.timeline_theme : "auto",
           mapTheme: ["auto", "light", "dark"].includes(data.mapwidgets_maptheme) ? data.mapwidgets_maptheme : "auto",
-          stayRadiusM: Number(data.timeline_stayradius) || 75,
-          minStayMinutes: Number(data.timeline_minstay) || 10,
-          maxSpeedKmh: Number(data.timeline_maxspeed) || 300,
+          stayRadiusM: clampNumber(data.timeline_stayradius, 75, 10, 1e3),
+          minStayMinutes: clampNumber(data.timeline_minstay, 10, 1, 1440),
+          maxSpeedKmh: clampNumber(data.timeline_maxspeed, 300, 0, 1e3),
           geocodingEnabled: data.timeline_geocodingenabled === true || data.timeline_geocodingenabled === "true",
           email: String(data.timeline_email || "").trim(),
           endpoint: String(data.timeline_endpoint || "").trim() || "https://nominatim.openstreetmap.org/reverse",

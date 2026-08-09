@@ -1,4 +1,9 @@
 # Older changes
+## 0.2.2 (2026-08-03)
+
+- improved icon for the timeline location widget
+
+
 ## 0.2.1 (2026-08-03)
 
 - add support link to widgets

@@ -61,7 +61,7 @@ Display of various elements on a map.
 | `mapwidgets_lon`                 | Longitude of the map center                                             |
 | `mapwidgets_zoom`                | Initial zoom level                                                      |
 | `mapwidgets_expose`              | Expose the map object under `window.iobroker.mapwidgets.<widgetID>.map` |
-| `mapwidgets_maptheme`            | Map color scheme: automatic, light, or dark (default: automatic)       |
+| `mapwidgets_maptheme`            | Map color scheme: automatic, light, or dark (default: automatic)        |
 | `mapwidgets_daynightenabled`     | Enable day/night mode                                                   |
 | `mapwidgets_daynightcolor`       | Frame color for the day/night zone                                      |
 | `mapwidgets_daynightopacity`     | Opacity for the day/night zone                                          |
@@ -133,7 +133,7 @@ This contains an array of individual marker informations objects.
             "draggable": true,
             "title": "Draggable"
         },
-        "popup": "Zieh mich!"
+        "popup": "Drag me!"
     }
 ]
 ```
@@ -328,10 +328,10 @@ Tooltip for Marker, Polygon, Rectangle, Circle.
         "options": {
             "icon": "orangeleaf",
             "draggable": true,
-            "title": "Orange Punkt (draggable)"
+            "title": "Orange dot (draggable)"
         },
         "tooltip": {
-            "text": "Permanenter Tooltip",
+            "text": "Permanent tooltip",
             "options": {
                 "permanent": true,
                 "offset": [0, -12]
@@ -368,10 +368,10 @@ Popup for Marker, Polygon, Rectangle, Circle.
         "options": {
             "icon": "orangeleaf",
             "draggable": true,
-            "title": "Orange Punkt (draggable)"
+            "title": "Orange dot (draggable)"
         },
         "popup": {
-            "text": "Popup mit Offset",
+            "text": "Popup with offset",
             "options": {
                 "offset": [0, -12]
             }
@@ -643,6 +643,10 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.3.1 (2026-08-09)
+
+- fix review problems
+
 ### 0.3.0 (2026-08-05)
 
 - Added an independent automatic, light, or dark map color scheme to the Map
@@ -661,10 +665,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 
 - improved stay detection
 - optimized timeline rendering
-
-### 0.2.2 (2026-08-03)
-
-- besseres icon für timeline location widget
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 
