@@ -643,6 +643,9 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.3.2 (2026-08-10)
+
+- switch support link to short link service
 
 ### 0.3.1 (2026-08-09)
 
@@ -661,11 +664,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 
 - fix tests
 - fix last segment handling
-
-### 0.2.3 (2026-08-04)
-
-- improved stay detection
-- optimized timeline rendering
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 

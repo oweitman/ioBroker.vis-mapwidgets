@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "news": {
+      "0.3.2": {
+        "en": "switch support link to short link service",
+        "de": "Support-Link zu Kurzlinkdienst wechseln",
+        "ru": "переключить ссылку на поддержку на короткий сервис ссылок",
+        "pt": "alterar o link de suporte para o serviço de link curto",
+        "nl": "supportlink veranderen naar kort linkdienst",
+        "fr": "modifier le lien de support vers le service de lien court",
+        "it": "modificare il link di supporto per il servizio di link corto",
+        "es": "cambiar el enlace de soporte por el servicio de enlace corto",
+        "pl": "zmiana linku do wsparcia na krotkią serwis linków",
+        "uk": "змінити посилання на підтримку на короткий сервіс посилань",
+        "zh-cn": "切换支持链接到短链接服务"
+      },
       "0.3.1": {
         "en": "fix review problems",
         "de": "behebung von überprüfungsproblemen",
@@ -80,19 +93,6 @@
         "pl": "dodać link do wsparcia do widżetów",
         "uk": "додати посилання на підтримку до віджетів",
         "zh-cn": "为小部件添加支持链接"
-      },
-      "0.2.0": {
-        "en": "add timeline widget",
-        "de": "Timeline-Widget hinzufügen",
-        "ru": "добавить виджет временной шкалы",
-        "pt": "adicionar widget de linha do tempo",
-        "nl": "tijdlijnwidget toevoegen",
-        "fr": "ajouter un widget de chronologie",
-        "it": "aggiungere il widget della sequenza temporale",
-        "es": "agregar widget de línea de tiempo",
-        "pl": "dodać widżet osi czasu",
-        "uk": "додати віджет часової шкали",
-        "zh-cn": "添加时间轴组件"
       }
     },
     "titleLang": {

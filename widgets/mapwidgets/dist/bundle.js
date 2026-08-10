@@ -1556,19 +1556,6 @@
           uk: "\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u0432\u0456\u0434\u043E\u043C\u0435 \u043C\u0456\u0441\u0446\u0435",
           "zh-cn": "\u7F16\u8F91\u5DF2\u77E5\u5730\u70B9"
         },
-        "No address available": {
-          en: "No address available",
-          de: "Keine Adresse verf\xFCgbar",
-          ru: "\u0410\u0434\u0440\u0435\u0441 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u0435\u043D",
-          pt: "Nenhum endere\xE7o dispon\xEDvel",
-          nl: "Geen adres beschikbaar",
-          fr: "Aucune adresse disponible",
-          it: "Nessun indirizzo disponibile",
-          es: "No hay direcci\xF3n disponible",
-          pl: "Brak dost\u0119pnego adresu",
-          uk: "\u0410\u0434\u0440\u0435\u0441\u0430 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u0430",
-          "zh-cn": "\u65E0\u53EF\u7528\u5730\u5740"
-        },
         "Remove known place": {
           en: "Remove known place",
           de: "Bekannten Ort entfernen",
@@ -22766,7 +22753,7 @@
   var import_L = __toESM(require_L_Terminator());
 
   // ../package.json
-  var version = "0.3.1";
+  var version = "0.3.2";
 
   // node_modules/deep-object-diff/mjs/utils.js
   var isDate = (d) => d instanceof Date;
