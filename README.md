@@ -643,6 +643,11 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- remove vis dependency
+
 ### 0.3.2 (2026-08-10)
 
 - switch support link to short link service
