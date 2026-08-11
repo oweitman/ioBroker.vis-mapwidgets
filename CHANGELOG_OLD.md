@@ -1,9 +1,14 @@
 # Older changes
+## 0.2.4 (2026-08-04)
+
+- fix tests
+- fix last segment handling
+
+
 ## 0.2.3 (2026-08-04)
 
 - improved stay detection
 - optimized timeline rendering
-
 
 ## 0.2.2 (2026-08-03)
 

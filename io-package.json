@@ -1,184 +1,192 @@
 {
-    "common": {
-        "name": "vis-mapwidgets",
-        "version": "0.3.2",
-        "news": {
-            "0.3.2": {
-                "en": "switch support link to short link service",
-                "de": "Support-Link zu Kurzlinkdienst wechseln",
-                "ru": "переключить ссылку на поддержку на короткий сервис ссылок",
-                "pt": "alterar o link de suporte para o serviço de link curto",
-                "nl": "supportlink veranderen naar kort linkdienst",
-                "fr": "modifier le lien de support vers le service de lien court",
-                "it": "modificare il link di supporto per il servizio di link corto",
-                "es": "cambiar el enlace de soporte por el servicio de enlace corto",
-                "pl": "zmiana linku do wsparcia na krotkią serwis linków",
-                "uk": "змінити посилання на підтримку на короткий сервіс посилань",
-                "zh-cn": "切换支持链接到短链接服务"
-            },
-            "0.3.1": {
-                "en": "fix review problems",
-                "de": "behebung von überprüfungsproblemen",
-                "ru": "исправить проблемы с обзором",
-                "pt": "corrigir problemas de revisão",
-                "nl": "herzieningsproblemen oplossen",
-                "fr": "résoudre les problèmes d'examen",
-                "it": "risolvere problemi di revisione",
-                "es": "solucionar problemas de revisión",
-                "pl": "rozwiązać problemy z przeglądem",
-                "uk": "виправлено проблеми рецензування",
-                "zh-cn": "解决审查问题"
-            },
-            "0.3.0": {
-                "en": "- Added an independent automatic, light, or dark map color scheme to the Map\n  Leaflet and Location Timeline widgets.",
-                "de": "- Der Karte wurde ein unabhängiges automatisches Farbschema (hell oder dunkel) hinzugefügt.\nLeaflet- und Standort-Zeitleisten-Widgets.",
-                "ru": "- Добавлена независимая автоматическая цветовая схема для карты: светлая или темная.\nВиджеты «Листовка» и «Хронология местоположения».",
-                "pt": "- Adicionada uma opção independente de esquema de cores automático, claro ou escuro para o mapa.\nWidgets de folheto e linha do tempo de localização.",
-                "nl": "- Er is een onafhankelijk automatisch kleurenschema voor de kaart toegevoegd, met de mogelijkheid om te kiezen tussen een lichte of donkere kaart.\nWidgets voor Leaflet en Locatietijdlijn.",
-                "fr": "- Ajout d'un schéma de couleurs automatique indépendant (clair ou foncé) pour la carte.\nWidgets Leaflet et Chronologie de localisation.",
-                "it": "- Aggiunto uno schema di colori della mappa automatico, chiaro o scuro indipendente alla mappa\nWidget per volantini e cronologia delle posizioni.",
-                "es": "- Se agregó un esquema de color de mapa automático, claro u oscuro independiente al mapa.\nWidgets de folletos y línea de tiempo de ubicación.",
-                "pl": "- Dodano niezależny automatyczny, jasny lub ciemny schemat kolorów mapy do mapy\nWidżety ulotki i osi czasu lokalizacji.",
-                "uk": "- Додано незалежну автоматичну, світлу або темну кольорову схему карти\nВіджети листівки та шкали місцезнаходження.",
-                "zh-cn": "- 为地图添加了独立的自动浅色或深色地图配色方案。\n宣传单和位置时间轴小部件。"
-            },
-            "0.2.5": {
-                "en": "The dark theme has been adjusted to make the dialog easier to read.",
-                "de": "Das dunkle Design wurde angepasst, um die Lesbarkeit der Dialoge zu verbessern.",
-                "ru": "Темная тема была изменена для облегчения чтения диалогов.",
-                "pt": "O tema escuro foi ajustado para facilitar a leitura dos diálogos.",
-                "nl": "Het donkere thema is aangepast om de dialoog beter leesbaar te maken.",
-                "fr": "Le thème sombre a été ajusté pour faciliter la lecture des dialogues.",
-                "it": "Il tema scuro è stato adattato per rendere i dialoghi più facili da leggere.",
-                "es": "Se ha ajustado el tema oscuro para facilitar la lectura de los diálogos.",
-                "pl": "Aby ułatwić czytanie dialogów, zmieniono ciemny motyw.",
-                "uk": "Темну тему було налаштовано, щоб діалоги було легше читати.",
-                "zh-cn": "已调整深色主题，使对话框更易于阅读。"
-            },
-            "0.2.4": {
-                "en": "fix tests\nfix last segment handling",
-                "de": "Fixtests\nFehler bei der Verarbeitung des letzten Segments",
-                "ru": "исправить тесты\nисправлена обработка последнего сегмента",
-                "pt": "corrigir testes\ncorrigir o tratamento do último segmento",
-                "nl": "fix tests\nCorrectie van de afhandeling van het laatste segment",
-                "fr": "tests de correction\ncorrection de la gestion du dernier segment",
-                "it": "test di correzione\ncorrezione gestione ultimo segmento",
-                "es": "pruebas de corrección\nCorregir el manejo del último segmento",
-                "pl": "naprawić testy\nnapraw obsługę ostatniego segmentu",
-                "uk": "виправити тести\nвиправити обробку останнього сегмента",
-                "zh-cn": "修复测试\n修复最后一个片段的处理"
-            },
-            "0.2.2": {
-                "en": "better icon for timeline location widget",
-                "de": "Besseres Symbol für das Timeline-Standort-Widget",
-                "ru": "улучшенный значок для виджета местоположения на временной шкале",
-                "pt": "ícone melhor para o widget de localização da linha do tempo",
-                "nl": "beter pictogram voor de tijdlijnlocatie-widget",
-                "fr": "meilleure icône pour le widget de localisation de la chronologie",
-                "it": "icona migliore per il widget della posizione della timeline",
-                "es": "mejor icono para el widget de ubicación de la línea de tiempo",
-                "pl": "lepsza ikona dla widżetu lokalizacji osi czasu",
-                "uk": "краща піктограма для віджета розташування на часовій шкалі",
-                "zh-cn": "改进时间线位置小部件的图标"
-            },
-            "0.2.1": {
-                "en": "add support link to widgets",
-                "de": "Support-Link zu Widgets hinzufügen",
-                "ru": "добавить ссылку на поддержку в виджеты",
-                "pt": "adicionar link de suporte aos widgets",
-                "nl": "supportlink aan widgets toevoegen",
-                "fr": "ajouter un lien d'assistance aux widgets",
-                "it": "aggiungere un link di supporto ai widget",
-                "es": "agregar enlace de soporte a los widgets",
-                "pl": "dodać link do wsparcia do widżetów",
-                "uk": "додати посилання на підтримку до віджетів",
-                "zh-cn": "为小部件添加支持链接"
-            }
-        },
-        "titleLang": {
-            "en": "Map Widgets",
-            "de": "Karten -Widgets",
-            "ru": "Карты виджетов",
-            "pt": "Widgets de mapa",
-            "nl": "Kaartwidgets",
-            "fr": "Widgets cartographiques",
-            "it": "Widget della mappa",
-            "es": "Widgets de mapa",
-            "pl": "Widżety map",
-            "uk": "Відродження карт",
-            "zh-cn": "地图小部件"
-        },
-        "desc": {
-            "en": "Map Widgets for ioBroker.vis",
-            "de": "Karten -Widgets für iobroker.vis",
-            "ru": "Карты виджетов для iobroker.vis",
-            "pt": "Widgets de mapa para iobroker.vis",
-            "nl": "Kaartwidgets voor IoBRoker.Vis",
-            "fr": "Widgets cartographiques pour iobroker.vis",
-            "it": "Widget mappa per iobroker.vis",
-            "es": "Widgets de mapa para iobroker.vis",
-            "pl": "Widget map dla iobrent.vis",
-            "uk": "Віджетів карт для iobroker.vis",
-            "zh-cn": "iobroker.vis的地图小部件"
-        },
-        "platform": "Javascript/Node.js",
-        "loglevel": "info",
-        "icon": "mapwidgets.svg",
-        "enabled": true,
-        "mode": "none",
-        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-mapwidgets/main/admin/mapwidgets.svg",
-        "keywords": ["map widgets", "vis"],
-        "readme": "https://github.com/oweitman/ioBroker.vis-mapwidgets/blob/main/README.md",
-        "authors": ["oweitman <oweitman@gmx.de>"],
-        "dependencies": [],
-        "onlyWWW": true,
-        "singleton": true,
-        "type": "visualization-widgets",
-        "tier": 3,
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "adminUI": {
-            "config": "none"
-        },
-        "restartAdapters": ["vis", "vis-2"]
+  "common": {
+    "name": "vis-mapwidgets",
+    "version": "0.3.3",
+    "news": {
+      "0.3.3": {
+        "en": "remove vis dependency",
+        "de": "Vis-Abhängigkeit entfernen",
+        "ru": "удалить зависимость vis",
+        "pt": "remover dependência de vis",
+        "nl": "verwijder de vis-afhankelijkheid",
+        "fr": "supprimer la dépendance vis",
+        "it": "rimuovere la dipendenza da vis",
+        "es": "eliminar la dependencia de vis",
+        "pl": "usuń zależność wiz",
+        "uk": "видалити залежність від візиту",
+        "zh-cn": "移除 vis 依赖项"
+      },
+      "0.3.2": {
+        "en": "switch support link to short link service",
+        "de": "Support-Link zu Kurzlinkdienst wechseln",
+        "ru": "переключить ссылку на поддержку на короткий сервис ссылок",
+        "pt": "alterar o link de suporte para o serviço de link curto",
+        "nl": "supportlink veranderen naar kort linkdienst",
+        "fr": "modifier le lien de support vers le service de lien court",
+        "it": "modificare il link di supporto per il servizio di link corto",
+        "es": "cambiar el enlace de soporte por el servicio de enlace corto",
+        "pl": "zmiana linku do wsparcia na krotkią serwis linków",
+        "uk": "змінити посилання на підтримку на короткий сервіс посилань",
+        "zh-cn": "切换支持链接到短链接服务"
+      },
+      "0.3.1": {
+        "en": "fix review problems",
+        "de": "behebung von überprüfungsproblemen",
+        "ru": "исправить проблемы с обзором",
+        "pt": "corrigir problemas de revisão",
+        "nl": "herzieningsproblemen oplossen",
+        "fr": "résoudre les problèmes d'examen",
+        "it": "risolvere problemi di revisione",
+        "es": "solucionar problemas de revisión",
+        "pl": "rozwiązać problemy z przeglądem",
+        "uk": "виправлено проблеми рецензування",
+        "zh-cn": "解决审查问题"
+      },
+      "0.3.0": {
+        "en": "- Added an independent automatic, light, or dark map color scheme to the Map\n  Leaflet and Location Timeline widgets.",
+        "de": "- Der Karte wurde ein unabhängiges automatisches Farbschema (hell oder dunkel) hinzugefügt.\nLeaflet- und Standort-Zeitleisten-Widgets.",
+        "ru": "- Добавлена независимая автоматическая цветовая схема для карты: светлая или темная.\nВиджеты «Листовка» и «Хронология местоположения».",
+        "pt": "- Adicionada uma opção independente de esquema de cores automático, claro ou escuro para o mapa.\nWidgets de folheto e linha do tempo de localização.",
+        "nl": "- Er is een onafhankelijk automatisch kleurenschema voor de kaart toegevoegd, met de mogelijkheid om te kiezen tussen een lichte of donkere kaart.\nWidgets voor Leaflet en Locatietijdlijn.",
+        "fr": "- Ajout d'un schéma de couleurs automatique indépendant (clair ou foncé) pour la carte.\nWidgets Leaflet et Chronologie de localisation.",
+        "it": "- Aggiunto uno schema di colori della mappa automatico, chiaro o scuro indipendente alla mappa\nWidget per volantini e cronologia delle posizioni.",
+        "es": "- Se agregó un esquema de color de mapa automático, claro u oscuro independiente al mapa.\nWidgets de folletos y línea de tiempo de ubicación.",
+        "pl": "- Dodano niezależny automatyczny, jasny lub ciemny schemat kolorów mapy do mapy\nWidżety ulotki i osi czasu lokalizacji.",
+        "uk": "- Додано незалежну автоматичну, світлу або темну кольорову схему карти\nВіджети листівки та шкали місцезнаходження.",
+        "zh-cn": "- 为地图添加了独立的自动浅色或深色地图配色方案。\n宣传单和位置时间轴小部件。"
+      },
+      "0.2.5": {
+        "en": "The dark theme has been adjusted to make the dialog easier to read.",
+        "de": "Das dunkle Design wurde angepasst, um die Lesbarkeit der Dialoge zu verbessern.",
+        "ru": "Темная тема была изменена для облегчения чтения диалогов.",
+        "pt": "O tema escuro foi ajustado para facilitar a leitura dos diálogos.",
+        "nl": "Het donkere thema is aangepast om de dialoog beter leesbaar te maken.",
+        "fr": "Le thème sombre a été ajusté pour faciliter la lecture des dialogues.",
+        "it": "Il tema scuro è stato adattato per rendere i dialoghi più facili da leggere.",
+        "es": "Se ha ajustado el tema oscuro para facilitar la lectura de los diálogos.",
+        "pl": "Aby ułatwić czytanie dialogów, zmieniono ciemny motyw.",
+        "uk": "Темну тему було налаштовано, щоб діалоги було легше читати.",
+        "zh-cn": "已调整深色主题，使对话框更易于阅读。"
+      },
+      "0.2.4": {
+        "en": "fix tests\nfix last segment handling",
+        "de": "Fixtests\nFehler bei der Verarbeitung des letzten Segments",
+        "ru": "исправить тесты\nисправлена обработка последнего сегмента",
+        "pt": "corrigir testes\ncorrigir o tratamento do último segmento",
+        "nl": "fix tests\nCorrectie van de afhandeling van het laatste segment",
+        "fr": "tests de correction\ncorrection de la gestion du dernier segment",
+        "it": "test di correzione\ncorrezione gestione ultimo segmento",
+        "es": "pruebas de corrección\nCorregir el manejo del último segmento",
+        "pl": "naprawić testy\nnapraw obsługę ostatniego segmentu",
+        "uk": "виправити тести\nвиправити обробку останнього сегмента",
+        "zh-cn": "修复测试\n修复最后一个片段的处理"
+      },
+      "0.2.2": {
+        "en": "better icon for timeline location widget",
+        "de": "Besseres Symbol für das Timeline-Standort-Widget",
+        "ru": "улучшенный значок для виджета местоположения на временной шкале",
+        "pt": "ícone melhor para o widget de localização da linha do tempo",
+        "nl": "beter pictogram voor de tijdlijnlocatie-widget",
+        "fr": "meilleure icône pour le widget de localisation de la chronologie",
+        "it": "icona migliore per il widget della posizione della timeline",
+        "es": "mejor icono para el widget de ubicación de la línea de tiempo",
+        "pl": "lepsza ikona dla widżetu lokalizacji osi czasu",
+        "uk": "краща піктограма для віджета розташування на часовій шкалі",
+        "zh-cn": "改进时间线位置小部件的图标"
+      }
     },
-    "native": {},
-    "instanceObjects": [
-        {
-            "_id": "timeline",
-            "type": "channel",
-            "common": {
-                "name": "Location timeline"
-            },
-            "native": {}
-        },
-        {
-            "_id": "timeline.places",
-            "type": "state",
-            "common": {
-                "name": "Known timeline places",
-                "type": "string",
-                "role": "json",
-                "read": true,
-                "write": true,
-                "def": "{\"version\":1,\"entries\":[]}"
-            },
-            "native": {}
-        },
-        {
-            "_id": "timeline.geocodingCache",
-            "type": "state",
-            "common": {
-                "name": "Timeline reverse-geocoding cache",
-                "type": "string",
-                "role": "json",
-                "read": true,
-                "write": true,
-                "def": "{\"version\":1,\"entries\":{}}"
-            },
-            "native": {}
-        }
+    "titleLang": {
+      "en": "Map Widgets",
+      "de": "Karten -Widgets",
+      "ru": "Карты виджетов",
+      "pt": "Widgets de mapa",
+      "nl": "Kaartwidgets",
+      "fr": "Widgets cartographiques",
+      "it": "Widget della mappa",
+      "es": "Widgets de mapa",
+      "pl": "Widżety map",
+      "uk": "Відродження карт",
+      "zh-cn": "地图小部件"
+    },
+    "desc": {
+      "en": "Map Widgets for ioBroker.vis",
+      "de": "Karten -Widgets für iobroker.vis",
+      "ru": "Карты виджетов для iobroker.vis",
+      "pt": "Widgets de mapa para iobroker.vis",
+      "nl": "Kaartwidgets voor IoBRoker.Vis",
+      "fr": "Widgets cartographiques pour iobroker.vis",
+      "it": "Widget mappa per iobroker.vis",
+      "es": "Widgets de mapa para iobroker.vis",
+      "pl": "Widget map dla iobrent.vis",
+      "uk": "Віджетів карт для iobroker.vis",
+      "zh-cn": "iobroker.vis的地图小部件"
+    },
+    "platform": "Javascript/Node.js",
+    "loglevel": "info",
+    "icon": "mapwidgets.svg",
+    "enabled": true,
+    "mode": "none",
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.vis-mapwidgets/main/admin/mapwidgets.svg",
+    "keywords": [
+      "map widgets",
+      "vis"
+    ],
+    "readme": "https://github.com/oweitman/ioBroker.vis-mapwidgets/blob/main/README.md",
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "dependencies": [],
+    "onlyWWW": true,
+    "singleton": true,
+    "type": "visualization-widgets",
+    "tier": 3,
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "adminUI": {
+      "config": "none"
+    },
+    "restartAdapters": [
+      "vis",
+      "vis-2"
     ]
+  },
+  "native": {},
+  "instanceObjects": [
+    {
+      "_id": "timeline",
+      "type": "channel",
+      "common": {
+        "name": "Location timeline"
+      },
+      "native": {}
+    },
+    {
+      "_id": "timeline.places",
+      "type": "state",
+      "common": {
+        "name": "Known timeline places",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": true,
+        "def": "{\"version\":1,\"entries\":[]}"
+      },
+      "native": {}
+    },
+    {
+      "_id": "timeline.geocodingCache",
+      "type": "state",
+      "common": {
+        "name": "Timeline reverse-geocoding cache",
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": true,
+        "def": "{\"version\":1,\"entries\":{}}"
+      },
+      "native": {}
+    }
+  ]
 }

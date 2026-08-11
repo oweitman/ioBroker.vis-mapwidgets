@@ -643,8 +643,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.3.3 (2026-08-11)
 
 - remove vis dependency
 
@@ -664,11 +663,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 ### 0.2.5 (2026-08-04)
 
 - The dark theme has been adjusted to make the dialog easier to read.
-
-### 0.2.4 (2026-08-04)
-
-- fix tests
-- fix last segment handling
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 
