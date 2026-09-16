@@ -1,0 +1,65 @@
+/* Used only when the host has no jQuery UI dialog stylesheet. */
+.mapwidgets-schema-error-dialog-fallback .mapwidgets-schema-error-dialog.ui-dialog {
+    position: absolute;
+    padding: 0.2em;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background: #fff;
+    color: #222;
+    font: 14px Arial, sans-serif;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.mapwidgets-schema-error-dialog-fallback .mapwidgets-schema-error-dialog .ui-dialog-titlebar {
+    position: relative;
+    min-height: 20px;
+    padding: 0.4em 2em 0.4em 1em;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    background: #ccc;
+    font-weight: bold;
+}
+
+.mapwidgets-schema-error-dialog-fallback .mapwidgets-schema-error-dialog .ui-dialog-title {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.mapwidgets-schema-error-dialog-fallback .mapwidgets-schema-error-dialog .ui-dialog-titlebar-close {
+    position: absolute;
+    top: 50%;
+    right: 0.3em;
+    width: 22px;
+    height: 22px;
+    margin-top: -11px;
+    padding: 0;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    background: #eee;
+    color: #222;
+    cursor: pointer;
+    font-size: 0;
+}
+
+.mapwidgets-schema-error-dialog-fallback .mapwidgets-schema-error-dialog .ui-dialog-titlebar-close::after {
+    content: '\00d7';
+    font: 20px/20px Arial, sans-serif;
+}
+
+.mapwidgets-schema-error-dialog-fallback .mapwidgets-schema-error-dialog .ui-dialog-titlebar-close .ui-icon {
+    display: none;
+}
+
+.mapwidgets-schema-error-dialog-fallback .mapwidgets-schema-error-dialog .ui-dialog-content {
+    position: relative;
+    overflow: auto;
+    padding: 0.5em 1em;
+}
+
+.mapwidgets-schema-error-dialog-fallback .mapwidgets-schema-error-overlay.ui-widget-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}

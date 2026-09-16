@@ -23248,7 +23248,16 @@
     compactOptions(options) {
       return Object.fromEntries(Object.entries(options).filter(([, value]) => value !== void 0));
     },
+    ensureSchemaErrorDialogStyles() {
+      const probe = document.createElement("div");
+      probe.className = "ui-dialog";
+      document.body.appendChild(probe);
+      const hasDialogStyles = window.getComputedStyle(probe).position === "absolute";
+      probe.remove();
+      document.documentElement.classList.toggle("mapwidgets-schema-error-dialog-fallback", !hasDialogStyles);
+    },
     showSchemaErrorDialog(widgetID) {
+      this.ensureSchemaErrorDialogStyles();
       const visdata = vis.binds["mapwidgets"].data[widgetID];
       const text = visdata.schemaErrorsText || _("No schema errors present.");
       const $widget = $(`#${widgetID}`);

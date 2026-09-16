@@ -643,6 +643,11 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- Add dialog CSS rules only if they are missing.
+
 ### 0.3.3 (2026-08-11)
 
 - remove vis dependency

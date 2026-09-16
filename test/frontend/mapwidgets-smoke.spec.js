@@ -55,6 +55,39 @@ test('applies the selected map theme only to Leaflet tiles', async ({ page }) =>
     );
 });
 
+test('uses scoped dialog styles only when the host has no jQuery UI dialog CSS', async ({ page }) => {
+    const styles = await page.evaluate(() => {
+        const dialog = document.createElement('div');
+        dialog.className = 'mapwidgets-schema-error-dialog ui-dialog';
+        const otherWidget = document.createElement('div');
+        otherWidget.className = 'ui-widget';
+        document.body.append(dialog, otherWidget);
+
+        vis.binds.mapwidgets.ensureSchemaErrorDialogStyles();
+        const fallback = {
+            active: document.documentElement.classList.contains('mapwidgets-schema-error-dialog-fallback'),
+            dialogPosition: getComputedStyle(dialog).position,
+            otherFont: getComputedStyle(otherWidget).fontFamily,
+        };
+
+        const hostStyles = document.createElement('style');
+        hostStyles.textContent = '.ui-dialog { position: absolute; }';
+        document.head.appendChild(hostStyles);
+        vis.binds.mapwidgets.ensureSchemaErrorDialogStyles();
+        const host = {
+            fallbackActive: document.documentElement.classList.contains('mapwidgets-schema-error-dialog-fallback'),
+            dialogPosition: getComputedStyle(dialog).position,
+        };
+        return { fallback, host };
+    });
+
+    expect(styles.fallback.active).toBe(true);
+    expect(styles.fallback.dialogPosition).toBe('absolute');
+    expect(styles.fallback.otherFont).not.toContain('Verdana');
+    expect(styles.host.fallbackActive).toBe(false);
+    expect(styles.host.dialogPosition).toBe('absolute');
+});
+
 test('keeps the last valid rendered map when a state update contains invalid JSON', async ({ page }) => {
     await page.evaluate(() =>
         window.renderMapWidget({
