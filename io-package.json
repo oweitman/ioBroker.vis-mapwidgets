@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-mapwidgets",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "news": {
+      "0.3.4": {
+        "en": "Add dialog CSS rules only if they are missing.",
+        "de": "Füge Dialog-CSS-Regeln nur hinzu, wenn sie fehlen.",
+        "ru": "Добавляйте правила CSS для диалогов только в том случае, если они отсутствуют.",
+        "pt": "Adicione regras CSS de diálogo só se faltarem.",
+        "nl": "Voeg alleen CSS-regels voor het dialoogvenster toe als ze ontbreken.",
+        "fr": "Ajoutez des règles CSS à Dialog si elles manquent.",
+        "it": "Aggiunga regole CSS solo se mancano.",
+        "es": "Añada reglas CSS de diálogo solo si faltan.",
+        "pl": "Dodaj reguły CSS w oknie dialogowym tylko wtedy, gdy ich brakuje.",
+        "uk": "Додайте діалогові правила CSS, тільки якщо вони відсутні.",
+        "zh-cn": "仅在对话框 CSS 规则缺失时才添加这些规则。"
+      },
       "0.3.3": {
         "en": "remove vis dependency",
         "de": "Vis-Abhängigkeit entfernen",
@@ -80,19 +93,6 @@
         "pl": "naprawić testy\nnapraw obsługę ostatniego segmentu",
         "uk": "виправити тести\nвиправити обробку останнього сегмента",
         "zh-cn": "修复测试\n修复最后一个片段的处理"
-      },
-      "0.2.2": {
-        "en": "better icon for timeline location widget",
-        "de": "Besseres Symbol für das Timeline-Standort-Widget",
-        "ru": "улучшенный значок для виджета местоположения на временной шкале",
-        "pt": "ícone melhor para o widget de localização da linha do tempo",
-        "nl": "beter pictogram voor de tijdlijnlocatie-widget",
-        "fr": "meilleure icône pour le widget de localisation de la chronologie",
-        "it": "icona migliore per il widget della posizione della timeline",
-        "es": "mejor icono para el widget de ubicación de la línea de tiempo",
-        "pl": "lepsza ikona dla widżetu lokalizacji osi czasu",
-        "uk": "краща піктограма для віджета розташування на часовій шкалі",
-        "zh-cn": "改进时间线位置小部件的图标"
       }
     },
     "titleLang": {

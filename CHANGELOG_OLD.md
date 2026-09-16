@@ -1,9 +1,13 @@
 # Older changes
+## 0.2.5 (2026-08-04)
+
+- The dark theme has been adjusted to make the dialog easier to read.
+
+
 ## 0.2.4 (2026-08-04)
 
 - fix tests
 - fix last segment handling
-
 
 ## 0.2.3 (2026-08-04)
 

@@ -643,8 +643,7 @@ Waits for a global variable (or a nested property of `window`) to become availab
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.3.4 (2026-09-16)
 
 - Add dialog CSS rules only if they are missing.
 
@@ -664,10 +663,6 @@ Waits for a global variable (or a nested property of `window`) to become availab
 
 - Added an independent automatic, light, or dark map color scheme to the Map
   Leaflet and Location Timeline widgets.
-
-### 0.2.5 (2026-08-04)
-
-- The dark theme has been adjusted to make the dialog easier to read.
 
 Older entries are in [CHANGELOG_OLD.md](CHANGELOG_OLD.md).
 
