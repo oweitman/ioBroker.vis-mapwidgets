@@ -13,6 +13,7 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
 import '../js/L.Terminator';
 import '../css/style.css';
+import '../css/schema-error-dialog.css';
 import { version as pkgVersion } from '../../../package.json';
 import { diff } from 'deep-object-diff';
 import Ajv2020 from 'ajv/dist/2020.js';
@@ -534,7 +535,16 @@ vis.binds['mapwidgets'] = {
     compactOptions(options) {
         return Object.fromEntries(Object.entries(options).filter(([, value]) => value !== undefined));
     },
+    ensureSchemaErrorDialogStyles() {
+        const probe = document.createElement('div');
+        probe.className = 'ui-dialog';
+        document.body.appendChild(probe);
+        const hasDialogStyles = window.getComputedStyle(probe).position === 'absolute';
+        probe.remove();
+        document.documentElement.classList.toggle('mapwidgets-schema-error-dialog-fallback', !hasDialogStyles);
+    },
     showSchemaErrorDialog(widgetID) {
+        this.ensureSchemaErrorDialogStyles();
         const visdata = vis.binds['mapwidgets'].data[widgetID];
         const text = visdata.schemaErrorsText || _('No schema errors present.');
         const $widget = $(`#${widgetID}`);

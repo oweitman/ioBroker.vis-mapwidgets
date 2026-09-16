@@ -83,6 +83,7 @@ function transformMapwidgetsSource(source) {
         .replace(/import 'leaflet\/dist\/leaflet\.js';\r?\n/, '')
         .replace(/import '\.\.\/js\/L\.Terminator';\r?\n/, '')
         .replace(/import '\.\.\/css\/style\.css';\r?\n/, '')
+        .replace(/import '\.\.\/css\/schema-error-dialog\.css';\r?\n/, '')
         .replace(/import \{ version as pkgVersion \} from '..\/..\/..\/package\.json';\r?\n/, "const pkgVersion = 'test';\n")
         .replace(
             /import \{ diff \} from 'deep-object-diff';\r?\n/,
@@ -106,9 +107,27 @@ function loadMapwidgets() {
         let index = 0;
         return String(text).replace(/%s/g, () => String(args[index++]));
     };
-    global.window = {};
+    global.window = {
+        getComputedStyle: () => ({ position: 'static' }),
+    };
+    const documentClasses = new Set();
     global.document = {
         scripts: [],
+        body: {
+            appendChild() {},
+        },
+        documentElement: {
+            classList: {
+                contains: name => documentClasses.has(name),
+                toggle(name, enabled) {
+                    if (enabled) {
+                        documentClasses.add(name);
+                    } else {
+                        documentClasses.delete(name);
+                    }
+                },
+            },
+        },
         head: {
             appendChild(element) {
                 if (element.tagName === 'script') {
@@ -504,6 +523,16 @@ describe('mapwidgets runtime helpers', function () {
         assert.equal(dialog.text, '<img src=x onerror=alert(1)>');
         assert.equal(dialog.dialogOptions.title, 'Schema errors');
         assert.equal(dialog.dialogOptions.modal, true);
+        assert.equal(global.document.documentElement.classList.contains('mapwidgets-schema-error-dialog-fallback'), true);
+    });
+
+    it('uses the host dialog stylesheet when it is present', () => {
+        global.window.getComputedStyle = () => ({ position: 'absolute' });
+        mapwidgets.data.w00001 = { schemaErrorsText: 'broken' };
+
+        mapwidgets.showSchemaErrorDialog('w00001');
+
+        assert.equal(global.document.documentElement.classList.contains('mapwidgets-schema-error-dialog-fallback'), false);
     });
 
     it('loads scripts, css files and waits for globals', async () => {
